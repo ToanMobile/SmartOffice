@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.artifex.smartoffice"
+    namespace = "com.artifex"
     compileSdk = 34
 
     defaultConfig {
