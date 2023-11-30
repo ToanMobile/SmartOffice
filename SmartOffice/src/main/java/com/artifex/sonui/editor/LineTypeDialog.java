@@ -9,9 +9,9 @@ import android.widget.PopupWindow;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.WheelViewAdapter;
+import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
+import com.artifex.source.library.wheel.widget.WheelView;
+import com.artifex.source.library.wheel.widget.adapters.WheelViewAdapter;
 
 public class LineTypeDialog {
     public static final float[][] patterns = {new float[]{1.0f, BitmapDescriptorFactory.HUE_RED}, new float[]{1.0f, 1.0f}, new float[]{1.0f, 3.0f}, new float[]{3.0f, 1.0f}, new float[]{4.0f, 3.0f}, new float[]{8.0f, 3.0f}, new float[]{3.0f, 1.0f, 1.0f, 1.0f}, new float[]{4.0f, 3.0f, 1.0f, 3.0f}, new float[]{8.0f, 3.0f, 1.0f, 3.0f}, new float[]{3.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f}, new float[]{8.0f, 3.0f, 1.0f, 3.0f, 1.0f, 3.0f}};

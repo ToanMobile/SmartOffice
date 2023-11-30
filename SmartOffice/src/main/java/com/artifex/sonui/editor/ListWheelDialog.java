@@ -8,8 +8,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.ArrayWheelAdapter;
+import com.artifex.source.library.wheel.widget.WheelView;
+import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
 
 public class ListWheelDialog {
     public boolean allowTabAndEnter = true;

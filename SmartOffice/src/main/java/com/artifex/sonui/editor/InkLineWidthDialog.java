@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.WheelViewAdapter;
+import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
+import com.artifex.source.library.wheel.widget.WheelView;
+import com.artifex.source.library.wheel.widget.adapters.WheelViewAdapter;
 
 public class InkLineWidthDialog {
     public static final float[] values = {0.25f, 0.5f, 1.0f, 1.5f, 3.0f, 4.5f, 6.0f, 8.0f, 12.0f, 18.0f, 24.0f};

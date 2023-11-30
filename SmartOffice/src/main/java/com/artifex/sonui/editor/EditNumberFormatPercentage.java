@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.ArrayWheelAdapter;
+import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
+import com.artifex.source.library.wheel.widget.WheelView;
+import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
 
 public class EditNumberFormatPercentage {
     public static final String[] descriptions;

@@ -173,10 +173,10 @@ public class NUIEditToolbar implements View.OnClickListener {
     }
 
     public void hideButtonsPpt() {
-        this.mIncreaseIndentButton.setVisibility(8);
-        this.mDecreaseIndentButton.setVisibility(8);
-        this.mListBulletsButton.setVisibility(8);
-        this.mListNumbersButton.setVisibility(8);
+        this.mIncreaseIndentButton.setVisibility(View.GONE);
+        this.mDecreaseIndentButton.setVisibility(View.GONE);
+        this.mListBulletsButton.setVisibility(View.GONE);
+        this.mListNumbersButton.setVisibility(View.GONE);
     }
 
     public void onAlignCenterButton(View view) {
@@ -280,24 +280,18 @@ public class NUIEditToolbar implements View.OnClickListener {
         if (selectionBackgroundColor.equalsIgnoreCase("NONE")) {
             selectionBackgroundColor = "TRANSPARENT";
         }
-        new ColorDialog(2, getContext(), sODoc, getDocView(), new ColorChangedListener(this) {
-            public void onColorChanged(String str) {
-                if (str.equalsIgnoreCase("transparent")) {
-                    sODoc.setSelectionBackgroundTransparent();
-                } else {
-                    sODoc.setSelectionBackgroundColor(str);
-                }
+        new ColorDialog(2, getContext(), sODoc, getDocView(), str -> {
+            if (str.equalsIgnoreCase("transparent")) {
+                sODoc.setSelectionBackgroundTransparent();
+            } else {
+                sODoc.setSelectionBackgroundColor(str);
             }
         }, selectionBackgroundColor, sODoc.getBgColorList()).show();
     }
 
     public void onFontColorButton(View view) {
         final SODoc sODoc = (SODoc) getSession().getDoc();
-        new ColorDialog(1, getContext(), sODoc, getDocView(), new ColorChangedListener(this) {
-            public void onColorChanged(String str) {
-                sODoc.setSelectionFontColor(str);
-            }
-        }, sODoc.getSelectionFontColor().toUpperCase(), (String[]) null).show();
+        new ColorDialog(1, getContext(), sODoc, getDocView(), sODoc::setSelectionFontColor, sODoc.getSelectionFontColor().toUpperCase(), (String[]) null).show();
     }
 
     public void onFontDownButton(View view) {
