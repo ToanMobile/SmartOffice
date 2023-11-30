@@ -1,7 +1,7 @@
 package com.artifex.sonui.editor;
 
 import a.a.a.a.a.c$$ExternalSyntheticOutline0;
-import a.a.a.a.b.f.a$$ExternalSyntheticOutline0;
+import com.artifex.source.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;

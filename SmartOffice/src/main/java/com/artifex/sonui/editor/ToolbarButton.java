@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import a.a.a.a.b.f.a$$ExternalSyntheticOutline0;
+import com.artifex.source.a$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
