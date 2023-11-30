@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.a$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;

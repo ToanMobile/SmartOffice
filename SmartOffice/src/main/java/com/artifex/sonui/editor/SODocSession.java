@@ -298,15 +298,13 @@ public class SODocSession {
 
     public void createThumbnail(SOFileState sOFileState) {
         ArDkBitmap arDkBitmap;
-        final String thumbnail = sOFileState.getThumbnail();
+        String thumbnail = sOFileState.getThumbnail();
         if (thumbnail == null || thumbnail.isEmpty()) {
             thumbnail = SOFileDatabase.uniqueThumbFilePath();
         }
         sOFileState.setThumbnail(thumbnail);
         sOFileState.deleteThumbnailFile();
-        ArDkPage page = getDoc().getPage(0, new SOPageListener(this) {
-            public void update(RectF rectF) {
-            }
+        ArDkPage page = getDoc().getPage(0, rectF -> {
         });
         this.mPage = page;
         if (page != null) {
@@ -324,31 +322,30 @@ public class SODocSession {
             final ArDkBitmap arDkBitmap2 = arDkBitmap;
             PointF pointF = new PointF(BitmapDescriptorFactory.HUE_RED, BitmapDescriptorFactory.HUE_RED);
             ArDkPage arDkPage = this.mPage;
-            AnonymousClass3 r14 = new SORenderListener() {
-                public void progress(int i) {
-                    Bitmap bitmap = arDkBitmap2.bitmap;
-                    SOOutputStream sOOutputStream = new SOOutputStream(thumbnail);
-                    try {
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 80, sOOutputStream);
-                        sOOutputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    SODocSession sODocSession = SODocSession.this;
-                    ArDkRender arDkRender = sODocSession.mRender;
-                    if (arDkRender != null) {
-                        arDkRender.destroy();
-                    }
-                    sODocSession.mRender = null;
-                    ArDkPage arDkPage = sODocSession.mPage;
-                    if (arDkPage != null) {
-                        arDkPage.releasePage();
-                    }
-                    sODocSession.mPage = null;
+            String finalThumbnail = thumbnail;
+            SORenderListener soRenderListener = (SORenderListener) i1 -> {
+                Bitmap bitmap = arDkBitmap2.bitmap;
+                SOOutputStream sOOutputStream = new SOOutputStream(finalThumbnail);
+                try {
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 80, sOOutputStream);
+                    sOOutputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+                SODocSession sODocSession = SODocSession.this;
+                ArDkRender arDkRender = sODocSession.mRender;
+                if (arDkRender != null) {
+                    arDkRender.destroy();
+                }
+                sODocSession.mRender = null;
+                ArDkPage arDkPage1 = sODocSession.mPage;
+                if (arDkPage1 != null) {
+                    arDkPage1.releasePage();
+                }
+                sODocSession.mPage = null;
             };
             Objects.requireNonNull(arDkPage);
-            this.mRender = arDkPage.renderLayerAtZoomWithAlpha(-2, max, (double) pointF.x, (double) pointF.y, arDkBitmap2, (ArDkBitmap) null, r14, true, false);
+            this.mRender = arDkPage.renderLayerAtZoomWithAlpha(-2, max, (double) pointF.x, (double) pointF.y, arDkBitmap2, (ArDkBitmap) null, soRenderListener, true, false);
         }
     }
 }

@@ -42,29 +42,27 @@ public class PrintHelperPdf {
             final Context context2 = context;
             final String str2 = str;
             final Runnable runnable2 = runnable;
-            arDkDoc.saveToPDF(str, false, new SODocSaveListener() {
-                public void onComplete(int i, int i2) {
-                    progressDialog.dismiss();
-                    if (i == 0) {
-                        PrintHelperPdf.this.printPath(context2, str2, true, new Runnable() {
-                            public void run() {
-                                PrintHelperPdf.printing = false;
-                                Runnable runnable = runnable2;
-                                if (runnable != null) {
-                                    runnable.run();
-                                }
+            arDkDoc.saveToPDF(str, false, (i, i2) -> {
+                progressDialog.dismiss();
+                if (i == 0) {
+                    PrintHelperPdf.this.printPath(context2, str2, true, new Runnable() {
+                        public void run() {
+                            PrintHelperPdf.printing = false;
+                            Runnable runnable1 = runnable2;
+                            if (runnable1 != null) {
+                                runnable1.run();
                             }
-                        });
-                        return;
-                    }
-                    String format = String.format(context2.getString(R.string.sodk_editor_error_saving_document_code), new Object[]{Integer.valueOf(i2)});
-                    Context context = context2;
-                    Utilities.showMessage((Activity) context, context.getString(R.string.sodk_editor_error), format);
-                    PrintHelperPdf.printing = false;
-                    Runnable runnable = runnable2;
-                    if (runnable != null) {
-                        runnable.run();
-                    }
+                        }
+                    });
+                    return;
+                }
+                String format = String.format(context2.getString(R.string.sodk_editor_error_saving_document_code), new Object[]{Integer.valueOf(i2)});
+                Context context1 = context2;
+                Utilities.showMessage((Activity) context1, context1.getString(R.string.sodk_editor_error), format);
+                PrintHelperPdf.printing = false;
+                Runnable runnable1 = runnable2;
+                if (runnable1 != null) {
+                    runnable1.run();
                 }
             });
         } else if (runnable != null) {

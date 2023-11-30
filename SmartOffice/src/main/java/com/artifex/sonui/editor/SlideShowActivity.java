@@ -70,11 +70,9 @@ public class SlideShowActivity extends BaseActivity implements SlideShowViewList
         }
         View findViewById = findViewById(R.id.sodk_editor_mask);
         final GestureDetector gestureDetector = new GestureDetector(getBaseContext(), new MyGestureListener());
-        findViewById.setOnTouchListener(new View.OnTouchListener(this) {
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                gestureDetector.onTouchEvent(motionEvent);
-                return true;
-            }
+        findViewById.setOnTouchListener((view, motionEvent) -> {
+            gestureDetector.onTouchEvent(motionEvent);
+            return true;
         });
         SlideShowView slideShowView = (SlideShowView) findViewById(R.id.sodk_editor_slide_show_view);
         this.mSlideShowView = slideShowView;

@@ -1,7 +1,7 @@
 package com.artifex.sonui.editor;
 
 import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-import com.artifex.source.a$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.util.Base64;
 import androidx.constraintlayout.core.widgets.Barrier$$ExternalSyntheticOutline0;
