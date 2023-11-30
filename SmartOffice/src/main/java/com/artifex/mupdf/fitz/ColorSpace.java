@@ -1,6 +1,6 @@
 package com.artifex.mupdf.fitz;
 
-import a.a.a.a.a.c$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 
 public class ColorSpace {
     public static ColorSpace DeviceBGR = new ColorSpace(nativeDeviceBGR());

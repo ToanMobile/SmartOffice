@@ -1,5 +1,6 @@
 package com.artifex.solib;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -16,6 +17,7 @@ public class DefaultClipboardHandler implements SOClipboardHandler {
         return this.mClipboard.hasPrimaryClip() ? this.mClipboard.getPrimaryClip().getItemAt(0).coerceToText(this.mActivity).toString() : "";
     }
 
+    @SuppressLint("WrongConstant")
     public void initClipboardHandler(Activity activity) {
         this.mActivity = activity;
         this.mClipboard = (ClipboardManager) activity.getSystemService("clipboard");

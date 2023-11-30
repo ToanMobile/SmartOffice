@@ -105,14 +105,14 @@ public class TocDialog implements PopupWindow.OnDismissListener {
         if (Utilities.isPhoneDevice(this.mContext)) {
             i3 = screenSize.x;
             i4 = screenSize.y;
-            this.mCancelButton.setVisibility(0);
+            this.mCancelButton.setVisibility(View.VISIBLE);
             this.popupWindow.setBackgroundDrawable((Drawable) null);
             i2 = 0;
             i = 0;
         } else {
             int dimension = (int) this.mContext.getResources().getDimension(R.dimen.sodk_editor_toc_offsetx);
             i4 = screenSize.y / 2;
-            this.mCancelButton.setVisibility(8);
+            this.mCancelButton.setVisibility(View.GONE);
             this.popupWindow.setBackgroundDrawable(ContextCompat.getDrawable(this.mContext, R.drawable.sodk_editor_table_of_contents));
             int dimension2 = (int) this.mContext.getResources().getDimension(R.dimen.sodk_editor_toc_offsety);
             i2 = dimension;

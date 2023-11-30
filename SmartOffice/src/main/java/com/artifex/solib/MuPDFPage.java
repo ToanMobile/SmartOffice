@@ -1,6 +1,6 @@
 package com.artifex.solib;
 
-import a.a.a.a.a.c$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PointF;

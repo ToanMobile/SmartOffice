@@ -44,22 +44,16 @@ import java.util.UUID;
 
 public class MuPDFDoc extends ArDkDoc {
     public int handleCounter = 0;
-    public PDFDocument.JsEventListener jsEventListener = new PDFDocument.JsEventListener() {
-        public AlertResult onAlert(PDFDocument pDFDocument, String str, String str2, int i, int i2, boolean z, String str3, boolean z2) {
-            JsEventListener jsEventListener;
-            MuPDFDoc muPDFDoc = MuPDFDoc.this;
-            if (!muPDFDoc.showJsError || (jsEventListener = muPDFDoc.jsEventListener2) == null) {
-                return null;
-            }
-            return jsEventListener.onAlert(str, str2, i, i2, z, str3, z2);
-        }
-    };
-    public JsEventListener jsEventListener2 = null;
-    public PDFDocument.JsEventListener jsNullEventListener = new PDFDocument.JsEventListener(this) {
-        public AlertResult onAlert(PDFDocument pDFDocument, String str, String str2, int i, int i2, boolean z, String str3, boolean z2) {
+    public PDFDocument.JsEventListener jsEventListener = (pDFDocument, str, str2, i, i2, z, str3, z2) -> {
+        JsEventListener jsEventListener;
+        MuPDFDoc muPDFDoc = MuPDFDoc.this;
+        if (!muPDFDoc.showJsError || (jsEventListener = muPDFDoc.jsEventListener2) == null) {
             return null;
         }
+        return jsEventListener.onAlert(str, str2, i, i2, z, str3, z2);
     };
+    public JsEventListener jsEventListener2 = null;
+    public PDFDocument.JsEventListener jsNullEventListener = (pDFDocument, str, str2, i, i2, z, str3, z2) -> null;
     public String lastSavedPath = null;
     public String mAuthor = null;
     public Context mContext;

@@ -1,11 +1,11 @@
 package com.artifex.solib;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-import com.applovin.sdk.AppLovinEventTypes;
 import com.artifex.solib.SOSecureFS;
 import java.io.File;
 import java.io.FileInputStream;
@@ -235,7 +235,7 @@ public class FileUtils {
 
     public static String displayNameFromUri(Context context, Uri uri) {
         String scheme = uri.getScheme();
-        if (scheme == null || !scheme.equalsIgnoreCase(AppLovinEventTypes.USER_VIEWED_CONTENT)) {
+        if (scheme == null) {
             return null;
         }
         try {
@@ -243,7 +243,7 @@ public class FileUtils {
             if (query == null || !query.moveToFirst()) {
                 return null;
             }
-            String string = query.getString(query.getColumnIndex("_display_name"));
+            @SuppressLint("Range") String string = query.getString(query.getColumnIndex("_display_name"));
             query.close();
             return string;
         } catch (Exception unused) {
@@ -515,7 +515,7 @@ public class FileUtils {
 
     public static String getFileTypeExtension(Context context, Uri uri, String str) {
         String scheme = uri != null ? uri.getScheme() : null;
-        if (scheme == null || !scheme.equalsIgnoreCase(AppLovinEventTypes.USER_VIEWED_CONTENT)) {
+        if (scheme == null) {
             return extensionFromUriFilename(uri);
         }
         MimeTypeMap singleton = MimeTypeMap.getSingleton();

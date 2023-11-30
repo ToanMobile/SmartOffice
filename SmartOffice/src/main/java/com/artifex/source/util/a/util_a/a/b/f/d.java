@@ -1,4 +1,4 @@
-package com.artifex.source;
+package com.artifex.source.util.a.util_a.a.b.f;
 
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -11,15 +11,15 @@ public class d extends Handler implements e {
     public WeakReference f400a;
     public final HandlerThread b;
 
-    public d(HandlerThread handlerThread, a.a.a.a.b.d dVar) {
+    public d(HandlerThread handlerThread, com.artifex.source.util.a.util_a.a.b.d dVar) {
         super(handlerThread.getLooper());
         this.b = handlerThread;
     }
 
     public void handleMessage(Message message) {
-        a.a.a.a.b.d dVar;
+        com.artifex.source.util.a.util_a.a.b.d dVar;
         WeakReference weakReference = this.f400a;
-        if (weakReference != null && (dVar = (a.a.a.a.b.d) weakReference.get()) != null && message != null) {
+        if (weakReference != null && (dVar = (com.artifex.source.util.a.util_a.a.b.d) weakReference.get()) != null && message != null) {
             dVar.a(message);
         }
     }

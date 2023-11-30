@@ -1,6 +1,6 @@
-package com.artifex.source;
+package com.artifex.source.util.a.util_a.a.b.f;
 
-import a.a.a.a.b.d;
+import com.artifex.source.util.a.util_a.a.b.d;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;

@@ -1,15 +1,14 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.a$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.Button;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
-public class ToolbarButton extends Button {
+public class ToolbarButton extends androidx.appcompat.widget.AppCompatButton {
     public float mTextSize;
 
     public ToolbarButton(Context context) {
@@ -53,7 +52,7 @@ public class ToolbarButton extends Button {
         Drawable[] compoundDrawables = getCompoundDrawables();
         for (int i2 = 0; i2 < compoundDrawables.length; i2++) {
             if (compoundDrawables[i2] != null) {
-                DrawableCompat.Api21Impl.setTint(compoundDrawables[i2], i);
+                DrawableCompat.setTint(compoundDrawables[i2], i);
             }
         }
     }

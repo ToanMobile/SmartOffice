@@ -419,7 +419,7 @@ public class NUIActivity extends BaseActivity {
             goto L_0x0151
         L_0x0140:
             java.lang.String r9 = "/storage/"
-            java.lang.StringBuilder r9 = a.a.a.a.a.c$$ExternalSyntheticOutline0.m(r9)
+            java.lang.StringBuilder r9 = com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0.m(r9)
             java.lang.String r0 = r0.replace(r8, r13)
             r9.append(r0)
             java.lang.String r9 = r9.toString()

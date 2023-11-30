@@ -15,7 +15,6 @@ import android.view.ViewPropertyAnimator;
 import android.widget.HorizontalScrollView;
 import androidx.core.content.ContextCompat;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.logging.type.LogSeverity;
 
 public class SOHorizontalScrollView extends HorizontalScrollView implements View.OnTouchListener {
     public int mAnimateDistance;
@@ -95,7 +94,7 @@ public class SOHorizontalScrollView extends HorizontalScrollView implements View
     public void startAnimate() {
         int childWidth = getChildWidth() - getParentWidth();
         this.mAnimationAmount = childWidth;
-        this.mAnimationAmount = Math.min(childWidth, LogSeverity.ERROR_VALUE);
+        this.mAnimationAmount = Math.min(childWidth, 100); //Math.min(childWidth, LogSeverity.ERROR_VALUE);
         this.mAnimator = animate();
         this.mAnimateDistance = -this.mAnimationAmount;
         setTranslationX(BitmapDescriptorFactory.HUE_RED);
