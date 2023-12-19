@@ -298,7 +298,7 @@ public class SODocSession {
 
     public void createThumbnail(SOFileState sOFileState) {
         ArDkBitmap arDkBitmap;
-        String thumbnail = sOFileState.getThumbnail();
+        final String thumbnail = sOFileState.getThumbnail();
         if (thumbnail == null || thumbnail.isEmpty()) {
             thumbnail = SOFileDatabase.uniqueThumbFilePath();
         }
@@ -322,16 +322,11 @@ public class SODocSession {
             final ArDkBitmap arDkBitmap2 = arDkBitmap;
             PointF pointF = new PointF(BitmapDescriptorFactory.HUE_RED, BitmapDescriptorFactory.HUE_RED);
             ArDkPage arDkPage = this.mPage;
-            String finalThumbnail = thumbnail;
-            SORenderListener soRenderListener = (SORenderListener) i1 -> {
+            SORenderListener soRenderListener = i1 -> {
                 Bitmap bitmap = arDkBitmap2.bitmap;
-                SOOutputStream sOOutputStream = new SOOutputStream(finalThumbnail);
-                try {
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 80, sOOutputStream);
-                    sOOutputStream.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                SOOutputStream sOOutputStream = new SOOutputStream(thumbnail);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 80, sOOutputStream);
+                sOOutputStream.close();
                 SODocSession sODocSession = SODocSession.this;
                 ArDkRender arDkRender = sODocSession.mRender;
                 if (arDkRender != null) {

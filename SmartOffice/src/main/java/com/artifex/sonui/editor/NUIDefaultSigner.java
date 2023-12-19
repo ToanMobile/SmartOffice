@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
+import a.a.a.a.a.c$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
@@ -9,8 +9,8 @@ import androidx.transition.ViewOverlayApi18;
 import com.artifex.mupdf.fitz.FitzInputStream;
 import com.artifex.mupdf.fitz.PDFWidget;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
-import com.artifex.solib.FileUtils$$ExternalSyntheticOutline0;
-import com.artifex.sonui.editor.NUIPKCS7Signer;
+import com.artifex.solib.FileUtilsExternalSyntheticOutline0;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -172,7 +172,7 @@ public class NUIDefaultSigner extends NUIPKCS7Signer {
                             safeOutputStream.write(cMSProcessableByteArray.bytes);
                             safeOutputStream.close();
                         } catch (IOException e) {
-                            throw new CMSException(FileUtils$$ExternalSyntheticOutline0.m(e, c$$ExternalSyntheticOutline0.m("data processing exception: ")), e);
+                            throw new CMSException(FileUtilsExternalSyntheticOutline0.m(e, c$$ExternalSyntheticOutline0.m("data processing exception: ")), e);
                         }
                     }
                     for (SignerInfoGenerator signerInfoGenerator2 : cMSSignedDataGenerator.signerGens) {

@@ -38,12 +38,12 @@ public class NUIDocViewOther extends NUIDocView {
             hideUnnecessaryDivider2(R.id.other_toolbar);
             return;
         }
-        findViewById(R.id.search_toolbar).setVisibility(8);
-        findViewById(R.id.first_page_button).setVisibility(8);
-        findViewById(R.id.last_page_button).setVisibility(8);
-        findViewById(R.id.reflow_button).setVisibility(8);
-        findViewById(R.id.divider_1).setVisibility(8);
-        findViewById(R.id.divider_2).setVisibility(8);
+        findViewById(R.id.search_toolbar).setVisibility(View.GONE);
+        findViewById(R.id.first_page_button).setVisibility(View.GONE);
+        findViewById(R.id.last_page_button).setVisibility(View.GONE);
+        findViewById(R.id.reflow_button).setVisibility(View.GONE);
+        findViewById(R.id.divider_1).setVisibility(View.GONE);
+        findViewById(R.id.divider_2).setVisibility(View.GONE);
     }
 
     public boolean canSelect() {
@@ -139,8 +139,8 @@ public class NUIDocViewOther extends NUIDocView {
                 }
             }
             if (i2 == 0) {
-                findViewById(R.id.divider_1).setVisibility(8);
-                findViewById(R.id.divider_2).setVisibility(8);
+                findViewById(R.id.divider_1).setVisibility(View.GONE);
+                findViewById(R.id.divider_2).setVisibility(View.GONE);
             }
         }
     }
@@ -164,9 +164,9 @@ public class NUIDocViewOther extends NUIDocView {
     }
 
     public void onFullScreenHide() {
-        findViewById(R.id.other_top).setVisibility(8);
-        findViewById(R.id.footer).setVisibility(8);
-        findViewById(R.id.header).setVisibility(8);
+        findViewById(R.id.other_top).setVisibility(View.GONE);
+        findViewById(R.id.footer).setVisibility(View.GONE);
+        findViewById(R.id.header).setVisibility(View.GONE);
         layoutNow();
     }
 
@@ -213,14 +213,14 @@ public class NUIDocViewOther extends NUIDocView {
         if (this.mShowUI) {
             View findViewById = findViewById(R.id.other_top);
             if (z) {
-                findViewById.setVisibility(0);
-                findViewById(R.id.footer).setVisibility(0);
-                findViewById(R.id.header).setVisibility(0);
+                findViewById.setVisibility(View.VISIBLE);
+                findViewById(R.id.footer).setVisibility(View.VISIBLE);
+                findViewById(R.id.header).setVisibility(View.VISIBLE);
             } else {
                 if (!isSearchVisible()) {
-                    findViewById.setVisibility(8);
+                    findViewById.setVisibility(View.GONE);
                 }
-                findViewById(R.id.footer).setVisibility(8);
+                findViewById(R.id.footer).setVisibility(View.GONE);
             }
             layoutNow();
             afterShowUI(z);

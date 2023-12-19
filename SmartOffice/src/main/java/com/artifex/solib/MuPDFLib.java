@@ -43,7 +43,7 @@ public class MuPDFLib extends ArDkLib {
                     Worker worker = Worker.this;
                     if (worker.alive) {
                         try {
-                            Task take = worker.mQueue.take();
+                            Worker.Task take = worker.mQueue.take();
                             take.work();
                             new Handler(Worker.this.mLooper).post(take);
                         } catch (InterruptedException unused) {

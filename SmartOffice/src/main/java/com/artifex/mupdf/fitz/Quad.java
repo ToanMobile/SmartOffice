@@ -1,6 +1,6 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
+import a.a.a.a.a.c$$ExternalSyntheticOutline0;
 import java.util.Objects;
 
 public class Quad {

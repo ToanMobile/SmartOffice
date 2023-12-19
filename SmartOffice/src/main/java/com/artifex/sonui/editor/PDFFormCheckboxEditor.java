@@ -63,22 +63,18 @@ public class PDFFormCheckboxEditor extends PDFFormEditor {
 
     public void start(DocMuPdfPageView docMuPdfPageView, int i, MuPDFDoc muPDFDoc, DocView docView, MuPDFWidget muPDFWidget, Rect rect, EditorListener editorListener) {
         super.start(docMuPdfPageView, i, muPDFDoc, docView, muPDFWidget, rect, editorListener);
-        AnonymousClass1 r1 = new InputFilter() {
-            public CharSequence filter(CharSequence charSequence, int i, int i2, Spanned spanned, int i3, int i4) {
-                if (charSequence.toString().equals("\n")) {
-                    new Handler().post(new Runnable() {
-                        public void run() {
-                            PDFFormCheckboxEditor.this.stop();
-                            PDFFormCheckboxEditor.this.mEditorListener.onStopped();
-                        }
-                    });
-                    return null;
-                } else if (!charSequence.toString().equals(" ")) {
-                    return null;
-                } else {
-                    PDFFormCheckboxEditor.this.toggle();
-                    return null;
-                }
+        InputFilter r1 = (charSequence, i1, i2, spanned, i3, i4) -> {
+            if (charSequence.toString().equals("\n")) {
+                new Handler().post(() -> {
+                    PDFFormCheckboxEditor.this.stop();
+                    PDFFormCheckboxEditor.this.mEditorListener.onStopped();
+                });
+                return null;
+            } else if (!charSequence.toString().equals(" ")) {
+                return null;
+            } else {
+                PDFFormCheckboxEditor.this.toggle();
+                return null;
             }
         };
         this.mEditText.setFilters(new InputFilter[]{r1});

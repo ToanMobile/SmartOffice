@@ -1,5 +1,7 @@
 package com.artifex.solib;
 
+import com.bytedance.sdk.openadsdk.api.PAGErrorCode;
+import com.google.logging.type.LogSeverity;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.decoder.Mode;
 import com.google.zxing.qrcode.decoder.Version;
@@ -65,9 +67,9 @@ public class SOTransition {
                 if (split2[0].trim().equals("speed")) {
                     String trim2 = split2[1].trim();
                     this.mSpeed = trim2;
-                    this.mDuration = 0; //LogSeverity.ERROR_VALUE;
+                    this.mDuration = LogSeverity.ERROR_VALUE;
                     if (trim2.equals("veryslow")) {
-                        this.mDuration = 2000;//PAGErrorCode.LOAD_FACTORY_NULL_CODE;
+                        this.mDuration = PAGErrorCode.LOAD_FACTORY_NULL_CODE;
                     }
                     if (((String) this.mSpeed).equals("slow")) {
                         this.mDuration = 1000;
@@ -76,7 +78,7 @@ public class SOTransition {
                         this.mDuration = 750;
                     }
                     if (((String) this.mSpeed).equals("veryfast")) {
-                        this.mDuration = 500;//LogSeverity.NOTICE_VALUE;
+                        this.mDuration = LogSeverity.NOTICE_VALUE;
                     }
                     if (((String) this.mSpeed).equals("fastest")) {
                         this.mDuration = 75;

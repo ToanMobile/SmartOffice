@@ -51,13 +51,13 @@ public class NoteEditor {
                 NoteEditor.this.mEditorDismissed = true;
                 Utilities.hideKeyboard(activity);
                 NoteEditor.this.mCommentView.clearFocus();
-                NoteEditor.this.mCover.setVisibility(8);
+                NoteEditor.this.mCover.setVisibility(View.GONE);
             }
         });
         this.mCommentView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View view, boolean z) {
                 if (z) {
-                    NoteEditor.this.mCover.setVisibility(0);
+                    NoteEditor.this.mCover.setVisibility(View.VISIBLE);
                     if (!NoteEditor.this.mEditorLostFocus) {
                         Rect rect = new Rect();
                         NoteEditor.this.mScrollView.getGlobalVisibleRect(rect);
@@ -83,7 +83,7 @@ public class NoteEditor {
                     NoteEditor.this.mEditorLostFocus = false;
                     return;
                 }
-                NoteEditor.this.mCover.setVisibility(8);
+                NoteEditor.this.mCover.setVisibility(View.GONE);
                 NoteEditor.this.saveData();
                 NoteEditor noteEditor3 = NoteEditor.this;
                 if (noteEditor3.mEditorDismissed) {
@@ -120,17 +120,17 @@ public class NoteEditor {
     }
 
     public void hide() {
-        this.mEditor.setVisibility(8);
-        this.mCover.setVisibility(8);
+        this.mEditor.setVisibility(View.GONE);
+        this.mCover.setVisibility(View.GONE);
     }
 
     public boolean isVisible() {
-        return this.mEditor.getVisibility() == 0;
+        return this.mEditor.getVisibility() == View.VISIBLE;
     }
 
     public void move() {
         View view = this.mEditor;
-        if (view != null && this.mSelLimits != null && view.getVisibility() == 0 && this.mPageView != null) {
+        if (view != null && this.mSelLimits != null && view.getVisibility() == View.VISIBLE && this.mPageView != null) {
             RectF box = this.mSelLimits.getBox();
             Point pageToView = this.mPageView.pageToView((int) box.left, (int) box.bottom);
             pageToView.offset(this.mPageView.getLeft(), this.mPageView.getTop());
@@ -175,18 +175,18 @@ public class NoteEditor {
         String date = this.mDataHandler.getDate();
         String comment = this.mDataHandler.getComment();
         if (author == null || author.isEmpty()) {
-            this.mAuthorView.setVisibility(8);
+            this.mAuthorView.setVisibility(View.GONE);
         } else {
-            this.mAuthorView.setVisibility(0);
+            this.mAuthorView.setVisibility(View.VISIBLE);
             this.mAuthorView.setText((CharSequence) author);
         }
         if (date == null || date.isEmpty()) {
-            this.mDateView.setVisibility(8);
+            this.mDateView.setVisibility(View.GONE);
         } else {
-            this.mDateView.setVisibility(0);
+            this.mDateView.setVisibility(View.VISIBLE);
             this.mDateView.setText((CharSequence) Utilities.formatDateForLocale(this.mScrollView.getContext(), date, doc.getDateFormatPattern()));
         }
         this.mCommentView.setText(comment);
-        this.mEditor.setVisibility(0);
+        this.mEditor.setVisibility(View.VISIBLE);
     }
 }

@@ -46,7 +46,7 @@ public class NUIDocViewMuPdf extends NUIDocViewPdf {
         super.hideUnusedButtons();
         Button button = this.mTocButton;
         if (button != null) {
-            button.setVisibility(8);
+            button.setVisibility(View.GONE);
         }
     }
 
@@ -54,27 +54,27 @@ public class NUIDocViewMuPdf extends NUIDocViewPdf {
         super.setConfigurableButtons();
         ToolbarButton toolbarButton = this.mSaveButton;
         if (toolbarButton != null) {
-            toolbarButton.setVisibility(8);
+            toolbarButton.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton2 = this.mSaveAsButton;
         if (toolbarButton2 != null) {
-            toolbarButton2.setVisibility(8);
+            toolbarButton2.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton3 = this.mOpenPdfInButton;
         if (toolbarButton3 != null) {
-            toolbarButton3.setVisibility(8);
+            toolbarButton3.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton4 = this.mSavePdfButton;
         if (toolbarButton4 != null) {
-            toolbarButton4.setVisibility(8);
+            toolbarButton4.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton5 = this.mPrintButton;
         if (toolbarButton5 != null) {
-            toolbarButton5.setVisibility(8);
+            toolbarButton5.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton6 = this.mOpenInButton;
         if (toolbarButton6 != null) {
-            toolbarButton6.setVisibility(8);
+            toolbarButton6.setVisibility(View.GONE);
         }
     }
 

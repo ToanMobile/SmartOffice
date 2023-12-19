@@ -252,11 +252,7 @@ public class NUIDocViewPpt extends NUIDocView {
 
     public void onClickLineColor(View view) {
         final SODoc sODoc = (SODoc) getSession().getDoc();
-        ColorDialog colorDialog = new ColorDialog(4, getContext(), sODoc, view, new ColorChangedListener(this) {
-            public void onColorChanged(String str) {
-                sODoc.setSelectionLineColor(str);
-            }
-        }, sODoc.getSelectionLineColor(), sODoc.getBgColorList());
+        ColorDialog colorDialog = new ColorDialog(4, getContext(), sODoc, view, sODoc::setSelectionLineColor, sODoc.getSelectionLineColor(), sODoc.getBgColorList());
         colorDialog.setShowTitle(false);
         colorDialog.show();
     }

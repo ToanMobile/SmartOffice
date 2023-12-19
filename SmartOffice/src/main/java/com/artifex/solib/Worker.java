@@ -1,6 +1,6 @@
 package com.artifex.solib;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
+import a.a.a.a.a.c$$ExternalSyntheticOutline0;
 import android.os.Looper;
 import android.util.Log;
 import java.util.concurrent.LinkedBlockingDeque;

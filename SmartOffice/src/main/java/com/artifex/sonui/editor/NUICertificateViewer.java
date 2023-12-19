@@ -66,7 +66,7 @@ public class NUICertificateViewer extends AppCompatActivity {
         if (this.mHasVerifyResult.booleanValue()) {
             LinearLayout linearLayout = (LinearLayout) findViewById(R.id.sodk_editor_certificate_result_panel);
             if (linearLayout != null) {
-                linearLayout.setVisibility(0);
+                linearLayout.setVisibility(View.VISIBLE);
             }
             int i = this.mResult;
             if (i != 0) {

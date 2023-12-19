@@ -74,7 +74,7 @@ public class InkColorDialog implements View.OnTouchListener, PopupWindow.OnDismi
         View inflate = LayoutInflater.from(this.mContext).inflate(R.layout.sodk_editor_colors, (ViewGroup) null);
         SOTextView sOTextView = (SOTextView) inflate.findViewById(R.id.color_dialog_title);
         if (!this.mShowTitle) {
-            sOTextView.setVisibility(8);
+            sOTextView.setVisibility(View.GONE);
         } else if (this.mDialogType == 2) {
             sOTextView.setText((CharSequence) this.mContext.getString(R.string.sodk_editor_background));
         } else {
@@ -118,7 +118,7 @@ public class InkColorDialog implements View.OnTouchListener, PopupWindow.OnDismi
                         }
                     });
                 } else {
-                    button.setVisibility(8);
+                    button.setVisibility(View.GONE);
                 }
                 i5++;
                 i4 = i6;
@@ -131,14 +131,14 @@ public class InkColorDialog implements View.OnTouchListener, PopupWindow.OnDismi
         }
         Button button2 = (Button) inflate.findViewById(R.id.transparent_color_button);
         if (this.mDialogType == 2) {
-            button2.setVisibility(0);
+            button2.setVisibility(View.VISIBLE);
             button2.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     InkColorDialog.this.mListener.onColorChanged((String) view.getTag());
                 }
             });
         } else {
-            button2.setVisibility(8);
+            button2.setVisibility(View.GONE);
         }
         int i7 = Utilities.getScreenSize(this.mContext).x;
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);

@@ -905,7 +905,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
         layoutParams.height = i4;
         this.mResizingView.setLayoutParams(layoutParams);
         this.mResizingView.invalidate();
-        this.mResizingView.setVisibility(0);
+        this.mResizingView.setVisibility(View.VISIBLE);
     }
 
     public void onConfigurationChange() {
@@ -2478,7 +2478,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
         this.mResizingView = imageView;
         imageView.setAlpha(0.5f);
         relativeLayout.addView(this.mResizingView);
-        this.mResizingView.setVisibility(8);
+        this.mResizingView.setVisibility(View.GONE);
         this.mResizingView.setAdjustViewBounds(false);
         this.mResizingView.setScaleType(ImageView.ScaleType.FIT_XY);
         this.mResizeHandleTopLeft = setupHandle(relativeLayout, 3);
@@ -2712,7 +2712,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
     public void updateDragHandles() {
         Bitmap bitmap;
         this.mResizingView.setImageBitmap((Bitmap) null);
-        this.mResizingView.setVisibility(8);
+        this.mResizingView.setVisibility(View.GONE);
         ArDkBitmap arDkBitmap = this.mResizingBitmap;
         if (!(arDkBitmap == null || (bitmap = arDkBitmap.bitmap) == null)) {
             bitmap.recycle();

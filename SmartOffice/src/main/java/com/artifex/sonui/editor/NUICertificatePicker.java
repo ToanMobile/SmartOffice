@@ -106,7 +106,7 @@ public class NUICertificatePicker extends AppCompatActivity implements NUICertif
             linearLayout = (LinearLayout) findViewById(R.id.sodk_editor_certificate_none);
         }
         if (linearLayout != null) {
-            linearLayout.setVisibility(8);
+            linearLayout.setVisibility(View.GONE);
         }
         if (this.adapter.getItemCount() > 0) {
             refreshDetails(0);

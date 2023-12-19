@@ -196,23 +196,23 @@ public class SignatureDialog extends Dialog {
     public final void configureStyleTypeButtons(SignatureStyle.SignatureStyleType signatureStyleType) {
         int i = AnonymousClass30.$SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType[signatureStyleType.ordinal()];
         if (i == 1) {
-            this.drawSignatureButton.setVisibility(0);
-            this.chooseImageButton.setVisibility(8);
+            this.drawSignatureButton.setVisibility(View.VISIBLE);
+            this.chooseImageButton.setVisibility(View.GONE);
             findViewById(R.id.choose_button_wrapper).setVisibility(4);
             this.styleTypeTextButton.setChecked(true);
         } else if (i == 2) {
-            this.drawSignatureButton.setVisibility(0);
-            this.chooseImageButton.setVisibility(8);
-            findViewById(R.id.choose_button_wrapper).setVisibility(0);
+            this.drawSignatureButton.setVisibility(View.VISIBLE);
+            this.chooseImageButton.setVisibility(View.GONE);
+            findViewById(R.id.choose_button_wrapper).setVisibility(View.VISIBLE);
             this.styleTypeDrawButton.setChecked(true);
         } else if (i == 3) {
-            this.drawSignatureButton.setVisibility(8);
-            this.chooseImageButton.setVisibility(0);
-            findViewById(R.id.choose_button_wrapper).setVisibility(0);
+            this.drawSignatureButton.setVisibility(View.GONE);
+            this.chooseImageButton.setVisibility(View.VISIBLE);
+            findViewById(R.id.choose_button_wrapper).setVisibility(View.VISIBLE);
             this.styleTypeImageButton.setChecked(true);
         } else if (i == 4) {
-            this.drawSignatureButton.setVisibility(0);
-            this.chooseImageButton.setVisibility(8);
+            this.drawSignatureButton.setVisibility(View.VISIBLE);
+            this.chooseImageButton.setVisibility(View.GONE);
             findViewById(R.id.choose_button_wrapper).setVisibility(4);
             this.styleTypeNoneButton.setChecked(true);
         }
@@ -280,8 +280,8 @@ public class SignatureDialog extends Dialog {
                             public void onClick(View view) {
                                 SignatureDialog.this.styleEditing = SignatureStyle.copyCurrentStyle();
                                 SignatureDialog signatureDialog = SignatureDialog.this;
-                                signatureDialog.sign_panel.setVisibility(8);
-                                signatureDialog.edit_panel.setVisibility(0);
+                                signatureDialog.sign_panel.setVisibility(View.GONE);
+                                signatureDialog.edit_panel.setVisibility(View.VISIBLE);
                                 SignatureDialog signatureDialog2 = SignatureDialog.this;
                                 signatureDialog2.setEditUIFromStyle(signatureDialog2.styleEditing);
                             }
@@ -500,8 +500,8 @@ public class SignatureDialog extends Dialog {
                                 m.append(new Date().toString());
                                 signatureStyle.styleName = m.toString();
                                 SignatureDialog signatureDialog = SignatureDialog.this;
-                                signatureDialog.sign_panel.setVisibility(8);
-                                signatureDialog.edit_panel.setVisibility(0);
+                                signatureDialog.sign_panel.setVisibility(View.GONE);
+                                signatureDialog.edit_panel.setVisibility(View.VISIBLE);
                                 SignatureDialog signatureDialog2 = SignatureDialog.this;
                                 signatureDialog2.setEditUIFromStyle(signatureDialog2.styleEditing);
                             }
@@ -548,13 +548,13 @@ public class SignatureDialog extends Dialog {
                         };
                         signatureDialog.editStyleName.setFilters(new InputFilter[]{r1});
                         if (!signatureDialog.mayUseImages) {
-                            signatureDialog.styleTypeImageButton.setVisibility(8);
+                            signatureDialog.styleTypeImageButton.setVisibility(View.GONE);
                         }
                         if (signatureDialog.signShowing) {
                             signatureDialog.showSignPanel();
                         } else {
-                            signatureDialog.sign_panel.setVisibility(8);
-                            signatureDialog.edit_panel.setVisibility(0);
+                            signatureDialog.sign_panel.setVisibility(View.GONE);
+                            signatureDialog.edit_panel.setVisibility(View.VISIBLE);
                         }
                         signatureDialog.setOnKeyListener(new OnKeyListener() {
                             public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
@@ -624,27 +624,27 @@ public class SignatureDialog extends Dialog {
     }
 
     public final void showSignPanel() {
-        this.sign_panel.setVisibility(0);
-        this.edit_panel.setVisibility(8);
+        this.sign_panel.setVisibility(View.VISIBLE);
+        this.edit_panel.setVisibility(View.GONE);
         SignatureStyle currentStyle = SignatureStyle.getCurrentStyle();
         int currentStyleIndex = SignatureStyle.getCurrentStyleIndex();
         setPreview(currentStyle, this.sign_preview);
         if (currentStyle.editable) {
-            this.editButton.setVisibility(0);
+            this.editButton.setVisibility(View.VISIBLE);
         } else {
-            this.editButton.setVisibility(8);
+            this.editButton.setVisibility(View.GONE);
         }
         if (currentStyle.location) {
-            findViewById(R.id.sign_location_row).setVisibility(0);
+            findViewById(R.id.sign_location_row).setVisibility(View.VISIBLE);
         } else {
-            findViewById(R.id.sign_location_row).setVisibility(8);
+            findViewById(R.id.sign_location_row).setVisibility(View.GONE);
         }
         if (currentStyle.reason) {
-            findViewById(R.id.sign_reason_row).setVisibility(0);
+            findViewById(R.id.sign_reason_row).setVisibility(View.VISIBLE);
         } else {
-            findViewById(R.id.sign_reason_row).setVisibility(8);
+            findViewById(R.id.sign_reason_row).setVisibility(View.GONE);
         }
-        this.appearanceNameText.setVisibility(8);
+        this.appearanceNameText.setVisibility(View.GONE);
         String[] names = SignatureStyle.getNames(this.mayUseImages);
         Context context2 = this.context;
         int i = R.layout.sodk_editor_sigstyle_spinner_item;

@@ -6,8 +6,7 @@ import android.content.Intent;
 import androidx.transition.ViewOverlayApi18;
 import com.artifex.mupdf.fitz.FitzInputStream;
 import com.artifex.mupdf.fitz.PDFWidget;
-import com.artifex.solib.FileUtils$$ExternalSyntheticOutline0;
-import com.artifex.sonui.editor.NUIPKCS7Verifier;
+import com.artifex.solib.FileUtilsExternalSyntheticOutline0;
 import com.yandex.metrica.c;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -522,14 +521,14 @@ public class NUIDefaultVerifier extends NUIPKCS7Verifier {
                             throw new OperatorCreationException(m4.toString(), e6);
                         }
                     } catch (IOException e7) {
-                        throw new OperatorHelper.OpCertificateException(FileUtils$$ExternalSyntheticOutline0.m(e7, c$$ExternalSyntheticOutline0.m("cannot get encoded form of certificate: ")), e7);
+                        throw new OperatorHelper.OpCertificateException(FileUtilsExternalSyntheticOutline0.m(e7, c$$ExternalSyntheticOutline0.m("cannot get encoded form of certificate: ")), e7);
                     } catch (NoSuchProviderException e8) {
                         StringBuilder m5 = c$$ExternalSyntheticOutline0.m("cannot find factory provider: ");
                         m5.append(e8.getMessage());
                         throw new OperatorHelper.OpCertificateException(m5.toString(), e8);
                     }
                 } catch (IOException e9) {
-                    throw new JcaX509CertificateConverter.ExCertificateParsingException(jcaX509CertificateConverter, FileUtils$$ExternalSyntheticOutline0.m(e9, c$$ExternalSyntheticOutline0.m("exception parsing certificate: ")), e9);
+                    throw new JcaX509CertificateConverter.ExCertificateParsingException(jcaX509CertificateConverter, FileUtilsExternalSyntheticOutline0.m(e9, c$$ExternalSyntheticOutline0.m("exception parsing certificate: ")), e9);
                 } catch (NoSuchProviderException e10) {
                     StringBuilder m6 = c$$ExternalSyntheticOutline0.m("cannot find required provider:");
                     m6.append(e10.getMessage());

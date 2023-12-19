@@ -100,7 +100,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
     public final void alphaFade(final SlideShowPageLayout slideShowPageLayout, final SlideShowPageLayout slideShowPageLayout2, int i) {
         this.animationCounter++;
         slideShowPageLayout2.setAlpha(BitmapDescriptorFactory.HUE_RED);
-        slideShowPageLayout2.setVisibility(0);
+        slideShowPageLayout2.setVisibility(View.VISIBLE);
         setViewPropertyAnimator(slideShowPageLayout2).alpha(1.0f).setDuration((long) i).setListener(new AnimatorListenerAdapter() {
             public void onAnimationEnd(Animator animator) {
                 slideShowPageLayout.setVisibility(4);
@@ -203,10 +203,10 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                     SOTransition slideTransition = ((SOPage) slideShowView2.mPageViews[slideShowView2.mCurrentView].getPage()).getSlideTransition();
                     Log.i("sonui", String.format("page %d transition: %s", new Object[]{Integer.valueOf(slideShowView2.mPageIndex + 1), (String) slideTransition.mRawValue}));
                     slideShowView2.mPageViews[slideShowView2.mLastView].setAlpha(1.0f);
-                    slideShowView2.mPageViews[slideShowView2.mLastView].setVisibility(0);
+                    slideShowView2.mPageViews[slideShowView2.mLastView].setVisibility(View.VISIBLE);
                     slideShowView2.mPageViews[slideShowView2.mLastView].setClipPath((Path) null);
                     slideShowView2.mPageViews[slideShowView2.mCurrentView].setAlpha(1.0f);
-                    slideShowView2.mPageViews[slideShowView2.mCurrentView].setVisibility(0);
+                    slideShowView2.mPageViews[slideShowView2.mCurrentView].setVisibility(View.VISIBLE);
                     slideShowView2.mPageViews[slideShowView2.mCurrentView].setClipPath((Path) null);
                     String str = (String) slideTransition.mType;
                     Objects.requireNonNull(str);
@@ -440,7 +440,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                     }
 
                                     public void run() {
-                                        this.val$newView.setVisibility(0);
+                                        this.val$newView.setVisibility(View.VISIBLE);
                                         SlideShowView slideShowView = SlideShowView.this;
                                         slideShowView.animationCounter = 0;
                                         SlideShowView.access$700(slideShowView, this.val$oldView, this.val$newView);
@@ -451,7 +451,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 SlideShowPageLayout[] slideShowPageLayoutArr6 = slideShowView2.mPageViews;
                                 SlideShowPageLayout slideShowPageLayout9 = slideShowPageLayoutArr6[slideShowView2.mLastView];
                                 SlideShowPageLayout slideShowPageLayout10 = slideShowPageLayoutArr6[slideShowView2.mCurrentView];
-                                slideShowPageLayout10.setVisibility(0);
+                                slideShowPageLayout10.setVisibility(View.VISIBLE);
                                 slideShowPageLayout9.setVisibility(4);
                                 slideShowPageLayout9.clearUpAnimTiles(true);
                                 slideShowPageLayout10.startSlideAnimations();
@@ -529,7 +529,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 public void onAnimationEnd(Animator animator) {
                                     SlideShowView.access$610(SlideShowView.this);
                                     if (SlideShowView.this.animationCounter == 0) {
-                                        this.val$newView.setVisibility(0);
+                                        this.val$newView.setVisibility(View.VISIBLE);
                                         SlideShowView.this.mSlideParent.removeView(this.val$v1);
                                         SlideShowView.this.mSlideParent.removeView(this.val$v2);
                                         SlideShowView.access$700(SlideShowView.this, this.val$oldView, this.val$newView);
@@ -557,7 +557,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 public void onAnimationEnd(Animator animator) {
                                     SlideShowView.access$610(SlideShowView.this);
                                     if (SlideShowView.this.animationCounter == 0) {
-                                        this.val$newView.setVisibility(0);
+                                        this.val$newView.setVisibility(View.VISIBLE);
                                         SlideShowView.this.mSlideParent.removeView(this.val$v1);
                                         SlideShowView.this.mSlideParent.removeView(this.val$v2);
                                         SlideShowView.access$700(SlideShowView.this, this.val$oldView, this.val$newView);
@@ -590,7 +590,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
 
                                     public void onAnimationEnd(Animator animator) {
                                         this.val$oldView.setVisibility(4);
-                                        this.val$newView.setVisibility(0);
+                                        this.val$newView.setVisibility(View.VISIBLE);
                                         SlideShowView slideShowView = SlideShowView.this;
                                         SlideShowPageLayout slideShowPageLayout = this.val$newView;
                                         ArDkDoc arDkDoc = SlideShowView.useDoc;
@@ -690,7 +690,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             }
                             slideShowPageLayout22.setTranslationY((float) (-measuredHeight3));
                             slideShowPageLayout22.setTranslationX((float) (-i14));
-                            slideShowPageLayout22.setVisibility(0);
+                            slideShowPageLayout22.setVisibility(View.VISIBLE);
                             ViewPropertyAnimator animate3 = slideShowPageLayout22.animate();
                             long j2 = (long) i13;
                             animate3.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j2).setListener(new AnimatorListenerAdapter(slideShowPageLayout22, animate3, slideShowPageLayout21) {
@@ -713,7 +713,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                     SlideShowView.access$700(SlideShowView.this, this.val$oldView, this.val$newView);
                                 }
                             });
-                            slideShowPageLayout21.setVisibility(0);
+                            slideShowPageLayout21.setVisibility(View.VISIBLE);
                             ViewPropertyAnimator animate4 = slideShowPageLayout21.animate();
                             animate4.translationX((float) i14).translationY((float) measuredHeight3).setDuration(j2).setListener(new AnimatorListenerAdapter(slideShowPageLayout21, animate4) {
                                 public final /* synthetic */ ViewPropertyAnimator val$anim2;
@@ -802,7 +802,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             }
                             slideShowPageLayout28.setTranslationY((float) (-measuredHeight4));
                             slideShowPageLayout28.setTranslationX((float) (-i18));
-                            slideShowPageLayout28.setVisibility(0);
+                            slideShowPageLayout28.setVisibility(View.VISIBLE);
                             slideShowView2.setViewPropertyAnimator(slideShowPageLayout28).translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration((long) i17).setListener(new AnimatorListenerAdapter(slideShowPageLayout27, slideShowPageLayout28) {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
@@ -956,7 +956,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowPageLayout40.setScaleY(BitmapDescriptorFactory.HUE_RED);
                             slideShowPageLayout40.setRotation(BitmapDescriptorFactory.HUE_RED);
                             slideShowPageLayout40.setAlpha(0.3f);
-                            slideShowPageLayout40.setVisibility(0);
+                            slideShowPageLayout40.setVisibility(View.VISIBLE);
                             slideShowView2.setViewPropertyAnimator(slideShowPageLayout40).scaleX(1.0f).scaleY(1.0f).rotation(360.0f).alpha(1.0f).setDuration((long) i24).setListener(new AnimatorListenerAdapter(slideShowPageLayout40, slideShowPageLayout39) {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;

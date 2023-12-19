@@ -833,7 +833,7 @@ public class NUIDocViewXls extends NUIDocView {
     }
 
     public void onFullScreenHide() {
-        findViewById(R.id.fx_bar).setVisibility(8);
+        findViewById(R.id.fx_bar).setVisibility(View.GONE);
         super.onFullScreenHide();
     }
 
@@ -1216,7 +1216,7 @@ public class NUIDocViewXls extends NUIDocView {
         if (this.mShowUI) {
             super.showUI(z);
             if (this.mDocCfgOptions.isFullscreenEnabled() && z && this.mDocCfgOptions.isEditingEnabled()) {
-                findViewById(R.id.fx_bar).setVisibility(0);
+                findViewById(R.id.fx_bar).setVisibility(View.VISIBLE);
             }
         }
     }

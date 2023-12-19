@@ -232,12 +232,14 @@ public class SlideShowPageLayout extends RelativeLayout implements AnimatableVie
             } else {
                 this.childViewRenderCount = 1;
             }
-            this.mPageView.render(this.mPageBitmap, i -> {
-                SlideShowPageLayout slideShowPageLayout = SlideShowPageLayout.this;
-                int i2 = slideShowPageLayout.childViewRenderCount - 1;
-                slideShowPageLayout.childViewRenderCount = i2;
-                if (i2 == 0) {
-                    sORenderListener.progress(i);
+            this.mPageView.render(this.mPageBitmap, new SORenderListener() {
+                public void progress(int i) {
+                    SlideShowPageLayout slideShowPageLayout = SlideShowPageLayout.this;
+                    int i2 = slideShowPageLayout.childViewRenderCount - 1;
+                    slideShowPageLayout.childViewRenderCount = i2;
+                    if (i2 == 0) {
+                        sORenderListener.progress(i);
+                    }
                 }
             });
             if (!this.mAnimViews.isEmpty()) {
@@ -275,8 +277,8 @@ public class SlideShowPageLayout extends RelativeLayout implements AnimatableVie
                         SlideShowPageLayout.this.mPageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         SlideShowPageLayout.this.mPageView.startRenderPass();
                         SlideShowPageLayout slideShowPageLayout = SlideShowPageLayout.this;
-                        slideShowPageLayout.mPageView.render(slideShowPageLayout.mPageBitmap, i12 -> {
-                            if (i12 == 0) {
+                        slideShowPageLayout.mPageView.render(slideShowPageLayout.mPageBitmap, progress -> {
+                            if (progress == 0) {
                                 SlideShowPageLayout.this.mPageView.endRenderPass();
                                 SlideShowPageLayout.this.mPageView.invalidate();
                             }
@@ -291,10 +293,12 @@ public class SlideShowPageLayout extends RelativeLayout implements AnimatableVie
                                 public void onGlobalLayout() {
                                     animationLayerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                                     animationLayerView.startRenderPass();
-                                    animationLayerView.render(i1 -> {
-                                        if (i1 == 0) {
-                                            animationLayerView.endRenderPass();
-                                            animationLayerView.invalidate();
+                                    animationLayerView.render(new SORenderListener() {
+                                        public void progress(int i) {
+                                            if (i == 0) {
+                                                animationLayerView.endRenderPass();
+                                                animationLayerView.invalidate();
+                                            }
                                         }
                                     });
                                 }

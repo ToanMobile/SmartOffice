@@ -120,12 +120,12 @@ public class SheetTab extends LinearLayout {
 
     public void showXView(boolean z) {
         if (z) {
-            getXView().setVisibility(0);
-            getSpacerView().setVisibility(0);
+            getXView().setVisibility(View.VISIBLE);
+            getSpacerView().setVisibility(View.VISIBLE);
             return;
         }
-        getXView().setVisibility(8);
-        getSpacerView().setVisibility(8);
+        getXView().setVisibility(View.GONE);
+        getSpacerView().setVisibility(View.GONE);
     }
 
     public SheetTab(Context context, AttributeSet attributeSet) {

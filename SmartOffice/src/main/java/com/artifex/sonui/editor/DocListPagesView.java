@@ -167,7 +167,7 @@ public class DocListPagesView extends DocView {
     }
 
     public void finishDrop() {
-        this.mMovingPageView.setVisibility(8);
+        this.mMovingPageView.setVisibility(View.GONE);
         super.finishDrop();
     }
 
@@ -277,7 +277,7 @@ public class DocListPagesView extends DocView {
                 docPageView.draw(canvas);
                 this.mMovingPageBitmap = createBitmap;
                 this.mMovingPageView.setImageBitmap(createBitmap);
-                this.mMovingPageView.setVisibility(0);
+                this.mMovingPageView.setVisibility(View.VISIBLE);
             }
             this.mMovingPageView.setX(f4);
             this.mMovingPageView.setY(f5);
@@ -311,7 +311,7 @@ public class DocListPagesView extends DocView {
             setLayoutTransition((LayoutTransition) null);
             ImageView imageView = this.mMovingPageView;
             if (imageView != null) {
-                imageView.setVisibility(8);
+                imageView.setVisibility(View.GONE);
                 this.mMovingPageView.setImageBitmap((Bitmap) null);
                 Bitmap bitmap = this.mMovingPageBitmap;
                 if (bitmap != null) {
@@ -439,7 +439,7 @@ public class DocListPagesView extends DocView {
             ImageView imageView = new ImageView(getContext());
             this.mMovingPageView = imageView;
             relativeLayout.addView(imageView);
-            this.mMovingPageView.setVisibility(8);
+            this.mMovingPageView.setVisibility(View.GONE);
         }
     }
 

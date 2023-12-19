@@ -1,5 +1,6 @@
 package com.artifex.sonui.editor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -9,9 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
+
 import com.artifex.solib.MuPDFDoc;
 import com.artifex.solib.MuPDFWidget;
-import com.artifex.sonui.editor.DocView;
 
 public class PDFFormEditor extends RelativeLayout {
     public MuPDFDoc mDoc = null;
@@ -61,7 +62,7 @@ public class PDFFormEditor extends RelativeLayout {
     }
 
     public final void matchWidgetSizeAndPosition() {
-        if (getVisibility() == 0) {
+        if (getVisibility() == View.VISIBLE) {
             Rect rect = new Rect();
             rect.set(this.mWidgetBounds);
             this.mPageView.pageToView(rect, rect);
@@ -103,7 +104,7 @@ public class PDFFormEditor extends RelativeLayout {
     }
 
     public void show() {
-        setVisibility(0);
+        setVisibility(View.VISIBLE);
         this.mEditText.requestFocus();
         matchWidgetSizeAndPosition();
     }
@@ -111,6 +112,7 @@ public class PDFFormEditor extends RelativeLayout {
     public void singleTap(float f, float f2) {
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void start(DocMuPdfPageView docMuPdfPageView, int i, MuPDFDoc muPDFDoc, DocView docView, MuPDFWidget muPDFWidget, Rect rect, EditorListener editorListener) {
         this.mDoc = muPDFDoc;
         this.mWidget = muPDFWidget;
@@ -126,7 +128,7 @@ public class PDFFormEditor extends RelativeLayout {
         setInitialValue();
         ViewTreeObserver viewTreeObserver = this.mDocView.getViewTreeObserver();
         this.mDocViewTreeObserver = viewTreeObserver;
-        AnonymousClass1 r2 = new ViewTreeObserver.OnGlobalLayoutListener(this) {
+        ViewTreeObserver.OnGlobalLayoutListener r2 = new ViewTreeObserver.OnGlobalLayoutListener() {
             public void onGlobalLayout() {
                 this.onGlobalLayout();
             }
@@ -144,11 +146,9 @@ public class PDFFormEditor extends RelativeLayout {
                 return true;
             }
         });
-        this.mEditText.setOnTouchListener(new OnTouchListener(this) {
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                gestureDetector.onTouchEvent(motionEvent);
-                return true;
-            }
+        this.mEditText.setOnTouchListener((view, motionEvent) -> {
+            gestureDetector.onTouchEvent(motionEvent);
+            return true;
         });
     }
 
@@ -174,7 +174,7 @@ public class PDFFormEditor extends RelativeLayout {
             this.mDocViewTreeObserver = null;
             this.mLayoutListener = null;
         }
-        setVisibility(8);
+        setVisibility(View.GONE);
         return true;
     }
 }

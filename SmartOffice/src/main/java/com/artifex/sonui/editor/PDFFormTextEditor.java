@@ -479,11 +479,11 @@ public class PDFFormTextEditor extends PDFFormEditor {
         int selectionEnd = this.mEditText.getSelectionEnd();
         int length = this.mEditText.getText().toString().length();
         if (selectionStart == selectionEnd) {
-            findViewById2.setVisibility(8);
-            findViewById3.setVisibility(8);
+            findViewById2.setVisibility(View.GONE);
+            findViewById3.setVisibility(View.GONE);
         }
         if (selectionStart == 0 && selectionEnd == length) {
-            findViewById.setVisibility(8);
+            findViewById.setVisibility(View.GONE);
         }
         if (docConfigOptions != null) {
             MuPDFDoc muPDFDoc = this.mDoc;
@@ -496,7 +496,7 @@ public class PDFFormTextEditor extends PDFFormEditor {
                 }
             }
             if (!z) {
-                findViewById4.setVisibility(8);
+                findViewById4.setVisibility(View.GONE);
             }
         }
         findViewById.setOnClickListener(new OnClickListener() {

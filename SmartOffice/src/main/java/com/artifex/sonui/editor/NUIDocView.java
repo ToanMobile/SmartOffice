@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
+import a.a.a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -397,25 +397,25 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         this.mSearchNextButton = (ToolbarButton) createToolbarButton(R.id.search_next);
         this.mSearchPreviousButton = (ToolbarButton) createToolbarButton(R.id.search_previous);
         if (!hasSearch() && (button4 = this.mSearchButton) != null) {
-            button4.setVisibility(8);
+            button4.setVisibility(View.GONE);
         }
         if (!hasUndo() && (button3 = this.mUndoButton) != null) {
-            button3.setVisibility(8);
+            button3.setVisibility(View.GONE);
         }
         if (!hasRedo() && (button2 = this.mRedoButton) != null) {
-            button2.setVisibility(8);
+            button2.setVisibility(View.GONE);
         }
         if (!this.mDocCfgOptions.isFullscreenEnabled() && (button = this.mFullscreenButton) != null) {
-            button.setVisibility(8);
+            button.setVisibility(View.GONE);
         }
         if (!this.mDocCfgOptions.isEditingEnabled()) {
             Button button5 = this.mUndoButton;
             if (button5 != null) {
-                button5.setVisibility(8);
+                button5.setVisibility(View.GONE);
             }
             Button button6 = this.mRedoButton;
             if (button6 != null) {
-                button6.setVisibility(8);
+                button6.setVisibility(View.GONE);
             }
         }
         showSearchSelected(false);
@@ -955,7 +955,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             if (toast != null) {
                 toast.cancel();
             }
-            findViewById(R.id.footer).setVisibility(0);
+            findViewById(R.id.footer).setVisibility(View.VISIBLE);
             if (isPagesTab()) {
                 showPages();
             }
@@ -1074,7 +1074,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             setSingleTabTitle(str);
             onSelectionChanged();
             if (!this.mCurrentTab.equals(getContext().getString(R.string.sodk_editor_tab_find)) && !this.mCurrentTab.equals(getContext().getString(R.string.sodk_editor_tab_hidden))) {
-                findViewById(R.id.searchTab).setVisibility(8);
+                findViewById(R.id.searchTab).setVisibility(View.GONE);
                 showSearchSelected(false);
             }
             handlePagesTab(str);
@@ -1761,10 +1761,10 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         findViewById2.setVisibility(i);
         if (!this.mShowUI) {
             if (findViewById != null) {
-                findViewById.setVisibility(8);
+                findViewById.setVisibility(View.GONE);
             }
-            view.findViewById(R.id.header).setVisibility(8);
-            view.findViewById(i2).setVisibility(8);
+            view.findViewById(R.id.header).setVisibility(View.GONE);
+            view.findViewById(i2).setVisibility(View.GONE);
         }
         this.mFullscreen = !showUI;
     }
@@ -1814,9 +1814,9 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 View childAt = linearLayout.getChildAt(i2);
                 if (!(childAt instanceof ToolbarButton)) {
                     if (!z2) {
-                        childAt.setVisibility(8);
+                        childAt.setVisibility(View.GONE);
                     } else if (!z && view != null) {
-                        view.setVisibility(8);
+                        view.setVisibility(View.GONE);
                     }
                     view = childAt;
                     z = false;
@@ -1826,11 +1826,11 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 }
             }
             if (view != null && !z) {
-                view.setVisibility(8);
+                view.setVisibility(View.GONE);
             }
             if (!z2) {
-                linearLayout.setVisibility(8);
-                ((View) linearLayout.getParent()).setVisibility(8);
+                linearLayout.setVisibility(View.GONE);
+                ((View) linearLayout.getParent()).setVisibility(View.GONE);
             }
         }
     }
@@ -2242,9 +2242,9 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             SODocSession sODocSession = this.mSession;
             if (sODocSession != null && this.mPrintButton != null) {
                 if (!sODocSession.getDoc().canPrint() || (!this.mDocCfgOptions.isPrintingEnabled() && !this.mDocCfgOptions.isSecurePrintingEnabled())) {
-                    this.mPrintButton.setVisibility(8);
+                    this.mPrintButton.setVisibility(View.GONE);
                 } else {
-                    this.mPrintButton.setVisibility(0);
+                    this.mPrintButton.setVisibility(View.VISIBLE);
                 }
             }
         }
@@ -2297,7 +2297,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public final void hideMainTabs() {
         int tabCount = this.tabHost.getTabWidget().getTabCount();
         for (int i = 1; i < tabCount - 1; i++) {
-            this.tabHost.getTabWidget().getChildAt(i).setVisibility(8);
+            this.tabHost.getTabWidget().getChildAt(i).setVisibility(View.GONE);
         }
     }
 
@@ -2305,7 +2305,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.pages_container);
         if (relativeLayout != null && relativeLayout.getVisibility() != 8) {
             final int i = this.mCurrentPageNum;
-            relativeLayout.setVisibility(8);
+            relativeLayout.setVisibility(View.GONE);
             this.mDocView.onHidePages();
             doUpdateCustomUI();
             new Handler().post(new Runnable() {
@@ -2738,25 +2738,25 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             scaleHeader();
             Button button2 = this.mSearchButton;
             if (button2 != null) {
-                button2.setVisibility(8);
+                button2.setVisibility(View.GONE);
             }
             if (this.tabHost != null) {
                 hideMainTabs();
-                getSingleTabView().setVisibility(0);
+                getSingleTabView().setVisibility(View.VISIBLE);
             }
             findViewById.getLayoutParams().width = Utilities.convertDpToPixel((float) ((int) getContext().getResources().getDimension(R.dimen.sodk_editor_after_back_button_phone)));
             return;
         }
         if (hasSearch() && (button = this.mSearchButton) != null) {
-            button.setVisibility(0);
+            button.setVisibility(View.VISIBLE);
         }
         TabHost tabHost2 = this.tabHost;
         if (tabHost2 != null) {
             int tabCount = tabHost2.getTabWidget().getTabCount();
             for (int i = 1; i < tabCount - 1; i++) {
-                this.tabHost.getTabWidget().getChildAt(i).setVisibility(0);
+                this.tabHost.getTabWidget().getChildAt(i).setVisibility(View.VISIBLE);
             }
-            getSingleTabView().setVisibility(8);
+            getSingleTabView().setVisibility(View.GONE);
         }
         findViewById.getLayoutParams().width = Utilities.convertDpToPixel((float) ((int) getContext().getResources().getDimension(R.dimen.sodk_editor_after_back_button)));
     }
@@ -2809,9 +2809,9 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     }
 
     public void onFullScreenHide() {
-        findViewById(R.id.tabhost).setVisibility(8);
-        findViewById(R.id.header).setVisibility(8);
-        findViewById(R.id.footer).setVisibility(8);
+        findViewById(R.id.tabhost).setVisibility(View.GONE);
+        findViewById(R.id.header).setVisibility(View.GONE);
+        findViewById(R.id.footer).setVisibility(View.GONE);
         hidePages();
         layoutNow();
     }
@@ -3392,7 +3392,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (Utilities.isPhoneDevice(getContext())) {
             hideMainTabs();
         }
-        findViewById(R.id.searchTab).setVisibility(0);
+        findViewById(R.id.searchTab).setVisibility(View.VISIBLE);
         showSearchSelected(true);
         this.mSearchText.getText().clear();
         this.mSearchText.requestFocus();
@@ -3512,13 +3512,13 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 if (Build.VERSION.SDK_INT < 30) {
                     findViewById.setPadding(0, 0, 0, getKeyboardHeight());
                 }
-                findViewById(R.id.footer).setVisibility(8);
+                findViewById(R.id.footer).setVisibility(View.GONE);
                 return;
             }
             if (Build.VERSION.SDK_INT < 30) {
                 findViewById.setPadding(0, 0, 0, 0);
             }
-            findViewById(R.id.footer).setVisibility(0);
+            findViewById(R.id.footer).setVisibility(View.VISIBLE);
         }
     }
 
@@ -4162,114 +4162,114 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         ArrayList arrayList = new ArrayList();
         if (this.mSaveButton != null) {
             if (this.mDocCfgOptions.mSettingsBundle.getBoolean("SaveEnabledKey", true)) {
-                this.mSaveButton.setVisibility(0);
+                this.mSaveButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mSaveButton);
             } else {
-                this.mSaveButton.setVisibility(8);
+                this.mSaveButton.setVisibility(View.GONE);
             }
         }
         if (this.mCustomSaveButton != null) {
             if (this.mDocCfgOptions.mSettingsBundle.getBoolean("CustomSaveEnabledKey", false)) {
-                this.mCustomSaveButton.setVisibility(0);
+                this.mCustomSaveButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mCustomSaveButton);
             } else {
-                this.mCustomSaveButton.setVisibility(8);
+                this.mCustomSaveButton.setVisibility(View.GONE);
             }
         }
         if (this.mSaveAsButton != null) {
             if (this.mDocCfgOptions.isSaveAsEnabled()) {
-                this.mSaveAsButton.setVisibility(0);
+                this.mSaveAsButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mSaveAsButton);
             } else {
-                this.mSaveAsButton.setVisibility(8);
+                this.mSaveAsButton.setVisibility(View.GONE);
             }
         }
         if (shouldConfigureSaveAsPDFButton() && this.mSavePdfButton != null) {
             if (this.mDocCfgOptions.isSaveAsPdfEnabled()) {
-                this.mSavePdfButton.setVisibility(0);
+                this.mSavePdfButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mSavePdfButton);
             } else {
-                this.mSavePdfButton.setVisibility(8);
+                this.mSavePdfButton.setVisibility(View.GONE);
             }
         }
         if (shouldConfigureExportPdfAsButton() && this.mExportPdfAsButton != null) {
             if (this.mDocCfgOptions.mSettingsBundle.getBoolean("PdfExportAsEnabledKey", true)) {
-                this.mExportPdfAsButton.setVisibility(0);
+                this.mExportPdfAsButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mExportPdfAsButton);
             } else {
-                this.mExportPdfAsButton.setVisibility(8);
+                this.mExportPdfAsButton.setVisibility(View.GONE);
             }
         }
         if (this.mShareButton != null) {
             if (this.mDocCfgOptions.isShareEnabled()) {
-                this.mShareButton.setVisibility(0);
+                this.mShareButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mShareButton);
             } else {
-                this.mShareButton.setVisibility(8);
+                this.mShareButton.setVisibility(View.GONE);
             }
         }
         if (this.mOpenInButton != null) {
             if (this.mDocCfgOptions.isOpenInEnabled()) {
-                this.mOpenInButton.setVisibility(0);
+                this.mOpenInButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mOpenInButton);
             } else {
-                this.mOpenInButton.setVisibility(8);
+                this.mOpenInButton.setVisibility(View.GONE);
             }
         }
         if (this.mOpenPdfInButton != null) {
             if (this.mDocCfgOptions.isOpenPdfInEnabled()) {
-                this.mOpenPdfInButton.setVisibility(0);
+                this.mOpenPdfInButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mOpenPdfInButton);
             } else {
-                this.mOpenPdfInButton.setVisibility(8);
+                this.mOpenPdfInButton.setVisibility(View.GONE);
             }
         }
         if (this.mPrintButton != null) {
             if (this.mDocCfgOptions.isPrintingEnabled() || this.mDocCfgOptions.isSecurePrintingEnabled()) {
-                this.mPrintButton.setVisibility(0);
+                this.mPrintButton.setVisibility(View.VISIBLE);
                 arrayList.add(this.mPrintButton);
             } else {
-                this.mPrintButton.setVisibility(8);
+                this.mPrintButton.setVisibility(View.GONE);
             }
         }
         ToolbarButton toolbarButton = this.mProtectButton;
         if (toolbarButton != null) {
             arrayList.add(toolbarButton);
-            this.mProtectButton.setVisibility(8);
+            this.mProtectButton.setVisibility(View.GONE);
         }
         if (this.mCopyButton2 != null) {
             if (!this.mDocCfgOptions.isEditingEnabled() || getDocFileExtension().equalsIgnoreCase("pdf")) {
-                this.mCopyButton2.setVisibility(0);
+                this.mCopyButton2.setVisibility(View.VISIBLE);
                 arrayList.add(this.mCopyButton2);
             } else {
-                this.mCopyButton2.setVisibility(8);
+                this.mCopyButton2.setVisibility(View.GONE);
             }
         }
         ToolbarButton.setAllSameSize((ToolbarButton[]) arrayList.toArray(new ToolbarButton[arrayList.size()]));
         if (!this.mDocCfgOptions.isEditingEnabled()) {
             Button button = this.mUndoButton;
             if (button != null) {
-                button.setVisibility(8);
+                button.setVisibility(View.GONE);
             }
             Button button2 = this.mRedoButton;
             if (button2 != null) {
-                button2.setVisibility(8);
+                button2.setVisibility(View.GONE);
             }
         }
         ArrayList arrayList2 = new ArrayList();
         if (this.mInsertImageButton != null) {
             if (!this.mDocCfgOptions.isImageInsertEnabled() || !this.mDocCfgOptions.isEditingEnabled()) {
-                this.mInsertImageButton.setVisibility(8);
+                this.mInsertImageButton.setVisibility(View.GONE);
             } else {
-                this.mInsertImageButton.setVisibility(0);
+                this.mInsertImageButton.setVisibility(View.VISIBLE);
                 arrayList2.add(this.mInsertImageButton);
             }
         }
         if (this.mInsertPhotoButton != null) {
             if (!this.mDocCfgOptions.isPhotoInsertEnabled() || !this.mDocCfgOptions.isEditingEnabled()) {
-                this.mInsertPhotoButton.setVisibility(8);
+                this.mInsertPhotoButton.setVisibility(View.GONE);
             } else {
-                this.mInsertPhotoButton.setVisibility(0);
+                this.mInsertPhotoButton.setVisibility(View.VISIBLE);
                 arrayList2.add(this.mInsertPhotoButton);
             }
         }
@@ -4585,7 +4585,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             this.mAllTabHostTabs.add(str);
             return;
         }
-        findViewById(i).setVisibility(8);
+        findViewById(i).setVisibility(View.GONE);
     }
 
     public void setupTabs() {
@@ -4594,7 +4594,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         tabHost2.setup();
         final TabData[] tabData = getTabData();
         setupTab(this.tabHost, getContext().getString(R.string.sodk_editor_tab_hidden), R.id.hiddenTab, R.layout.sodk_editor_tab, 0);
-        this.tabHost.getTabWidget().getChildTabViewAt(0).setVisibility(8);
+        this.tabHost.getTabWidget().getChildTabViewAt(0).setVisibility(View.GONE);
         for (TabData tabData2 : tabData) {
             setupTab(this.tabHost, tabData2.name, tabData2.contentId, tabData2.layoutId, tabData2.visibility);
         }
@@ -4684,17 +4684,17 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             View findViewById2 = findViewById(R.id.header);
             if (isLandscapePhone()) {
                 if (!z && findViewById.getVisibility() != 8 && !isSearchVisible()) {
-                    findViewById.setVisibility(8);
-                    findViewById2.setVisibility(8);
+                    findViewById.setVisibility(View.GONE);
+                    findViewById2.setVisibility(View.GONE);
                     layoutNow();
                 } else if (z && findViewById.getVisibility() != 0) {
-                    findViewById.setVisibility(0);
-                    findViewById2.setVisibility(0);
+                    findViewById.setVisibility(View.VISIBLE);
+                    findViewById2.setVisibility(View.VISIBLE);
                     layoutNow();
                 }
             } else if (findViewById.getVisibility() != 0) {
-                findViewById.setVisibility(0);
-                findViewById2.setVisibility(0);
+                findViewById.setVisibility(View.VISIBLE);
+                findViewById2.setVisibility(View.VISIBLE);
                 layoutNow();
             }
             final ViewTreeObserver viewTreeObserver = getViewTreeObserver();
@@ -4946,8 +4946,8 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.pages_container);
         if (relativeLayout != null) {
             if (relativeLayout.getVisibility() != 0) {
-                relativeLayout.setVisibility(0);
-                this.mDocPageListView.setVisibility(0);
+                relativeLayout.setVisibility(View.VISIBLE);
+                this.mDocPageListView.setVisibility(View.VISIBLE);
                 this.mDocView.onShowPages();
             }
             final ViewTreeObserver viewTreeObserver = this.mDocView.getViewTreeObserver();

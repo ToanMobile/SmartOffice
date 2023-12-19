@@ -1,5 +1,6 @@
 package com.artifex.sonui.editor;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -56,6 +57,7 @@ public class SlideShowActivity extends BaseActivity implements SlideShowViewList
         super.onConfigurationChanged(configuration);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         SODocSession sODocSession = useSession;

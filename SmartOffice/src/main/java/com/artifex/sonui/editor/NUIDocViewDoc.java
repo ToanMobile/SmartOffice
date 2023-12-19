@@ -83,8 +83,8 @@ public class NUIDocViewDoc extends NUIDocView {
             if (this.mDocCfgOptions.mSettingsBundle.getBoolean("DocAuthEntryEnabledKey", true)) {
                 arrayList.add(this.mReviewAuthorButton);
             } else {
-                findViewById(R.id.author_button_divider).setVisibility(8);
-                this.mReviewAuthorButton.setVisibility(8);
+                findViewById(R.id.author_button_divider).setVisibility(View.GONE);
+                this.mReviewAuthorButton.setVisibility(View.GONE);
             }
             ToolbarButton.setAllSameSize((ToolbarButton[]) arrayList.toArray(new ToolbarButton[arrayList.size()]));
         }
@@ -306,13 +306,13 @@ public class NUIDocViewDoc extends NUIDocView {
                 if (tabWidget != null && (indexOf = this.mAllTabHostTabs.indexOf(getContext().getString(R.string.sodk_editor_tab_insert))) != -1) {
                     TabData[] tabData = getTabData();
                     if (this.mDocCfgOptions.isImageInsertEnabled() || this.mDocCfgOptions.isPhotoInsertEnabled()) {
-                        tabWidget.getChildTabViewAt(indexOf).setVisibility(0);
+                        tabWidget.getChildTabViewAt(indexOf).setVisibility(View.VISIBLE);
                         return;
                     }
                     if (this.tabHost.getCurrentTab() == indexOf) {
                         this.tabHost.setCurrentTab(this.mAllTabHostTabs.indexOf(tabData[getInitialTab()].name));
                     }
-                    tabWidget.getChildTabViewAt(indexOf).setVisibility(8);
+                    tabWidget.getChildTabViewAt(indexOf).setVisibility(View.GONE);
                 }
             } else if (this.mTabs != null && this.mDocCfgOptions.isEditingEnabled()) {
                 TabData[] tabData2 = getTabData();
@@ -383,12 +383,12 @@ public class NUIDocViewDoc extends NUIDocView {
         boolean z2 = isActive && sODoc.getSelectionHasAssociatedPopup();
         boolean z3 = isActive && !z2 && showingTrackedChanges;
         if (z2) {
-            this.mReviewDeleteCommentButton.setVisibility(0);
-            this.mReviewCommentButton.setVisibility(8);
+            this.mReviewDeleteCommentButton.setVisibility(View.VISIBLE);
+            this.mReviewCommentButton.setVisibility(View.GONE);
             this.mReviewDeleteCommentButton.setEnabled(true);
         } else {
-            this.mReviewDeleteCommentButton.setVisibility(8);
-            this.mReviewCommentButton.setVisibility(0);
+            this.mReviewDeleteCommentButton.setVisibility(View.GONE);
+            this.mReviewCommentButton.setVisibility(View.VISIBLE);
             this.mReviewCommentButton.setEnabled(z3);
         }
         this.mReviewPreviousButton.setEnabled(showingTrackedChanges);

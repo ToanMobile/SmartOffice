@@ -223,12 +223,11 @@ public class NUIView extends FrameLayout {
     public void onPause(final Runnable runnable) {
         NUIDocView nUIDocView = this.mDocView;
         if (nUIDocView != null) {
-            nUIDocView.onPause(new Runnable(this) {
-                public void run() {
-                    Runnable runnable = runnable;
-                    if (runnable != null) {
-                        runnable.run();
-                    }
+            nUIDocView.onPause(() -> {
+                Runnable runnableNew;
+                runnableNew = runnable;
+                if (runnableNew != null) {
+                    runnableNew.run();
                 }
             });
         } else {

@@ -47,7 +47,7 @@ public class PageMenu implements PopupWindow.OnDismissListener {
             }
         });
         if (!this.mAllowDelete && (findViewById = inflate.findViewById(R.id.delete_button_wrapper)) != null) {
-            findViewById.setVisibility(8);
+            findViewById.setVisibility(View.GONE);
         }
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
         this.popupWindow = nUIPopupWindow;

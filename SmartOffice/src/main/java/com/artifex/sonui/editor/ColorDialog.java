@@ -75,7 +75,7 @@ public class ColorDialog implements View.OnTouchListener, PopupWindow.OnDismissL
         View inflate = LayoutInflater.from(this.mContext).inflate(R.layout.sodk_editor_colors, (ViewGroup) null);
         SOTextView sOTextView = (SOTextView) inflate.findViewById(R.id.color_dialog_title);
         if (!this.mShowTitle) {
-            sOTextView.setVisibility(8);
+            sOTextView.setVisibility(View.GONE);
         } else if (this.mDialogType == 2) {
             sOTextView.setText((CharSequence) this.mContext.getString(R.string.sodk_editor_background));
         } else {
@@ -119,7 +119,7 @@ public class ColorDialog implements View.OnTouchListener, PopupWindow.OnDismissL
                     });
                 } else {
                     linearLayoutArr = linearLayoutArr2;
-                    button.setVisibility(8);
+                    button.setVisibility(View.GONE);
                 }
                 i5++;
                 i4 = i6;
@@ -135,7 +135,7 @@ public class ColorDialog implements View.OnTouchListener, PopupWindow.OnDismissL
         Button button2 = (Button) inflate.findViewById(R.id.transparent_color_button);
         int i7 = this.mDialogType;
         if (i7 == 2 || i7 == 3) {
-            button2.setVisibility(0);
+            button2.setVisibility(View.VISIBLE);
             if (this.mCurrentSelectionColor.equals("transparent".toUpperCase())) {
                 ((GradientDrawable) ((LayerDrawable) button2.getBackground().mutate()).getDrawable(0)).setStroke(4, Color.parseColor("black"));
             }
@@ -146,7 +146,7 @@ public class ColorDialog implements View.OnTouchListener, PopupWindow.OnDismissL
                 }
             });
         } else {
-            button2.setVisibility(8);
+            button2.setVisibility(View.GONE);
         }
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(this.mContext);
         this.popupWindow = nUIPopupWindow;

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
-import com.artifex.solib.SOSecureFS;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -243,7 +243,8 @@ public class FileUtils {
             if (query == null || !query.moveToFirst()) {
                 return null;
             }
-            @SuppressLint("Range") String string = query.getString(query.getColumnIndex("_display_name"));
+            @SuppressLint("Range")
+            String string = query.getString(query.getColumnIndex("_display_name"));
             query.close();
             return string;
         } catch (Exception unused) {
@@ -515,7 +516,7 @@ public class FileUtils {
 
     public static String getFileTypeExtension(Context context, Uri uri, String str) {
         String scheme = uri != null ? uri.getScheme() : null;
-        if (scheme == null) {
+        if (scheme == null || !scheme.equalsIgnoreCase(AppLovinEventTypes.USER_VIEWED_CONTENT)) {
             return extensionFromUriFilename(uri);
         }
         MimeTypeMap singleton = MimeTypeMap.getSingleton();
@@ -580,7 +581,7 @@ public class FileUtils {
                 e.printStackTrace();
                 StringBuilder sb = new StringBuilder();
                 sb.append("---IOException ");
-                return FileUtils$$ExternalSyntheticOutline0.m(e, sb);
+                return FileUtilsExternalSyntheticOutline0.m(e, sb);
             } catch (SecurityException e2) {
                 e2.printStackTrace();
                 return "---SecurityException " + e2.getMessage();
@@ -588,7 +589,7 @@ public class FileUtils {
                 e3.printStackTrace();
                 StringBuilder sb2 = new StringBuilder();
                 sb2.append("---Exception ");
-                return FileUtils$$ExternalSyntheticOutline1.m(e3, sb2);
+                return FileUtilsExternalSyntheticOutline1.m(e3, sb2);
             }
         } catch (Exception unused) {
             return "---fileOpen";

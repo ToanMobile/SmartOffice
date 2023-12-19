@@ -587,7 +587,7 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
             if (!finished()) {
                 handleStartPage();
                 if (canEditText() && !NUIDocView.currentNUIDocView().isFullScreen()) {
-                    ((LinearLayout) ((Activity) this.mContext).findViewById(R.id.fx_bar)).setVisibility(0);
+                    ((LinearLayout) ((Activity) this.mContext).findViewById(R.id.fx_bar)).setVisibility(View.VISIBLE);
                 }
             }
         } else if (!finished() && isShown() && shouldLayout()) {
@@ -913,13 +913,13 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
             }
             int i3 = 8;
             if (!this.frozen || !this.freezeShown) {
-                this.hRuler2.setVisibility(8);
-                this.vRuler2.setVisibility(8);
+                this.hRuler2.setVisibility(View.GONE);
+                this.vRuler2.setVisibility(View.GONE);
                 clearChildViews();
                 removeAllViewsInLayout();
             } else {
-                this.hRuler2.setVisibility(0);
-                this.vRuler2.setVisibility(0);
+                this.hRuler2.setVisibility(View.VISIBLE);
+                this.vRuler2.setVisibility(View.VISIBLE);
                 int i4 = 0;
                 while (true) {
                     freezePageViewArr = this.pagePanes;

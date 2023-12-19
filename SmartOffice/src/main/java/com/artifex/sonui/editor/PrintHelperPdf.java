@@ -76,27 +76,27 @@ public class PrintHelperPdf {
             return;
         }
         printing = true;
-        printPath(context, str, false, new Runnable(this) {
-            public void run() {
-                PrintHelperPdf.printing = false;
-                Runnable runnable = runnable;
-                if (runnable != null) {
-                    runnable.run();
-                }
+        printPath(context, str, false, () -> {
+            PrintHelperPdf.printing = false;
+            Runnable runnableNew;
+            runnableNew = runnable;
+            if (runnableNew != null) {
+                runnableNew.run();
             }
         });
     }
 
     public final void printPath(Context context, final String str, final boolean z, final Runnable runnable) {
-        AnonymousClass3 r0 = new PrintDocumentAdapter() {
+        PrintDocumentAdapter r0 = new PrintDocumentAdapter() {
             public void onFinish() {
                 if (z) {
                     FileUtils.deleteFile(str);
                 }
                 PrintHelperPdf.printing = false;
-                Runnable runnable = runnable;
-                if (runnable != null) {
-                    runnable.run();
+                Runnable runnableNew;
+                runnableNew = runnable;
+                if (runnableNew != null) {
+                    runnableNew.run();
                 }
             }
 
@@ -104,7 +104,7 @@ public class PrintHelperPdf {
                 if (cancellationSignal.isCanceled()) {
                     layoutResultCallback.onLayoutCancelled();
                 } else {
-                    layoutResultCallback.onLayoutFinished(new PrintDocumentInfo.Builder(PrintHelperPdf.this.printName).setContentType(0).build(), true);
+                    layoutResultCallback.onLayoutFinished(new PrintDocumentInfo.Builder(PrintHelperPdf.this.printName).setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT).build(), true);
                 }
             }
 

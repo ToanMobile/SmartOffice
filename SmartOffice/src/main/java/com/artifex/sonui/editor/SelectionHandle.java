@@ -63,7 +63,7 @@ public class SelectionHandle extends View implements View.OnTouchListener {
     }
 
     public void hide() {
-        setVisibility(8);
+        setVisibility(View.GONE);
     }
 
     public final void init(Context context) {
@@ -194,7 +194,7 @@ public class SelectionHandle extends View implements View.OnTouchListener {
     }
 
     public void show() {
-        setVisibility(0);
+        setVisibility(View.VISIBLE);
     }
 
     public SelectionHandle(Context context, AttributeSet attributeSet) {

@@ -345,7 +345,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                         }
                     });
                 }
-                DocPdfView.this.mResizingView.setVisibility(8);
+                DocPdfView.this.mResizingView.setVisibility(View.GONE);
                 DocPdfView.this.mResizingPage = null;
             }
             DocPdfView docPdfView4 = DocPdfView.this;
@@ -384,7 +384,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
             if (dragHandle == docPdfView5.mDragHandleMove) {
                 docPdfView5.mMovingPoint = new Point(dragHandle.getPosition());
                 DocPdfView.this.mMovingRectAtStart = new Rect(DocPdfView.this.mResizingRect);
-                DocPdfView.this.mResizingView.setVisibility(0);
+                DocPdfView.this.mResizingView.setVisibility(View.VISIBLE);
                 return;
             }
             if (docPdfView5.resizingTextRedaction) {
@@ -422,7 +422,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 return;
             }
             docPdfView9.moveResizingView(docPdfView9.mResizingFixedPoint, docPdfView9.mResizingMovingPoint);
-            DocPdfView.this.mResizingView.setVisibility(0);
+            DocPdfView.this.mResizingView.setVisibility(View.VISIBLE);
         }
     };
     public boolean dragging = false;
@@ -607,7 +607,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         this.sigEditingPage = null;
         this.sigEditingAnnot = null;
         this.sigEditingAnnotIndex = -1;
-        this.mResizingView.setVisibility(8);
+        this.mResizingView.setVisibility(View.GONE);
         hideHandles();
         return z;
     }
@@ -647,7 +647,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
             this.mResizingPage = docPdfPageView;
             this.mSelectionEndPage = docPdfPageView;
             this.mSelectionStartPage = docPdfPageView;
-            this.mResizingView.setVisibility(0);
+            this.mResizingView.setVisibility(View.VISIBLE);
             matchResizeRectToSig();
             Rect rect = this.mResizingRect;
             moveResizingView(rect.left, rect.top, rect.width(), this.mResizingRect.height());
@@ -893,7 +893,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 DocPdfPageView docPdfPageView3 = this.sigCreatedPage;
                 this.sigEditingPage = docPdfPageView3;
                 this.mResizingPage = docPdfPageView3;
-                this.mResizingView.setVisibility(0);
+                this.mResizingView.setVisibility(View.VISIBLE);
                 matchResizeRectToSig();
                 Rect rect = this.mResizingRect;
                 moveResizingView(rect.left, rect.top, rect.width(), this.mResizingRect.height());
@@ -911,7 +911,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
             DocPdfPageView docPdfPageView5 = this.esigCreatedPage;
             this.sigEditingPage = docPdfPageView5;
             this.mResizingPage = docPdfPageView5;
-            this.mResizingView.setVisibility(0);
+            this.mResizingView.setVisibility(View.VISIBLE);
             matchResizeRectToESig();
             Rect rect2 = this.mResizingRect;
             moveResizingView(rect2.left, rect2.top, rect2.width(), this.mResizingRect.height());
@@ -923,7 +923,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
             this.mResizingPage = docPdfPageView6;
             this.mSelectionEndPage = docPdfPageView6;
             this.mSelectionStartPage = docPdfPageView6;
-            this.mResizingView.setVisibility(0);
+            this.mResizingView.setVisibility(View.VISIBLE);
             matchResizeRectToESig();
             Rect rect3 = this.mResizingRect;
             moveResizingView(rect3.left, rect3.top, rect3.width(), this.mResizingRect.height());
@@ -1009,7 +1009,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 Point point = new Point(((int) motionEvent.getX()) - this.minResizeDimension, ((int) motionEvent.getY()) - this.minResizeDimension);
                 this.mResizingFixedPoint = point;
                 moveResizingView(point, this.mResizingMovingPoint);
-                this.mResizingView.setVisibility(0);
+                this.mResizingView.setVisibility(View.VISIBLE);
             }
         } else if (action != 1) {
             if (action == 2 && this.mResizingPage != null) {
@@ -1027,7 +1027,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 muPDFDoc.mSelectionStartPage = this.mResizingPage.getPageNumber();
                 muPDFDoc.mSelectionEndPage = this.mResizingPage.getPageNumber();
             }
-            this.mResizingView.setVisibility(8);
+            this.mResizingView.setVisibility(View.GONE);
             this.mMarkAreaMode = false;
             this.mResizingPage = null;
         }
@@ -1145,7 +1145,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                     });
                 }
             }
-            this.mResizingView.setVisibility(8);
+            this.mResizingView.setVisibility(View.GONE);
             this.mMarkTextMode = false;
             this.mResizingPage = null;
             this.mMarkTextDragging = false;
@@ -1249,7 +1249,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         this.mResizingView = view;
         view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.sodk_editor_redact_resize_color));
         relativeLayout.addView(this.mResizingView);
-        this.mResizingView.setVisibility(8);
+        this.mResizingView.setVisibility(View.GONE);
     }
 
     public void setupNoteEditor() {
@@ -1395,7 +1395,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         this.mResizingView.setLayoutParams(layoutParams);
         this.mResizingView.invalidate();
         if (!this.resizingTextRedaction) {
-            this.mResizingView.setVisibility(0);
+            this.mResizingView.setVisibility(View.VISIBLE);
         }
     }
 

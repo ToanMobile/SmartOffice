@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
+import a.a.a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -95,21 +95,21 @@ public class NUIDocViewPdf extends NUIDocView {
         Objects.requireNonNull(this.mDocCfgOptions);
         Objects.requireNonNull(this.mDocCfgOptions);
         if (!this.mDocCfgOptions.isSecureRedactionsEnabled()) {
-            findViewById(R.id.redact_button_secure_save_wrapper).setVisibility(8);
+            findViewById(R.id.redact_button_secure_save_wrapper).setVisibility(View.GONE);
         }
         Objects.requireNonNull(this.mDocCfgOptions);
         if (!this.mDocCfgOptions.isDigitalSignaturesEnabled()) {
             ToolbarButton toolbarButton = this.mDigSignatureButton;
             if (toolbarButton != null) {
-                toolbarButton.setVisibility(8);
+                toolbarButton.setVisibility(View.GONE);
             }
             ToolbarButton toolbarButton2 = this.mNextSignatureButton;
             if (toolbarButton2 != null) {
-                toolbarButton2.setVisibility(8);
+                toolbarButton2.setVisibility(View.GONE);
             }
             ToolbarButton toolbarButton3 = this.mPreviousSignatureButton;
             if (toolbarButton3 != null) {
-                toolbarButton3.setVisibility(8);
+                toolbarButton3.setVisibility(View.GONE);
             }
         }
         Button button = (Button) createToolbarButton(R.id.toc_button);
@@ -326,11 +326,11 @@ public class NUIDocViewPdf extends NUIDocView {
         super.hideUnusedButtons();
         ToolbarButton toolbarButton = this.mSavePdfButton;
         if (toolbarButton != null) {
-            toolbarButton.setVisibility(8);
+            toolbarButton.setVisibility(View.GONE);
         }
         ToolbarButton toolbarButton2 = this.mOpenPdfInButton;
         if (toolbarButton2 != null) {
-            toolbarButton2.setVisibility(8);
+            toolbarButton2.setVisibility(View.GONE);
         }
     }
 
@@ -1029,11 +1029,11 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
             }
 
             public void nextTocEntry(int i, int i2, int i3, String str, String str2, float f, float f2) {
-                TocListViewAdapter tocListViewAdapter = this.val$adapter;
-                TocData tocData = new TocData(TocDialog.this, i, i2, i3, str, str2, f, f2, (AnonymousClass1) null);
+                TocDialog.TocListViewAdapter tocListViewAdapter = this.val$adapter;
+                TocDialog.TocData tocData = new TocDialog.TocData(TocDialog.this, i, i2, i3, str, str2, f, f2, (AnonymousClass1) null);
                 tocListViewAdapter.mapEntries.put(Integer.valueOf(i), tocData);
                 int i4 = 0;
-                TocData tocData2 = tocData;
+                TocDialog.TocData tocData2 = tocData;
                 while (tocData2 != null) {
                     int i5 = tocData2.parentHandle;
                     if (i5 == 0) {
@@ -1181,10 +1181,10 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         View findViewById = findViewById(R.id.signing_cover);
         if (z) {
             findViewById.setOnClickListener(this.coverListener);
-            findViewById.setVisibility(0);
+            findViewById.setVisibility(View.VISIBLE);
             return;
         }
-        findViewById.setVisibility(8);
+        findViewById.setVisibility(View.GONE);
     }
 
     public void setupTabs() {
