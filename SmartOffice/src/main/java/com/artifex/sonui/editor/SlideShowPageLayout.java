@@ -122,7 +122,7 @@ public class SlideShowPageLayout extends RelativeLayout implements AnimatableVie
         }
         this.conductor = null;
         ArDkBitmap arDkBitmap = this.mPageBitmap;
-        if (!(arDkBitmap == null || (bitmap = arDkBitmap.bitmap) == null)) {
+        if (!(arDkBitmap == null || (bitmap = arDkBitmap.getBitmap()) == null)) {
             bitmap.recycle();
         }
         this.mPageBitmap = null;

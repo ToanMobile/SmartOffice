@@ -1,5 +1,6 @@
 package com.artifex.sonui.editor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -369,6 +370,7 @@ public class InputView extends View {
         }
     }
 
+    @SuppressLint("WrongConstant")
     public InputView(Context context, ArDkDoc arDkDoc, NUIDocView nUIDocView) {
         super(context);
         setFocusable(true);

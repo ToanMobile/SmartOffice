@@ -141,7 +141,7 @@ public class DragHandle extends FrameLayout implements View.OnTouchListener {
 
     public void show(boolean z) {
         int visibility = getVisibility();
-        int i = z ? 0 : 8;
+        int i = z ? View.VISIBLE : View.GONE;
         if (i != visibility) {
             setVisibility(i);
             requestLayout();

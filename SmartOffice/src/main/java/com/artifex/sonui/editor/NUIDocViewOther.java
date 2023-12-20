@@ -75,15 +75,15 @@ public class NUIDocViewOther extends NUIDocView {
 
     public void enforceInitialShowUI(View view) {
         boolean showUI = this.mDocCfgOptions.showUI();
-        int i = 0;
+        int i = View.VISIBLE;
         if (!this.mShowUI) {
             showUI = false;
         }
-        findViewById(R.id.other_top).setVisibility(showUI ? 0 : 8);
-        findViewById(R.id.footer).setVisibility(showUI ? 0 : 8);
+        findViewById(R.id.other_top).setVisibility(showUI ? View.VISIBLE : View.GONE);
+        findViewById(R.id.footer).setVisibility(showUI ? View.VISIBLE : View.GONE);
         View findViewById = findViewById(R.id.header);
         if (!showUI) {
-            i = 8;
+            i = View.GONE;
         }
         findViewById.setVisibility(i);
         this.mFullscreen = !showUI;
@@ -134,7 +134,7 @@ public class NUIDocViewOther extends NUIDocView {
                 int id = childAt.getId();
                 if (id == R.id.divider_1 || id == R.id.divider_2) {
                     i3++;
-                } else if (childAt.getVisibility() == 0 && i3 == 1) {
+                } else if (childAt.getVisibility() == View.VISIBLE && i3 == 1) {
                     i2++;
                 }
             }

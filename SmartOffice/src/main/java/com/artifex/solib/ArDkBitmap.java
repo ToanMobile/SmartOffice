@@ -68,20 +68,20 @@ public class ArDkBitmap implements Comparable<ArDkBitmap> {
         }
     }
 
-    public Bitmap getHeight() {
+    public Bitmap getBitmap() {
         return this.bitmap;
     }
 
-    public int e() {
+    public int getHeight() {
         Rect rect2 = this.rect;
         return rect2.bottom - rect2.top;
     }
 
-    public Rect getWidth() {
+    public Rect getRect() {
         return this.rect;
     }
 
-    public int g() {
+    public int getWidth() {
         Rect rect2 = this.rect;
         return rect2.right - rect2.left;
     }

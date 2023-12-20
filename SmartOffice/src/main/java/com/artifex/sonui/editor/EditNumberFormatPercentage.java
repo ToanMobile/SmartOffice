@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.ArrayWheelAdapter;
+import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
+import com.artifex.source.library.wheel.widget.WheelView;
+import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
 
 public class EditNumberFormatPercentage {
     public static final String[] descriptions;
@@ -42,7 +42,7 @@ public class EditNumberFormatPercentage {
                 }
                 i++;
             } else {
-                wheelView.scrollingListeners.add(new OnWheelScrollListener(editNumberFormatPercentage) {
+                wheelView.scrollingListeners.add(new OnWheelScrollListener() {
                     public void onScrollingFinished(WheelView wheelView) {
                         ((SODoc) arDkDoc).setSelectedCellFormat(EditNumberFormatPercentage.formats[wheelView.getCurrentItem()]);
                     }
@@ -52,11 +52,7 @@ public class EditNumberFormatPercentage {
                 });
                 NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
                 nUIPopupWindow.setFocusable(true);
-                nUIPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener(editNumberFormatPercentage) {
-                    public void onDismiss() {
-                        wheelView.scrollingListeners.clear();
-                    }
-                });
+                nUIPopupWindow.setOnDismissListener(() -> wheelView.scrollingListeners.clear());
                 nUIPopupWindow.showAsDropDown(view, 30, 30);
                 return;
             }

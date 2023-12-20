@@ -1,5 +1,6 @@
 package com.artifex.sonui.editor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class LineWidthDialog {
             return null;
         }
 
+        @SuppressLint("WrongConstant")
         public View getItem(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
                 view = ((LayoutInflater) this.mContext.getSystemService("layout_inflater")).inflate(R.layout.sodk_editor_line_width_item, viewGroup, false);
@@ -72,7 +74,7 @@ public class LineWidthDialog {
                 }
                 i++;
             } else {
-                wheelView.scrollingListeners.add(new OnWheelScrollListener(lineWidthDialog) {
+                wheelView.scrollingListeners.add(new OnWheelScrollListener() {
                     public void onScrollingFinished(WheelView wheelView) {
                         ((SODoc) arDkDoc).setSelectionLineWidth(LineWidthDialog.values[wheelView.getCurrentItem()]);
                     }
@@ -82,11 +84,7 @@ public class LineWidthDialog {
                 });
                 NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
                 nUIPopupWindow.setFocusable(true);
-                nUIPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener(lineWidthDialog) {
-                    public void onDismiss() {
-                        wheelView.scrollingListeners.clear();
-                    }
-                });
+                nUIPopupWindow.setOnDismissListener(() -> wheelView.scrollingListeners.clear());
                 nUIPopupWindow.showAsDropDown(view, 30, 30);
                 return;
             }

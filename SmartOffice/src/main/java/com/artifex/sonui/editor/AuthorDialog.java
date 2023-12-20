@@ -37,9 +37,9 @@ public class AuthorDialog {
             public void onClick(DialogInterface dialogInterface, int i) {
                 Utilities.hideKeyboard(activity);
                 dialogInterface.dismiss();
-                AuthorDialogListener authorDialogListener = authorDialogListener;
-                if (authorDialogListener != null) {
-                    authorDialogListener.onCancel();
+                AuthorDialogListener authorDialogListenerNew = authorDialogListener;
+                if (authorDialogListenerNew != null) {
+                    authorDialogListenerNew.onCancel();
                 }
             }
         });

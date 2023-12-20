@@ -697,7 +697,6 @@ public class NUIDocViewXls extends NUIDocView {
                 public void onGlobalLayout() {
                     viewTreeObserver.removeOnGlobalLayoutListener(this);
                     NUIDocViewXls nUIDocViewXls = NUIDocViewXls.this;
-                    String str = str;
                     int i = NUIDocViewXls.CELL_TAG;
                     nUIDocViewXls.onFormulaCategory2(str);
                 }
@@ -721,8 +720,8 @@ public class NUIDocViewXls extends NUIDocView {
         int[] iArr = new int[2];
         this.mFXButton.getLocationInWindow(iArr);
         int height = ((screenSize.y - Utilities.screenToWindow(iArr, getContext())[1]) - this.mFXButton.getHeight()) - 60;
-        int makeMeasureSpec = MeasureSpec.makeMeasureSpec(0, 0);
-        int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(0, 0);
+        int makeMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         int count = chooseFormulaAdapter.getCount();
         FrameLayout frameLayout = null;
         View view = null;

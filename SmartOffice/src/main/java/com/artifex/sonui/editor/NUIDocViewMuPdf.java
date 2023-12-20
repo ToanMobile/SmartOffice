@@ -2,6 +2,7 @@ package com.artifex.sonui.editor;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Button;
 import com.artifex.sonui.editor.NUIDocView;
 

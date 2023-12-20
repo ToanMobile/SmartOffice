@@ -50,39 +50,31 @@ public class ListWheelDialog {
             wheelView.setCurrentItem(i);
         }
         this.dialog = new AlertDialog.Builder(context).setView(inflate).create();
-        inflate.findViewById(R.id.sodk_editor_cancel_button).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+        inflate.findViewById(R.id.sodk_editor_cancel_button).setOnClickListener(view -> {
+            ListWheelDialog listWheelDialog = ListWheelDialog.this;
+            listWheelDialog.finished = true;
+            listWheelDialog.dialog.dismiss();
+            listWheelDialogListener.cancel();
+        });
+        inflate.findViewById(R.id.sodk_editor_update_button).setOnClickListener(view -> {
+            ListWheelDialog listWheelDialog = ListWheelDialog.this;
+            listWheelDialog.finished = true;
+            listWheelDialog.dialog.dismiss();
+            listWheelDialogListener.update(strArr[wheelView.getCurrentItem()]);
+        });
+        this.dialog.setOnKeyListener((dialogInterface, i1, keyEvent) -> {
+            if (ListWheelDialog.this.allowTabAndEnter && keyEvent.getAction() == 1 && (i1 == 61 || i1 == 66)) {
+                ListWheelDialog.this.finished = true;
+                dialogInterface.dismiss();
+                listWheelDialogListener.update(strArr[wheelView.getCurrentItem()]);
+            }
+            if (keyEvent.getAction() == 1 && i1 == 4) {
                 ListWheelDialog listWheelDialog = ListWheelDialog.this;
-                ListWheelDialogListener listWheelDialogListener = listWheelDialogListener;
                 listWheelDialog.finished = true;
                 listWheelDialog.dialog.dismiss();
                 listWheelDialogListener.cancel();
             }
-        });
-        inflate.findViewById(R.id.sodk_editor_update_button).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                ListWheelDialog listWheelDialog = ListWheelDialog.this;
-                listWheelDialog.finished = true;
-                listWheelDialog.dialog.dismiss();
-                listWheelDialogListener.update(strArr[wheelView.getCurrentItem()]);
-            }
-        });
-        this.dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
-            public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
-                if (ListWheelDialog.this.allowTabAndEnter && keyEvent.getAction() == 1 && (i == 61 || i == 66)) {
-                    ListWheelDialog.this.finished = true;
-                    dialogInterface.dismiss();
-                    listWheelDialogListener.update(strArr[wheelView.getCurrentItem()]);
-                }
-                if (keyEvent.getAction() == 1 && i == 4) {
-                    ListWheelDialog listWheelDialog = ListWheelDialog.this;
-                    ListWheelDialogListener listWheelDialogListener = listWheelDialogListener;
-                    listWheelDialog.finished = true;
-                    listWheelDialog.dialog.dismiss();
-                    listWheelDialogListener.cancel();
-                }
-                return true;
-            }
+            return true;
         });
         this.dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             public void onDismiss(DialogInterface dialogInterface) {
