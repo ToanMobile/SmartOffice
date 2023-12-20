@@ -1,7 +1,7 @@
 package com.artifex.mupdf.fitz;
 
-import a.a.a.a.a.c$$ExternalSyntheticOutline0;
-import androidx.constraintlayout.core.widgets.ConstraintWidget$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
+//import androidx.constraintlayout.core.widgets.ConstraintWidget$$ExternalSyntheticOutline0;
 
 public class RectI {
     private static final int FZ_MAX_INF_RECT = 2147483520;
@@ -45,7 +45,8 @@ public class RectI {
         m.append(" ");
         m.append(this.x1);
         m.append(" ");
-        return ConstraintWidget$$ExternalSyntheticOutline0.m(m, this.y1, "]");
+        return m.toString();
+        //return ConstraintWidget$$ExternalSyntheticOutline0.m(m, this.y1, "]");
     }
 
     public RectI transform(Matrix matrix) {

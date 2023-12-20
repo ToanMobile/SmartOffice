@@ -44,22 +44,16 @@ import java.util.UUID;
 
 public class MuPDFDoc extends ArDkDoc {
     public int handleCounter = 0;
-    public PDFDocument.JsEventListener jsEventListener = new PDFDocument.JsEventListener() {
-        public AlertResult onAlert(PDFDocument pDFDocument, String str, String str2, int i, int i2, boolean z, String str3, boolean z2) {
-            JsEventListener jsEventListener;
-            MuPDFDoc muPDFDoc = MuPDFDoc.this;
-            if (!muPDFDoc.showJsError || (jsEventListener = muPDFDoc.jsEventListener2) == null) {
-                return null;
-            }
-            return jsEventListener.onAlert(str, str2, i, i2, z, str3, z2);
-        }
-    };
-    public JsEventListener jsEventListener2 = null;
-    public PDFDocument.JsEventListener jsNullEventListener = new PDFDocument.JsEventListener(this) {
-        public AlertResult onAlert(PDFDocument pDFDocument, String str, String str2, int i, int i2, boolean z, String str3, boolean z2) {
+    public PDFDocument.JsEventListener jsEventListener = (pDFDocument, str, str2, i, i2, z, str3, z2) -> {
+        JsEventListener jsEventListener;
+        MuPDFDoc muPDFDoc = MuPDFDoc.this;
+        if (!muPDFDoc.showJsError || (jsEventListener = muPDFDoc.jsEventListener2) == null) {
             return null;
         }
+        return jsEventListener.onAlert(str, str2, i, i2, z, str3, z2);
     };
+    public JsEventListener jsEventListener2 = null;
+    public PDFDocument.JsEventListener jsNullEventListener = (pDFDocument, str, str2, i, i2, z, str3, z2) -> null;
     public String lastSavedPath = null;
     public String mAuthor = null;
     public Context mContext;
@@ -186,11 +180,11 @@ public class MuPDFDoc extends ArDkDoc {
             final Object fileHandleForReading = sOSecureFS.getFileHandleForReading(str);
             document = Document.openDocument((SeekableInputStream) new SeekableInputStream() {
                 public long position() throws IOException {
-                    return SOSecureFS.this.getFileOffset(fileHandleForReading);
+                    return sOSecureFS.getFileOffset(fileHandleForReading);
                 }
 
                 public int read(byte[] bArr) throws IOException {
-                    int readFromFile = SOSecureFS.this.readFromFile(fileHandleForReading, bArr);
+                    int readFromFile = sOSecureFS.readFromFile(fileHandleForReading, bArr);
                     if (readFromFile == 0) {
                         return -1;
                     }
@@ -198,12 +192,12 @@ public class MuPDFDoc extends ArDkDoc {
                 }
 
                 public long seek(long j, int i) throws IOException {
-                    long fileOffset = SOSecureFS.this.getFileOffset(fileHandleForReading);
-                    long fileLength = SOSecureFS.this.getFileLength(fileHandleForReading);
+                    long fileOffset = sOSecureFS.getFileOffset(fileHandleForReading);
+                    long fileLength = sOSecureFS.getFileLength(fileHandleForReading);
                     if (i != 0) {
                         j = i != 1 ? i != 2 ? 0 : j + fileLength : j + fileOffset;
                     }
-                    SOSecureFS.this.seekToFileOffset(fileHandleForReading, j);
+                    sOSecureFS.seekToFileOffset(fileHandleForReading, j);
                     return j;
                 }
             }, FileUtils.getExtension(str));
@@ -1083,11 +1077,11 @@ public class MuPDFDoc extends ArDkDoc {
                             try {
                                 pDFDocument.save((SeekableInputOutputStream) new SeekableInputOutputStream(fileHandleForWriting) {
                                     public long position() throws IOException {
-                                        return SOSecureFS.this.getFileOffset(r10);
+                                        return sOSecureFS.getFileOffset(r10);
                                     }
 
                                     public int read(byte[] bArr) throws IOException {
-                                        int readFromFile = SOSecureFS.this.readFromFile(r10, bArr);
+                                        int readFromFile = sOSecureFS.readFromFile(r10, bArr);
                                         if (readFromFile == 0) {
                                             return -1;
                                         }
@@ -1095,26 +1089,26 @@ public class MuPDFDoc extends ArDkDoc {
                                     }
 
                                     public long seek(long j, int i) throws IOException {
-                                        long fileOffset = SOSecureFS.this.getFileOffset(r10);
-                                        long fileLength = SOSecureFS.this.getFileLength(r10);
+                                        long fileOffset = sOSecureFS.getFileOffset(r10);
+                                        long fileLength = sOSecureFS.getFileLength(r10);
                                         if (i != 0) {
                                             j = i != 1 ? i != 2 ? 0 : j + fileLength : j + fileOffset;
                                         }
-                                        SOSecureFS.this.seekToFileOffset(r10, j);
+                                        sOSecureFS.seekToFileOffset(r10, j);
                                         return j;
                                     }
 
                                     public void truncate() throws IOException {
-                                        if (!SOSecureFS.this.setFileLength(r10, SOSecureFS.this.getFileOffset(r10))) {
+                                        if (!sOSecureFS.setFileLength(r10, sOSecureFS.getFileOffset(r10))) {
                                             throw new RuntimeException("MuPDFDoc.saveSecure - error in call to secureFS.setFileLength");
                                         }
                                     }
 
                                     public void write(byte[] bArr, int i, int i2) throws IOException {
                                         if (i == 0 && i2 == bArr.length) {
-                                            SOSecureFS.this.writeToFile(r10, bArr);
+                                            sOSecureFS.writeToFile(r10, bArr);
                                         } else {
-                                            SOSecureFS.this.writeToFile(r10, Arrays.copyOfRange(bArr, i, i2 + i));
+                                            sOSecureFS.writeToFile(r10, Arrays.copyOfRange(bArr, i, i2 + i));
                                         }
                                     }
                                 }, str);

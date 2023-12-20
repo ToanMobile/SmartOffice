@@ -1,6 +1,6 @@
 package com.artifex.sonui.editor;
 
-import a.a.a.a.b.f.a$$ExternalSyntheticOutline0;
+import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -99,7 +99,8 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public static int OVERSIZE_MARGIN = 0;
     public static final int OVERSIZE_PERCENT = 20;
     public static ActivityResultCallback callback = new ActivityResultCallback<Uri>() {
-        public void onActivityResult(Object obj) {
+        @Override
+        public void onActivityResult(Uri obj) {
             Uri uri = (Uri) obj;
             NUIDocView currentNUIDocView = NUIDocView.currentNUIDocView();
             SelectImageListener selectImageListener = currentNUIDocView.onImageSelectedListener;

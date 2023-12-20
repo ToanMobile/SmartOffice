@@ -266,7 +266,8 @@ public class PDFAnnotation {
         clearInkList();
         for (Point[] pointArr2 : pointArr) {
             addInkListStroke();
-            for (Point addInkListStrokeVertex : pointArr[r2]) {
+            //TODO TOAN
+            for (Point addInkListStrokeVertex : pointArr[0]) { //for (Point addInkListStrokeVertex : pointArr[r2]) {
                 addInkListStrokeVertex(addInkListStrokeVertex);
             }
         }

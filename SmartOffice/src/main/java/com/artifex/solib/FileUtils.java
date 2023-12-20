@@ -516,7 +516,7 @@ public class FileUtils {
 
     public static String getFileTypeExtension(Context context, Uri uri, String str) {
         String scheme = uri != null ? uri.getScheme() : null;
-        if (scheme == null || !scheme.equalsIgnoreCase(AppLovinEventTypes.USER_VIEWED_CONTENT)) {
+        if (scheme == null) {
             return extensionFromUriFilename(uri);
         }
         MimeTypeMap singleton = MimeTypeMap.getSingleton();

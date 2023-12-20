@@ -36,6 +36,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("com.vungle:publisher-sdk-android:6.12.1")
     implementation("com.google.cloud:google-cloud-logging:3.15.14")
-
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.constraintlayout:constraintlayout-core:1.0.4")
     // implementation("com.bytedance.applog:RangersAppLog-Lite-cn:6.14.2")
 }

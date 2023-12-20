@@ -95,17 +95,17 @@ public class MuPDFWidget {
         waiter.doWait();
     }
 
-    public boolean setValue(final String str, final boolean z) {
-        this.mValue = str;
+    public boolean setValue(final String strString, final boolean zNew) {
+        this.mValue = strString;
         final Waiter waiter = new Waiter();
         this.mDoc.mWorker.add(new Worker.Task() {
             public void run() {
             }
 
             public void work() {
-                boolean z;
+                boolean z = zNew;
                 MuPDFWidget muPDFWidget = MuPDFWidget.this;
-                String str = str;
+                String str = strString;
                 boolean z2 = z;
                 muPDFWidget.mDoc.checkForWorkerThread();
                 boolean z3 = false;
