@@ -1,6 +1,7 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 

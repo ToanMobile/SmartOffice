@@ -1,6 +1,7 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 
 public class CheckerFadeAnimation extends ShapeFadeAnimation {

@@ -1,7 +1,7 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
-import com.applovin.exoplayer2.b.r$$ExternalSyntheticOutline0;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
@@ -22,7 +22,7 @@ public class CircleFadeAnimation extends ShapeFadeAnimation {
         }
         int i2 = this.mWidth;
         int i3 = this.mHeight;
-        path.addCircle((float) (this.mWidth / 2), (float) (this.mHeight / 2), ((float) Math.sqrt((double) r$$ExternalSyntheticOutline0.m(i3, i3, 4, (i2 * i2) / 4))) * f, Path.Direction.CW);
+        path.addCircle((float) (this.mWidth / 2), (float) (this.mHeight / 2), ((float) Math.sqrt(((double) (i3 * i3) / 4) + ((double) (i2 * i2) / 4))) * f, Path.Direction.CW);
         SlideShowConductorView slideShowConductorView = this.viewToAnim;
         if (slideShowConductorView != null) {
             slideShowConductorView.setClipPath(path);

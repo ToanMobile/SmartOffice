@@ -2,7 +2,6 @@ package com.artifex.sonui.editor.animations;
 
 import android.graphics.Path;
 import android.view.View;
-import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import java.util.Objects;
 
@@ -21,7 +20,7 @@ public class WipeAnimation extends ShapeAnimation {
         char c = 65535;
         switch (str.hashCode()) {
             case 100:
-                if (str.equals(GoogleApiAvailabilityLight.TRACKING_SOURCE_DIALOG)) {
+                if (str.equals("d")) {
                     c = 0;
                     break;
                 }

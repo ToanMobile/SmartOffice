@@ -1,8 +1,10 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -28,8 +30,8 @@ public class RandomBarsFadeAnimation extends ShapeFadeAnimation {
                 } else {
                     i = random.nextInt(this.mWidth / 25);
                 }
-                this.positions.add(new Integer(i2));
-                this.sizes.add(new Integer(i));
+                this.positions.add(Integer.valueOf(i2));
+                this.sizes.add(Integer.valueOf(i));
                 i2 += i;
                 if (this.subType == 10) {
                     if (i2 >= this.mHeight) {

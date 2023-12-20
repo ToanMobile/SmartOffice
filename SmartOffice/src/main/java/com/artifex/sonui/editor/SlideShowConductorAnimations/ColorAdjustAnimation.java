@@ -2,7 +2,9 @@ package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.ColorMatrix;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
@@ -15,11 +17,12 @@ public class ColorAdjustAnimation implements ValueAnimator.AnimatorUpdateListene
     public final ValueAnimator valueAnimator;
     public SlideShowConductorView viewToAnim;
 
+    @SuppressLint("WrongConstant")
     public ColorAdjustAnimation(int i, boolean z, int i2, int i3, SlideShowConductorView slideShowConductorView) {
         int i4 = 2;
-        ValueAnimator ofFloat = ValueAnimator.ofFloat(new float[]{BitmapDescriptorFactory.HUE_RED, 1.0f});
+        ValueAnimator ofFloat = ValueAnimator.ofFloat(BitmapDescriptorFactory.HUE_RED, 1.0f);
         this.valueAnimator = ofFloat;
-        ofFloat.setDuration((long) i2);
+        ofFloat.setDuration(i2);
         ofFloat.setRepeatCount(i - 1);
         ofFloat.setRepeatMode(!z ? 1 : i4);
         this.effect = i3;

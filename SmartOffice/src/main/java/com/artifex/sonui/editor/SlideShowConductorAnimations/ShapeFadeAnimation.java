@@ -3,6 +3,7 @@ package com.artifex.sonui.editor.SlideShowConductorAnimations;
 import android.graphics.Path;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 
 public abstract class ShapeFadeAnimation extends FadeAnimation {
@@ -32,7 +33,7 @@ public abstract class ShapeFadeAnimation extends FadeAnimation {
 
     public void onAnimationEnd(Animation animation) {
         super.onAnimationEnd(animation);
-        this.viewToAnim.setClipPath((Path) null);
+        this.viewToAnim.setClipPath(null);
         this.viewToAnim = null;
     }
 }

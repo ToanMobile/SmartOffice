@@ -2,6 +2,7 @@ package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
 import android.graphics.RectF;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 
 public class WedgeFadeAnimation extends ShapeFadeAnimation {
@@ -16,7 +17,7 @@ public class WedgeFadeAnimation extends ShapeFadeAnimation {
         float f2 = f * 180.0f;
         int i = this.mHeight;
         int i2 = this.mWidth;
-        int sqrt = (int) Math.sqrt((double) ((i2 * i2) + (i * i)));
+        int sqrt = (int) Math.sqrt((i2 * i2) + (i * i));
         int i3 = this.mWidth;
         int i4 = this.mHeight;
         RectF rectF = new RectF((float) ((i3 / 2) - sqrt), (float) ((i4 / 2) - sqrt), (float) ((i3 / 2) + sqrt), (float) ((i4 / 2) + sqrt));

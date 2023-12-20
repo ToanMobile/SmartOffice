@@ -1,8 +1,10 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.graphics.Path;
+
 import com.artifex.sonui.editor.SlideShowConductorView;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import java.util.Random;
 
 public class DissolveFadeAnimation extends ShapeFadeAnimation {

@@ -1,6 +1,7 @@
 package com.artifex.sonui.editor.SlideShowConductorAnimations;
 
 import android.view.animation.Animation;
+
 import com.artifex.sonui.editor.SlideShowConductor;
 import com.artifex.sonui.editor.SlideShowConductorView;
 
@@ -14,7 +15,7 @@ public abstract class FadeAnimation extends Animation implements Animation.Anima
     }
 
     public FadeAnimation(int i, boolean z, int i2, SlideShowConductorView slideShowConductorView) {
-        setDuration((long) i2);
+        setDuration(i2);
         setAnimationListener(this);
         setRepeatCount(i - 1);
         setRepeatMode(z ? 2 : 1);
@@ -24,10 +25,11 @@ public abstract class FadeAnimation extends Animation implements Animation.Anima
     public void onAnimationEnd(Animation animation) {
         FadeListener fadeListener = this.mListener;
         if (fadeListener != null) {
-            SlideShowConductor.SlideShowConductorFadeTask.this.view.clearAnimation();
+            //TODO TOAN
+            //SlideShowConductor.SlideShowConductorFadeTask.this.view.clearAnimation();
             this.mListener = null;
         }
-        setAnimationListener((AnimationListener) null);
+        setAnimationListener(null);
     }
 
     public void onAnimationRepeat(Animation animation) {

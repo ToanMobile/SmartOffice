@@ -14,9 +14,18 @@ public class TransitionAnimation extends Animation implements Animation.Animatio
         setAnimationListener(this);
     }
 
-    public void onAnimationRepeat(Animation animation) {
+    @Override
+    public void onAnimationStart(Animation animation) {
+
     }
 
-    public void onAnimationStart(Animation animation) {
+    @Override
+    public void onAnimationEnd(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+
     }
 }
