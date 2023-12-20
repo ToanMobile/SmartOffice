@@ -30,11 +30,12 @@ public abstract class ArDkLib {
 
     public static void enumeratePdfToc(ArDkDoc arDkDoc, final EnumeratePdfTocListener enumeratePdfTocListener) {
         MuPDFDoc muPDFDoc = (MuPDFDoc) arDkDoc;
-        AnonymousClass1 r0 = new MuPDFDoc.MuPDFEnumerateTocListener() {
+        MuPDFDoc.MuPDFEnumerateTocListener r0 = new MuPDFDoc.MuPDFEnumerateTocListener() {
         };
         Objects.requireNonNull(muPDFDoc);
-        muPDFDoc.mWorker.add(new Worker.Task(r0) {
-            public final /* synthetic */ MuPDFEnumerateTocListener val$listener;
+        //TODO TOAN
+        /*muPDFDoc.mWorker.add(new Worker.Task(r0) {
+            public final *//* synthetic *//* MuPDFEnumerateTocListener val$listener;
 
             {
                 this.val$listener = r2;
@@ -55,7 +56,7 @@ public abstract class ArDkLib {
                 } catch (Exception unused) {
                 }
             }
-        });
+        });*/
     }
 
     public static ConfigOptions getAppConfigOptions() {

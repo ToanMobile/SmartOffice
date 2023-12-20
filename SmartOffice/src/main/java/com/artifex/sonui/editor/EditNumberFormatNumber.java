@@ -53,6 +53,7 @@ public class EditNumberFormatNumber {
         ((SODoc) editNumberFormatNumber.doc).setSelectedCellFormat(left_formats[editNumberFormatNumber.leftWheel.getCurrentItem()].replace("DEC", str));
     }
 
+    /** @noinspection rawtypes*/
     public static void show(Context context, View view, ArDkDoc arDkDoc) {
         EditNumberFormatNumber editNumberFormatNumber = new EditNumberFormatNumber();
         View inflate = View.inflate(context, R.layout.sodk_editor_number_format_number, (ViewGroup) null);
@@ -111,7 +112,7 @@ public class EditNumberFormatNumber {
         WheelView wheelView2 = editNumberFormatNumber.leftWheel;
         wheelView2.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(EditNumberFormatNumber::java.this);
             }
 
             public void onScrollingStarted(WheelView wheelView) {
@@ -119,7 +120,7 @@ public class EditNumberFormatNumber {
         });
         editNumberFormatNumber.scientificCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(this);
             }
         });
         editNumberFormatNumber.thousandsSepCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -3,7 +3,6 @@ package com.artifex.sonui.editor;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
@@ -20,7 +19,7 @@ public class EditNumberFormatFraction {
         editNumberFormatFraction.descriptions = new String[]{context.getString(R.string.sodk_editor_up_to_one_digit), context.getString(R.string.sodk_editor_up_to_two_digits), context.getString(R.string.sodk_editor_up_to_three_digits), context.getString(R.string.sodk_editor_as_halves), context.getString(R.string.sodk_editor_as_quarters), context.getString(R.string.sodk_editor_as_eighths), context.getString(R.string.sodk_editor_as_sixteenths), context.getString(R.string.sodk_editor_as_tenths), context.getString(R.string.sodk_editor_as_hundredths)};
         String selectedCellFormat = ((SODoc) arDkDoc).getSelectedCellFormat();
         View inflate = View.inflate(context, R.layout.sodk_editor_number_format_fractions, (ViewGroup) null);
-        final WheelView wheelView = (WheelView) inflate.findViewById(R.id.wheel);
+        final WheelView wheelView = inflate.findViewById(R.id.wheel);
         ArrayWheelAdapter arrayWheelAdapter = new ArrayWheelAdapter(context, editNumberFormatFraction.descriptions);
         arrayWheelAdapter.textSize = 18;
         arrayWheelAdapter.textColor = context.getResources().getColor(R.color.sodk_editor_wheel_item_text_color);
@@ -38,7 +37,7 @@ public class EditNumberFormatFraction {
                 i++;
             }
         }
-        wheelView.scrollingListeners.add(new OnWheelScrollListener(editNumberFormatFraction) {
+        wheelView.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
                 ((SODoc) arDkDoc).setSelectedCellFormat(EditNumberFormatFraction.formats[wheelView.getCurrentItem()]);
             }
@@ -48,11 +47,7 @@ public class EditNumberFormatFraction {
         });
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
         nUIPopupWindow.setFocusable(true);
-        nUIPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener(editNumberFormatFraction) {
-            public void onDismiss() {
-                wheelView.scrollingListeners.clear();
-            }
-        });
+        nUIPopupWindow.setOnDismissListener(() -> wheelView.scrollingListeners.clear());
         nUIPopupWindow.showAsDropDown(view, 30, 30);
     }
 }

@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+
 import com.artifex.mupdf.fitz.ColorParams;
 import com.artifex.mupdf.fitz.DisplayList;
 import com.artifex.mupdf.fitz.DisplayListDevice;
@@ -27,9 +28,9 @@ import com.artifex.mupdf.fitz.Quad;
 import com.artifex.mupdf.fitz.Rect;
 import com.artifex.mupdf.fitz.SeekableInputOutputStream;
 import com.artifex.mupdf.fitz.SeekableInputStream;
-import com.artifex.solib.Worker;
 import com.artifex.sonui.editor.NUIDocView;
 import com.artifex.sonui.editor.SODocSession;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -93,7 +94,7 @@ public class MuPDFDoc extends ArDkDoc {
 
     public interface JsEventListener {
 
-        public static class AlertResult extends PDFDocument.JsEventListener.AlertResult {
+        class AlertResult extends PDFDocument.JsEventListener.AlertResult {
         }
 
         AlertResult onAlert(String str, String str2, int i, int i2, boolean z, String str3, boolean z2);
@@ -138,19 +139,21 @@ public class MuPDFDoc extends ArDkDoc {
         muPDFDoc.searchNewPage = true;
         ((Activity) muPDFDoc.mContext).runOnUiThread(new Runnable() {
             public void run() {
-                MuPDFDoc muPDFDoc = MuPDFDoc.this;
+                //TODO TOAN
+                /*MuPDFDoc muPDFDoc = MuPDFDoc.this;
                 SOSearchListener sOSearchListener = muPDFDoc.searchListener;
                 if (sOSearchListener != null) {
                     int i = muPDFDoc.searchPage;
                     Objects.requireNonNull(sOSearchListener);
-                }
+                    sOSearchListener
+                }*/
             }
         });
     }
 
     public static void access$2500(MuPDFDoc muPDFDoc, int i) {
         Objects.requireNonNull(muPDFDoc);
-        Integer num = new Integer(i);
+        Integer num = i;
         if (!muPDFDoc.pagesWithRedactions.contains(num)) {
             muPDFDoc.pagesWithRedactions.add(num);
         }
@@ -161,7 +164,7 @@ public class MuPDFDoc extends ArDkDoc {
         int size = muPDFDoc.mPages.size();
         for (int i = 0; i < size; i++) {
             if (muPDFDoc.mPages.get(i).countAnnotations(12) > 0) {
-                muPDFDoc.pagesWithRedactions.add(Integer.valueOf(i));
+                muPDFDoc.pagesWithRedactions.add(i);
             }
         }
     }
@@ -178,7 +181,7 @@ public class MuPDFDoc extends ArDkDoc {
                 return document;
             }
             final Object fileHandleForReading = sOSecureFS.getFileHandleForReading(str);
-            document = Document.openDocument((SeekableInputStream) new SeekableInputStream() {
+            document = Document.openDocument(new SeekableInputStream() {
                 public long position() throws IOException {
                     return sOSecureFS.getFileOffset(fileHandleForReading);
                 }
@@ -205,6 +208,7 @@ public class MuPDFDoc extends ArDkDoc {
             return document;
         } catch (Exception unused) {
         }
+        return null;
     }
 
     public void abortLoad() {
@@ -334,7 +338,6 @@ public class MuPDFDoc extends ArDkDoc {
                 pDFDocument.beginOperation("createSignatureAt");
                 MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
                 Context context = MuPDFDoc.this.mContext;
-                PointF pointF = pointF;
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
@@ -345,11 +348,11 @@ public class MuPDFDoc extends ArDkDoc {
                         Rect bounds = createAnnotation.getBounds();
                         float f = bounds.x0;
                         float f2 = bounds.y0;
-                        float f3 = f - f;
+                        float f3 = 0.0f;
                         bounds.x0 = f3;
                         float f4 = bounds.x1 - f;
                         bounds.x1 = f4;
-                        bounds.y0 = f2 - f2;
+                        bounds.y0 = 0.0f;
                         bounds.y1 -= f2;
                         bounds.y1 = bounds.y0 + (((f4 - f3) * ((float) image.getHeight())) / ((float) image.getWidth()));
                         DisplayList displayList = new DisplayList(bounds);
@@ -430,7 +433,6 @@ public class MuPDFDoc extends ArDkDoc {
                 PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
                 pDFDocument.beginOperation("createSignatureAt");
                 MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
-                PointF pointF = pointF;
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
@@ -470,7 +472,6 @@ public class MuPDFDoc extends ArDkDoc {
                 PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(muPDFDoc.mDocument);
                 pDFDocument.beginOperation("createTextAnnotationAt");
                 MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
-                PointF pointF = pointF;
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
@@ -542,7 +543,6 @@ public class MuPDFDoc extends ArDkDoc {
             public void run() {
                 MuPDFDoc.this.clearSelection();
                 MuPDFDoc.access$3200(MuPDFDoc.this);
-                Runnable runnable = runnable;
                 if (runnable != null) {
                     runnable.run();
                 }
@@ -560,7 +560,6 @@ public class MuPDFDoc extends ArDkDoc {
             public void run() {
                 MuPDFDoc.this.clearSelection();
                 MuPDFDoc.access$3200(MuPDFDoc.this);
-                Runnable runnable = runnable;
                 if (runnable != null) {
                     runnable.run();
                 }
@@ -670,7 +669,7 @@ public class MuPDFDoc extends ArDkDoc {
     }
 
     public boolean getSelectionCanBeDeleted() {
-        return (this.selectedAnnotPagenum == -1 || this.selectedAnnotIndex == -1) ? false : true;
+        return this.selectedAnnotPagenum != -1 && this.selectedAnnotIndex != -1;
     }
 
     public boolean getSelectionCanBeResized() {
@@ -686,10 +685,7 @@ public class MuPDFDoc extends ArDkDoc {
         if (selectedAnnotation != null && selectedAnnotation.type == 0) {
             return true;
         }
-        if (selectedAnnotation == null || selectedAnnotation.type != 8) {
-            return false;
-        }
-        return true;
+        return selectedAnnotation != null && selectedAnnotation.type == 8;
     }
 
     public boolean getSelectionIsAlterableTextSelection() {
@@ -711,10 +707,7 @@ public class MuPDFDoc extends ArDkDoc {
         if (!isNull(trailer)) {
             trailer = trailer.get("Fields");
         }
-        if (!isNull(trailer) && trailer.size() > 0) {
-            return true;
-        }
-        return false;
+        return !isNull(trailer) && trailer.size() > 0;
     }
 
     public boolean hasRedactionsToApply() {
@@ -736,10 +729,7 @@ public class MuPDFDoc extends ArDkDoc {
         if (!isNull(trailer)) {
             trailer = trailer.get("XFA");
         }
-        if (isNull(trailer)) {
-            return false;
-        }
-        return true;
+        return !isNull(trailer);
     }
 
     public final boolean isNull(PDFObject pDFObject) {
@@ -759,7 +749,7 @@ public class MuPDFDoc extends ArDkDoc {
         if (this.mLoadAborted) {
             SODocLoadListener sODocLoadListener = this.mListener;
             if (sODocLoadListener != null) {
-                ((SODocSession.AnonymousClass1) sODocLoadListener).onError(6, 0);
+                ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onError(6, 0);
                 return;
             }
             return;
@@ -775,18 +765,18 @@ public class MuPDFDoc extends ArDkDoc {
                     muPDFDoc.mPageNumber = i;
                     SODocLoadListener sODocLoadListener = muPDFDoc.mListener;
                     if (sODocLoadListener != null) {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener).onPageLoad(i);
+                        ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onPageLoad(i);
                     }
                     MuPDFDoc.this.loadNextPage();
                 } else if (this.error) {
                     SODocLoadListener sODocLoadListener2 = MuPDFDoc.this.mListener;
                     if (sODocLoadListener2 != null) {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener2).onError(6, 0);
+                        ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onError(6, 0);
                     }
                 } else {
                     SODocLoadListener sODocLoadListener3 = MuPDFDoc.this.mListener;
                     if (sODocLoadListener3 != null) {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener3).onDocComplete();
+                        ((SODocSession.SODocSessionLoadListener) sODocLoadListener3).onDocComplete();
                     }
                 }
             }
@@ -822,12 +812,11 @@ public class MuPDFDoc extends ArDkDoc {
         new Handler().post(new Runnable() {
             public void run() {
                 MuPDFDoc muPDFDoc = MuPDFDoc.this;
-                int i = i;
                 muPDFDoc.mSelectionStartPage = i;
                 muPDFDoc.mSelectionEndPage = i;
                 SODocLoadListener sODocLoadListener = muPDFDoc.mListener;
                 if (sODocLoadListener != null) {
-                    ((SODocSession.AnonymousClass1) sODocLoadListener).onSelectionChanged(i, i);
+                    ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onSelectionChanged(i, i);
                 }
             }
         });
@@ -886,13 +875,13 @@ public class MuPDFDoc extends ArDkDoc {
             if (i >= 5) {
                 SODocLoadListener sODocLoadListener = this.mListener;
                 if (sODocLoadListener != null) {
-                    ((SODocSession.AnonymousClass1) sODocLoadListener).onError(6, 0);
+                    ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onError(6, 0);
                 }
                 return false;
             }
             SODocLoadListener sODocLoadListener2 = this.mListener;
             if (sODocLoadListener2 != null) {
-                ((SODocSession.AnonymousClass1) sODocLoadListener2).onError(4096, 0);
+                ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onError(4096, 0);
             }
             return false;
         }
@@ -906,25 +895,17 @@ public class MuPDFDoc extends ArDkDoc {
         if (canSave()) {
             saveToInternal(str, sODocSaveListener);
         } else if (str.compareToIgnoreCase(this.mOpenedPath) == 0) {
-            ArDkLib.runOnUiThread(new Runnable() {
-                public void run() {
-                    sODocSaveListener.onComplete(0, 0);
-                    MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
-                }
+            ArDkLib.runOnUiThread(() -> {
+                sODocSaveListener.onComplete(0, 0);
+                MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
             });
         } else if (FileUtils.copyFile(this.mOpenedPath, str, true)) {
-            ArDkLib.runOnUiThread(new Runnable() {
-                public void run() {
-                    sODocSaveListener.onComplete(0, 0);
-                    MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
-                }
+            ArDkLib.runOnUiThread(() -> {
+                sODocSaveListener.onComplete(0, 0);
+                MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
             });
         } else {
-            ArDkLib.runOnUiThread(new Runnable(this) {
-                public void run() {
-                    sODocSaveListener.onComplete(1, 795);
-                }
-            });
+            ArDkLib.runOnUiThread(() -> sODocSaveListener.onComplete(1, 795));
         }
     }
 
@@ -1075,7 +1056,7 @@ public class MuPDFDoc extends ArDkDoc {
                             PDFDocument pDFDocument = pDFDocument;
                             Object fileHandleForWriting = sOSecureFS.getFileHandleForWriting(str2);
                             try {
-                                pDFDocument.save((SeekableInputOutputStream) new SeekableInputOutputStream(fileHandleForWriting) {
+                                pDFDocument.save(new SeekableInputOutputStream(fileHandleForWriting) {
                                     public long position() throws IOException {
                                         return sOSecureFS.getFileOffset(r10);
                                     }
@@ -1139,7 +1120,7 @@ public class MuPDFDoc extends ArDkDoc {
     }
 
     public void saveToPDF(String str, boolean z, SODocSaveListener sODocSaveListener) {
-        saveToExportToInternal(str, sODocSaveListener, (String) null);
+        saveToExportToInternal(str, sODocSaveListener, null);
     }
 
     public int search() {
@@ -1293,7 +1274,7 @@ public class MuPDFDoc extends ArDkDoc {
                     com.artifex.solib.MuPDFDoc.access$1900(r3)
                     goto L_0x0002
                 */
-                throw new UnsupportedOperationException("Method not decompiled: com.artifex.solib.MuPDFDoc.AnonymousClass13.work():void");
+                throw new UnsupportedOperationException("Method not decompiled: com.artifex.solib.MuPDFDoc.SODocSessionLoadListener3.work():void");
             }
         });
         return 0;
@@ -1326,10 +1307,8 @@ public class MuPDFDoc extends ArDkDoc {
                     muPDFDoc3.update(muPDFDoc3.selectedAnnotPagenum);
                     if (countAnnotations <= 1 && z) {
                         MuPDFDoc muPDFDoc4 = MuPDFDoc.this;
-                        Integer num = new Integer(muPDFDoc4.selectedAnnotPagenum);
-                        if (muPDFDoc4.pagesWithRedactions.contains(num)) {
-                            muPDFDoc4.pagesWithRedactions.remove(num);
-                        }
+                        Integer num = Integer.valueOf(muPDFDoc4.selectedAnnotPagenum);
+                        muPDFDoc4.pagesWithRedactions.remove(num);
                     }
                 }
             });
@@ -1456,10 +1435,7 @@ public class MuPDFDoc extends ArDkDoc {
         final MuPDFAnnotation selectedAnnotation = getSelectedAnnotation();
         if (selectedAnnotation != null && str != null) {
             String str2 = selectedAnnotation.mContents;
-            boolean z = true;
-            if (str2 != null && str2.compareTo(str) == 0) {
-                z = false;
-            }
+            boolean z = str2 == null || str2.compareTo(str) != 0;
             if (z) {
                 this.mWorker.add(new Worker.Task() {
                     public void run() {
@@ -1531,10 +1507,10 @@ public class MuPDFDoc extends ArDkDoc {
             public void run() {
                 SODocLoadListener sODocLoadListener = MuPDFDoc.this.mListener;
                 if (sODocLoadListener != null) {
-                    ((SODocSession.AnonymousClass1) sODocLoadListener).onDocComplete();
+                    ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onDocComplete();
                     SODocLoadListener sODocLoadListener2 = MuPDFDoc.this.mListener;
                     int i = i;
-                    ((SODocSession.AnonymousClass1) sODocLoadListener2).onSelectionChanged(i, i);
+                    ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onSelectionChanged(i, i);
                 }
             }
 
