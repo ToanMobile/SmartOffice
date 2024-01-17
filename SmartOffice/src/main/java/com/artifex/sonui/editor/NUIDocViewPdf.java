@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager$$ExternalSyntheticOutline0;
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -41,9 +40,7 @@ import java.util.Objects;
 
 public class NUIDocViewPdf extends NUIDocView {
     public static final /* synthetic */ int $r8$clinit = 0;
-    public OnClickListener coverListener = new OnClickListener(this) {
-        public void onClick(View view) {
-        }
+    public OnClickListener coverListener = view -> {
     };
     public boolean firstSelectionCleared = false;
     public ToolbarButton mAuthorButton;
@@ -579,7 +576,7 @@ public class NUIDocViewPdf extends NUIDocView {
     public void onRedactApply(View view) {
         MuPDFDoc muPDFDoc = (MuPDFDoc) getDoc();
         muPDFDoc.mWorker.add(new Worker.Task() {
-            public void run(
+            public void run() {};
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.18.run():void, dex: classes.dex
             jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.18.run():void, class status: UNLOADED
@@ -704,9 +701,10 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.18.work():void, de
             	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
             
 */
-        });
-        muPDFDoc.clearSelection();
-        updateUIAppearance();
+        ) {
+                muPDFDoc.clearSelection();
+                updateUIAppearance();
+
     }
 
     public void onRedactMark(View view) {
@@ -721,11 +719,12 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.18.work():void, de
             int i = MuPDFPage.mTextSelPageNum;
             if (i != -1) {
                 muPDFDoc.mWorker.add(new Worker.Task(i, false) {
-                    public final /* synthetic */ int val$pageNum;
-                    public final /* synthetic */ boolean val$select;
+                    public final /* synthetic */ int val$pageNum = 0;
+                    public final /* synthetic */ boolean val$select = false;
 
                     /* Code decompiled incorrectly, please refer to instructions dump. */
-                    public void run(
+                    public void run() {
+                    }
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.16.run():void, dex: classes.dex
                     jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.16.run():void, class status: UNLOADED
@@ -882,15 +881,17 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
                     	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
                     
 */
+                    ) {
+                    }
                 });
+                updateUIAppearance();
+                return;
             }
+            clearSelection();
+            getPdfDocView().setMarkTextMode(true);
+            getPdfDocView().hideHandles();
             updateUIAppearance();
-            return;
         }
-        clearSelection();
-        getPdfDocView().setMarkTextMode(true);
-        getPdfDocView().hideHandles();
-        updateUIAppearance();
     }
 
     public void onRedactMarkArea(View view) {
@@ -969,7 +970,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         }
     }
 
-    public final void onTocButton() {
+    public void onTocButton() {
         Context context = getContext();
         ArDkDoc doc = getDoc();
         TocDialog tocDialog = new TocDialog(context, doc, this, new TocDialog.TocDialogListener() {
@@ -984,7 +985,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         TocDialog.TocListViewAdapter tocListViewAdapter = new TocDialog.TocListViewAdapter(tocDialog, context);
         listView.setAdapter(tocListViewAdapter);
         ArDkLib.enumeratePdfToc(doc, new ArDkLib.EnumeratePdfTocListener(tocListViewAdapter, listView, inflate) {
-            public final /* synthetic */ TocListViewAdapter val$adapter;
+            public final /* synthetic */ TocDialog.TocListViewAdapter val$adapter;
             public final /* synthetic */ ListView val$list;
             public final /* synthetic */ View val$popupView;
 
@@ -1055,25 +1056,21 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         doUndo();
     }
 
-    public void preSaveQuestion(final Runnable runnable, final Runnable runnable2) {
+    public void preSaveQuestion(final Runnable runnable1, final Runnable runnable2) {
         if (((MuPDFDoc) getDoc()).hasRedactionsToApply()) {
             Utilities.yesNoMessage((Activity) getContext(), "", getContext().getString(R.string.sodk_editor_redact_confirm_save), getContext().getString(R.string.sodk_editor_yes), getContext().getString(R.string.sodk_editor_no), new Runnable(this) {
                 public void run() {
-                    Runnable runnable = runnable;
-                    if (runnable != null) {
-                        runnable.run();
+                    if (runnable1 != null) {
+                        runnable1.run();
                     }
                 }
-            }, new Runnable(this) {
-                public void run() {
-                    Runnable runnable = runnable2;
-                    if (runnable != null) {
-                        runnable.run();
-                    }
+            }, () -> {
+                if (runnable2 != null) {
+                    runnable2.run();
                 }
             });
-        } else if (runnable != null) {
-            runnable.run();
+        } else if (runnable1 != null) {
+            runnable1.run();
         }
     }
 
@@ -1306,7 +1303,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
                 public final /* synthetic */ String val$path;
                 public final /* synthetic */ MuPDFDoc val$thisMupdfDoc;
 
-                public void run(
+                public void run(){}
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.30.run():void, dex: classes.dex
                 jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.30.run():void, class status: UNLOADED
@@ -1376,7 +1373,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.30.run():void, dex
                 
 */
 
-                public void work(
+                public void work() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.30.work():void, dex: classes.dex
                 jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.30.work():void, class status: UNLOADED

@@ -668,12 +668,12 @@ public class SignatureDialog extends Dialog {
         muPDFWidget.mDoc.mWorker.add(new Worker.Task(signatureAppearance, rect, this.signer, new MuPDFWidget.RenderAppearanceListener(this) {
         }) {
             public Bitmap bmp;
-            public final /* synthetic */ SignatureAppearance val$appearance;
-            public final /* synthetic */ RenderAppearanceListener val$listener;
-            public final /* synthetic */ Rect val$rect;
-            public final /* synthetic */ PKCS7Signer val$signer;
+            public final /* synthetic */ SignatureAppearance val$appearance = new SignatureAppearance();
+            public final /* synthetic */ MuPDFWidget.RenderAppearanceListener val$listener = null;
+            public final /* synthetic */ Rect val$rect = new Rect();
+            public final /* synthetic */ PKCS7Signer val$signer = null;
 
-            public void run(
+            public void run() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFWidget.6.run():void, dex: classes.dex
             jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFWidget.6.run():void, class status: UNLOADED
@@ -736,7 +736,7 @@ Method generation error in method: com.artifex.solib.MuPDFWidget.6.run():void, d
             
 */
 
-            public void work(
+            public void work(){}
 /*
 Method generation error in method: com.artifex.solib.MuPDFWidget.6.work():void, dex: classes.dex
             jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFWidget.6.work():void, class status: UNLOADED

@@ -103,7 +103,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
         slideShowPageLayout2.setVisibility(View.VISIBLE);
         setViewPropertyAnimator(slideShowPageLayout2).alpha(1.0f).setDuration((long) i).setListener(new AnimatorListenerAdapter() {
             public void onAnimationEnd(Animator animator) {
-                slideShowPageLayout.setVisibility(4);
+                slideShowPageLayout.setVisibility(View.INVISIBLE);
                 SlideShowView.access$610(SlideShowView.this);
                 SlideShowView.access$700(SlideShowView.this, slideShowPageLayout, slideShowPageLayout2);
             }
@@ -140,7 +140,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
 
     public boolean checkMemoryAvailable(long j) {
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
-        ((ActivityManager) getContext().getSystemService("activity")).getMemoryInfo(memoryInfo);
+        ((ActivityManager) getContext().getSystemService(Context.ACTIVITY_SERVICE)).getMemoryInfo(memoryInfo);
         Runtime runtime = Runtime.getRuntime();
         long freeMemory = runtime.freeMemory() + (runtime.maxMemory() - runtime.totalMemory());
         if (freeMemory > memoryInfo.totalMem / 25) {
@@ -190,7 +190,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
         this.mCurrentView = i;
         this.mLastView = 1 - this.mLastView;
         this.mSlideParent.bringChildToFront(this.mPageViews[i]);
-        this.mPageViews[this.mCurrentView].setVisibility(4);
+        this.mPageViews[this.mCurrentView].setVisibility(View.INVISIBLE);
         this.mPageViews[this.mCurrentView].setupPage(this.mPageIndex, this.mSlideParent.getWidth(), this.mSlideParent.getHeight());
         this.mPageViews[this.mCurrentView].startRenderPass();
         this.mPageViews[this.mCurrentView].render(new SORenderListener() {
@@ -466,7 +466,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             SlideShowPageLayout slideShowPageLayout12 = slideShowPageLayoutArr7[slideShowView2.mCurrentView];
                             int i6 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 2;
-                            slideShowPageLayout12.setVisibility(4);
+                            slideShowPageLayout12.setVisibility(View.INVISIBLE);
                             int measuredWidth = slideShowPageLayout12.getMeasuredWidth();
                             int measuredHeight = slideShowPageLayout12.getMeasuredHeight();
                             Bitmap createBitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888);

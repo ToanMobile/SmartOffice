@@ -46,7 +46,7 @@ public class TocDialog implements PopupWindow.OnDismissListener {
     public interface TocDialogListener {
     }
 
-    public class TocListViewAdapter extends BaseAdapter {
+    public static class TocListViewAdapter extends BaseAdapter {
         public ArrayList<TocData> listEntries = new ArrayList<>();
         public Context mContext;
         public Map<Integer, TocData> mapEntries = new HashMap();

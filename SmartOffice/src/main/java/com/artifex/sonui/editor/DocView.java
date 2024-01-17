@@ -867,7 +867,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
         }
     }
 
-    public final void moveResizingView(int i, int i2, int i3, int i4) {
+    public void moveResizingView(int i, int i2, int i3, int i4) {
         Rect screenRect = this.mSelectionStartPage.screenRect();
         Rect rect = new Rect(i, i2, i + i3, i2 + i4);
         int[] iArr = new int[2];
@@ -2456,7 +2456,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
         setupNoteEditor();
     }
 
-    public final DragHandle setupHandle(RelativeLayout relativeLayout, int i) {
+    public DragHandle setupHandle(RelativeLayout relativeLayout, int i) {
         DragHandle dragHandle;
         if (i == 7) {
             dragHandle = new DragHandle(getContext(), R.layout.sodk_editor_drag_handle, i);

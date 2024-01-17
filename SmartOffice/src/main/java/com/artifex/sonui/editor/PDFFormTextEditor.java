@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.artifex.mupdf.fitz.PDFWidget;
 import com.artifex.solib.ArDkLib;
 import com.artifex.solib.ConfigOptions;
@@ -28,6 +29,7 @@ import com.artifex.solib.Worker;
 import com.artifex.sonui.editor.DocPageView;
 import com.artifex.sonui.editor.PDFFormEditor;
 import com.artifex.sonui.editor.SelectionHandle;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -230,7 +232,7 @@ public class PDFFormTextEditor extends PDFFormEditor {
     public void onRenderComplete() {
         super.onRenderComplete();
         if (this.mWaitingForRender) {
-            final AnonymousClass8 r0 = new Runnable() {
+            final Runnable r0 = new Runnable() {
                 public void run() {
                     PDFFormTextEditor pDFFormTextEditor = PDFFormTextEditor.this;
                     if (pDFFormTextEditor.mSetInitialSelection) {
@@ -459,13 +461,13 @@ public class PDFFormTextEditor extends PDFFormEditor {
             hideMenu();
         }
         final ConfigOptions docConfigOptions = this.mDocView.getDocConfigOptions();
-        View inflate = ((LayoutInflater) getContext().getSystemService("layout_inflater")).inflate(R.layout.sodk_editor_form_edittext_popup, (ViewGroup) null);
+        View inflate = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.sodk_editor_form_edittext_popup, (ViewGroup) null);
         boolean z = true;
         PopupWindow popupWindow2 = new PopupWindow(inflate, -2, -2, true);
         this.popupWindow = popupWindow2;
         popupWindow2.setOutsideTouchable(true);
         this.popupWindow.setFocusable(false);
-        this.popupWindow.showAsDropDown(this, 0, this.mSelectionHandleLower.getVisibility() == 0 ? this.mSelectionHandleLower.getHeight() : 0);
+        this.popupWindow.showAsDropDown(this, 0, this.mSelectionHandleLower.getVisibility() == View.VISIBLE ? this.mSelectionHandleLower.getHeight() : 0);
         this.popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             public void onDismiss() {
                 PDFFormTextEditor.this.popupWindow = null;
@@ -590,7 +592,7 @@ public class PDFFormTextEditor extends PDFFormEditor {
         this.mSelectionHandleLower = (SelectionHandle) ((Activity) getContext()).findViewById(R.id.pdf_form_text_editor_handle_lower);
         super.start(docMuPdfPageView, i, muPDFDoc, docView, muPDFWidget, rect, editorListener);
         Utilities.showKeyboard(getContext());
-        AnonymousClass1 r3 = new TextWatcher() {
+        TextWatcher r3 = new TextWatcher() {
             public void afterTextChanged(Editable editable) {
             }
 
@@ -603,17 +605,15 @@ public class PDFFormTextEditor extends PDFFormEditor {
         };
         this.mWatcher = r3;
         this.mEditText.addTextChangedListener(r3);
-        this.mEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i != 5) {
-                    return false;
-                }
-                if (!PDFFormTextEditor.this.stop()) {
-                    return true;
-                }
-                PDFFormTextEditor.this.mEditorListener.onStopped();
+        this.mEditText.setOnEditorActionListener((textView, i1, keyEvent) -> {
+            if (i1 != 5) {
                 return false;
             }
+            if (!PDFFormTextEditor.this.stop()) {
+                return true;
+            }
+            PDFFormTextEditor.this.mEditorListener.onStopped();
+            return false;
         });
         this.mEditText.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -664,7 +664,7 @@ public class PDFFormTextEditor extends PDFFormEditor {
             }
 
             public void work() {
-                MuPDFWidget muPDFWidget = muPDFWidget;
+                MuPDFWidget muPDFWidget = new MuPDFWidget();
                 muPDFWidget.mDoc.checkForWorkerThread();
                 PDFWidget pDFWidget = muPDFWidget.mWidget;
                 if (pDFWidget != null) {
@@ -732,8 +732,9 @@ public class PDFFormTextEditor extends PDFFormEditor {
             int i = this.mPageNumber;
             Objects.requireNonNull(muPDFDoc);
             Waiter waiter = new Waiter();
-            muPDFDoc.mWorker.add(new Worker.Task(i, true, waiter) {
-                public void run(
+            muPDFDoc.mWorker.add(new Worker.Task() {
+                public void run() {
+                }
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.25.run():void, dex: classes.dex
                 jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.25.run():void, class status: UNLOADED
@@ -876,6 +877,8 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.25.work():void, de
                 	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
                 
 */
+                ) {
+                }
             });
             waiter.doWait();
         }

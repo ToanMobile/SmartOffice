@@ -98,9 +98,9 @@ public class PDFFormCheckboxEditor extends PDFFormEditor {
         Objects.requireNonNull(muPDFWidget);
         Waiter waiter = new Waiter();
         muPDFWidget.mDoc.mWorker.add(new Worker.Task(waiter) {
-            public final /* synthetic */ Waiter val$waiter;
+            public final /* synthetic */ Waiter val$waiter = new Waiter();
 
-            public void run(
+            public void run() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFWidget.5.run():void, dex: classes.dex
             jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFWidget.5.run():void, class status: UNLOADED
@@ -163,7 +163,7 @@ Method generation error in method: com.artifex.solib.MuPDFWidget.5.run():void, d
             
 */
 
-            public void work(
+            public void work() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFWidget.5.work():void, dex: classes.dex
             jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFWidget.5.work():void, class status: UNLOADED

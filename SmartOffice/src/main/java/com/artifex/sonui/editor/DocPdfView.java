@@ -83,7 +83,7 @@ public class DocPdfView extends DocView {
             docPdfView7.mResizingPage.screenToPage(docPdfView7.mResizingRect);
             DocPdfView docPdfView8 = DocPdfView.this;
             if (docPdfView8.resizingRedaction && docPdfView8.resizingTextRedaction) {
-                docPdfView8.mResizingView.setVisibility(4);
+                docPdfView8.mResizingView.setVisibility(View.INVISIBLE);
                 DocPdfView docPdfView9 = DocPdfView.this;
                 docPdfView9.updateTextSelectionRects(docPdfView9.mResizingPage, dragHandle);
             }
@@ -123,10 +123,10 @@ public class DocPdfView extends DocView {
                 int i2 = docPdfView3.sigEditingAnnotIndex;
                 if (i2 < muPDFPage.mAnnotations.size()) {
                     muPDFPage.mDoc.mWorker.add(new Worker.Task(muPDFPage.mAnnotations.get(i2), new com.artifex.mupdf.fitz.Rect((float) screenToPage.left, (float) screenToPage.top, (float) screenToPage.right, (float) screenToPage.bottom)) {
-                        public final /* synthetic */ com.artifex.mupdf.fitz.Rect val$fr;
-                        public final /* synthetic */ MuPDFAnnotation val$mAnnot;
+                        public final /* synthetic */ com.artifex.mupdf.fitz.Rect val$fr = null;
+                        public final /* synthetic */ MuPDFAnnotation val$mAnnot = null;
 
-                        public void run(
+                        public void run() {};
 /*
 Method generation error in method: com.artifex.solib.MuPDFPage.4.run():void, dex: classes.dex
                         jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFPage.4.run():void, class status: UNLOADED
@@ -214,7 +214,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.run():void, dex
                         
 */
 
-                        public void work(
+                        public void work() {};
 /*
 Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, dex: classes.dex
                         jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFPage.4.work():void, class status: UNLOADED
@@ -416,7 +416,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
             DocPdfView.this.mResizingMovingPointAtStart = new Point(DocPdfView.this.mResizingMovingPoint);
             DocPdfView docPdfView9 = DocPdfView.this;
             if (docPdfView9.resizingTextRedaction) {
-                docPdfView9.mResizingView.setVisibility(4);
+                docPdfView9.mResizingView.setVisibility(View.INVISIBLE);
                 DocPdfView docPdfView10 = DocPdfView.this;
                 docPdfView10.updateTextSelectionRects(docPdfView10.mResizingPage, dragHandle);
                 return;
@@ -463,7 +463,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         public DocMuPdfPageView page;
         public MuPDFWidget signature;
 
-        public Signature(DocPdfView docPdfView, AnonymousClass1 r2) {
+        public Signature(DocPdfView docPdfView, NUIViewFactory.AnonymousClass1 r2) {
         }
     }
 
@@ -533,7 +533,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         }
     }
 
-    private DragHandle setupHandle(RelativeLayout relativeLayout, int i) {
+    public DragHandle setupHandle(RelativeLayout relativeLayout, int i) {
         DragHandle dragHandle;
         if (i == 7) {
             dragHandle = new DragHandle(getContext(), R.layout.sodk_editor_drag_handle, i);
@@ -1067,8 +1067,8 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                         public final /* synthetic */ boolean val$select;
 
                         {
-                            this.val$pageNum = r2;
-                            this.val$select = r3;
+                            this.val$pageNum = 0; // r2; TODO:
+                            this.val$select = false; // r3;
                         }
 
                         /* JADX WARNING: Code restructure failed: missing block: B:8:0x002e, code lost:
@@ -1366,7 +1366,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 MuPDFWidget[] signatures = docMuPdfPageView.getSignatures();
                 if (signatures != null && signatures.length > 0) {
                     for (int i2 = 0; i2 < signatures.length; i2++) {
-                        Signature signature = new Signature(this, (AnonymousClass1) null);
+                        Signature signature = new Signature(this, (NUIViewFactory.AnonymousClass1) null);
                         signature.page = docMuPdfPageView;
                         signature.signature = signatures[i2];
                         signature.indexOnPage = i2;
@@ -1377,7 +1377,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
         }
     }
 
-    private void moveResizingView(int i, int i2, int i3, int i4) {
+    public void moveResizingView(int i, int i2, int i3, int i4) {
         int i5 = i + i3;
         int i6 = i2 + i4;
         Rect rect = new Rect(i, i2, i5, i6);
