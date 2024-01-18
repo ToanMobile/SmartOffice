@@ -1,6 +1,5 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -62,7 +61,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
-import com.applovin.sdk.AppLovinEventTypes;
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -289,7 +287,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         }
     }
 
-    public static void access$2800(NUIDocView nUIDocView) {
+    public void access$2800(NUIDocView nUIDocView) {
         Utilities.hideKeyboard(nUIDocView.getContext());
         if (!nUIDocView.mProgressIsScheduled) {
             nUIDocView.mProgressIsScheduled = true;
@@ -461,7 +459,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 toolbarButton.setEnabled(z);
             }
         });
-        AnonymousClass7 r1 = new ActionMode.Callback() {
+        ActionMode.Callback r1 = new ActionMode.Callback() {
             public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
                 return false;
             }
@@ -739,7 +737,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                         return;
                     }
                     String scheme = uri.getScheme();
-                    if (scheme == null || !scheme.equalsIgnoreCase(AppLovinEventTypes.USER_VIEWED_CONTENT)) {
+                    if (scheme == null) {
                         NUIDocView.this.mDocUserPath = uri.getPath();
                         NUIDocView nUIDocView13 = NUIDocView.this;
                         if (nUIDocView13.mDocUserPath == null) {
@@ -759,7 +757,6 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                             NUIDocView nUIDocView15 = NUIDocView.this;
                             nUIDocView15.mCanGoBack = true;
                             String string = nUIDocView15.getResources().getString(R.string.sodk_editor_cant_create_temp_file);
-                            Activity activity = activity;
                             String string2 = NUIDocView.this.getContext().getString(R.string.sodk_editor_content_error);
                             Utilities.showMessageAndFinish(activity, string2, NUIDocView.this.getContext().getString(R.string.sodk_editor_error_opening_from_other_app) + ": \n\n" + string);
                             return;
@@ -817,7 +814,6 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                                 NUIDocView.this.endProgress();
                                 if (!NUIDocView.this.mSession.isCancelled() || i != 6) {
                                     String openErrorDescription = Utilities.getOpenErrorDescription(NUIDocView.this.getContext(), i);
-                                    AnonymousClass11 r4 = AnonymousClass11.this;
                                     Utilities.showMessage(activity, NUIDocView.this.getContext().getString(R.string.sodk_editor_error), openErrorDescription);
                                 }
                             }
@@ -900,7 +896,6 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                                 NUIDocView.this.endProgress();
                                 if (!NUIDocView.this.mSession.isCancelled() || i != 6) {
                                     String openErrorDescription = Utilities.getOpenErrorDescription(NUIDocView.this.getContext(), i);
-                                    AnonymousClass11 r4 = AnonymousClass11.this;
                                     Utilities.showMessage(activity, NUIDocView.this.getContext().getString(R.string.sodk_editor_error), openErrorDescription);
                                 }
                             }
@@ -975,11 +970,11 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public void applyDocumentTypeConfig(String str) {
     }
 
-    public final void askForCameraPermission(final Runnable runnable) {
+    public final void askForCameraPermission(final Runnable runnable1) {
         if (!Utilities.isPermissionRequested(getContext(), "android.permission.CAMERA")) {
-            runnable.run();
+            runnable1.run();
         } else if (ContextCompat.checkSelfPermission(getContext(), "android.permission.CAMERA") == 0) {
-            runnable.run();
+            runnable1.run();
         } else {
             final BaseActivity currentActivity = BaseActivity.getCurrentActivity();
             BaseActivity.setPermissionResultHandler(new BaseActivity.PermissionResultHandler() {
@@ -987,14 +982,13 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                     BaseActivity.setPermissionResultHandler((BaseActivity.PermissionResultHandler) null);
                     if (i == 1) {
                         if (iArr.length > 0 && iArr[0] == 0) {
-                            new Handler().post(runnable);
+                            new Handler().post(runnable1);
                         } else if (ActivityCompat.shouldShowRequestPermissionRationale(currentActivity, "android.permission.CAMERA")) {
                             BaseActivity baseActivity = currentActivity;
                             Utilities.yesNoMessage(baseActivity, baseActivity.getString(R.string.sodk_editor_permission_denied), currentActivity.getString(R.string.sodk_editor_permission_camera_why), currentActivity.getString(R.string.sodk_editor_yes), currentActivity.getString(R.string.sodk_editor_no), new Runnable() {
                                 public void run() {
-                                    AnonymousClass29 r0 = AnonymousClass29.this;
                                     NUIDocView nUIDocView = NUIDocView.this;
-                                    Runnable runnable = runnable;
+                                    Runnable runnable = runnable1;
                                     int i = NUIDocView.OVERSIZE_PERCENT;
                                     nUIDocView.askForCameraPermission(runnable);
                                 }
@@ -1568,11 +1562,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (doc.canRedo()) {
             updateInputView();
             docView.beforeRedo();
-            doc.doRedo(new Runnable(this) {
-                public void run() {
-                    docView.afterRedo();
-                }
-            });
+            doc.doRedo(() -> docView.afterRedo());
         }
     }
 
@@ -1612,9 +1602,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                         }
                     });
                 }
-            }, new Runnable(this) {
-                public void run() {
-                }
+            }, () -> {
             });
         }
     }
@@ -1696,11 +1684,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (doc.canUndo()) {
             updateInputView();
             docView.beforeUndo();
-            doc.doUndo(new Runnable(this) {
-                public void run() {
-                    docView.afterUndo();
-                }
-            });
+            doc.doUndo(() -> docView.afterUndo());
         }
     }
 
@@ -1749,16 +1733,14 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public void enforceInitialShowUI(View view) {
         boolean showUI = this.mDocCfgOptions.showUI();
         View findViewById = view.findViewById(R.id.tabhost);
-        int i = 0;
         if (findViewById != null) {
-            findViewById.setVisibility(showUI ? 0 : 8);
+            findViewById.setVisibility(showUI ? View.VISIBLE : View.GONE);
         }
         int i2 = R.id.footer;
         View findViewById2 = view.findViewById(i2);
         if (!showUI) {
-            i = 8;
+            findViewById2.setVisibility(View.GONE);
         }
-        findViewById2.setVisibility(i);
         if (!this.mShowUI) {
             if (findViewById != null) {
                 findViewById.setVisibility(View.GONE);
@@ -1820,7 +1802,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                     }
                     view = childAt;
                     z = false;
-                } else if (childAt.getVisibility() == 0) {
+                } else if (childAt.getVisibility() == View.VISIBLE) {
                     z = true;
                     z2 = true;
                 }
@@ -1872,7 +1854,10 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (realScreenSize.x > realScreenSize.y) {
             return 0;
         }
-        int rotation = ((WindowManager) activity().getSystemService(VisionController.WINDOW)).getDefaultDisplay().getRotation();
+        int rotation = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            rotation = ((WindowManager) activity().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
+        }
         if (rotation == 0) {
             int[] iArr = this.cutoutHeights;
             int i = iArr[0];
@@ -2297,7 +2282,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
 
     public void hidePages() {
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.pages_container);
-        if (relativeLayout != null && relativeLayout.getVisibility() != 8) {
+        if (relativeLayout != null && relativeLayout.getVisibility() != View.GONE) {
             final int i = this.mCurrentPageNum;
             relativeLayout.setVisibility(View.GONE);
             this.mDocView.onHidePages();
@@ -2420,12 +2405,12 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
 
     public boolean isSearchFocused() {
         SOEditText sOEditText = (SOEditText) findViewById(R.id.search_text_input);
-        return sOEditText != null && sOEditText.getVisibility() == 0 && sOEditText.isShown() && sOEditText.isFieldFocused();
+        return sOEditText != null && sOEditText.getVisibility() == View.VISIBLE && sOEditText.isShown() && sOEditText.isFieldFocused();
     }
 
     public boolean isSearchVisible() {
         View findViewById = findViewById(R.id.search_text_input);
-        return findViewById != null && findViewById.getVisibility() == 0 && findViewById.isShown();
+        return findViewById != null && findViewById.getVisibility() == View.VISIBLE && findViewById.isShown();
     }
 
     public boolean isTOCEnabled() {
@@ -2512,7 +2497,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         super.onAttachedToWindow();
         if (Build.VERSION.SDK_INT >= 28) {
             try {
-                int rotation = ((WindowManager) activity().getSystemService(VisionController.WINDOW)).getDefaultDisplay().getRotation();
+                int rotation = ((WindowManager) activity().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
                 WindowInsets rootWindowInsets = activity().getWindow().getDecorView().getRootWindowInsets();
                 if (rotation == 0) {
                     this.cutoutHeights[0] = rootWindowInsets.getDisplayCutout().getSafeInsetTop();
@@ -2689,7 +2674,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                     } catch (IOException | UnsupportedOperationException unused) {
                     }
                 }
-            }, new Runnable(this) {
+            }, new Runnable() {
                 public void run() {
                 }
             });
@@ -2793,7 +2778,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 getDocView().onFullscreen(true);
                 onFullScreenHide();
                 if (this.mFullscreenToast == null) {
-                    Toast makeText = Toast.makeText(getContext(), getContext().getString(R.string.sodk_editor_fullscreen_warning), 0);
+                    Toast makeText = Toast.makeText(getContext(), getContext().getString(R.string.sodk_editor_fullscreen_warning), Toast.LENGTH_SHORT);
                     this.mFullscreenToast = makeText;
                     makeText.setGravity(53, 0, 0);
                 }
@@ -2817,7 +2802,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 SODataLeakHandlers sODataLeakHandlers = NUIDocView.this.mDataLeakHandlers;
                 if (sODataLeakHandlers != null) {
                     try {
-                        sODataLeakHandlers.insertImageHandler(this);
+                        sODataLeakHandlers.insertImageHandler(NUIDocView.this);
                     } catch (UnsupportedOperationException unused) {
                     }
                 } else {
@@ -2889,11 +2874,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public void onLineThicknessButton(View view) {
         final DocView docView = getDocView();
         if (docView.getDrawMode()) {
-            InkLineWidthDialog.show(activity(), this.mDrawLineThicknessButton, docView.getInkLineThickness(), new InkLineWidthDialog.WidthChangedListener(this) {
-                public void onWidthChanged(float f) {
-                    docView.setInkLineThickness(f);
-                }
-            });
+            new InkLineWidthDialog().show(activity(), this.mDrawLineThicknessButton, docView.getInkLineThickness(), docView::setInkLineThickness);
         }
     }
 
@@ -3089,7 +3070,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                                     public void run() {
                                         NUIDocView nUIDocView = NUIDocView.this;
                                         nUIDocView.mIsSearching = true;
-                                        NUIDocView.access$2800(nUIDocView);
+                                        nUIDocView.access$2800(nUIDocView);
                                     }
                                 });
                             }
@@ -3401,20 +3382,18 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (this.mSearchHandler == null) {
             this.mSearchHandler = new Handler();
         }
-        this.mSearchHandler.post(new Runnable(false) {
-            public void run() {
-                ArDkDoc doc = NUIDocView.this.getDoc();
-                if (doc != null) {
-                    NUIDocView nUIDocView = NUIDocView.this;
-                    if (!nUIDocView.mIsSearching) {
-                        nUIDocView.mIsSearching = true;
-                        if (nUIDocView.mSearchCounter > 1000) {
-                            nUIDocView.mSearchCounter = 0;
-                        }
-                        nUIDocView.mSearchCounter++;
-                        doc.setSearchBackwards(true);
-                        NUIDocView.access$2800(NUIDocView.this);
+        this.mSearchHandler.post(() -> {
+            ArDkDoc doc = NUIDocView.this.getDoc();
+            if (doc != null) {
+                NUIDocView nUIDocView = NUIDocView.this;
+                if (!nUIDocView.mIsSearching) {
+                    nUIDocView.mIsSearching = true;
+                    if (nUIDocView.mSearchCounter > 1000) {
+                        nUIDocView.mSearchCounter = 0;
                     }
+                    nUIDocView.mSearchCounter++;
+                    doc.setSearchBackwards(true);
+                    nUIDocView.access$2800(NUIDocView.this);
                 }
             }
         });
@@ -3424,20 +3403,18 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         if (this.mSearchHandler == null) {
             this.mSearchHandler = new Handler();
         }
-        this.mSearchHandler.post(new Runnable(true) {
-            public void run() {
-                ArDkDoc doc = NUIDocView.this.getDoc();
-                if (doc != null) {
-                    NUIDocView nUIDocView = NUIDocView.this;
-                    if (!nUIDocView.mIsSearching) {
-                        nUIDocView.mIsSearching = true;
-                        if (nUIDocView.mSearchCounter > 1000) {
-                            nUIDocView.mSearchCounter = 0;
-                        }
-                        nUIDocView.mSearchCounter++;
-                        doc.setSearchBackwards(true);
-                        NUIDocView.access$2800(NUIDocView.this);
+        this.mSearchHandler.post(() -> {
+            ArDkDoc doc = NUIDocView.this.getDoc();
+            if (doc != null) {
+                NUIDocView nUIDocView = NUIDocView.this;
+                if (!nUIDocView.mIsSearching) {
+                    nUIDocView.mIsSearching = true;
+                    if (nUIDocView.mSearchCounter > 1000) {
+                        nUIDocView.mSearchCounter = 0;
                     }
+                    nUIDocView.mSearchCounter++;
+                    doc.setSearchBackwards(true);
+                    nUIDocView.access$2800(NUIDocView.this);
                 }
             }
         });
@@ -3501,7 +3478,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
 
     public void onShowKeyboardPreventPush(boolean z) {
         if ((activity().getWindow().getAttributes().flags & 1024) != 0) {
-            View findViewById = ((Activity) getContext()).findViewById(16908290);
+            View findViewById = ((Activity) getContext()).findViewById(NUIDocView.this.getId());
             if (z) {
                 if (Build.VERSION.SDK_INT < 30) {
                     findViewById.setPadding(0, 0, 0, getKeyboardHeight());
@@ -3592,8 +3569,8 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                     }
                 });
                 ListPopupWindow listPopupWindow2 = this.mListPopupWindow;
-                int makeMeasureSpec = MeasureSpec.makeMeasureSpec(0, 0);
-                int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(0, 0);
+                int makeMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+                int makeMeasureSpec2 = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
                 int count = arrayAdapter.getCount();
                 FrameLayout frameLayout = null;
                 View view = null;
@@ -3762,7 +3739,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         }
         String name = new File(getSession().getFileState().getOpenedPath()).getName();
         if (!FileUtils.getExtension(getSession().getUserPath()).equalsIgnoreCase("pdf")) {
-            name = a$$ExternalSyntheticOutline0.m(name, ".pdf");
+            name = name + ".pdf";
         }
         PrintHelperPdf printHelperPdf = new PrintHelperPdf();
         printHelperPdf.setPrintName(name);
@@ -3791,7 +3768,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             ArDkBitmap[] arDkBitmapArr = this.bitmaps;
             if (i < arDkBitmapArr.length) {
                 if (arDkBitmapArr[i] != null) {
-                    arDkBitmapArr[i].bitmap.recycle();
+                    arDkBitmapArr[i].getBitmap().recycle();
                     this.bitmaps[i] = null;
                 }
                 i++;
@@ -3934,9 +3911,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 NUIDocView.this.getDoc().saveTo(str, new SODocSaveListener() {
                     public void onComplete(int i, int i2) {
                         if (i == 0) {
-                            AnonymousClass48 r0 = AnonymousClass48.this;
                             NUIDocView.this.setFooterText(str);
-                            AnonymousClass48 r02 = AnonymousClass48.this;
                             NUIDocView.this.mFileState.setUserPath(str);
                             NUIDocView.this.mFileState.setHasChanges(false);
                             NUIDocView.this.onSelectionChanged();
@@ -4028,7 +4003,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
     public void scaleToolbar(int i, float f) {
         LinearLayout linearLayout = (LinearLayout) findViewById(i);
         if (linearLayout != null) {
-            linearLayout.measure(MeasureSpec.makeMeasureSpec(0, 0), MeasureSpec.makeMeasureSpec(0, 0));
+            linearLayout.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
             int measuredHeight = linearLayout.getMeasuredHeight();
             int measuredWidth = linearLayout.getMeasuredWidth();
             linearLayout.setScaleX(f);
@@ -4675,16 +4650,16 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             View findViewById = findViewById(R.id.tabhost);
             View findViewById2 = findViewById(R.id.header);
             if (isLandscapePhone()) {
-                if (!z && findViewById.getVisibility() != 8 && !isSearchVisible()) {
+                if (!z && findViewById.getVisibility() != View.GONE && !isSearchVisible()) {
                     findViewById.setVisibility(View.GONE);
                     findViewById2.setVisibility(View.GONE);
                     layoutNow();
-                } else if (z && findViewById.getVisibility() != 0) {
+                } else if (z && findViewById.getVisibility() != View.VISIBLE) {
                     findViewById.setVisibility(View.VISIBLE);
                     findViewById2.setVisibility(View.VISIBLE);
                     layoutNow();
                 }
-            } else if (findViewById.getVisibility() != 0) {
+            } else if (findViewById.getVisibility() != View.VISIBLE) {
                 findViewById.setVisibility(View.VISIBLE);
                 findViewById2.setVisibility(View.VISIBLE);
                 layoutNow();
@@ -5001,7 +4976,7 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
                 if (i == 0) {
                     String name = new File(NUIDocView.this.getSession().getFileState().getOpenedPath()).getName();
                     if (!FileUtils.getExtension(NUIDocView.this.getSession().getUserPath()).equalsIgnoreCase("pdf")) {
-                        name = a$$ExternalSyntheticOutline0.m(name, ".pdf");
+                        name = name + ".pdf";
                     }
                     PrintHelperPdf printHelperPdf = new PrintHelperPdf();
                     printHelperPdf.setPrintName(name);

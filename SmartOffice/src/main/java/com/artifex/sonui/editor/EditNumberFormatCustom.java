@@ -74,7 +74,7 @@ public class EditNumberFormatCustom {
         ((SODoc) arDkDoc).setSelectedCellFormat(formats[wheelView.getCurrentItem()]);
     }
 
-    public static void show(final Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(final Context context, View view, final ArDkDoc arDkDoc) {
         EditNumberFormatCustom editNumberFormatCustom = new EditNumberFormatCustom();
         int i = 0;
         String[] strArr = {context.getString(R.string.sodk_editor_format_category_general), context.getString(R.string.sodk_editor_format_category_number), context.getString(R.string.sodk_editor_format_category_currency), context.getString(R.string.sodk_editor_format_category_date_and_time), context.getString(R.string.sodk_editor_format_category_fraction)};

@@ -1,11 +1,9 @@
 package com.artifex.solib;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-import androidx.concurrent.futures.AbstractResolvableFuture$$ExternalSyntheticOutline1;
 import com.artifex.sonui.editor.SODocSession;
 import java.util.Iterator;
 import java.util.Locale;
@@ -29,14 +27,14 @@ public class SOLib extends ArDkLib {
                 initSecureFS(sOSecureFS);
                 if (ArDkLib.getClipboardHandler() != null) {
                     preInitLib();
-                    AnonymousClass2 r0 = new Thread() {
+                    Thread r0 = new Thread() {
                         public void run() {
                             SOLib.this.logStdout();
                         }
                     };
                     this.stdoutThread = r0;
                     r0.start();
-                    AnonymousClass3 r02 = new Thread() {
+                    Thread r02 = new Thread() {
                         public void run() {
                             SOLib.this.logStderr();
                         }
@@ -45,13 +43,13 @@ public class SOLib extends ArDkLib {
                     r02.start();
                     String language = Locale.getDefault().getLanguage();
                     String country = Locale.getDefault().getCountry();
-                    if (country != null && !country.isEmpty()) {
-                        language = AbstractResolvableFuture$$ExternalSyntheticOutline1.m(language, "-", country);
+                    if (!country.isEmpty()) {
+                        language = language + "-" + country;
                     }
                     long initLib = initLib(language);
                     this.internal = initLib;
                     if (initLib != 0) {
-                        String m = a$$ExternalSyntheticOutline0.m(FileUtils.getTempPathRoot(activity), "/tmp/");
+                        String m = FileUtils.getTempPathRoot(activity) + "/tmp/";
                         if (FileUtils.fileExists(m) && m != null) {
                             SOSecureFS sOSecureFS2 = FileUtils.mSecureFs;
                             if (sOSecureFS2 == null || !sOSecureFS2.isSecurePath(m)) {
@@ -172,36 +170,31 @@ public class SOLib extends ArDkLib {
 
     public native boolean isTrackChangesEnabled();
 
-    public ArDkDoc openDocument(String str, final SODocLoadListener sODocLoadListener, Context context, ConfigOptions configOptions) {
+    public ArDkDoc openDocument(String str, SODocLoadListener sODocLoadListener, Context context, ConfigOptions configOptions) {
         if (configOptions != null) {
             setAnimationEnabled(configOptions.mSettingsBundle.getBoolean("AnimationFeatureEnabledKey", false));
             setTrackChangesEnabled(configOptions.isTrackChangesFeatureEnabled());
         }
-        AnonymousClass1 r5 = new SODocLoadListenerInternal() {
+        SODocLoadListenerInternal r5 = new SODocLoadListenerInternal() {
             public ArDkDoc mDoc = null;
             public int mLastSelectionID = 0;
             public Random mRandom = new Random();
 
-            public static void access$200(AnonymousClass1 r1, int i, int i2) {
+            public void access$200(AnonymousClass1 r1, int i, int i2) {
                 r1.mLastSelectionID = r1.mRandom.nextInt();
                 ArDkDoc arDkDoc = r1.mDoc;
                 arDkDoc.mSelectionStartPage = i;
                 arDkDoc.mSelectionEndPage = i2;
-                ((SODocSession.AnonymousClass1) sODocLoadListener).onSelectionChanged(i, i2);
+                sODocLoadListener.onSelectionChanged(i, i2);
             }
 
             public void error(final int i, final int i2) {
-                ArDkLib.runOnUiThread(new Runnable() {
-                    public void run() {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener).onError(i, i2);
-                    }
-                });
+                ArDkLib.runOnUiThread(() -> sODocLoadListener.onError(i, i2));
             }
 
             public void onLayoutCompleted() {
                 ArDkLib.runOnUiThread(new Runnable() {
                     public void run() {
-                        SODocSession.AnonymousClass1 r0 = (SODocSession.AnonymousClass1) sODocLoadListener;
                         SODocSession sODocSession = SODocSession.this;
                         boolean z = sODocSession.mOpen;
                         if (z && z) {

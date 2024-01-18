@@ -1,6 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import java.util.Objects;
 
 public class Quad {
@@ -51,7 +50,7 @@ public class Quad {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("[");
+        StringBuilder m = new StringBuilder("[");
         m.append(this.ul_x);
         m.append(" ");
         m.append(this.ul_y);

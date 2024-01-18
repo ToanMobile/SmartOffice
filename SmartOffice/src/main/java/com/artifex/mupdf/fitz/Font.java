@@ -1,7 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-
 public class Font {
     public static final int ADOBE_CNS = 0;
     public static final int ADOBE_GB = 1;
@@ -39,7 +37,7 @@ public class Font {
     public native String getName();
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("Font(");
+        StringBuilder m = new StringBuilder("Font(");
         m.append(getName());
         m.append(")");
         return m.toString();

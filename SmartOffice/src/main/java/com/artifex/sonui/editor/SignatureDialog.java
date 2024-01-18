@@ -1,6 +1,5 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -99,50 +98,6 @@ public class SignatureDialog extends Dialog {
     public RadioButton styleTypeTextButton;
     public MuPDFWidget widget;
 
-    /* renamed from: com.artifex.sonui.editor.SignatureDialog$30  reason: invalid class name */
-    public static /* synthetic */ class AnonymousClass30 {
-        public static final /* synthetic */ int[] $SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType;
-
-        /* JADX WARNING: Can't wrap try/catch for region: R(8:0|1|2|3|4|5|6|(3:7|8|10)) */
-        /* JADX WARNING: Failed to process nested try/catch */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:3:0x0012 */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:5:0x001d */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:7:0x0028 */
-        static {
-            /*
-                com.artifex.sonui.editor.SignatureStyle$SignatureStyleType[] r0 = com.artifex.sonui.editor.SignatureStyle.SignatureStyleType.values()
-                int r0 = r0.length
-                int[] r0 = new int[r0]
-                $SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType = r0
-                com.artifex.sonui.editor.SignatureStyle$SignatureStyleType r1 = com.artifex.sonui.editor.SignatureStyle.SignatureStyleType.SignatureStyleType_Text     // Catch:{ NoSuchFieldError -> 0x0012 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0012 }
-                r2 = 1
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0012 }
-            L_0x0012:
-                int[] r0 = $SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType     // Catch:{ NoSuchFieldError -> 0x001d }
-                com.artifex.sonui.editor.SignatureStyle$SignatureStyleType r1 = com.artifex.sonui.editor.SignatureStyle.SignatureStyleType.SignatureStyleType_Draw     // Catch:{ NoSuchFieldError -> 0x001d }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x001d }
-                r2 = 2
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x001d }
-            L_0x001d:
-                int[] r0 = $SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType     // Catch:{ NoSuchFieldError -> 0x0028 }
-                com.artifex.sonui.editor.SignatureStyle$SignatureStyleType r1 = com.artifex.sonui.editor.SignatureStyle.SignatureStyleType.SignatureStyleType_Image     // Catch:{ NoSuchFieldError -> 0x0028 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0028 }
-                r2 = 3
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0028 }
-            L_0x0028:
-                int[] r0 = $SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType     // Catch:{ NoSuchFieldError -> 0x0033 }
-                com.artifex.sonui.editor.SignatureStyle$SignatureStyleType r1 = com.artifex.sonui.editor.SignatureStyle.SignatureStyleType.SignatureStyleType_None     // Catch:{ NoSuchFieldError -> 0x0033 }
-                int r1 = r1.ordinal()     // Catch:{ NoSuchFieldError -> 0x0033 }
-                r2 = 4
-                r0[r1] = r2     // Catch:{ NoSuchFieldError -> 0x0033 }
-            L_0x0033:
-                return
-            */
-            throw new UnsupportedOperationException("Method not decompiled: com.artifex.sonui.editor.SignatureDialog.AnonymousClass30.<clinit>():void");
-        }
-    }
-
     public interface SignatureListener {
         void onCancel();
 
@@ -198,7 +153,7 @@ public class SignatureDialog extends Dialog {
         if (i == 1) {
             this.drawSignatureButton.setVisibility(View.VISIBLE);
             this.chooseImageButton.setVisibility(View.GONE);
-            findViewById(R.id.choose_button_wrapper).setVisibility(4);
+            findViewById(R.id.choose_button_wrapper).setVisibility(View.INVISIBLE);
             this.styleTypeTextButton.setChecked(true);
         } else if (i == 2) {
             this.drawSignatureButton.setVisibility(View.VISIBLE);
@@ -213,7 +168,7 @@ public class SignatureDialog extends Dialog {
         } else if (i == 4) {
             this.drawSignatureButton.setVisibility(View.VISIBLE);
             this.chooseImageButton.setVisibility(View.GONE);
-            findViewById(R.id.choose_button_wrapper).setVisibility(4);
+            findViewById(R.id.choose_button_wrapper).setVisibility(View.INVISIBLE);
             this.styleTypeNoneButton.setChecked(true);
         }
     }
@@ -496,7 +451,7 @@ public class SignatureDialog extends Dialog {
                                 SignatureDialog.this.styleEditing = new SignatureStyle();
                                 SignatureDialog.this.styleEditing.setToDefault();
                                 SignatureStyle signatureStyle = SignatureDialog.this.styleEditing;
-                                StringBuilder m = c$$ExternalSyntheticOutline0.m("Created ");
+                                StringBuilder m = new StringBuilder("Created ");
                                 m.append(new Date().toString());
                                 signatureStyle.styleName = m.toString();
                                 SignatureDialog signatureDialog = SignatureDialog.this;
@@ -523,28 +478,26 @@ public class SignatureDialog extends Dialog {
                                 }
                             }
                         });
-                        AnonymousClass27 r1 = new InputFilter(signatureDialog) {
-                            public CharSequence filter(CharSequence charSequence, int i, int i2, Spanned spanned, int i3, int i4) {
-                                StringBuilder sb = new StringBuilder(i2 - i);
-                                boolean z = true;
-                                for (int i5 = i; i5 < i2; i5++) {
-                                    char charAt = charSequence.charAt(i5);
-                                    if (charAt != 10) {
-                                        sb.append(charAt);
-                                    } else {
-                                        z = false;
-                                    }
+                        InputFilter r1 = (charSequence, i1, i2, spanned, i3, i4) -> {
+                            StringBuilder sb = new StringBuilder(i2 - i1);
+                            boolean z = true;
+                            for (int i5 = i1; i5 < i2; i5++) {
+                                char charAt = charSequence.charAt(i5);
+                                if (charAt != 10) {
+                                    sb.append(charAt);
+                                } else {
+                                    z = false;
                                 }
-                                if (z) {
-                                    return null;
-                                }
-                                if (!(charSequence instanceof Spanned)) {
-                                    return sb;
-                                }
-                                SpannableString spannableString = new SpannableString(sb);
-                                TextUtils.copySpansFrom((Spanned) charSequence, i, sb.length(), (Class) null, spannableString, 0);
-                                return spannableString;
                             }
+                            if (z) {
+                                return null;
+                            }
+                            if (!(charSequence instanceof Spanned)) {
+                                return sb;
+                            }
+                            SpannableString spannableString = new SpannableString(sb);
+                            TextUtils.copySpansFrom((Spanned) charSequence, i1, sb.length(), (Class) null, spannableString, 0);
+                            return spannableString;
                         };
                         signatureDialog.editStyleName.setFilters(new InputFilter[]{r1});
                         if (!signatureDialog.mayUseImages) {
@@ -556,14 +509,12 @@ public class SignatureDialog extends Dialog {
                             signatureDialog.sign_panel.setVisibility(View.GONE);
                             signatureDialog.edit_panel.setVisibility(View.VISIBLE);
                         }
-                        signatureDialog.setOnKeyListener(new OnKeyListener() {
-                            public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
-                                if (i != 4 || SignatureDialog.this.edit_panel.getVisibility() != 0) {
-                                    return false;
-                                }
-                                SignatureDialog.this.showSignPanel();
-                                return true;
+                        signatureDialog.setOnKeyListener((dialogInterface, i12, keyEvent) -> {
+                            if (i12 != 4 || SignatureDialog.this.edit_panel.getVisibility() != View.VISIBLE) {
+                                return false;
                             }
+                            SignatureDialog.this.showSignPanel();
+                            return true;
                         });
                         SignatureDialog signatureDialog3 = SignatureDialog.this;
                         if (signatureDialog3.shouldRestore) {
@@ -665,13 +616,12 @@ public class SignatureDialog extends Dialog {
     public final void setPreview(SignatureAppearance signatureAppearance, final ImageView imageView) {
         Rect rect = new Rect(0, 0, imageView.getWidth(), imageView.getHeight());
         MuPDFWidget muPDFWidget = this.widget;
-        muPDFWidget.mDoc.mWorker.add(new Worker.Task(signatureAppearance, rect, this.signer, new MuPDFWidget.RenderAppearanceListener(this) {
-        }) {
+        muPDFWidget.mDoc.mWorker.add(new Worker.Task() {
             public Bitmap bmp;
-            public final /* synthetic */ SignatureAppearance val$appearance = new SignatureAppearance();
-            public final /* synthetic */ MuPDFWidget.RenderAppearanceListener val$listener = null;
-            public final /* synthetic */ Rect val$rect = new Rect();
-            public final /* synthetic */ PKCS7Signer val$signer = null;
+            public final /* synthetic */ SignatureAppearance val$appearance = signatureAppearance;
+            public final /* synthetic */ MuPDFWidget.RenderAppearanceListener val$listener = new MuPDFWidget.RenderAppearanceListener() {};
+            public final /* synthetic */ Rect val$rect = rect;
+            public final /* synthetic */ PKCS7Signer val$signer = signer;
 
             public void run() {}
 /*

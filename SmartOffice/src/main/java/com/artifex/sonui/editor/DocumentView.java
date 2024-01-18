@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
@@ -183,7 +184,7 @@ public class DocumentView extends NUIView {
     }
 
     public void enumeratePdfToc(final EnumeratePdfTocListener enumeratePdfTocListener) {
-        ArDkLib.enumeratePdfToc(this.mDocView.getDoc(), new ArDkLib.EnumeratePdfTocListener(this) {
+        ArDkLib.enumeratePdfToc(this.mDocView.getDoc(), new ArDkLib.EnumeratePdfTocListener() {
             public void done() {
                 enumeratePdfTocListener.done();
             }
@@ -522,9 +523,10 @@ public class DocumentView extends NUIView {
         LifecycleOwner lifecycleOwner = getLifecycleOwner();
         if (lifecycleOwner != null) {
             lifecycleOwner.getLifecycle().addObserver(new MyLifecycleObserver(this, this));
-            ((Context) lifecycleOwner).registerComponentCallbacks(new ComponentCallbacks2(this) {
-                public void onConfigurationChanged(Configuration configuration) {
-                    this.onConfigurationChange(configuration);
+            ((Context) lifecycleOwner).registerComponentCallbacks(new ComponentCallbacks2() {
+
+                @Override
+                public void onConfigurationChanged(@NonNull Configuration newConfig) {
                 }
 
                 public void onLowMemory() {
@@ -534,9 +536,9 @@ public class DocumentView extends NUIView {
                 }
             });
             if (lifecycleOwner instanceof FragmentActivity) {
-                ((AppCompatActivity) lifecycleOwner).getOnBackPressedDispatcher().addCallback(lifecycleOwner, new OnBackPressedCallback(this, true) {
+                ((AppCompatActivity) lifecycleOwner).getOnBackPressedDispatcher().addCallback(lifecycleOwner, new OnBackPressedCallback(true) {
                     public void handleOnBackPressed() {
-                        this.onBackPressed((Runnable) null);
+                        DocumentView.this.onBackPressed(null);
                     }
                 });
             }

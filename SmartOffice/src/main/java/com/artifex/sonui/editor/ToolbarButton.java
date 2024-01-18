@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class ToolbarButton extends androidx.appcompat.widget.AppCompatButton {
@@ -100,7 +99,7 @@ public class ToolbarButton extends androidx.appcompat.widget.AppCompatButton {
                 if (toolbarButtonArr[i3] != null) {
                     String charSequence = toolbarButtonArr[i3].getText().toString();
                     if (!charSequence.contains("\n")) {
-                        toolbarButtonArr[i3].setText(a$$ExternalSyntheticOutline0.m(charSequence, "\n"));
+                        toolbarButtonArr[i3].setText(charSequence + "\n");
                     }
                 }
             }

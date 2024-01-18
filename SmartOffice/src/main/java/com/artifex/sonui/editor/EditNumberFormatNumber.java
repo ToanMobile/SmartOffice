@@ -1,6 +1,5 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -29,7 +28,7 @@ public class EditNumberFormatNumber {
     static {
         Double valueOf = Double.valueOf(-1234.1d);
         Double valueOf2 = Double.valueOf(1234.1d);
-        left_descriptions = new String[]{String.format("%.2f", new Object[]{valueOf}), String.format("%.2f (red)", new Object[]{valueOf2}), String.format("%.2f (red)", new Object[]{valueOf}), String.format("(%.2f)", new Object[]{valueOf2}), String.format("(%.2f) (red)", new Object[]{valueOf2})};
+        left_descriptions = new String[]{String.format("%.2f", valueOf), String.format("%.2f (red)", valueOf2), String.format("%.2f (red)", valueOf), String.format("(%.2f)", valueOf2), String.format("(%.2f) (red)", valueOf2)};
         Object[] objArr = {Double.valueOf(0.1d)};
         Object[] objArr2 = {Double.valueOf(0.12d)};
         Object[] objArr3 = {Double.valueOf(0.123d)};
@@ -39,16 +38,16 @@ public class EditNumberFormatNumber {
         Object[] objArr7 = {Double.valueOf(0.1234567d)};
         Object[] objArr8 = {Double.valueOf(0.12345678d)};
         Double valueOf3 = Double.valueOf(0.123456789d);
-        right_descriptions = new String[]{String.format("%d", new Object[]{0}), String.format("%.1f", objArr), String.format("%.2f", objArr2), String.format("%.3f", objArr3), String.format("%.4f", objArr4), String.format("%.5f", objArr5), String.format("%.6f", objArr6), String.format("%.7f", objArr7), String.format("%.8f", objArr8), String.format("%.9f", new Object[]{valueOf3}), String.format("%.10f", new Object[]{valueOf3})};
+        right_descriptions = new String[]{String.format("%d", 0), String.format("%.1f", objArr), String.format("%.2f", objArr2), String.format("%.3f", objArr3), String.format("%.4f", objArr4), String.format("%.5f", objArr5), String.format("%.6f", objArr6), String.format("%.7f", objArr7), String.format("%.8f", objArr8), String.format("%.9f", valueOf3), String.format("%.10f", valueOf3)};
     }
 
     public static void access$000(EditNumberFormatNumber editNumberFormatNumber) {
         String str = right_formats[editNumberFormatNumber.rightWheel.getCurrentItem()];
         if (editNumberFormatNumber.thousandsSepCheck.isChecked()) {
-            str = a$$ExternalSyntheticOutline0.m(str, "#,##");
+            str = str + "#,##";
         }
         if (editNumberFormatNumber.scientificCheck.isChecked()) {
-            str = a$$ExternalSyntheticOutline0.m(str, "E+00");
+            str = str + "E+00";
         }
         ((SODoc) editNumberFormatNumber.doc).setSelectedCellFormat(left_formats[editNumberFormatNumber.leftWheel.getCurrentItem()].replace("DEC", str));
     }
@@ -103,7 +102,7 @@ public class EditNumberFormatNumber {
         WheelView wheelView = editNumberFormatNumber.rightWheel;
         wheelView.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(editNumberFormatNumber);
             }
 
             public void onScrollingStarted(WheelView wheelView) {
@@ -112,7 +111,7 @@ public class EditNumberFormatNumber {
         WheelView wheelView2 = editNumberFormatNumber.leftWheel;
         wheelView2.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(editNumberFormatNumber);
             }
 
             public void onScrollingStarted(WheelView wheelView) {
@@ -120,19 +119,18 @@ public class EditNumberFormatNumber {
         });
         editNumberFormatNumber.scientificCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(editNumberFormatNumber);
             }
         });
         editNumberFormatNumber.thousandsSepCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                EditNumberFormatNumber.access$000(EditNumberFormatNumber.this);
+                EditNumberFormatNumber.access$000(editNumberFormatNumber);
             }
         });
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
         nUIPopupWindow.setFocusable(true);
         nUIPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             public void onDismiss() {
-                EditNumberFormatNumber editNumberFormatNumber = EditNumberFormatNumber.this;
                 editNumberFormatNumber.leftWheel.scrollingListeners.clear();
                 editNumberFormatNumber.rightWheel.scrollingListeners.clear();
                 editNumberFormatNumber.leftWheel = null;

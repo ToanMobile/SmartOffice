@@ -59,7 +59,7 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
         super(context);
     }
 
-    public static void access$100(DocExcelView docExcelView, float f, float f2) {
+    public void access$100(DocExcelView docExcelView, float f, float f2) {
         super.doSingleTap(f, f2);
         docExcelView.setEditText(((SODoc) docExcelView.getDoc()).getSelectionAsText());
     }
@@ -182,7 +182,7 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
         if (copyEditTextToCell()) {
             this.postLayoutRunnable = new Runnable() {
                 public void run() {
-                    DocExcelView.access$100(DocExcelView.this, f, f2);
+                    access$100(DocExcelView.this, f, f2);
                 }
             };
             return;
@@ -387,7 +387,7 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
             }
         });
         this.mFxButton = (SOTextView) ((Activity) this.mContext).findViewById(R.id.fx_button);
-        AnonymousClass2 r2 = new ActionMode.Callback() {
+        ActionMode.Callback r2 = new ActionMode.Callback() {
             public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
                 return false;
             }
@@ -911,7 +911,7 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
                     this.frozen = true;
                 }
             }
-            int i3 = 8;
+            int i3 = GONE;
             if (!this.frozen || !this.freezeShown) {
                 this.hRuler2.setVisibility(View.GONE);
                 this.vRuler2.setVisibility(View.GONE);
@@ -940,11 +940,11 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
             }
             updateRulers(false);
             String pageTitle2 = getPageTitle(getCurrentSheet());
-            final int i5 = this.scrollxMap.get(pageTitle2);
+            Integer i5 = this.scrollxMap.get(pageTitle2);
             if (i5 == null) {
                 i5 = 0;
             }
-            final int i6 = this.scrollyMap.get(pageTitle2);
+            Integer i6 = this.scrollyMap.get(pageTitle2);
             if (i6 == null) {
                 i6 = 0;
             }
@@ -957,24 +957,26 @@ public class DocExcelView extends DocView implements TextView.OnEditorActionList
             if (sheetPage3 != null) {
                 LinearLayout linearLayout = (LinearLayout) ((Activity) getContext()).findViewById(R.id.hruler_holder);
                 float[] horizontalRuler = sheetPage3.getHorizontalRuler();
-                linearLayout.setVisibility((horizontalRuler == null || horizontalRuler.length <= 0) ? 8 : 0);
+                linearLayout.setVisibility((horizontalRuler == null || horizontalRuler.length == 0) ? View.GONE : View.VISIBLE);
                 VerticalRuler verticalRuler = (VerticalRuler) ((Activity) getContext()).findViewById(R.id.vertical_ruler);
                 float[] verticalRuler2 = sheetPage3.getVerticalRuler();
                 if (verticalRuler2 != null && verticalRuler2.length > 0) {
-                    i3 = 0;
+                    i3 = VISIBLE;
                 }
                 verticalRuler.setVisibility(i3);
             }
             updateDragHandles();
-            this.mScale = f.floatValue();
+            this.mScale = f;
             scaleChildren();
             if (!this.frozen || !this.freezeShown) {
                 final boolean z = this.mUseSavedScroll;
+                Integer finalI = i5;
+                Integer finalI1 = i6;
                 post(new Runnable() {
                     public void run() {
                         if (z) {
-                            DocExcelView.this.setScrollX(i5.intValue());
-                            DocExcelView.this.setScrollY(i6.intValue());
+                            DocExcelView.this.setScrollX(finalI);
+                            DocExcelView.this.setScrollY(finalI1);
                         }
                         DocExcelView.this.requestLayout();
                     }

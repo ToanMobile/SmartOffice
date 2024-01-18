@@ -5,10 +5,8 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.PointF;
-import androidx.concurrent.futures.AbstractResolvableFuture$$ExternalSyntheticOutline1;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.MuPDFWidget;
-import com.artifex.sonui.editor.DocPageView;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -48,13 +46,11 @@ public class DocPdfPageView extends DocPageView {
 
     public void launchHyperLink(final String str) {
         Context context = getContext();
-        Utilities.yesNoMessage((Activity) context, context.getString(R.string.sodk_editor_open_link), AbstractResolvableFuture$$ExternalSyntheticOutline1.m("\n", str, "\n"), context.getString(R.string.sodk_editor_OK), context.getString(R.string.sodk_editor_cancel), new Runnable() {
+        Utilities.yesNoMessage((Activity) context, context.getString(R.string.sodk_editor_open_link), "\n" + str + "\n", context.getString(R.string.sodk_editor_OK), context.getString(R.string.sodk_editor_cancel), new Runnable() {
             public void run() {
                 DocPdfPageView.super.launchHyperLink(str);
             }
-        }, new Runnable(this) {
-            public void run() {
-            }
+        }, (Runnable) () -> {
         });
     }
 

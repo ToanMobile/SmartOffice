@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.PopupWindow;
+
+import androidx.annotation.NonNull;
+
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SODoc;
-import com.kochava.base.Tracker;
 import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
 import com.artifex.source.library.wheel.widget.WheelView;
 import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
 import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapterColor;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +47,7 @@ public class EditNumberFormatCurrency {
         ((SODoc) editNumberFormatCurrency.doc).setSelectedCellFormat(neg_formats[editNumberFormatCurrency.negWheel.getCurrentItem()].replace("DEC", str));
     }
 
-    public static void show(Context context, View view, ArDkDoc arDkDoc) {
+    public void show(Context context, View view, ArDkDoc arDkDoc) {
         int identifier;
         EditNumberFormatCurrency editNumberFormatCurrency = new EditNumberFormatCurrency();
         String extractAssetToString = FileUtils.extractAssetToString(context, "currencies.json");
@@ -112,7 +115,7 @@ public class EditNumberFormatCurrency {
         WheelView wheelView = editNumberFormatCurrency.negWheel;
         wheelView.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
-                EditNumberFormatCurrency.access$000(EditNumberFormatCurrency.this);
+                EditNumberFormatCurrency.access$000(editNumberFormatCurrency);
             }
 
             public void onScrollingStarted(WheelView wheelView) {
@@ -121,7 +124,7 @@ public class EditNumberFormatCurrency {
         WheelView wheelView2 = editNumberFormatCurrency.curWheel;
         wheelView2.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
-                EditNumberFormatCurrency.access$000(EditNumberFormatCurrency.this);
+                EditNumberFormatCurrency.access$000(editNumberFormatCurrency);
             }
 
             public void onScrollingStarted(WheelView wheelView) {
@@ -129,14 +132,19 @@ public class EditNumberFormatCurrency {
         });
         editNumberFormatCurrency.twoPlacesCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean z) {
-                EditNumberFormatCurrency.access$000(EditNumberFormatCurrency.this);
+                EditNumberFormatCurrency.access$000(editNumberFormatCurrency);
             }
         });
+        NUIPopupWindow nUIPopupWindow = getNuiPopupWindow(inflate, editNumberFormatCurrency);
+        nUIPopupWindow.showAsDropDown(view, 30, 30);
+    }
+
+    @NonNull
+    private static NUIPopupWindow getNuiPopupWindow(View inflate, EditNumberFormatCurrency editNumberFormatCurrency) {
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
         nUIPopupWindow.setFocusable(true);
         nUIPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             public void onDismiss() {
-                EditNumberFormatCurrency editNumberFormatCurrency = EditNumberFormatCurrency.this;
                 editNumberFormatCurrency.curWheel.scrollingListeners.clear();
                 editNumberFormatCurrency.negWheel.scrollingListeners.clear();
                 editNumberFormatCurrency.curWheel = null;
@@ -147,6 +155,6 @@ public class EditNumberFormatCurrency {
                 editNumberFormatCurrency.cur_formats = null;
             }
         });
-        nUIPopupWindow.showAsDropDown(view, 30, 30);
+        return nUIPopupWindow;
     }
 }

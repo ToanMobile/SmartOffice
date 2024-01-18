@@ -1,7 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-
 public class Pixmap {
     private long pointer;
 
@@ -74,7 +72,7 @@ public class Pixmap {
     public native void tint(int i, int i2);
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("Pixmap(w=");
+        StringBuilder m = new StringBuilder("Pixmap(w=");
         m.append(getWidth());
         m.append(" h=");
         m.append(getHeight());

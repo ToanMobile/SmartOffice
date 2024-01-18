@@ -39,7 +39,7 @@ public class PdfExportAsPopup implements PopupWindow.OnDismissListener {
         }
     }
 
-    public class FormatGridAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class FormatGridAdapter extends RecyclerView.Adapter<FormatGridAdapter.ViewHolder> {
         public Context mContext;
         public ExportFormatAdapterData[] mLocalDataSet;
         public OnClickInterface mOnClickInterface;
@@ -73,7 +73,7 @@ public class PdfExportAsPopup implements PopupWindow.OnDismissListener {
             return this.mLocalDataSet.length;
         }
 
-        public void onBindViewHolder(ViewHolder viewHolder, final int i) {
+        public void onBindViewHolder(ViewHolder viewHolder, int i) {
             viewHolder.getTextView().setText(this.mLocalDataSet[i].getIconString());
             viewHolder.getIconView().setImageDrawable(this.mContext.getResources().getDrawable(this.mLocalDataSet[i].getIconDrawable()));
             viewHolder.getTextView().setOnClickListener(new View.OnClickListener() {
@@ -122,7 +122,7 @@ public class PdfExportAsPopup implements PopupWindow.OnDismissListener {
         View inflate = LayoutInflater.from(this.mContext).inflate(R.layout.sodk_editor_pdf_export_as, (ViewGroup) null);
         RecyclerView recyclerView = (RecyclerView) inflate.findViewById(R.id.exportTypesView);
         recyclerView.setAdapter(new FormatGridAdapter(this.mContext, exportFormatAdapterDataArr, this.mOnClickInterface));
-        recyclerView.setLayoutManager(new GridLayoutManager(this.mContext, 1, 0, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this.mContext, 1, RecyclerView.HORIZONTAL, false));
         NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(this.mContext);
         this.popupWindow = nUIPopupWindow;
         nUIPopupWindow.setContentView(inflate);

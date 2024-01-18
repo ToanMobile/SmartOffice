@@ -15,7 +15,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.core.content.ContextCompat;
+
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -27,10 +29,12 @@ import com.artifex.solib.SOHyperlink;
 import com.artifex.solib.SOPageListener;
 import com.artifex.solib.SOPoint;
 import com.artifex.solib.SORenderListener;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
+
 import kotlin.KotlinVersion;
 
 public class DocPageView extends View implements SOPageListener {
@@ -454,8 +458,8 @@ public class DocPageView extends View implements SOPageListener {
                 canvas.save();
             }
             ArDkBitmap arDkBitmap = this.mBitmapDraw;
-            if (arDkBitmap != null && !arDkBitmap.bitmap.isRecycled()) {
-                this.mSrcRect.set(arDkBitmap.rect);
+            if (arDkBitmap != null && !arDkBitmap.getBitmap().isRecycled()) {
+                this.mSrcRect.set(arDkBitmap.getRect());
                 this.mDstRect.set(this.drawRect);
                 float f = this.drawScale;
                 float f2 = this.mScale;
@@ -470,7 +474,7 @@ public class DocPageView extends View implements SOPageListener {
                 if (path != null) {
                     canvas.clipPath(path);
                 }
-                canvas.drawBitmap(arDkBitmap.bitmap, this.mSrcRect, this.mDstRect, this.mPainter);
+                canvas.drawBitmap(arDkBitmap.getBitmap(), this.mSrcRect, this.mDstRect, this.mPainter);
                 this.mBorderRect.set(0, 0, getWidth(), getHeight());
                 if (this.isCurrent) {
                     canvas.drawRect(this.mBorderRect, this.mSelectedBorderPainter);
@@ -627,15 +631,15 @@ public class DocPageView extends View implements SOPageListener {
                             docPageView3.drawScaleHold = docPageView3.renderScale;
                             ArDkBitmap arDkBitmap = docPageView3.mBitmapDrawHold;
                             if (docPageView3.valid) {
-                                if (arDkBitmap == null || arDkBitmap.rect == null || (bitmap = arDkBitmap.bitmap) == null || bitmap.isRecycled()) {
+                                if (arDkBitmap == null || arDkBitmap.getRect() == null || (bitmap = arDkBitmap.getBitmap()) == null || bitmap.isRecycled()) {
                                     i2 = -1;
                                 } else {
-                                    Rect rect = arDkBitmap.rect;
+                                    Rect rect = arDkBitmap.getRect();
                                     int i3 = rect.left + 5;
                                     int i4 = rect.top + 5;
                                     int i5 = rect.right - 5;
                                     int i6 = rect.bottom - 5;
-                                    int[] iArr = {arDkBitmap.bitmap.getPixel(i3, i4), arDkBitmap.bitmap.getPixel(i5, i4), arDkBitmap.bitmap.getPixel(i3, i6), arDkBitmap.bitmap.getPixel(i5, i6)};
+                                    int[] iArr = {arDkBitmap.getBitmap().getPixel(i3, i4), arDkBitmap.getBitmap().getPixel(i5, i4), arDkBitmap.getBitmap().getPixel(i3, i6), arDkBitmap.getBitmap().getPixel(i5, i6)};
                                     int i7 = 0;
                                     int i8 = 0;
                                     int i9 = 0;
@@ -653,7 +657,7 @@ public class DocPageView extends View implements SOPageListener {
                             }
                             docPageView3.mBackgroundColorHold = i2;
                         } else {
-                            System.out.printf("render error %d for page %d  %n", new Object[]{Integer.valueOf(i), Integer.valueOf(DocPageView.this.mPageNum)});
+                            System.out.printf("render error %d for page %d  %n", i, DocPageView.this.mPageNum);
                         }
                         sORenderListener2.progress(i);
                     }
@@ -673,7 +677,7 @@ public class DocPageView extends View implements SOPageListener {
         ArDkPage arDkPage = this.mPage;
         if (arDkPage != null) {
             PointF zoomToFitRect = arDkPage.zoomToFitRect(i, i2);
-            double max = (double) Math.max(zoomToFitRect.x, zoomToFitRect.y);
+            double max = Math.max(zoomToFitRect.x, zoomToFitRect.y);
             this.mZoom = max;
             this.mSize = this.mPage.sizeAtZoom(max);
         }
@@ -817,7 +821,7 @@ public class DocPageView extends View implements SOPageListener {
         if (z != this.valid) {
             this.valid = z;
             if (!z) {
-                if (isShown() && (arDkBitmap = this.mBitmapDraw) != null && !arDkBitmap.bitmap.isRecycled()) {
+                if (isShown() && (arDkBitmap = this.mBitmapDraw) != null && !arDkBitmap.getBitmap().isRecycled()) {
                     this.lowResScreenSize = Utilities.getScreenSize(getContext());
                     int width = this.mBitmapDraw.getWidth() / 2;
                     int height = this.mBitmapDraw.getHeight() / 2;
@@ -825,7 +829,7 @@ public class DocPageView extends View implements SOPageListener {
                     this.lowResBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(this.lowResBitmap);
                     ArDkBitmap arDkBitmap2 = this.mBitmapDraw;
-                    canvas.drawBitmap(arDkBitmap2.bitmap, arDkBitmap2.rect, rect, lowResPainter);
+                    canvas.drawBitmap(arDkBitmap2.getBitmap(), arDkBitmap2.getRect(), rect, lowResPainter);
                 }
                 this.mBitmapDraw = null;
                 this.mBitmapDrawHold = null;
@@ -913,12 +917,10 @@ public class DocPageView extends View implements SOPageListener {
     public void update(RectF rectF) {
         DocView docView = this.mDocView;
         if ((docView == null || !docView.getUpdatesPaused()) && !this.mFinished && isShown()) {
-            ((Activity) getContext()).runOnUiThread(new Runnable(this) {
-                public void run() {
-                    NUIDocView currentNUIDocView = NUIDocView.currentNUIDocView();
-                    if (currentNUIDocView != null) {
-                        currentNUIDocView.triggerRender();
-                    }
+            ((Activity) getContext()).runOnUiThread(() -> {
+                NUIDocView currentNUIDocView = NUIDocView.currentNUIDocView();
+                if (currentNUIDocView != null) {
+                    currentNUIDocView.triggerRender();
                 }
             });
         }

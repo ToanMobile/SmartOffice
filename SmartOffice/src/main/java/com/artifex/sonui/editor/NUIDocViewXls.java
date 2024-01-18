@@ -1,6 +1,5 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
@@ -27,7 +26,6 @@ import com.artifex.solib.SODoc;
 import com.artifex.solib.SOSelectionTableRange;
 import com.artifex.sonui.editor.NUIDocView;
 import com.artifex.sonui.editor.NUIView;
-import com.google.android.ads.mediationtestsuite.dataobjects.TestResult;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class NUIDocViewXls extends NUIDocView {
@@ -631,14 +629,10 @@ public class NUIDocViewXls extends NUIDocView {
         gridView.setAdapter(chooseFormulaCategoryAdapter);
         final NUIPopupWindow nUIPopupWindow = new NUIPopupWindow(inflate, -2, -2);
         nUIPopupWindow.setFocusable(true);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(this) {
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-                nUIPopupWindow.dismiss();
-                String item = chooseFormulaCategoryAdapter.getItem(i);
-                NUIDocViewXls nUIDocViewXls = this;
-                int i2 = NUIDocViewXls.CELL_TAG;
-                nUIDocViewXls.onFormulaCategory(item);
-            }
+        gridView.setOnItemClickListener((adapterView, view1, i, j) -> {
+            nUIPopupWindow.dismiss();
+            String item = chooseFormulaCategoryAdapter.getItem(i);
+            onFormulaCategory(item);
         });
         nUIPopupWindow.showAsDropDown(view, 30, 30);
     }
@@ -748,7 +742,7 @@ public class NUIDocViewXls extends NUIDocView {
                 String editText = docExcelView.getEditText();
                 String item = chooseFormulaAdapter.getItem(i);
                 if (editText == null || editText.isEmpty()) {
-                    item = a$$ExternalSyntheticOutline0.m("=", item);
+                    item = "=" + item;
                 }
                 docExcelView.insertEditText(item);
                 docExcelView.copyEditTextToCell();
@@ -805,7 +799,7 @@ public class NUIDocViewXls extends NUIDocView {
         String string = getContext().getString(R.string.sodk_editor_autosum_text);
         String editText = docExcelView.getEditText();
         if (editText == null || editText.isEmpty()) {
-            string = a$$ExternalSyntheticOutline0.m("=", string);
+            string = "=" + string;
         }
         docExcelView.insertEditText(string);
         ((SODoc) getDoc()).setSelectionText(docExcelView.getEditText());
@@ -896,37 +890,37 @@ public class NUIDocViewXls extends NUIDocView {
                     case 1:
                         Activity activity = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls = NUIDocViewXls.this;
-                        EditNumberFormatDateTime.show(activity, nUIDocViewXls.mNumberFormatButton, nUIDocViewXls.getDoc());
+                        new EditNumberFormatDateTime().show(activity, nUIDocViewXls.mNumberFormatButton, nUIDocViewXls.getDoc());
                         return;
                     case 2:
                         Activity activity2 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls2 = NUIDocViewXls.this;
-                        EditNumberFormatNumber.show(activity2, nUIDocViewXls2.mNumberFormatButton, nUIDocViewXls2.getDoc());
+                        new EditNumberFormatNumber().show(activity2, nUIDocViewXls2.mNumberFormatButton, nUIDocViewXls2.getDoc());
                         return;
                     case 3:
                         Activity activity3 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls3 = NUIDocViewXls.this;
-                        EditNumberFormatFraction.show(activity3, nUIDocViewXls3.mNumberFormatButton, nUIDocViewXls3.getDoc());
+                        new EditNumberFormatFraction().show(activity3, nUIDocViewXls3.mNumberFormatButton, nUIDocViewXls3.getDoc());
                         return;
                     case 4:
                         Activity activity4 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls4 = NUIDocViewXls.this;
-                        EditNumberFormatCurrency.show(activity4, nUIDocViewXls4.mNumberFormatButton, nUIDocViewXls4.getDoc());
+                        new EditNumberFormatCurrency().show(activity4, nUIDocViewXls4.mNumberFormatButton, nUIDocViewXls4.getDoc());
                         return;
                     case 5:
                         Activity activity5 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls5 = NUIDocViewXls.this;
-                        EditNumberFormatPercentage.show(activity5, nUIDocViewXls5.mNumberFormatButton, nUIDocViewXls5.getDoc());
+                        new EditNumberFormatPercentage().show(activity5, nUIDocViewXls5.mNumberFormatButton, nUIDocViewXls5.getDoc());
                         return;
                     case 6:
                         Activity activity6 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls6 = NUIDocViewXls.this;
-                        EditNumberFormatAccounting.show(activity6, nUIDocViewXls6.mNumberFormatButton, nUIDocViewXls6.getDoc());
+                        new EditNumberFormatAccounting().show(activity6, nUIDocViewXls6.mNumberFormatButton, nUIDocViewXls6.getDoc());
                         return;
                     case 7:
                         Activity activity7 = NUIDocViewXls.this.activity();
                         NUIDocViewXls nUIDocViewXls7 = NUIDocViewXls.this;
-                        EditNumberFormatCustom.show(activity7, nUIDocViewXls7.mNumberFormatButton, nUIDocViewXls7.getDoc());
+                        new EditNumberFormatCustom().show(activity7, nUIDocViewXls7.mNumberFormatButton, nUIDocViewXls7.getDoc());
                         return;
                     default:
                         return;
@@ -1139,7 +1133,6 @@ public class NUIDocViewXls extends NUIDocView {
                             SheetTab sheetTab = (SheetTab) view;
                             String text = sheetTab.getText();
                             final int sheetNumber = sheetTab.getSheetNumber();
-                            Activity activity = activity;
                             String string = NUIDocViewXls.this.getContext().getString(R.string.sodk_editor_delete_worksheet_q);
                             Utilities.yesNoMessage(activity, string, NUIDocViewXls.this.getContext().getString(R.string.sodk_editor_do_you_want_to_delete_the_sheet) + text + "\" ?", NUIDocViewXls.this.getContext().getString(R.string.sodk_editor_yes), NUIDocViewXls.this.getContext().getString(R.string.sodk_editor_no), new Runnable() {
                                 public void run() {
@@ -1203,7 +1196,7 @@ public class NUIDocViewXls extends NUIDocView {
         if (z) {
             sOTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.sodk_editor_button_text));
         } else {
-            sOTextView.setTextColor(TestResult.NEUTRAL_COLOR);
+            // sOTextView.setTextColor(TestResult.NEUTRAL_COLOR);
         }
     }
 

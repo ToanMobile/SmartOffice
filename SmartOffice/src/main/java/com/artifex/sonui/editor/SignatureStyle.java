@@ -1,7 +1,6 @@
 package com.artifex.sonui.editor;
 
 import android.content.Context;
-import androidx.fragment.app.BackStackRecord$$ExternalSyntheticOutline0;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SOPreferences;
 import com.artifex.solib.SignatureAppearance;
@@ -111,7 +110,7 @@ public class SignatureStyle {
     public static SignatureStyle copy(SignatureStyle signatureStyle) {
         String json = new Gson().toJson((Object) signatureStyle);
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.prettyPrinting = true;
+        gsonBuilder.setPrettyPrinting();
         return (SignatureStyle) gsonBuilder.create().fromJson(json, new TypeToken<SignatureStyle>() {
         }.getType());
     }
@@ -166,7 +165,7 @@ public class SignatureStyle {
         StringBuilder sb = new StringBuilder();
         sb.append(FileUtils.getTempPathRoot(context));
         String str = File.separator;
-        String m = BackStackRecord$$ExternalSyntheticOutline0.m(sb, str, ".signatures", str);
+        String m = sb + str + ".signatures" + str;
         if (!FileUtils.fileExists(m)) {
             FileUtils.createDirectory(m);
         }
@@ -198,7 +197,7 @@ public class SignatureStyle {
     public static void loadStyles(Context context) {
         String stringPreference = SOPreferences.getStringPreference(SOPreferences.getPreferencesObject(context, "general"), "signatureStyles", "");
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.prettyPrinting = true;
+        gsonBuilder.setPrettyPrinting();
         ArrayList<SignatureStyle> arrayList = (ArrayList) gsonBuilder.create().fromJson(stringPreference, new TypeToken<List<SignatureStyle>>() {
         }.getType());
         styles = arrayList;

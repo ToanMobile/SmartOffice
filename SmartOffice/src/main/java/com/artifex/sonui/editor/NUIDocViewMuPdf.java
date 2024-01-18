@@ -82,12 +82,4 @@ public class NUIDocViewMuPdf extends NUIDocViewPdf {
     public boolean shouldConfigureExportPdfAsButton() {
         return false;
     }
-
-    public NUIDocViewMuPdf(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
-    }
-
-    public NUIDocViewMuPdf(Context context, AttributeSet attributeSet, int i) {
-        super(context, attributeSet, i);
-    }
 }

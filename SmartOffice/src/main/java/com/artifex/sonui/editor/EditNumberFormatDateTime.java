@@ -1,5 +1,7 @@
 package com.artifex.sonui.editor;
 
+import static org.spongycastle.asn1.x500.style.BCStyle.T;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -22,7 +24,7 @@ public class EditNumberFormatDateTime {
     public HashMap<String, String[]> countryFormatMap;
     public String[] formats;
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         String[] strArr;
         String string;
         EditNumberFormatDateTime editNumberFormatDateTime = new EditNumberFormatDateTime();
@@ -106,11 +108,11 @@ public class EditNumberFormatDateTime {
                 wheelView2.setCurrentItem(0);
                 break;
             }
-            T[] tArr = (String[]) editNumberFormatDateTime.countryFormatMap.get(strArr5[i6]);
+            String[] tArr = (String[]) editNumberFormatDateTime.countryFormatMap.get(strArr5[i6]);
             for (int i7 = 0; i7 < tArr.length; i7++) {
                 if (tArr[i7].equals(selectedCellFormat)) {
                     wheelView.setCurrentItem(i6);
-                    ((ArrayWheelAdapter) wheelView2.getViewAdapter()).items = tArr;
+                    ((ArrayWheelAdapter) wheelView2.getViewAdapter()).items = new String[][]{tArr};
                     wheelView2.invalidateWheel(true);
                     editNumberFormatDateTime.formats = tArr;
                     wheelView2.setCurrentItem(i7);

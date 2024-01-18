@@ -411,7 +411,7 @@ public class LayerBitmapManager {
         while (!treeSet.isEmpty() && ((long) i) > this.cacheSizeLeft) {
             SOBitmap first = treeSet.first();
             treeSet.remove(first);
-            this.cacheSizeLeft += (long) first.bitmap.getByteCount();
+            this.cacheSizeLeft += (long) first.getBitmap().getByteCount();
             first.dispose();
             this.evictionCount++;
             if (treeSet == this.fullBitmaps) {

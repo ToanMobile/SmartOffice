@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import billing.pro.ProActivity$$ExternalSyntheticLambda2;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,7 +42,7 @@ public class NUICertificateViewer extends AppCompatActivity {
         this.mUpdatedSinceSigning = intent.getIntExtra("updatedSinceSigning", 0);
         ImageButton imageButton = (ImageButton) findViewById(R.id.sodk_certificate_view_done);
         this.mDoneButton = imageButton;
-        imageButton.setOnClickListener(new ProActivity$$ExternalSyntheticLambda2(this));
+        // imageButton.setOnClickListener(new ProActivity$$ExternalSyntheticLambda2(this));
         populate(this.mDetails);
     }
 

@@ -1,7 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-//import androidx.constraintlayout.core.widgets.ConstraintWidget$$ExternalSyntheticOutline0;
 import java.util.Objects;
 
 public class Location {
@@ -29,7 +27,7 @@ public class Location {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("Location(chapter=");
+        StringBuilder m = new StringBuilder("Location(chapter=");
         m.append(this.chapter);
         m.append(", page=");
         return m.toString();

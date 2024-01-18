@@ -1,20 +1,20 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+
 import androidx.core.content.ContextCompat;
+
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -26,14 +26,7 @@ import com.artifex.solib.SOLinkData;
 import com.artifex.solib.SOOutputStream;
 import com.artifex.solib.SOPreferences;
 import com.artifex.solib.Worker;
-import com.artifex.sonui.editor.DrawSignatureDialog;
-import com.artifex.sonui.editor.History;
-import com.artifex.sonui.editor.NUIDocView;
-import com.artifex.sonui.editor.NUIDocViewPdf;
-import com.artifex.sonui.editor.NUIView;
-import com.artifex.sonui.editor.ThreeChoicePopup;
-import com.artifex.sonui.editor.TocDialog;
-import com.artifex.sonui.editor.Utilities;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -378,7 +371,7 @@ public class NUIDocViewPdf extends NUIDocView {
         if (!this.mFinished) {
             super.onClick(view);
             if (view == this.mToggleAnnotButton) {
-                onToggleAnnotationsButton(view);
+                // onToggleAnnotationsButton(view);
             }
             if (view == this.mHighlightButton) {
                 onHighlightButton(view);
@@ -465,7 +458,7 @@ public class NUIDocViewPdf extends NUIDocView {
             layoutNow();
             this.mTocButton.setEnabled(false);
             this.tocEnabled = false;
-            setButtonColor(this.mTocButton, getResources().getInteger(R.color.sodk_editor_button_disabled));
+            setButtonColor(this.mTocButton, getResources().getColor(R.color.sodk_editor_button_disabled));
             ArDkLib.enumeratePdfToc(getDoc(), new ArDkLib.EnumeratePdfTocListener() {
                 public void done() {
                 }
@@ -474,7 +467,7 @@ public class NUIDocViewPdf extends NUIDocView {
                     NUIDocViewPdf.this.mTocButton.setEnabled(true);
                     NUIDocViewPdf nUIDocViewPdf = NUIDocViewPdf.this;
                     nUIDocViewPdf.tocEnabled = true;
-                    nUIDocViewPdf.setButtonColor(nUIDocViewPdf.mTocButton, nUIDocViewPdf.getResources().getInteger(R.color.sodk_editor_header_button_enabled_tint));
+                    nUIDocViewPdf.setButtonColor(nUIDocViewPdf.mTocButton, nUIDocViewPdf.getResources().getColor(R.color.sodk_editor_header_button_enabled_tint));
                 }
             });
             if (this.mSession.getDoc().getAuthor() == null) {
@@ -506,7 +499,7 @@ public class NUIDocViewPdf extends NUIDocView {
                         }
 
                         public void onSave(Bitmap bitmap) {
-                            String m = a$$ExternalSyntheticOutline0.m(SignatureStyle.getSigDirPath(NUIDocViewPdf.this.getContext()), "esig-image.png");
+                            String m = SignatureStyle.getSigDirPath(NUIDocViewPdf.this.getContext()) + "esig-image.png";
                             SOOutputStream sOOutputStream = new SOOutputStream(m);
                             bitmap.compress(Bitmap.CompressFormat.PNG, 100, sOOutputStream);
                             sOOutputStream.flush();
@@ -576,134 +569,76 @@ public class NUIDocViewPdf extends NUIDocView {
     public void onRedactApply(View view) {
         MuPDFDoc muPDFDoc = (MuPDFDoc) getDoc();
         muPDFDoc.mWorker.add(new Worker.Task() {
-            public void run() {};
-/*
-Method generation error in method: com.artifex.solib.MuPDFDoc.18.run():void, dex: classes.dex
-            jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.18.run():void, class status: UNLOADED
-            	at jadx.core.dex.nodes.MethodNode.getArgRegs(MethodNode.java:278)
-            	at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:116)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:313)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.util.ArrayList.forEach(ArrayList.java:1259)
-            	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-            	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-            	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-            	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-            	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-            	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-            	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-            	at jadx.core.codegen.InsnGen.inlineAnonymousConstructor(InsnGen.java:676)
-            	at jadx.core.codegen.InsnGen.makeConstructor(InsnGen.java:607)
-            	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:364)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:231)
-            	at jadx.core.codegen.InsnGen.addWrappedArg(InsnGen.java:123)
-            	at jadx.core.codegen.InsnGen.addArg(InsnGen.java:107)
-            	at jadx.core.codegen.InsnGen.generateMethodArguments(InsnGen.java:787)
-            	at jadx.core.codegen.InsnGen.makeInvoke(InsnGen.java:728)
-            	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:368)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:250)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:221)
-            	at jadx.core.codegen.RegionGen.makeSimpleBlock(RegionGen.java:109)
-            	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:55)
-            	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-            	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-            	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:211)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:204)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:318)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.util.ArrayList.forEach(ArrayList.java:1259)
-            	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-            	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-            	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-            	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-            	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-            	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-            	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-            	at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:112)
-            	at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:78)
-            	at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:44)
-            	at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:33)
-            	at jadx.core.codegen.CodeGen.generate(CodeGen.java:21)
-            	at jadx.core.ProcessClass.generateCode(ProcessClass.java:61)
-            	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
-            
-*/
+            public void run() {
+            }
 
-            public void work(
-/*
-Method generation error in method: com.artifex.solib.MuPDFDoc.18.work():void, dex: classes.dex
-            jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.18.work():void, class status: UNLOADED
-            	at jadx.core.dex.nodes.MethodNode.getArgRegs(MethodNode.java:278)
-            	at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:116)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:313)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.util.ArrayList.forEach(ArrayList.java:1259)
-            	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-            	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-            	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-            	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-            	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-            	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-            	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-            	at jadx.core.codegen.InsnGen.inlineAnonymousConstructor(InsnGen.java:676)
-            	at jadx.core.codegen.InsnGen.makeConstructor(InsnGen.java:607)
-            	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:364)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:231)
-            	at jadx.core.codegen.InsnGen.addWrappedArg(InsnGen.java:123)
-            	at jadx.core.codegen.InsnGen.addArg(InsnGen.java:107)
-            	at jadx.core.codegen.InsnGen.generateMethodArguments(InsnGen.java:787)
-            	at jadx.core.codegen.InsnGen.makeInvoke(InsnGen.java:728)
-            	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:368)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:250)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:221)
-            	at jadx.core.codegen.RegionGen.makeSimpleBlock(RegionGen.java:109)
-            	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:55)
-            	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-            	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-            	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:211)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:204)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:318)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.util.ArrayList.forEach(ArrayList.java:1259)
-            	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-            	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-            	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-            	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-            	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-            	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-            	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-            	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-            	at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:112)
-            	at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:78)
-            	at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:44)
-            	at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:33)
-            	at jadx.core.codegen.CodeGen.generate(CodeGen.java:21)
-            	at jadx.core.ProcessClass.generateCode(ProcessClass.java:61)
-            	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
-            
-*/
-        ) {
-                muPDFDoc.clearSelection();
-                updateUIAppearance();
+            /*
+            Method generation error in method: com.artifex.solib.MuPDFDoc.18.run():void, dex: classes.dex
+                        jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.18.run():void, class status: UNLOADED
+                            at jadx.core.dex.nodes.MethodNode.getArgRegs(MethodNode.java:278)
+                            at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:116)
+                            at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:313)
+                            at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
+                            at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
+                            at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+                            at java.util.ArrayList.forEach(ArrayList.java:1259)
+                            at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+                            at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
+                            at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
+                            at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+                            at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+                            at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+                            at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+                            at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
+                            at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
+                            at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
+                            at jadx.core.codegen.InsnGen.inlineAnonymousConstructor(InsnGen.java:676)
+                            at jadx.core.codegen.InsnGen.makeConstructor(InsnGen.java:607)
+                            at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:364)
+                            at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:231)
+                            at jadx.core.codegen.InsnGen.addWrappedArg(InsnGen.java:123)
+                            at jadx.core.codegen.InsnGen.addArg(InsnGen.java:107)
+                            at jadx.core.codegen.InsnGen.generateMethodArguments(InsnGen.java:787)
+                            at jadx.core.codegen.InsnGen.makeInvoke(InsnGen.java:728)
+                            at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:368)
+                            at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:250)
+                            at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:221)
+                            at jadx.core.codegen.RegionGen.makeSimpleBlock(RegionGen.java:109)
+                            at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:55)
+                            at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
+                            at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
+                            at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:211)
+                            at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:204)
+                            at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:318)
+                            at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
+                            at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
+                            at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+                            at java.util.ArrayList.forEach(ArrayList.java:1259)
+                            at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+                            at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
+                            at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
+                            at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+                            at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+                            at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+                            at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+                            at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
+                            at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
+                            at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
+                            at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:112)
+                            at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:78)
+                            at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:44)
+                            at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:33)
+                            at jadx.core.codegen.CodeGen.generate(CodeGen.java:21)
+                            at jadx.core.ProcessClass.generateCode(ProcessClass.java:61)
+                            at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
+
+            */
+            public void work() {
+            }
+
+        });
+        muPDFDoc.clearSelection();
+        updateUIAppearance();
 
     }
 
@@ -717,179 +652,17 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.18.work():void, de
         if (MuPDFPage.mTextSelPageNum >= 0) {
             Objects.requireNonNull(muPDFDoc);
             int i = MuPDFPage.mTextSelPageNum;
-            if (i != -1) {
-                muPDFDoc.mWorker.add(new Worker.Task(i, false) {
-                    public final /* synthetic */ int val$pageNum = 0;
-                    public final /* synthetic */ boolean val$select = false;
+            muPDFDoc.mWorker.add(new Worker.Task() {
+                public final /* synthetic */ int val$pageNum = 0;
+                public final /* synthetic */ boolean val$select = false;
 
-                    /* Code decompiled incorrectly, please refer to instructions dump. */
-                    public void run() {
-                    }
-/*
-Method generation error in method: com.artifex.solib.MuPDFDoc.16.run():void, dex: classes.dex
-                    jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.16.run():void, class status: UNLOADED
-                    	at jadx.core.dex.nodes.MethodNode.getArgRegs(MethodNode.java:278)
-                    	at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:116)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:313)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.util.ArrayList.forEach(ArrayList.java:1259)
-                    	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-                    	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-                    	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-                    	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-                    	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-                    	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-                    	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-                    	at jadx.core.codegen.InsnGen.inlineAnonymousConstructor(InsnGen.java:676)
-                    	at jadx.core.codegen.InsnGen.makeConstructor(InsnGen.java:607)
-                    	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:364)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:231)
-                    	at jadx.core.codegen.InsnGen.addWrappedArg(InsnGen.java:123)
-                    	at jadx.core.codegen.InsnGen.addArg(InsnGen.java:107)
-                    	at jadx.core.codegen.InsnGen.generateMethodArguments(InsnGen.java:787)
-                    	at jadx.core.codegen.InsnGen.makeInvoke(InsnGen.java:728)
-                    	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:368)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:250)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:221)
-                    	at jadx.core.codegen.RegionGen.makeSimpleBlock(RegionGen.java:109)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:55)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:98)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:142)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:62)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:98)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:142)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:62)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:211)
-                    	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:204)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:318)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.util.ArrayList.forEach(ArrayList.java:1259)
-                    	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-                    	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-                    	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-                    	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-                    	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-                    	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-                    	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-                    	at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:112)
-                    	at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:78)
-                    	at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:44)
-                    	at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:33)
-                    	at jadx.core.codegen.CodeGen.generate(CodeGen.java:21)
-                    	at jadx.core.ProcessClass.generateCode(ProcessClass.java:61)
-                    	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
-                    
-*/
+                /* Code decompiled incorrectly, please refer to instructions dump. */
+                public void run() {
+                }
 
-                    public void work(
-/*
-Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, dex: classes.dex
-                    jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.16.work():void, class status: UNLOADED
-                    	at jadx.core.dex.nodes.MethodNode.getArgRegs(MethodNode.java:278)
-                    	at jadx.core.codegen.MethodGen.addDefinition(MethodGen.java:116)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:313)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.util.ArrayList.forEach(ArrayList.java:1259)
-                    	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-                    	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-                    	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-                    	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-                    	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-                    	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-                    	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-                    	at jadx.core.codegen.InsnGen.inlineAnonymousConstructor(InsnGen.java:676)
-                    	at jadx.core.codegen.InsnGen.makeConstructor(InsnGen.java:607)
-                    	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:364)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:231)
-                    	at jadx.core.codegen.InsnGen.addWrappedArg(InsnGen.java:123)
-                    	at jadx.core.codegen.InsnGen.addArg(InsnGen.java:107)
-                    	at jadx.core.codegen.InsnGen.generateMethodArguments(InsnGen.java:787)
-                    	at jadx.core.codegen.InsnGen.makeInvoke(InsnGen.java:728)
-                    	at jadx.core.codegen.InsnGen.makeInsnBody(InsnGen.java:368)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:250)
-                    	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:221)
-                    	at jadx.core.codegen.RegionGen.makeSimpleBlock(RegionGen.java:109)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:55)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:98)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:142)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:62)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:98)
-                    	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:142)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:62)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.RegionGen.makeSimpleRegion(RegionGen.java:92)
-                    	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:58)
-                    	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:211)
-                    	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:204)
-                    	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:318)
-                    	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:271)
-                    	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$2(ClassGen.java:240)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                    	at java.util.ArrayList.forEach(ArrayList.java:1259)
-                    	at java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                    	at java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                    	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:483)
-                    	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
-                    	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
-                    	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
-                    	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-                    	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
-                    	at jadx.core.codegen.ClassGen.addInnerClsAndMethods(ClassGen.java:236)
-                    	at jadx.core.codegen.ClassGen.addClassBody(ClassGen.java:227)
-                    	at jadx.core.codegen.ClassGen.addClassCode(ClassGen.java:112)
-                    	at jadx.core.codegen.ClassGen.makeClass(ClassGen.java:78)
-                    	at jadx.core.codegen.CodeGen.wrapCodeGen(CodeGen.java:44)
-                    	at jadx.core.codegen.CodeGen.generateJavaCode(CodeGen.java:33)
-                    	at jadx.core.codegen.CodeGen.generate(CodeGen.java:21)
-                    	at jadx.core.ProcessClass.generateCode(ProcessClass.java:61)
-                    	at jadx.core.dex.nodes.ClassNode.decompile(ClassNode.java:273)
-                    
-*/
-                    ) {
-                    }
-                });
-                updateUIAppearance();
-                return;
-            }
-            clearSelection();
-            getPdfDocView().setMarkTextMode(true);
-            getPdfDocView().hideHandles();
+                public void work() {
+                }
+            });
             updateUIAppearance();
         }
     }
@@ -910,28 +683,26 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     public void onRedactSecureSave(View view) {
         Utilities.OCRDataLoader oCRLoader = Utilities.getOCRLoader();
         if (oCRLoader != null) {
-            oCRLoader.load(getContext(), new Utilities.OCRDataLoadListener() {
-                public void done(boolean z, String str, String str2, String str3) {
-                    if (z) {
-                        NUIDocViewPdf nUIDocViewPdf = NUIDocViewPdf.this;
-                        int i = NUIDocViewPdf.$r8$clinit;
-                        String userPath = nUIDocViewPdf.mFileState.getUserPath();
-                        if (userPath == null) {
-                            userPath = nUIDocViewPdf.mFileState.getOpenedPath();
-                        }
-                        String name = new File(userPath).getName();
-                        nUIDocViewPdf.mDataLeakHandlers.saveAsSecureHandler(FragmentManager$$ExternalSyntheticOutline0.m(Utilities.removeExtension(name), str3, ".", FileUtils.getExtension(name)), nUIDocViewPdf.getDoc(), str, str2, new SOSaveAsComplete(nUIDocViewPdf) {
-                            public void onComplete(int i, String str) {
-                            }
-
-                            public boolean onFilenameSelected(String str) {
-                                return true;
-                            }
-                        });
-                        return;
+            oCRLoader.load(getContext(), (z, str, str2, str3) -> {
+                if (z) {
+                    NUIDocViewPdf nUIDocViewPdf = NUIDocViewPdf.this;
+                    int i = NUIDocViewPdf.$r8$clinit;
+                    String userPath = nUIDocViewPdf.mFileState.getUserPath();
+                    if (userPath == null) {
+                        userPath = nUIDocViewPdf.mFileState.getOpenedPath();
                     }
-                    Utilities.showMessage((Activity) NUIDocViewPdf.this.getContext(), NUIDocViewPdf.this.getContext().getString(R.string.sodk_editor_error), NUIDocViewPdf.this.getContext().getString(R.string.sodk_editor_getting_language_data_files));
+                    String name = new File(userPath).getName();
+                  /*  nUIDocViewPdf.mDataLeakHandlers.saveAsSecureHandler(FragmentManager$$ExternalSyntheticOutline0.m(Utilities.removeExtension(name), str3, ".", FileUtils.getExtension(name)), nUIDocViewPdf.getDoc(), str, str2, new SOSaveAsComplete() {
+                        public void onComplete(int i, String str) {
+                        }
+
+                        public boolean onFilenameSelected(String str) {
+                            return true;
+                        }
+                    });*/ // TODO: comment out
+                    return;
                 }
+                Utilities.showMessage((Activity) NUIDocViewPdf.this.getContext(), NUIDocViewPdf.this.getContext().getString(R.string.sodk_editor_error), NUIDocViewPdf.this.getContext().getString(R.string.sodk_editor_getting_language_data_files));
             });
         } else {
             Utilities.showMessage((Activity) getContext(), getContext().getString(R.string.sodk_editor_error), getContext().getString(R.string.sodk_editor_no_ocrdataLoader));
@@ -945,22 +716,13 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     public void onReflowButton(View view) {
     }
 
-    public void onSearch() {
-        super.onSearch();
-    }
-
     public void onSelectionChanged() {
-        super.onSelectionChanged();
         getPdfDocView().onSelectionChanged();
     }
 
     public void onSignatureButton2(View view) {
         getPdfDocView().onSignatureMode();
         updateUIAppearance();
-    }
-
-    public void onTabChanged(String str) {
-        super.onTabChanged(str);
     }
 
     public void onTabChanging(String str, String str2) {
@@ -973,7 +735,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     public void onTocButton() {
         Context context = getContext();
         ArDkDoc doc = getDoc();
-        TocDialog tocDialog = new TocDialog(context, doc, this, new TocDialog.TocDialogListener() {
+        TocDialog tocDialog = new TocDialog(context, doc, NUIDocViewPdf.this, new TocDialog.TocDialogListener() {
         });
         TocDialog tocDialog2 = TocDialog.singleton;
         if (tocDialog2 != null) {
@@ -984,29 +746,20 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         ListView listView = (ListView) inflate.findViewById(R.id.List);
         TocDialog.TocListViewAdapter tocListViewAdapter = new TocDialog.TocListViewAdapter(tocDialog, context);
         listView.setAdapter(tocListViewAdapter);
-        ArDkLib.enumeratePdfToc(doc, new ArDkLib.EnumeratePdfTocListener(tocListViewAdapter, listView, inflate) {
-            public final /* synthetic */ TocDialog.TocListViewAdapter val$adapter;
-            public final /* synthetic */ ListView val$list;
-            public final /* synthetic */ View val$popupView;
-
-            {
-                this.val$adapter = r2;
-                this.val$list = r3;
-                this.val$popupView = r4;
-            }
+        ArDkLib.enumeratePdfToc(doc, new ArDkLib.EnumeratePdfTocListener() {
+            public final /* synthetic */ View val$popupView = null; // TODO
 
             public void done() {
-                this.val$list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long j) {
-                        TocData tocData = AnonymousClass1.this.val$adapter.listEntries.get(i);
+                        TocDialog.TocData tocData = tocListViewAdapter.listEntries.get(i);
                         if (tocData.page >= 0) {
                             float f = tocData.x;
                             float f2 = tocData.y;
                             SOLinkData sOLinkData = new SOLinkData(tocData.page, new RectF(f, f2, f + 1.0f, 1.0f + f2));
-                            if (Utilities.isPhoneDevice(TocDialog.this.mContext)) {
-                                TocDialog.this.dismiss();
+                            if (Utilities.isPhoneDevice(context)) {
+                                tocDialog.dismiss();
                             }
-                            NUIDocViewPdf.AnonymousClass2 r3 = (NUIDocViewPdf.AnonymousClass2) TocDialog.this.mListener;
                             DocView docView = NUIDocViewPdf.this.getDocView();
                             docView.addHistory(docView.getScrollX(), docView.getScrollY(), docView.getScale(), true);
                             docView.addHistory(docView.getScrollX(), docView.getScrollY() - docView.scrollBoxToTopAmount(sOLinkData.page, sOLinkData.box), docView.getScale(), false);
@@ -1015,41 +768,31 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
                         }
                     }
                 });
-                TocDialog.this.mCancelButton = (Button) this.val$popupView.findViewById(R.id.cancel_button);
-                TocDialog.this.mCancelButton.setOnClickListener(new OnClickListener() {
-                    public void onClick(View view) {
-                        TocDialog.this.dismiss();
-                    }
-                });
-                TocDialog.this.popupWindow = new NUIPopupWindow(this.val$popupView);
-                TocDialog.this.popupWindow.setFocusable(true);
-                TocDialog.this.popupWindow.setClippingEnabled(false);
-                TocDialog tocDialog = TocDialog.this;
+                tocDialog.mCancelButton = (Button) this.val$popupView.findViewById(R.id.cancel_button);
+                tocDialog.mCancelButton.setOnClickListener(view1 -> tocDialog.dismiss());
+                tocDialog.popupWindow = new NUIPopupWindow(this.val$popupView);
+                tocDialog.popupWindow.setFocusable(true);
+                tocDialog.popupWindow.setClippingEnabled(false);
                 tocDialog.popupWindow.setOnDismissListener(tocDialog);
-                TocDialog.this.showOrResize();
+                tocDialog.showOrResize();
             }
 
             public void nextTocEntry(int i, int i2, int i3, String str, String str2, float f, float f2) {
-                TocDialog.TocListViewAdapter tocListViewAdapter = this.val$adapter;
-                TocDialog.TocData tocData = new TocDialog.TocData(TocDialog.this, i, i2, i3, str, str2, f, f2, (AnonymousClass1) null);
-                tocListViewAdapter.mapEntries.put(Integer.valueOf(i), tocData);
+                TocDialog.TocData tocData = new TocDialog.TocData(tocDialog, i, i2, i3, str, str2, f, f2);
+                tocListViewAdapter.mapEntries.put(i, tocData);
                 int i4 = 0;
-                TocDialog.TocData tocData2 = tocData;
-                while (tocData2 != null) {
-                    int i5 = tocData2.parentHandle;
+                while (tocData != null) {
+                    int i5 = tocData.parentHandle;
                     if (i5 == 0) {
                         break;
                     }
                     i4++;
-                    tocData2 = tocListViewAdapter.mapEntries.get(Integer.valueOf(i5));
+                    tocData = tocListViewAdapter.mapEntries.get(i5);
                 }
                 tocData.level = i4;
                 tocListViewAdapter.listEntries.add(tocData);
             }
         });
-    }
-
-    public void onToggleAnnotationsButton(View view) {
     }
 
     public void onUndoButton(View view) {
@@ -1058,11 +801,9 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
 
     public void preSaveQuestion(final Runnable runnable1, final Runnable runnable2) {
         if (((MuPDFDoc) getDoc()).hasRedactionsToApply()) {
-            Utilities.yesNoMessage((Activity) getContext(), "", getContext().getString(R.string.sodk_editor_redact_confirm_save), getContext().getString(R.string.sodk_editor_yes), getContext().getString(R.string.sodk_editor_no), new Runnable(this) {
-                public void run() {
-                    if (runnable1 != null) {
-                        runnable1.run();
-                    }
+            Utilities.yesNoMessage((Activity) getContext(), "", getContext().getString(R.string.sodk_editor_redact_confirm_save), getContext().getString(R.string.sodk_editor_yes), getContext().getString(R.string.sodk_editor_no), () -> {
+                if (runnable1 != null) {
+                    runnable1.run();
                 }
             }, () -> {
                 if (runnable2 != null) {
@@ -1075,8 +816,8 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     }
 
     public void prepareToGoBack() {
-        SODocSession sODocSession = this.mSession;
-        if ((sODocSession == null || sODocSession.getDoc() != null) && this.mCompleted && getPdfDocView() != null) {
+        SODocSession sODocSession = NUIDocViewPdf.this.mSession;
+        if ((sODocSession == null || sODocSession.getDoc() != null) && NUIDocViewPdf.this.mCompleted && getPdfDocView() != null) {
             getPdfDocView().saveInk();
             getPdfDocView().resetModes();
         }
@@ -1115,19 +856,18 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     }
 
     public void setConfigurableButtons() {
-        super.setConfigurableButtons();
         hideUnusedButtons();
     }
 
     public void setDigitalSignatureModeOff() {
-        if (this.mDocCfgOptions.isDigitalSignaturesEnabled()) {
+        if (NUIDocViewPdf.this.mDocCfgOptions.isDigitalSignaturesEnabled()) {
             getPdfDocView().setSignatureMode(false);
             updateUIAppearance();
         }
     }
 
     public void setDigitalSignatureModeOn() {
-        if (this.mDocCfgOptions.isDigitalSignaturesEnabled()) {
+        if (NUIDocViewPdf.this.mDocCfgOptions.isDigitalSignaturesEnabled()) {
             getPdfDocView().setSignatureMode(true);
             updateUIAppearance();
         }
@@ -1153,7 +893,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     }
 
     public void setNeedsReload() {
-        this.needsReload = true;
+        NUIDocViewPdf.this.needsReload = true;
     }
 
     public void setNoteModeOff() {
@@ -1167,17 +907,17 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     }
 
     public void setSigningInProgress(boolean z) {
-        this.signingInProgress = z;
+        NUIDocViewPdf.this.signingInProgress = z;
         if (z) {
-            this.needsReload = false;
+            NUIDocViewPdf.this.needsReload = false;
         }
-        if (!z && this.needsReload) {
+        if (!z && NUIDocViewPdf.this.needsReload) {
             reloadFile();
-            this.needsReload = false;
+            NUIDocViewPdf.this.needsReload = false;
         }
         View findViewById = findViewById(R.id.signing_cover);
         if (z) {
-            findViewById.setOnClickListener(this.coverListener);
+            findViewById.setOnClickListener(NUIDocViewPdf.this.coverListener);
             findViewById.setVisibility(View.VISIBLE);
             return;
         }
@@ -1185,9 +925,7 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
     }
 
     public void setupTabs() {
-        super.setupTabs();
-        Objects.requireNonNull(this.mDocCfgOptions);
-        super.measureTabs();
+        Objects.requireNonNull(NUIDocViewPdf.this.mDocCfgOptions);
     }
 
     public boolean shouldConfigureExportPdfAsButton() {
@@ -1211,56 +949,56 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
         boolean z = false;
         boolean z2 = selectionLimits != null && selectionLimits.getIsActive() && !selectionLimits.getIsCaret();
         boolean selectionCanBeDeleted = getDoc().getSelectionCanBeDeleted();
-        ToolbarButton toolbarButton = this.mCopyButton2;
+        ToolbarButton toolbarButton = NUIDocViewPdf.this.mCopyButton2;
         if (toolbarButton != null) {
             toolbarButton.setEnabled(z2);
         }
-        if (this.mDocCfgOptions.isPDFAnnotationEnabled()) {
-            this.mHighlightButton.setEnabled(getDoc().getSelectionIsAlterableTextSelection());
+        if (NUIDocViewPdf.this.mDocCfgOptions.isPDFAnnotationEnabled()) {
+            NUIDocViewPdf.this.mHighlightButton.setEnabled(getDoc().getSelectionIsAlterableTextSelection());
             boolean noteMode = pdfDocView.getNoteMode();
-            this.mNoteButton.setSelected(noteMode);
+            NUIDocViewPdf.this.mNoteButton.setSelected(noteMode);
             findViewById(R.id.note_holder).setSelected(noteMode);
             boolean signatureMode = pdfDocView.getSignatureMode();
-            this.mDigSignatureButton.setSelected(signatureMode);
+            NUIDocViewPdf.this.mDigSignatureButton.setSelected(signatureMode);
             findViewById(R.id.dig_sig_holder).setSelected(signatureMode);
             boolean eSignatureMode = pdfDocView.getESignatureMode();
-            this.mESignatureButton.setSelected(eSignatureMode);
+            NUIDocViewPdf.this.mESignatureButton.setSelected(eSignatureMode);
             findViewById(R.id.ink_sig_holder).setSelected(eSignatureMode);
             boolean drawMode = pdfDocView.getDrawMode();
-            this.mDeleteInkButton.setEnabled((drawMode && ((DocPdfView) getDocView()).hasNotSavedInk()) || selectionCanBeDeleted);
-            this.mNoteButton.setEnabled(!drawMode && !signatureMode && !eSignatureMode);
-            this.mAuthorButton.setEnabled(!drawMode && !signatureMode && !noteMode && !eSignatureMode);
-            this.mHighlightButton.setEnabled(!drawMode && !signatureMode && !noteMode && !eSignatureMode);
-            this.mDigSignatureButton.setEnabled(!drawMode && !noteMode);
-            this.mESignatureButton.setEnabled(!drawMode && !noteMode);
+            NUIDocViewPdf.this.mDeleteInkButton.setEnabled((drawMode && ((DocPdfView) getDocView()).hasNotSavedInk()) || selectionCanBeDeleted);
+            NUIDocViewPdf.this.mNoteButton.setEnabled(!drawMode && !signatureMode && !eSignatureMode);
+            NUIDocViewPdf.this.mAuthorButton.setEnabled(!drawMode && !signatureMode && !noteMode && !eSignatureMode);
+            NUIDocViewPdf.this.mHighlightButton.setEnabled(!drawMode && !signatureMode && !noteMode && !eSignatureMode);
+            NUIDocViewPdf.this.mDigSignatureButton.setEnabled(!drawMode && !noteMode);
+            NUIDocViewPdf.this.mESignatureButton.setEnabled(!drawMode && !noteMode);
             int countSignatures = getPdfDocView().countSignatures();
-            this.mNextSignatureButton.setEnabled(countSignatures > 0);
-            this.mPreviousSignatureButton.setEnabled(countSignatures > 0);
-            this.mDrawLineColorButton.setDrawableColor(((DocPdfView) getDocView()).getInkLineColor());
+            NUIDocViewPdf.this.mNextSignatureButton.setEnabled(countSignatures > 0);
+            NUIDocViewPdf.this.mPreviousSignatureButton.setEnabled(countSignatures > 0);
+            NUIDocViewPdf.this.mDrawLineColorButton.setDrawableColor(((DocPdfView) getDocView()).getInkLineColor());
             findViewById(R.id.draw_tools_holder).setSelected(drawMode);
         }
         MuPDFDoc muPDFDoc = (MuPDFDoc) getDoc();
         boolean markAreaMode = pdfDocView.getMarkAreaMode();
         boolean markTextMode = pdfDocView.getMarkTextMode();
-        this.mRedactMarkButton.setEnabled(!markAreaMode);
-        this.mRedactMarkButton.setSelected(markTextMode);
-        this.mRedactMarkAreaButton.setEnabled(!markTextMode);
-        this.mRedactMarkAreaButton.setSelected(markAreaMode);
-        this.mRedactRemoveButton.setEnabled(!markAreaMode && selectionCanBeDeleted && muPDFDoc.selectionIsRedaction());
-        ToolbarButton toolbarButton2 = this.mRedactApplyButton;
+        NUIDocViewPdf.this.mRedactMarkButton.setEnabled(!markAreaMode);
+        NUIDocViewPdf.this.mRedactMarkButton.setSelected(markTextMode);
+        NUIDocViewPdf.this.mRedactMarkAreaButton.setEnabled(!markTextMode);
+        NUIDocViewPdf.this.mRedactMarkAreaButton.setSelected(markAreaMode);
+        NUIDocViewPdf.this.mRedactRemoveButton.setEnabled(!markAreaMode && selectionCanBeDeleted && muPDFDoc.selectionIsRedaction());
+        ToolbarButton toolbarButton2 = NUIDocViewPdf.this.mRedactApplyButton;
         if (!markAreaMode && muPDFDoc.hasRedactionsToApply()) {
             z = true;
         }
         toolbarButton2.setEnabled(z);
         History history = pdfDocView.getHistory();
-        this.mPreviousLinkButton.setEnabled(history.canPrevious());
-        this.mNextLinkButton.setEnabled(history.canNext());
+        NUIDocViewPdf.this.mPreviousLinkButton.setEnabled(history.canPrevious());
+        NUIDocViewPdf.this.mNextLinkButton.setEnabled(history.canNext());
         getPdfDocView().onSelectionChanged();
         doUpdateCustomUI();
     }
 
     public boolean usePauseHandler() {
-        return !this.signingInProgress;
+        return !NUIDocViewPdf.this.signingInProgress;
     }
 
     public void reloadFile(String str) {
@@ -1271,14 +1009,14 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
             muPDFDoc.mForceReloadAtResume = false;
             muPDFDoc.mForceReload = false;
             if (z) {
-                str = this.mSession.getFileState().getInternalPath();
+                str = NUIDocViewPdf.this.mSession.getFileState().getInternalPath();
             } else if (z2) {
-                str = this.mSession.getFileState().getUserPath();
+                str = NUIDocViewPdf.this.mSession.getFileState().getUserPath();
                 if (str == null) {
-                    str = this.mSession.getFileState().getOpenedPath();
+                    str = NUIDocViewPdf.this.mSession.getFileState().getOpenedPath();
                 }
             } else if (str == null) {
-                str = this.mSession.getFileState().getOpenedPath();
+                str = NUIDocViewPdf.this.mSession.getFileState().getOpenedPath();
                 if (!muPDFDoc.mLastSaveWasIncremental) {
                     long j = muPDFDoc.mLoadTime;
                     long fileLastModified = FileUtils.fileLastModified(str);
@@ -1294,16 +1032,16 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.16.work():void, de
                 muPDFDoc.mOpenedPath = str2;
             }
             final ProgressDialog createAndShowWaitSpinner = Utilities.createAndShowWaitSpinner(getContext());
-            muPDFDoc.mWorker.add(new Worker.Task(str2, z2 || z, muPDFDoc, new MuPDFDoc.ReloadListener() {
-            }) {
+            muPDFDoc.mWorker.add(new Worker.Task() {
                 public Document newDoc;
                 public ArrayList<MuPDFPage> newPages;
-                public final /* synthetic */ boolean val$forced;
-                public final /* synthetic */ ReloadListener val$listener;
-                public final /* synthetic */ String val$path;
-                public final /* synthetic */ MuPDFDoc val$thisMupdfDoc;
+                public final /* synthetic */ boolean val$forced = false;
+                public final /* synthetic */ MuPDFDoc.ReloadListener val$listener = null;
+                public final /* synthetic */ String val$path = "";
+                public final /* synthetic */ MuPDFDoc val$thisMupdfDoc = null;
 
-                public void run(){}
+                public void run() {
+                }
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.30.run():void, dex: classes.dex
                 jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.30.run():void, class status: UNLOADED
@@ -1373,7 +1111,8 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.30.run():void, dex
                 
 */
 
-                public void work() {}
+                public void work() {
+                }
 /*
 Method generation error in method: com.artifex.solib.MuPDFDoc.30.work():void, dex: classes.dex
                 jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFDoc.30.work():void, class status: UNLOADED
@@ -1444,13 +1183,5 @@ Method generation error in method: com.artifex.solib.MuPDFDoc.30.work():void, de
 */
             });
         }
-    }
-
-    public NUIDocViewPdf(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
-    }
-
-    public NUIDocViewPdf(Context context, AttributeSet attributeSet, int i) {
-        super(context, attributeSet, i);
     }
 }

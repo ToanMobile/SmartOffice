@@ -1,7 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-
 public class ColorSpace {
     public static ColorSpace DeviceBGR = new ColorSpace(nativeDeviceBGR());
     public static ColorSpace DeviceCMYK = new ColorSpace(nativeDeviceCMYK());
@@ -66,7 +64,7 @@ public class ColorSpace {
         if (this == DeviceCMYK) {
             return "DeviceCMYK";
         }
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("ColorSpace(");
+        StringBuilder m = new StringBuilder("ColorSpace(");
         m.append(getNumberOfComponents());
         m.append(")");
         return m.toString();

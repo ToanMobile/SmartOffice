@@ -1,8 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-//import androidx.constraintlayout.core.widgets.ConstraintWidget$$ExternalSyntheticOutline0;
-
 public class RectI {
     private static final int FZ_MAX_INF_RECT = 2147483520;
     private static final int FZ_MIN_INF_RECT = Integer.MIN_VALUE;
@@ -38,7 +35,7 @@ public class RectI {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("[");
+        StringBuilder m = new StringBuilder("[");
         m.append(this.x0);
         m.append(" ");
         m.append(this.y0);

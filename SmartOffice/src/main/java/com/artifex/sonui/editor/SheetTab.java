@@ -70,27 +70,17 @@ public class SheetTab extends LinearLayout {
     }
 
     public void setOnClickDelete(final OnClickListener onClickListener) {
-        getXView().setOnClickListener(new OnClickListener(this) {
-            public void onClick(View view) {
-                onClickListener.onClick(this);
-            }
-        });
+        getXView().setOnClickListener(view -> onClickListener.onClick(this));
     }
 
     public void setOnClickTab(final OnClickListener onClickListener) {
-        getOuterView().setOnClickListener(new OnClickListener(this) {
-            public void onClick(View view) {
-                onClickListener.onClick(this);
-            }
-        });
+        getOuterView().setOnClickListener(view -> onClickListener.onClick(this));
     }
 
     public void setOnLongClickTab(final OnLongClickListener onLongClickListener) {
-        getOuterView().setOnLongClickListener(new OnLongClickListener(this) {
-            public boolean onLongClick(View view) {
-                onLongClickListener.onLongClick(this);
-                return true;
-            }
+        getOuterView().setOnLongClickListener(view -> {
+            onLongClickListener.onLongClick(this);
+            return true;
         });
     }
 

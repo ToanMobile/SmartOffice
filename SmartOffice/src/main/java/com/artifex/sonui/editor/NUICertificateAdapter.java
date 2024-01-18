@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NUICertificateAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class NUICertificateAdapter extends RecyclerView.Adapter<NUICertificateAdapter.ViewHolder> {
     public ArrayList<NUICertificate> mCertificates;
     public ItemClickListener mClickListener;
     public Context mContext;

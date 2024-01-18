@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import androidx.core.content.ContextCompat;
-import com.applovin.exoplayer2.b.g$a$$ExternalSyntheticLambda1;
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkSelectionLimits;
@@ -425,7 +424,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
                                 if (((NUIDocView) this.mHostActivity).isKeyboardVisible()) {
                                     j = 0;
                                 }
-                                handler.postDelayed(new g$a$$ExternalSyntheticLambda1(this, findPageViewContainingPoint, eventToScreen), j);
+                                // TODO: handler.postDelayed(new g$a$$ExternalSyntheticLambda1(this, findPageViewContainingPoint, eventToScreen), j);
                             }
                         }
                     }
@@ -798,7 +797,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
             if (i >= arDkBitmapArr.length) {
                 return true;
             }
-            if (arDkBitmapArr[i] == null || arDkBitmapArr[i].bitmap == null || arDkBitmapArr[i].bitmap.isRecycled()) {
+            if (arDkBitmapArr[i] == null || arDkBitmapArr[i].getBitmap() == null || arDkBitmapArr[i].getBitmap().isRecycled()) {
                 return false;
             }
             i++;
@@ -1702,15 +1701,16 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
             scaleChildren();
             this.mXScroll = 0;
             this.mYScroll = 0;
-            final int height2 = (int) ((((float) ((rect2.height() / 2) + getScrollY())) * width) - ((float) (rect2.height() / 2)));
+            int height2 = (int) ((((float) ((rect2.height() / 2) + getScrollY())) * width) - ((float) (rect2.height() / 2)));
             if (((int) (min * ((float) this.mLastAllPagesRect.height()))) < rect2.height()) {
                 height2 = 0;
             }
             final ViewTreeObserver viewTreeObserver3 = getViewTreeObserver();
+            int finalHeight = height2;
             viewTreeObserver3.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 public void onGlobalLayout() {
                     viewTreeObserver3.removeOnGlobalLayoutListener(this);
-                    DocView.this.scrollAfterScaleEnd(0, height2);
+                    DocView.this.scrollAfterScaleEnd(0, finalHeight);
                     DocView.this.requestLayout();
                 }
             });
@@ -1883,7 +1883,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
             this.mDraggingObjectPageBounds = this.mSelectionStartPage.getSelectionLimits().getBox();
             ArDkBitmap selectionAsBitmap = ((SODoc) getDoc()).getSelectionAsBitmap();
             this.mResizingBitmap = selectionAsBitmap;
-            this.mResizingView.setImageBitmap(selectionAsBitmap != null ? selectionAsBitmap.bitmap : null);
+            this.mResizingView.setImageBitmap(selectionAsBitmap != null ? selectionAsBitmap.getBitmap() : null);
             ArDkSelectionLimits selectionLimits = getSelectionLimits();
             Point pageToView = this.mSelectionStartPage.pageToView((int) selectionLimits.getBox().left, (int) selectionLimits.getBox().top);
             this.mResizeOrigTopLeft = pageToView;
@@ -2015,7 +2015,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
             if (i >= this.bitmaps.length) {
                 this.bitmapIndex = 0;
             }
-            ArrayList arrayList = new ArrayList();
+            ArrayList<DocPageView> arrayList = new ArrayList<>();
             for (int i2 = 0; i2 < getPageCount(); i2++) {
                 DocPageView docPageView = (DocPageView) getOrCreateChild(i2);
                 if (docPageView.getParent() != null && docPageView.isShown()) {
@@ -2023,35 +2023,20 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
                     docPageView.startRenderPass();
                 }
             }
-            long currentTimeMillis = System.currentTimeMillis();
-            Iterator it = arrayList.iterator();
-            while (it.hasNext()) {
-                DocPageView docPageView2 = (DocPageView) it.next();
+            for (DocPageView o : arrayList) {
                 if (isValid()) {
                     this.renderCount++;
-                    docPageView2.render(this.bitmaps[this.bitmapIndex], new SORenderListener(arrayList, currentTimeMillis) {
-                        public final /* synthetic */ ArrayList val$pages;
-
-                        {
-                            this.val$pages = r2;
-                        }
-
-                        public void progress(int i) {
-                            DocView docView = DocView.this;
-                            int i2 = docView.renderCount - 1;
-                            docView.renderCount = i2;
-                            if (i2 == 0) {
-                                Iterator it = this.val$pages.iterator();
-                                while (it.hasNext()) {
-                                    DocPageView docPageView = (DocPageView) it.next();
-                                    docPageView.endRenderPass();
-                                    docPageView.invalidate();
-                                }
-                                DocView.this.onEndRenderPass();
-                                DocView docView2 = DocView.this;
-                                if (docView2.renderRequested) {
-                                    docView2.renderPages();
-                                }
+                    o.render(this.bitmaps[this.bitmapIndex], i1 -> {
+                        DocView docView = DocView.this;
+                        int i2 = docView.renderCount - 1;
+                        docView.renderCount = i2;
+                        if (i2 == 0) {
+                            o.endRenderPass();
+                            o.invalidate();
+                            DocView.this.onEndRenderPass();
+                            DocView docView2 = DocView.this;
+                            if (docView2.renderRequested) {
+                                docView2.renderPages();
                             }
                         }
                     });
@@ -2405,14 +2390,12 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
                     public void onGlobalLayout() {
                         viewTreeObserver.removeOnGlobalLayoutListener(this);
                         DocView docView = DocView.this;
-                        int i = DocView.UNSCALED_GAP;
                         docView.onScaleEndInternal();
                         DocView.this.requestLayout();
                         final ViewTreeObserver viewTreeObserver = DocView.this.getViewTreeObserver();
                         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                             public void onGlobalLayout() {
                                 viewTreeObserver.removeOnGlobalLayoutListener(this);
-                                AnonymousClass14 r0 = AnonymousClass14.this;
                                 DocView.this.scrollTo(i3, i4);
                             }
                         });
@@ -2714,7 +2697,7 @@ public class DocView extends AdapterView<Adapter> implements GestureDetector.OnG
         this.mResizingView.setImageBitmap((Bitmap) null);
         this.mResizingView.setVisibility(View.GONE);
         ArDkBitmap arDkBitmap = this.mResizingBitmap;
-        if (!(arDkBitmap == null || (bitmap = arDkBitmap.bitmap) == null)) {
+        if (!(arDkBitmap == null || (bitmap = arDkBitmap.getBitmap()) == null)) {
             bitmap.recycle();
             this.mResizingBitmap = null;
         }

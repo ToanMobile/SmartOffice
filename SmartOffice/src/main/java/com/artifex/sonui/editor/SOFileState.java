@@ -1,10 +1,7 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.util.Base64;
-import androidx.constraintlayout.core.widgets.Barrier$$ExternalSyntheticOutline0;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SOPreferences;
 import java.io.UnsupportedEncodingException;
@@ -88,15 +85,13 @@ public class SOFileState {
             return null;
         }
         String str3 = "";
-        String decode = split.length >= 1 ? decode(split[0]) : str3;
-        String decode2 = split.length >= 2 ? decode(split[1]) : str3;
+        String decode = decode(split[0]);
+        String decode2 = decode(split[1]);
         long j = 0;
-        if (split.length >= 3) {
-            j = Long.parseLong(split[2], 10);
-        }
-        boolean equals = split.length >= 4 ? split[3].equals("TRUE") : false;
-        String decode3 = split.length >= 5 ? decode(split[4]) : str3;
-        String decode4 = split.length >= 6 ? decode(split[5]) : str3;
+        j = Long.parseLong(split[2], 10);
+        boolean equals = split[3].equals("TRUE");
+        String decode3 = decode(split[4]);
+        String decode4 = decode(split[5]);
         if (split.length >= 7) {
             str3 = decode(split[6]);
         }
@@ -120,37 +115,37 @@ public class SOFileState {
     }
 
     public static String toString(SOFileState sOFileState) {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("");
+        StringBuilder m = new StringBuilder();
         m.append(encode(sOFileState.mUserPath));
         m.append("|");
-        StringBuilder m2 = c$$ExternalSyntheticOutline0.m(m.toString());
+        StringBuilder m2 = new StringBuilder(m.toString());
         m2.append(encode(sOFileState.mInternalPath));
         m2.append("|");
-        StringBuilder m3 = c$$ExternalSyntheticOutline0.m(m2.toString());
-        m3.append(String.valueOf(sOFileState.mLastAccess));
+        StringBuilder m3 = new StringBuilder(m2.toString());
+        m3.append(sOFileState.mLastAccess);
         m3.append("|");
-        StringBuilder m4 = c$$ExternalSyntheticOutline0.m(Barrier$$ExternalSyntheticOutline0.m(c$$ExternalSyntheticOutline0.m(m3.toString()), sOFileState.mHasChanges ? "TRUE" : "FALSE", "|"));
+        StringBuilder m4 = new StringBuilder(m3.toString()).append(sOFileState.mHasChanges ? "TRUE" : "FALSE").append("|");
         m4.append(encode(sOFileState.mThumbPath));
         m4.append("|");
-        StringBuilder m5 = c$$ExternalSyntheticOutline0.m(m4.toString());
+        StringBuilder m5 = new StringBuilder(m4.toString());
         m5.append(encode(sOFileState.mOpenedPath));
         m5.append("|");
-        StringBuilder m6 = c$$ExternalSyntheticOutline0.m(m5.toString());
+        StringBuilder m6 = new StringBuilder(m5.toString());
         m6.append(encode(sOFileState.mForeignData));
         m6.append("|");
-        StringBuilder m7 = c$$ExternalSyntheticOutline0.m(m6.toString());
+        StringBuilder m7 = new StringBuilder(m6.toString());
         m7.append(String.valueOf(sOFileState.mPageNumber));
         m7.append("|");
-        StringBuilder m8 = c$$ExternalSyntheticOutline0.m(m7.toString());
+        StringBuilder m8 = new StringBuilder(m7.toString());
         m8.append(String.valueOf(sOFileState.mScale));
         m8.append("|");
-        StringBuilder m9 = c$$ExternalSyntheticOutline0.m(m8.toString());
+        StringBuilder m9 = new StringBuilder(m8.toString());
         m9.append(String.valueOf(sOFileState.mScrollX));
         m9.append("|");
-        StringBuilder m10 = c$$ExternalSyntheticOutline0.m(m9.toString());
+        StringBuilder m10 = new StringBuilder(m9.toString());
         m10.append(String.valueOf(sOFileState.mScrollY));
         m10.append("|");
-        StringBuilder m11 = c$$ExternalSyntheticOutline0.m(m10.toString());
+        StringBuilder m11 = new StringBuilder(m10.toString());
         m11.append(String.valueOf(sOFileState.mPagesListVisible));
         m11.append("|");
         return m11.toString();
@@ -262,7 +257,7 @@ public class SOFileState {
             String str2 = this.mUserPath;
             if (FileUtils.fileExists(str)) {
                 boolean fileExists = FileUtils.fileExists(str2);
-                String m = a$$ExternalSyntheticOutline0.m(str2, "xxx");
+                String m = str2 + "xxx";
                 if (!FileUtils.fileExists(m) && (!fileExists || FileUtils.renameFile(str2, m))) {
                     if (FileUtils.copyFile(str, str2, true)) {
                         FileUtils.deleteFile(m);

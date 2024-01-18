@@ -1,6 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class Matrix {
@@ -184,7 +183,7 @@ public class Matrix {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("[");
+        StringBuilder m = new StringBuilder("[");
         m.append(this.f2131a);
         m.append(" ");
         m.append(this.b);

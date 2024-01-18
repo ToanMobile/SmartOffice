@@ -22,7 +22,7 @@ public class EditNumberFormatPercentage {
         descriptions = new String[]{String.format("%d", new Object[]{0}) + "%", String.format("%.1f", new Object[]{Double.valueOf(0.1d)}) + "%", String.format("%.2f", new Object[]{Double.valueOf(0.12d)}) + "%", String.format("%.3f", new Object[]{Double.valueOf(0.123d)}) + "%", String.format("%.4f", new Object[]{Double.valueOf(0.1234d)}) + "%", String.format("%.5f", new Object[]{Double.valueOf(0.12345d)}) + "%", String.format("%.6f", new Object[]{Double.valueOf(0.123456d)}) + "%", String.format("%.7f", new Object[]{Double.valueOf(0.1234567d)}) + "%", String.format("%.8f", new Object[]{Double.valueOf(0.12345678d)}) + "%", sb.toString(), String.format("%.10f", new Object[]{valueOf})};
     }
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         EditNumberFormatPercentage editNumberFormatPercentage = new EditNumberFormatPercentage();
         String selectedCellFormat = ((SODoc) arDkDoc).getSelectedCellFormat();
         View inflate = View.inflate(context, R.layout.sodk_editor_number_format_percentage, (ViewGroup) null);

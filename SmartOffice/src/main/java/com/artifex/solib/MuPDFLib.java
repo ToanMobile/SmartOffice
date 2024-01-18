@@ -1,12 +1,10 @@
 package com.artifex.solib;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import com.artifex.mupdf.fitz.Document;
-import com.artifex.solib.Worker;
 import com.artifex.sonui.editor.SODocSession;
 import java.util.Objects;
 
@@ -40,15 +38,14 @@ public class MuPDFLib extends ArDkLib {
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 while (true) {
-                    Worker worker = Worker.this;
                     if (worker.alive) {
                         try {
                             Worker.Task take = worker.mQueue.take();
                             take.work();
-                            new Handler(Worker.this.mLooper).post(take);
+                            new Handler(worker.mLooper).post(take);
                         } catch (InterruptedException unused) {
                         } catch (Throwable th) {
-                            StringBuilder m = c$$ExternalSyntheticOutline0.m("exception in Worker thread: ");
+                            StringBuilder m = new StringBuilder("exception in Worker thread: ");
                             m.append(th.toString());
                             Log.e("Worker", m.toString());
                         }
@@ -67,9 +64,8 @@ public class MuPDFLib extends ArDkLib {
 
             public void run() {
                 if (!this.docOpened) {
-                    SODocLoadListener sODocLoadListener = sODocLoadListener;
                     if (sODocLoadListener != null) {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener).onError(4, 0);
+                        sODocLoadListener.onError(4, 0);
                     }
                 } else if (this.needsPassword) {
                     SODocLoadListener sODocLoadListener2 = sODocLoadListener;
@@ -85,7 +81,6 @@ public class MuPDFLib extends ArDkLib {
                 Document openFile = MuPDFDoc.openFile(str);
                 if (openFile != null) {
                     this.docOpened = true;
-                    MuPDFDoc muPDFDoc = muPDFDoc;
                     muPDFDoc.mDocument = openFile;
                     muPDFDoc.mOpenedPath = str;
                     if (openFile.needsPassword()) {

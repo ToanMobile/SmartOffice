@@ -100,21 +100,21 @@ public class DocPdfView extends DocView {
             MuPDFWidget muPDFWidget = docPdfView3.sigEditingWidget;
             if (muPDFWidget != null) {
                 muPDFWidget.safeBounds = screenToPage;
-                muPDFWidget.mDoc.mWorker.add(new Worker.Task(screenToPage) {
+                muPDFWidget.mDoc.mWorker.add(new Worker.Task() {
                     public final /* synthetic */ Rect val$r;
 
                     {
-                        this.val$r = r2;
+                        this.val$r = screenToPage;
                     }
 
                     public void run() {
                     }
 
                     public void work() {
-                        PDFWidget pDFWidget = MuPDFWidget.this.mWidget;
+                        PDFWidget pDFWidget = muPDFWidget.mWidget;
                         Rect rect = this.val$r;
                         pDFWidget.setRect(new com.artifex.mupdf.fitz.Rect((float) rect.left, (float) rect.top, (float) rect.right, (float) rect.bottom));
-                        MuPDFWidget.this.mWidget.update();
+                        muPDFWidget.mWidget.update();
                     }
                 });
                 muPDFDoc.update(DocPdfView.this.mResizingPage.getPageNumber());
@@ -122,11 +122,9 @@ public class DocPdfView extends DocView {
                 MuPDFPage muPDFPage = (MuPDFPage) docPdfView3.sigEditingPage.mPage;
                 int i2 = docPdfView3.sigEditingAnnotIndex;
                 if (i2 < muPDFPage.mAnnotations.size()) {
-                    muPDFPage.mDoc.mWorker.add(new Worker.Task(muPDFPage.mAnnotations.get(i2), new com.artifex.mupdf.fitz.Rect((float) screenToPage.left, (float) screenToPage.top, (float) screenToPage.right, (float) screenToPage.bottom)) {
-                        public final /* synthetic */ com.artifex.mupdf.fitz.Rect val$fr = null;
-                        public final /* synthetic */ MuPDFAnnotation val$mAnnot = null;
+                    muPDFPage.mDoc.mWorker.add(new Worker.Task() {
 
-                        public void run() {};
+                        public void run() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFPage.4.run():void, dex: classes.dex
                         jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFPage.4.run():void, class status: UNLOADED
@@ -214,7 +212,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.run():void, dex
                         
 */
 
-                        public void work() {};
+                        public void work() {}
 /*
 Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, dex: classes.dex
                         jadx.core.utils.exceptions.JadxRuntimeException: Method args not loaded: com.artifex.solib.MuPDFPage.4.work():void, class status: UNLOADED
@@ -313,18 +311,18 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                         muPDFPage2.updateSelectedRedaction(screenToPage);
                     }
                 } else {
-                    muPDFDoc.mWorker.add(new Worker.Task(new RectF(screenToPage)) {
+                    muPDFDoc.mWorker.add(new Worker.Task() {
                         public final /* synthetic */ RectF val$bounds;
 
                         {
-                            this.val$bounds = r2;
+                            this.val$bounds = new RectF(screenToPage);
                         }
 
                         public void run() {
                         }
 
                         public void work() {
-                            MuPDFAnnotation selectedAnnotation = MuPDFDoc.this.getSelectedAnnotation();
+                            MuPDFAnnotation selectedAnnotation = muPDFDoc.getSelectedAnnotation();
                             if (selectedAnnotation != null) {
                                 RectF rectF = this.val$bounds;
                                 com.artifex.mupdf.fitz.Rect rect = new com.artifex.mupdf.fitz.Rect(rectF.left, rectF.top, rectF.right, rectF.bottom);
@@ -339,7 +337,6 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                                 selectedAnnotation.mDoc.checkForWorkerThread();
                                 selectedAnnotation.mModDate = date;
                                 selectedAnnotation.mAnnotation.setModificationDate(date);
-                                MuPDFDoc muPDFDoc = MuPDFDoc.this;
                                 muPDFDoc.update(muPDFDoc.selectedAnnotPagenum);
                             }
                         }
@@ -1062,13 +1059,13 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                 Objects.requireNonNull(muPDFDoc);
                 int i = MuPDFPage.mTextSelPageNum;
                 if (i != -1) {
-                    muPDFDoc.mWorker.add(new Worker.Task(i, true) {
+                    muPDFDoc.mWorker.add(new Worker.Task() {
                         public final /* synthetic */ int val$pageNum;
                         public final /* synthetic */ boolean val$select;
 
                         {
-                            this.val$pageNum = 0; // r2; TODO:
-                            this.val$select = false; // r3;
+                            this.val$pageNum = i;
+                            this.val$select = true;
                         }
 
                         /* JADX WARNING: Code restructure failed: missing block: B:8:0x002e, code lost:
@@ -1135,12 +1132,12 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                         }
 
                         public void work() {
-                            PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                            PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(muPDFDoc.mDocument);
                             pDFDocument.beginOperation("addRedactAnnotation");
-                            MuPDFDoc.this.mPages.get(this.val$pageNum).addAnnotation(12, MuPDFDoc.this.mAuthor);
+                            muPDFDoc.mPages.get(this.val$pageNum).addAnnotation(12, muPDFDoc.mAuthor);
                             pDFDocument.endOperation();
-                            MuPDFDoc.this.update(this.val$pageNum);
-                            MuPDFDoc.access$2500(MuPDFDoc.this, this.val$pageNum);
+                            muPDFDoc.update(this.val$pageNum);
+                            MuPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
                         }
                     });
                 }

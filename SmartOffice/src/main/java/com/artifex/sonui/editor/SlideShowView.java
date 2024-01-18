@@ -347,13 +347,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i2 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             BlindsAnimation blindsAnimation = new BlindsAnimation((String) slideTransition.mDirection, slideShowPageLayout, slideShowPageLayout2, i2);
-                            blindsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout2, slideShowPageLayout) {
+                            blindsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout2;
+                                    this.val$oldView = slideShowPageLayout;
                                 }
 
                                 public void done() {
@@ -372,13 +372,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i3 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             CircleAnimation circleAnimation = new CircleAnimation((String) slideTransition.mDirection, slideShowPageLayout3, slideShowPageLayout4, i3);
-                            circleAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout4, slideShowPageLayout3) {
+                            circleAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout4;
+                                    this.val$oldView = slideShowPageLayout3;
                                 }
 
                                 public void done() {
@@ -397,13 +397,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i4 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             StripsAnimation stripsAnimation = new StripsAnimation((String) slideTransition.mDirection, slideShowPageLayout5, slideShowPageLayout6, i4);
-                            stripsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout6, slideShowPageLayout5) {
+                            stripsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout6;
+                                    this.val$oldView = slideShowPageLayout5;
                                 }
 
                                 public void done() {
@@ -428,15 +428,15 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 SlideShowPageLayout slideShowPageLayout8 = slideShowPageLayoutArr5[slideShowView2.mCurrentView];
                                 int i5 = slideTransition.mDuration;
                                 slideShowView2.animationCounter = 1;
-                                slideShowPageLayout8.setVisibility(4);
-                                slideShowPageLayout7.setVisibility(4);
-                                new Handler().postDelayed(new Runnable(slideShowPageLayout8, slideShowPageLayout7) {
+                                slideShowPageLayout8.setVisibility(View.INVISIBLE);
+                                slideShowPageLayout7.setVisibility(View.INVISIBLE);
+                                new Handler().postDelayed(new Runnable() {
                                     public final /* synthetic */ SlideShowPageLayout val$newView;
                                     public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                     {
-                                        this.val$newView = r2;
-                                        this.val$oldView = r3;
+                                        this.val$newView = slideShowPageLayout8;
+                                        this.val$oldView = slideShowPageLayout7;
                                     }
 
                                     public void run() {
@@ -452,7 +452,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 SlideShowPageLayout slideShowPageLayout9 = slideShowPageLayoutArr6[slideShowView2.mLastView];
                                 SlideShowPageLayout slideShowPageLayout10 = slideShowPageLayoutArr6[slideShowView2.mCurrentView];
                                 slideShowPageLayout10.setVisibility(View.VISIBLE);
-                                slideShowPageLayout9.setVisibility(4);
+                                slideShowPageLayout9.setVisibility(View.INVISIBLE);
                                 slideShowPageLayout9.clearUpAnimTiles(true);
                                 slideShowPageLayout10.startSlideAnimations();
                                 return;
@@ -511,7 +511,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             ClippedImageView clippedImageView = addImageViewCopy;
                             ClippedImageView clippedImageView2 = addImageViewCopy2;
                             SlideShowPageLayout slideShowPageLayout14 = slideShowPageLayout11;
-                            animate.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j).setListener(new AnimatorListenerAdapter(slideShowPageLayout13, clippedImageView, clippedImageView2, slideShowPageLayout14, animate) {
+                            animate.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ ViewPropertyAnimator val$anim1;
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
@@ -519,11 +519,11 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 public final /* synthetic */ ClippedImageView val$v2;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$v1 = r3;
-                                    this.val$v2 = r4;
-                                    this.val$oldView = r5;
-                                    this.val$anim1 = r6;
+                                    this.val$newView = slideShowPageLayout13;
+                                    this.val$v1 = clippedImageView;
+                                    this.val$v2 = clippedImageView2;
+                                    this.val$oldView = slideShowPageLayout14;
+                                    this.val$anim1 = animate;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -539,7 +539,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 }
                             });
                             ViewPropertyAnimator animate2 = addImageViewCopy2.animate();
-                            animate2.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j).setListener(new AnimatorListenerAdapter(slideShowPageLayout13, clippedImageView, clippedImageView2, slideShowPageLayout14, animate2) {
+                            animate2.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ ViewPropertyAnimator val$anim2;
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
@@ -547,11 +547,11 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 public final /* synthetic */ ClippedImageView val$v2;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$v1 = r3;
-                                    this.val$v2 = r4;
-                                    this.val$oldView = r5;
-                                    this.val$anim2 = r6;
+                                    this.val$newView = slideShowPageLayout13;
+                                    this.val$v1 = clippedImageView;
+                                    this.val$v2 = clippedImageView2;
+                                    this.val$oldView = slideShowPageLayout14;
+                                    this.val$anim2 = animate2;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -577,29 +577,28 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                                 int i10 = slideTransition.mDuration;
                                 slideShowView2.animationCounter = 1;
                                 slideShowPageLayout16.setAlpha(BitmapDescriptorFactory.HUE_RED);
-                                slideShowView2.setViewPropertyAnimator(slideShowPageLayout15).alpha(BitmapDescriptorFactory.HUE_RED).setDuration((long) (i10 / 2)).setListener(new AnimatorListenerAdapter(slideShowPageLayout15, slideShowPageLayout16, i10) {
+                                slideShowView2.setViewPropertyAnimator(slideShowPageLayout15).alpha(BitmapDescriptorFactory.HUE_RED).setDuration((long) (i10 / 2)).setListener(new AnimatorListenerAdapter() {
                                     public final /* synthetic */ int val$duration;
                                     public final /* synthetic */ SlideShowPageLayout val$newView;
                                     public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                     {
-                                        this.val$oldView = r2;
-                                        this.val$newView = r3;
-                                        this.val$duration = r4;
+                                        this.val$oldView = slideShowPageLayout15;
+                                        this.val$newView = slideShowPageLayout16;
+                                        this.val$duration = i10;
                                     }
 
                                     public void onAnimationEnd(Animator animator) {
-                                        this.val$oldView.setVisibility(4);
+                                        this.val$oldView.setVisibility(View.INVISIBLE);
                                         this.val$newView.setVisibility(View.VISIBLE);
                                         SlideShowView slideShowView = SlideShowView.this;
                                         SlideShowPageLayout slideShowPageLayout = this.val$newView;
                                         ArDkDoc arDkDoc = SlideShowView.useDoc;
                                         slideShowView.setViewPropertyAnimator(slideShowPageLayout).alpha(1.0f).setDuration((long) (this.val$duration / 2)).setListener(new AnimatorListenerAdapter() {
                                             public void onAnimationEnd(Animator animator) {
-                                                AnonymousClass25 r3 = AnonymousClass25.this;
                                                 SlideShowView slideShowView = SlideShowView.this;
                                                 slideShowView.animationCounter = 0;
-                                                SlideShowView.access$700(slideShowView, r3.val$oldView, r3.val$newView);
+                                                SlideShowView.access$700(slideShowView, val$oldView, val$newView);
                                             }
                                         });
                                     }
@@ -619,13 +618,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i11 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             PlusAnimation plusAnimation = new PlusAnimation((String) slideTransition.mDirection, slideShowPageLayout17, slideShowPageLayout18, i11);
-                            plusAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout18, slideShowPageLayout17) {
+                            plusAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout18;
+                                    this.val$oldView = slideShowPageLayout17;
                                 }
 
                                 public void done() {
@@ -650,18 +649,18 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             if (str5.equals("r") || str5.equals("ru") || str5.equals("rd")) {
                                 f = (float) measuredWidth2;
                             }
-                            float f2 = (str5.equals(GoogleApiAvailabilityLight.TRACKING_SOURCE_DIALOG) || str5.equals("rd") || str5.equals("ld")) ? (float) measuredHeight2 : BitmapDescriptorFactory.HUE_RED;
+                            float f2 = (str5.equals("rd") || str5.equals("ld")) ? (float) measuredHeight2 : BitmapDescriptorFactory.HUE_RED;
                             if (str5.equals("u") || str5.equals("ru") || str5.equals("lu")) {
                                 f2 = (float) (-measuredHeight2);
                             }
                             slideShowView2.animationCounter = 1;
-                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout19).translationX(f).translationY(f2).setDuration((long) i12).setListener(new AnimatorListenerAdapter(slideShowPageLayout20, slideShowPageLayout19) {
+                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout19).translationX(f).translationY(f2).setDuration((long) i12).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout20;
+                                    this.val$oldView = slideShowPageLayout19;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -680,7 +679,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             SlideShowPageLayout slideShowPageLayout22 = slideShowPageLayoutArr12[slideShowView2.mCurrentView];
                             int i13 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 2;
-                            int measuredHeight3 = str6.equals(GoogleApiAvailabilityLight.TRACKING_SOURCE_DIALOG) ? slideShowPageLayout22.getMeasuredHeight() : 0;
+                            int measuredHeight3 = 0;
                             if (str6.equals("u")) {
                                 measuredHeight3 = -slideShowPageLayout22.getMeasuredHeight();
                             }
@@ -692,16 +691,16 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowPageLayout22.setTranslationX((float) (-i14));
                             slideShowPageLayout22.setVisibility(View.VISIBLE);
                             ViewPropertyAnimator animate3 = slideShowPageLayout22.animate();
-                            long j2 = (long) i13;
-                            animate3.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j2).setListener(new AnimatorListenerAdapter(slideShowPageLayout22, animate3, slideShowPageLayout21) {
+                            long j2 = i13;
+                            animate3.translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration(j2).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ ViewPropertyAnimator val$anim1;
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$anim1 = r3;
-                                    this.val$oldView = r4;
+                                    this.val$newView = slideShowPageLayout22;
+                                    this.val$anim1 = animate3;
+                                    this.val$oldView = slideShowPageLayout21;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -715,13 +714,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             });
                             slideShowPageLayout21.setVisibility(View.VISIBLE);
                             ViewPropertyAnimator animate4 = slideShowPageLayout21.animate();
-                            animate4.translationX((float) i14).translationY((float) measuredHeight3).setDuration(j2).setListener(new AnimatorListenerAdapter(slideShowPageLayout21, animate4) {
+                            animate4.translationX((float) i14).translationY((float) measuredHeight3).setDuration(j2).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ ViewPropertyAnimator val$anim2;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$oldView = r2;
-                                    this.val$anim2 = r3;
+                                    this.val$oldView = slideShowPageLayout21;
+                                    this.val$anim2 = animate4;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -740,13 +739,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i15 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             WipeAnimation wipeAnimation = new WipeAnimation((String) slideTransition.mDirection, slideShowPageLayout23, slideShowPageLayout24, i15);
-                            wipeAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout24, slideShowPageLayout23) {
+                            wipeAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout24;
+                                    this.val$oldView = slideShowPageLayout23;
                                 }
 
                                 public void done() {
@@ -766,13 +765,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowView2.animationCounter = 1;
                             slideShowView2.mSlideParent.bringChildToFront(slideShowPageLayout25);
                             ZoomAnimation zoomAnimation = new ZoomAnimation((String) slideTransition.mDirection, slideShowPageLayout25, slideShowPageLayout26, i16);
-                            zoomAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout26, slideShowPageLayout25) {
+                            zoomAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout26;
+                                    this.val$oldView = slideShowPageLayout25;
                                 }
 
                                 public void done() {
@@ -792,7 +791,7 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             SlideShowPageLayout slideShowPageLayout28 = slideShowPageLayoutArr15[slideShowView2.mCurrentView];
                             int i17 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
-                            int measuredHeight4 = str7.contains(GoogleApiAvailabilityLight.TRACKING_SOURCE_DIALOG) ? slideShowPageLayout28.getMeasuredHeight() : 0;
+                            int measuredHeight4 = 0;
                             if (str7.contains("u")) {
                                 measuredHeight4 = -slideShowPageLayout28.getMeasuredHeight();
                             }
@@ -803,13 +802,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowPageLayout28.setTranslationY((float) (-measuredHeight4));
                             slideShowPageLayout28.setTranslationX((float) (-i18));
                             slideShowPageLayout28.setVisibility(View.VISIBLE);
-                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout28).translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration((long) i17).setListener(new AnimatorListenerAdapter(slideShowPageLayout27, slideShowPageLayout28) {
+                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout28).translationX(BitmapDescriptorFactory.HUE_RED).translationY(BitmapDescriptorFactory.HUE_RED).setDuration((long) i17).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$oldView = r2;
-                                    this.val$newView = r3;
+                                    this.val$oldView = slideShowPageLayout27;
+                                    this.val$newView = slideShowPageLayout28;
                                 }
 
                                 public void onAnimationEnd(Animator animator) {
@@ -826,13 +825,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowView2.animationCounter = 1;
                             slideShowView2.mSlideParent.bringChildToFront(slideShowPageLayout29);
                             SplitAnimation splitAnimation = new SplitAnimation((String) slideTransition.mDirection, slideShowPageLayout29, slideShowPageLayout30, i19);
-                            splitAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout30, slideShowPageLayout29) {
+                            splitAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout30;
+                                    this.val$oldView = slideShowPageLayout29;
                                 }
 
                                 public void done() {
@@ -852,13 +851,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i20 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             WedgeAnimation wedgeAnimation = new WedgeAnimation((String) slideTransition.mDirection, slideShowPageLayout31, slideShowPageLayout32, i20);
-                            wedgeAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout32, slideShowPageLayout31) {
+                            wedgeAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout32;
+                                    this.val$oldView = slideShowPageLayout31;
                                 }
 
                                 public void done() {
@@ -877,13 +876,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i21 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             WheelAnimation wheelAnimation = new WheelAnimation((String) slideTransition.mDirection, slideShowPageLayout33, slideShowPageLayout34, i21);
-                            wheelAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout34, slideShowPageLayout33) {
+                            wheelAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout34;
+                                    this.val$oldView = slideShowPageLayout33;
                                 }
 
                                 public void done() {
@@ -902,13 +901,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i22 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             RandomBarsAnimation randomBarsAnimation = new RandomBarsAnimation((String) slideTransition.mDirection, slideShowPageLayout35, slideShowPageLayout36, i22);
-                            randomBarsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout36, slideShowPageLayout35) {
+                            randomBarsAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout36;
+                                    this.val$oldView = slideShowPageLayout35;
                                 }
 
                                 public void done() {
@@ -927,13 +926,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i23 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             DissolveAnimation dissolveAnimation = new DissolveAnimation((String) slideTransition.mDirection, slideShowPageLayout37, slideShowPageLayout38, i23);
-                            dissolveAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout38, slideShowPageLayout37) {
+                            dissolveAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout38;
+                                    this.val$oldView = slideShowPageLayout37;
                                 }
 
                                 public void done() {
@@ -957,15 +956,14 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             slideShowPageLayout40.setRotation(BitmapDescriptorFactory.HUE_RED);
                             slideShowPageLayout40.setAlpha(0.3f);
                             slideShowPageLayout40.setVisibility(View.VISIBLE);
-                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout40).scaleX(1.0f).scaleY(1.0f).rotation(360.0f).alpha(1.0f).setDuration((long) i24).setListener(new AnimatorListenerAdapter(slideShowPageLayout40, slideShowPageLayout39) {
+                            slideShowView2.setViewPropertyAnimator(slideShowPageLayout40).scaleX(1.0f).scaleY(1.0f).rotation(360.0f).alpha(1.0f).setDuration((long) i24).setListener(new AnimatorListenerAdapter() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout40;
+                                    this.val$oldView = slideShowPageLayout39;
                                 }
-
                                 public void onAnimationEnd(Animator animator) {
                                     this.val$newView.setRotation(BitmapDescriptorFactory.HUE_RED);
                                     SlideShowView.access$610(SlideShowView.this);
@@ -980,13 +978,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i25 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             CheckerAnimation checkerAnimation = new CheckerAnimation((String) slideTransition.mDirection, slideShowPageLayout41, slideShowPageLayout42, i25);
-                            checkerAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout42, slideShowPageLayout41) {
+                            checkerAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout42;
+                                    this.val$oldView = slideShowPageLayout41;
                                 }
 
                                 public void done() {
@@ -1005,13 +1003,13 @@ public class SlideShowView extends RelativeLayout implements MemoryInfoProvider,
                             int i26 = slideTransition.mDuration;
                             slideShowView2.animationCounter = 1;
                             DiamondAnimation diamondAnimation = new DiamondAnimation((String) slideTransition.mDirection, slideShowPageLayout43, slideShowPageLayout44, i26);
-                            diamondAnimation.mListener = new TransitionAnimation.TransitionAnimationListener(slideShowPageLayout44, slideShowPageLayout43) {
+                            diamondAnimation.mListener = new TransitionAnimation.TransitionAnimationListener() {
                                 public final /* synthetic */ SlideShowPageLayout val$newView;
                                 public final /* synthetic */ SlideShowPageLayout val$oldView;
 
                                 {
-                                    this.val$newView = r2;
-                                    this.val$oldView = r3;
+                                    this.val$newView = slideShowPageLayout44;
+                                    this.val$oldView = slideShowPageLayout43;
                                 }
 
                                 public void done() {

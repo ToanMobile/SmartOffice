@@ -97,8 +97,7 @@ public class PDFFormCheckboxEditor extends PDFFormEditor {
         MuPDFWidget muPDFWidget = this.mWidget;
         Objects.requireNonNull(muPDFWidget);
         Waiter waiter = new Waiter();
-        muPDFWidget.mDoc.mWorker.add(new Worker.Task(waiter) {
-            public final /* synthetic */ Waiter val$waiter = new Waiter();
+        muPDFWidget.mDoc.mWorker.add(new Worker.Task() {
 
             public void run() {}
 /*

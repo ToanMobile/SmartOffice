@@ -183,9 +183,8 @@ public class SODocSession {
                 if (z && !sODocSession.mCancelled && !sODocSession.mLoadError) {
                     sODocSession.mCompleted = true;
                     if (z) {
-                        Iterator<SODocSessionLoadListener> it = sODocSession.mListeners.iterator();
-                        while (it.hasNext()) {
-                            it.next().onDocComplete();
+                        for (SODocSessionLoadListener mListener : sODocSession.mListeners) {
+                            mListener.onDocComplete();
                         }
                         SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
                         if (sODocSessionLoadListenerCustom != null) {
@@ -211,9 +210,8 @@ public class SODocSession {
                                 SODocSession.this.mDoc.abortLoad();
                                 SODocSession sODocSession = SODocSession.this;
                                 if (sODocSession.mOpen) {
-                                    Iterator<SODocSessionLoadListener> it = sODocSession.mListeners.iterator();
-                                    while (it.hasNext()) {
-                                        it.next().onCancel();
+                                    for (SODocSessionLoadListener mListener : sODocSession.mListeners) {
+                                        mListener.onCancel();
                                     }
                                     SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
                                     if (sODocSessionLoadListenerCustom != null) {
@@ -233,9 +231,8 @@ public class SODocSession {
                 SODocSession sODocSession2 = SODocSession.this;
                 sODocSession2.mLoadError = true;
                 if (sODocSession2.mOpen) {
-                    Iterator<SODocSessionLoadListener> it = sODocSession2.mListeners.iterator();
-                    while (it.hasNext()) {
-                        it.next().onError(i, i2);
+                    for (SODocSessionLoadListener mListener : sODocSession2.mListeners) {
+                        mListener.onError(i, i2);
                     }
                     SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
                     if (sODocSessionLoadListenerCustom != null) {
@@ -250,32 +247,48 @@ public class SODocSession {
                 if (sODocSession.mOpen && !sODocSession.mCancelled) {
                     sODocSession.mPageCount = Math.max(i, sODocSession.mPageCount);
                     SODocSession sODocSession2 = SODocSession.this;
-                    if (sODocSession2.mOpen) {
-                        Iterator<SODocSessionLoadListener> it = sODocSession2.mListeners.iterator();
-                        while (it.hasNext()) {
-                            it.next().onPageLoad(i);
-                        }
-                        SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
-                        if (sODocSessionLoadListenerCustom != null) {
-                            sODocSessionLoadListenerCustom.onPageLoad(i);
-                        }
+                    for (SODocSessionLoadListener mListener : sODocSession2.mListeners) {
+                        mListener.onPageLoad(i);
+                    }
+                    SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
+                    if (sODocSessionLoadListenerCustom != null) {
+                        sODocSessionLoadListenerCustom.onPageLoad(i);
                     }
                 }
+            }
+
+            @Override
+            public void error(int i2, int i3) {
+
+            }
+
+            @Override
+            public void onLayoutCompleted() {
+
             }
 
             public void onSelectionChanged(int i, int i2) {
                 SODocSession sODocSession = SODocSession.this;
                 boolean z = sODocSession.mOpen;
-                if (z && z) {
-                    Iterator<SODocSessionLoadListener> it = sODocSession.mListeners.iterator();
-                    while (it.hasNext()) {
-                        it.next().onSelectionChanged(i, i2);
+                if (z) {
+                    for (SODocSessionLoadListener mListener : sODocSession.mListeners) {
+                        mListener.onSelectionChanged(i, i2);
                     }
                     SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
                     if (sODocSessionLoadListenerCustom != null) {
                         sODocSessionLoadListenerCustom.onSelectionChanged(i, i2);
                     }
                 }
+            }
+
+            @Override
+            public void progress(int i2, boolean z) {
+
+            }
+
+            @Override
+            public void setDoc(ArDkDoc arDkDoc) {
+
             }
         }, this.mActivity, configOptions);
     }
@@ -298,10 +311,7 @@ public class SODocSession {
 
     public void createThumbnail(SOFileState sOFileState) {
         ArDkBitmap arDkBitmap;
-        final String thumbnail = sOFileState.getThumbnail();
-        if (thumbnail == null || thumbnail.isEmpty()) {
-            thumbnail = SOFileDatabase.uniqueThumbFilePath();
-        }
+        String thumbnail = SOFileDatabase.uniqueThumbFilePath();
         sOFileState.setThumbnail(thumbnail);
         sOFileState.deleteThumbnailFile();
         ArDkPage page = getDoc().getPage(0, rectF -> {
@@ -309,7 +319,7 @@ public class SODocSession {
         this.mPage = page;
         if (page != null) {
             PointF zoomToFitRect = this.mPage.zoomToFitRect((int) this.mActivity.getResources().getDimension(R.dimen.sodk_editor_thumbnail_size), 1);
-            double max = (double) Math.max(zoomToFitRect.x, zoomToFitRect.y);
+            double max = Math.max(zoomToFitRect.x, zoomToFitRect.y);
             Point sizeAtZoom = this.mPage.sizeAtZoom(max);
             String internalPath = sOFileState.getInternalPath();
             int i = sizeAtZoom.x;
@@ -323,7 +333,7 @@ public class SODocSession {
             PointF pointF = new PointF(BitmapDescriptorFactory.HUE_RED, BitmapDescriptorFactory.HUE_RED);
             ArDkPage arDkPage = this.mPage;
             SORenderListener soRenderListener = i1 -> {
-                Bitmap bitmap = arDkBitmap2.bitmap;
+                Bitmap bitmap = arDkBitmap2.getBitmap();
                 SOOutputStream sOOutputStream = new SOOutputStream(thumbnail);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 80, sOOutputStream);
                 sOOutputStream.close();

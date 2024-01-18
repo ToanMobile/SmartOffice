@@ -56,14 +56,13 @@ public class NUIActivity extends BaseActivity {
             nUIView.onPause(new Runnable() {
                 public void run() {
                     NUIActivity.this.mNUIView.releaseBitmaps();
-                    Runnable runnable = runnable;
                     if (runnable != null) {
                         runnable.run();
                     }
                 }
             });
         } else if (runnable != null) {
-            ((AnonymousClass8) runnable).run();
+            runnable.run();
         }
         if (Utilities.isChromebook(this)) {
             PrintHelperPdf.setPrinting(false);
@@ -106,15 +105,14 @@ public class NUIActivity extends BaseActivity {
             public void run() {
                 SOFileState.clearAutoOpen(BaseActivity.getCurrentActivity());
                 NUIActivity nUIActivity = NUIActivity.this;
-                Intent intent = intent;
                 int i = NUIActivity.$r8$clinit;
                 nUIActivity.start(intent);
             }
         }, new Runnable() {
             public void run() {
                 Intent launchIntentForPackage = BaseActivity.getCurrentActivity().getBaseContext().getPackageManager().getLaunchIntentForPackage(NUIActivity.this.getBaseContext().getPackageName());
-                launchIntentForPackage.addFlags(67108864);
-                launchIntentForPackage.addFlags(32768);
+                launchIntentForPackage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                launchIntentForPackage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 NUIActivity.this.startActivity(launchIntentForPackage);
             }
         });
@@ -129,6 +127,7 @@ public class NUIActivity extends BaseActivity {
     }
 
     public void onActivityResult(int i, int i2, Intent intent) {
+        super.onActivityResult(i, i2, intent);
         NUIView nUIView = this.mNUIView;
         if (nUIView != null) {
             nUIView.onActivityResult(i, i2, intent);
@@ -136,6 +135,7 @@ public class NUIActivity extends BaseActivity {
     }
 
     public void onBackPressed() {
+        super.onBackPressed();
         NUIView nUIView = this.mNUIView;
         if (nUIView != null) {
             nUIView.onBackPressed((Runnable) null);
@@ -185,6 +185,7 @@ public class NUIActivity extends BaseActivity {
     }
 
     public void onNewIntent(final Intent intent) {
+        super.onNewIntent(intent);
         if (isDocModified()) {
             Utilities.yesNoMessage(this, getString(R.string.sodk_editor_new_intent_title), getString(R.string.sodk_editor_new_intent_body), getString(R.string.sodk_editor_new_intent_yes_button), getString(R.string.sodk_editor_new_intent_no_button), new Runnable() {
                 public void run() {
@@ -195,14 +196,12 @@ public class NUIActivity extends BaseActivity {
                     NUIActivity.this.setIntent(intent);
                     NUIActivity.this.start(intent);
                 }
-            }, new Runnable(this) {
-                public void run() {
-                    SODocSession.SODocSessionLoadListenerCustom sessionLoadListener = Utilities.getSessionLoadListener();
-                    if (sessionLoadListener != null) {
-                        sessionLoadListener.onSessionReject();
-                    }
-                    Utilities.setSessionLoadListener((SODocSession.SODocSessionLoadListenerCustom) null);
+            }, () -> {
+                SODocSession.SODocSessionLoadListenerCustom sessionLoadListener = Utilities.getSessionLoadListener();
+                if (sessionLoadListener != null) {
+                    sessionLoadListener.onSessionReject();
                 }
+                Utilities.setSessionLoadListener((SODocSession.SODocSessionLoadListenerCustom) null);
             });
             return;
         }

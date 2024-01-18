@@ -72,7 +72,7 @@ public class DocMuPdfPageView extends DocPdfPageView {
         this.mHighlightSignaturePainter.setStrokeWidth((float) Utilities.convertDpToPixel(3.0f));
     }
 
-    public static void access$200(DocMuPdfPageView docMuPdfPageView) {
+    public void access$200(DocMuPdfPageView docMuPdfPageView) {
         MuPDFWidget[] muPDFWidgetArr;
         int i;
         int i2 = docMuPdfPageView.mEditingWidgetIndex;
@@ -92,7 +92,6 @@ public class DocMuPdfPageView extends DocPdfPageView {
             docMuPdfPageView.mEditingWidget = muPDFWidgetArr[i];
             new Handler().post(new Runnable() {
                 public void run() {
-                    DocMuPdfPageView docMuPdfPageView = DocMuPdfPageView.this;
                     docMuPdfPageView.editWidget(docMuPdfPageView.mEditingWidget, false, (Point) null);
                 }
             });
@@ -105,13 +104,11 @@ public class DocMuPdfPageView extends DocPdfPageView {
         muPDFDoc.mForceReload = true;
         if (docMuPdfPageView.mPage != null && (currentNUIDocView = NUIDocView.currentNUIDocView()) != null) {
             final SignatureAppearance signatureAppearance2 = signatureAppearance;
-            final MuPDFWidget muPDFWidget2 = muPDFWidget;
-            final NUIPKCS7Signer nUIPKCS7Signer2 = nUIPKCS7Signer;
             currentNUIDocView.doSaveAs(false, new SOSaveAsComplete() {
                 public void onComplete(int i, String str) {
                     ((NUIDocViewPdf) NUIDocView.currentNUIDocView()).setNeedsReload();
-                    DocMuPdfPageView.this.setSigningFlow(false);
-                    muPDFDoc.update(DocMuPdfPageView.this.getPageNumber());
+                    docMuPdfPageView.setSigningFlow(false);
+                    muPDFDoc.update(docMuPdfPageView.getPageNumber());
                 }
 
                 public boolean onFilenameSelected(String str) {
@@ -121,33 +118,23 @@ public class DocMuPdfPageView extends DocPdfPageView {
                         }
 
                         public void work() {
-                            AnonymousClass12 r0 = AnonymousClass12.this;
                             SignatureAppearance signatureAppearance = signatureAppearance2;
                             boolean z = false;
+                            muPDFWidget.mDoc.checkForWorkerThread();
                             if (signatureAppearance != null) {
-                                MuPDFWidget muPDFWidget = muPDFWidget2;
-                                NUIPKCS7Signer nUIPKCS7Signer = nUIPKCS7Signer2;
-                                muPDFWidget.mDoc.checkForWorkerThread();
                                 if (muPDFWidget.mWidget != null) {
                                     Image image = muPDFWidget.getImage(signatureAppearance);
                                     z = muPDFWidget.mWidget.sign(nUIPKCS7Signer, muPDFWidget.getFlags(signatureAppearance), image, signatureAppearance.reason, signatureAppearance.location);
                                 }
-                                if (z) {
-                                    muPDFWidget.mTimeSigned = System.currentTimeMillis();
-                                    muPDFWidget.mDoc.mIsModified = true;
-                                }
                             } else {
-                                MuPDFWidget muPDFWidget2 = muPDFWidget2;
-                                NUIPKCS7Signer nUIPKCS7Signer2 = nUIPKCS7Signer2;
-                                muPDFWidget2.mDoc.checkForWorkerThread();
-                                PDFWidget pDFWidget = muPDFWidget2.mWidget;
+                                PDFWidget pDFWidget = muPDFWidget.mWidget;
                                 if (pDFWidget != null) {
-                                    z = pDFWidget.sign(nUIPKCS7Signer2);
+                                    z = pDFWidget.sign(nUIPKCS7Signer);
                                 }
-                                if (z) {
-                                    muPDFWidget2.mTimeSigned = System.currentTimeMillis();
-                                    muPDFWidget2.mDoc.mIsModified = true;
-                                }
+                            }
+                            if (z) {
+                                muPDFWidget.mTimeSigned = System.currentTimeMillis();
+                                muPDFWidget.mDoc.mIsModified = true;
                             }
                             waiter.value = z;
                             waiter.done();
@@ -175,24 +162,24 @@ public class DocMuPdfPageView extends DocPdfPageView {
         int pageNumber = getPageNumber();
         Objects.requireNonNull(muPDFDoc);
         if (pageNumber != -1) {
-            muPDFDoc.mWorker.add(new Worker.Task(pageNumber, rect2) {
+            muPDFDoc.mWorker.add(new Worker.Task() {
                 public final /* synthetic */ int val$pageNum;
                 public final /* synthetic */ Rect val$r;
 
                 {
-                    this.val$pageNum = r2;
-                    this.val$r = r3;
+                    this.val$pageNum = pageNumber;
+                    this.val$r = rect2;
                 }
 
                 public void run() {
                 }
 
                 public void work() {
-                    PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                    PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(muPDFDoc.mDocument);
                     pDFDocument.beginOperation("addRedactAnnotation");
-                    MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(this.val$pageNum);
+                    MuPDFPage muPDFPage = muPDFDoc.mPages.get(this.val$pageNum);
                     Rect rect = this.val$r;
-                    String str = MuPDFDoc.this.mAuthor;
+                    String str = muPDFDoc.mAuthor;
                     muPDFPage.mDoc.checkForWorkerThread();
                     PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                     if (pDFPage != null) {
@@ -204,8 +191,8 @@ public class DocMuPdfPageView extends DocPdfPageView {
                         muPDFPage.mDoc.mIsModified = true;
                     }
                     pDFDocument.endOperation();
-                    MuPDFDoc.this.update(this.val$pageNum);
-                    MuPDFDoc.access$2500(MuPDFDoc.this, this.val$pageNum);
+                    muPDFDoc.update(this.val$pageNum);
+                    MuPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
                 }
             });
         }
@@ -297,60 +284,57 @@ public class DocMuPdfPageView extends DocPdfPageView {
         return true;
     }
 
-    public final void doSign(final MuPDFWidget muPDFWidget) {
-        final Handler handler = new Handler();
-        final NUIPKCS7Signer signer = Utilities.getSigner((Activity) getContext());
-        if (signer != null) {
-            setSigningFlow(true);
-            signer.doSign(new NUIPKCS7Signer.NUIPKCS7SignerListener() {
-                public void onCancel() {
-                    ArDkLib.runOnUiThread(new Runnable() {
-                        public void run() {
-                            DocMuPdfPageView.this.setSigningFlow(false);
-                        }
-                    });
-                }
-
-                public void onSignatureReady() {
-                    if (DocMuPdfPageView.this.getDocView().getDocConfigOptions().isDigitalSignaturesEnabled()) {
-                        handler.post(new Runnable() {
-                            public void run() {
-                                AnonymousClass14 r0 = AnonymousClass14.this;
-                                DocMuPdfPageView docMuPdfPageView = DocMuPdfPageView.this;
-                                MuPDFWidget muPDFWidget = muPDFWidget;
-                                NUIPKCS7Signer nUIPKCS7Signer = signer;
-                                int i = DocMuPdfPageView.$r8$clinit;
-                                new SignatureDialog(docMuPdfPageView.getContext(), docMuPdfPageView.getDocView().getDocConfigOptions(), muPDFWidget, nUIPKCS7Signer, new SignatureDialog.SignatureListener(muPDFWidget, nUIPKCS7Signer) {
-                                    public final /* synthetic */ NUIPKCS7Signer val$signer;
-                                    public final /* synthetic */ MuPDFWidget val$widget;
-
-                                    {
-                                        this.val$widget = r2;
-                                        this.val$signer = r3;
-                                    }
-
-                                    public void onCancel() {
-                                        DocMuPdfPageView.this.setSigningFlow(false);
-                                    }
-
-                                    public void onSign(SignatureAppearance signatureAppearance) {
-                                        DocMuPdfPageView.access$700(DocMuPdfPageView.this, signatureAppearance, this.val$widget, this.val$signer);
-                                    }
-                                }).show();
-                            }
-                        });
-                    } else {
-                        handler.post(new Runnable() {
-                            public void run() {
-                                AnonymousClass14 r0 = AnonymousClass14.this;
-                                DocMuPdfPageView.access$700(DocMuPdfPageView.this, (SignatureAppearance) null, muPDFWidget, signer);
-                            }
-                        });
-                    }
-                }
-            });
-        }
-    }
+//    public final void doSign(final MuPDFWidget muPDFWidget) {
+//        final Handler handler = new Handler();
+//        final NUIPKCS7Signer signer = Utilities.getSigner((Activity) getContext());
+//        if (signer != null) {
+//            setSigningFlow(true);
+//            signer.doSign(new NUIPKCS7Signer.NUIPKCS7SignerListener() {
+//                public void onCancel() {
+//                    ArDkLib.runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            DocMuPdfPageView.this.setSigningFlow(false);
+//                        }
+//                    });
+//                }
+//
+//                public void onSignatureReady() {
+//                    if (DocMuPdfPageView.this.getDocView().getDocConfigOptions().isDigitalSignaturesEnabled()) {
+//                        handler.post(new Runnable() {
+//                            public void run() {
+//                                DocMuPdfPageView docMuPdfPageView = DocMuPdfPageView.this;
+//                                NUIPKCS7Signer nUIPKCS7Signer = signer;
+//                                int i = DocMuPdfPageView.$r8$clinit;
+//                                new SignatureDialog(docMuPdfPageView.getContext(), docMuPdfPageView.getDocView().getDocConfigOptions(), muPDFWidget, nUIPKCS7Signer, new SignatureDialog.SignatureListener(muPDFWidget, nUIPKCS7Signer) {
+//                                    public final /* synthetic */ NUIPKCS7Signer val$signer;
+//                                    public final /* synthetic */ MuPDFWidget val$widget;
+//
+//                                    {
+//                                        this.val$widget = r2;
+//                                        this.val$signer = r3;
+//                                    }
+//
+//                                    public void onCancel() {
+//                                        DocMuPdfPageView.this.setSigningFlow(false);
+//                                    }
+//
+//                                    public void onSign(SignatureAppearance signatureAppearance) {
+//                                        DocMuPdfPageView.access$700(DocMuPdfPageView.this, signatureAppearance, this.val$widget, this.val$signer);
+//                                    }
+//                                }).show();
+//                            }
+//                        });
+//                    } else {
+//                        handler.post(new Runnable() {
+//                            public void run() {
+//                                DocMuPdfPageView.access$700(DocMuPdfPageView.this, (SignatureAppearance) null, muPDFWidget, signer);
+//                            }
+//                        });
+//                    }
+//                }
+//            });
+//        }
+//    }
 
     /* JADX WARNING: Code restructure failed: missing block: B:7:0x0010, code lost:
         r0 = r0.searchIndex;

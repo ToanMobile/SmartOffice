@@ -182,7 +182,7 @@ public final class SlideShowConductor {
             }
             FadeAnimation fadeAnimation = this.fadeAnim;
             if (fadeAnimation != null) {
-                fadeAnimation.mListener = new FadeAnimation.FadeListener(SlideShowConductor.this) {
+                fadeAnimation.mListener = new FadeAnimation.FadeListener() {
                 };
             }
         }
@@ -551,7 +551,7 @@ public final class SlideShowConductor {
         public SlideShowConductorLayer unpauseOnStartLayer = null;
         public Date unpauseTime = null;
 
-        public WaitingTaskList(SlideShowConductor slideShowConductor, AnonymousClass1 r2) {
+        public WaitingTaskList(SlideShowConductor slideShowConductor) {
         }
     }
 
@@ -898,7 +898,7 @@ public final class SlideShowConductor {
                     }
                 } else if (sOAnimationCommand instanceof SOAnimationWaitForTimeCommand) {
                     Date date = new Date(new Date().getTime() + ((long) (((SOAnimationWaitForTimeCommand) sOAnimationCommand).delay * 1000.0f)));
-                    WaitingTaskList waitingTaskList = new WaitingTaskList(SlideShowConductor.this, (AnonymousClass1) null);
+                    WaitingTaskList waitingTaskList = new WaitingTaskList(SlideShowConductor.this);
                     if (waitingTaskList.pauseTime == null) {
                         waitingTaskList.pauseTime = new Date();
                         waitingTaskList.unpauseTime = date;
@@ -914,7 +914,7 @@ public final class SlideShowConductor {
                         unblockLayerOnStartTask.delay = BitmapDescriptorFactory.HUE_RED;
                         unblockLayerOnStartTask.duration = 0.001f;
                         animLayer2.addTask(unblockLayerOnStartTask);
-                        WaitingTaskList waitingTaskList2 = new WaitingTaskList(SlideShowConductor.this, (AnonymousClass1) null);
+                        WaitingTaskList waitingTaskList2 = new WaitingTaskList(SlideShowConductor.this);
                         if (waitingTaskList2.pauseTime == null) {
                             waitingTaskList2.pauseTime = new Date();
                             waitingTaskList2.unpauseOnStartLayer = animLayer2;
@@ -940,7 +940,7 @@ public final class SlideShowConductor {
                         unblockLayerOnCompleteTask.delay = f;
                         unblockLayerOnCompleteTask.duration = 0.001f;
                         animLayer3.addTask(unblockLayerOnCompleteTask);
-                        WaitingTaskList waitingTaskList3 = new WaitingTaskList(SlideShowConductor.this, (AnonymousClass1) null);
+                        WaitingTaskList waitingTaskList3 = new WaitingTaskList(SlideShowConductor.this);
                         if (waitingTaskList3.pauseTime == null) {
                             waitingTaskList3.pauseTime = new Date();
                             waitingTaskList3.unpauseOnCompleteLayer = animLayer3;
@@ -949,7 +949,7 @@ public final class SlideShowConductor {
                     }
                 } else if (sOAnimationCommand instanceof SOAnimationWaitForEventCommand) {
                     int i3 = ((SOAnimationWaitForEventCommand) sOAnimationCommand).event;
-                    WaitingTaskList waitingTaskList4 = new WaitingTaskList(SlideShowConductor.this, (AnonymousClass1) null);
+                    WaitingTaskList waitingTaskList4 = new WaitingTaskList(SlideShowConductor.this);
                     if (waitingTaskList4.pauseTime == null) {
                         waitingTaskList4.pauseTime = new Date();
                         waitingTaskList4.unpauseEvent = i3;

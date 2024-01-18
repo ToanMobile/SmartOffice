@@ -130,12 +130,12 @@ public class SODoc extends ArDkDoc {
                 if (i == 0) {
                     SOSearchListener sOSearchListener = SODoc.this.searchListener;
                     if (sOSearchListener != null) {
-                        ((NUIDocView.AnonymousClass21) sOSearchListener).found(i4, new RectF(f5, f6, f7, f8));
+                        sOSearchListener.found(i4, new RectF(f5, f6, f7, f8));
                     }
                 } else if (i == 1) {
                     SOSearchListener sOSearchListener2 = SODoc.this.searchListener;
                     if (sOSearchListener2 != null) {
-                        ((NUIDocView.AnonymousClass21) sOSearchListener2).notFound();
+                        sOSearchListener2.notFound();
                     }
                 } else if (i == 2) {
                     SOSearchListener sOSearchListener3 = SODoc.this.searchListener;
@@ -152,14 +152,12 @@ public class SODoc extends ArDkDoc {
                 } else if (i != 6) {
                     SOSearchListener sOSearchListener6 = SODoc.this.searchListener;
                     if (sOSearchListener6 != null) {
-                        NUIDocView.AnonymousClass21 r0 = (NUIDocView.AnonymousClass21) sOSearchListener6;
                         NUIDocView.access$2600(NUIDocView.this);
                         NUIDocView.this.mIsSearching = false;
                     }
                 } else {
                     SOSearchListener sOSearchListener7 = SODoc.this.searchListener;
                     if (sOSearchListener7 != null) {
-                        NUIDocView.AnonymousClass21 r02 = (NUIDocView.AnonymousClass21) sOSearchListener7;
                         NUIDocView.access$2600(NUIDocView.this);
                         NUIDocView.this.mIsSearching = false;
                     }

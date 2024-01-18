@@ -262,7 +262,7 @@ public class NUIDocViewPpt extends NUIDocView {
     }
 
     public void onClickLineWidth(View view) {
-        LineWidthDialog.show(activity(), view, getDoc());
+        new LineWidthDialog().show(activity(), view, getDoc());
     }
 
     public void onClickSlideshow(View view) {

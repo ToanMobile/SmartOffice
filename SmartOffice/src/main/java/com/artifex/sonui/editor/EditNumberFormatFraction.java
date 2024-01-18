@@ -13,7 +13,7 @@ public class EditNumberFormatFraction {
     public static final String[] formats = {"# ?/?", "# ??/??", "#\\ ???/???", "#\\ ?/2", "#\\ ?/4", "#\\ ?/8", "#\\ ?/16", "#\\ ?/10", "#\\ ?/100"};
     public String[] descriptions;
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         EditNumberFormatFraction editNumberFormatFraction = new EditNumberFormatFraction();
         int i = 0;
         editNumberFormatFraction.descriptions = new String[]{context.getString(R.string.sodk_editor_up_to_one_digit), context.getString(R.string.sodk_editor_up_to_two_digits), context.getString(R.string.sodk_editor_up_to_three_digits), context.getString(R.string.sodk_editor_as_halves), context.getString(R.string.sodk_editor_as_quarters), context.getString(R.string.sodk_editor_as_eighths), context.getString(R.string.sodk_editor_as_sixteenths), context.getString(R.string.sodk_editor_as_tenths), context.getString(R.string.sodk_editor_as_hundredths)};

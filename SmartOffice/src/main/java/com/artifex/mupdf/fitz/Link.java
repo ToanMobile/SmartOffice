@@ -1,8 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-//import androidx.constraintlayout.core.widgets.Barrier$$ExternalSyntheticOutline0;
-
 public class Link {
     public Rect bounds;
     public String uri;
@@ -31,7 +28,7 @@ public class Link {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("Link(bounds=");
+        StringBuilder m = new StringBuilder("Link(bounds=");
         m.append(this.bounds);
         m.append(",uri=");
         return m.toString();

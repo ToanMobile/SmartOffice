@@ -659,12 +659,11 @@ public class PDFFormTextEditor extends PDFFormEditor {
             }
         };
         this.mEditText.requestFocus();
-        this.mDoc.mWorker.add(new Worker.Task(this) {
+        this.mDoc.mWorker.add(new Worker.Task() {
             public void run() {
             }
 
             public void work() {
-                MuPDFWidget muPDFWidget = new MuPDFWidget();
                 muPDFWidget.mDoc.checkForWorkerThread();
                 PDFWidget pDFWidget = muPDFWidget.mWidget;
                 if (pDFWidget != null) {

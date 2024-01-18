@@ -128,7 +128,6 @@ public class DocListPagesView extends DocView {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         ((SODoc) DocListPagesView.this.getDoc()).deletePage(i);
-                        AnonymousClass3 r0 = AnonymousClass3.this;
                         DocListPagesView.this.deletingPageNum = i;
                     }
                 }, 50);
@@ -140,7 +139,6 @@ public class DocListPagesView extends DocView {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
                         ((SODoc) DocListPagesView.this.getDoc()).duplicatePage(i);
-                        AnonymousClass3 r0 = AnonymousClass3.this;
                         DocListPagesView.this.onPageMoved(i);
                     }
                 }, 50);
@@ -268,8 +266,8 @@ public class DocListPagesView extends DocView {
             float f3 = (float) convertDpToPixel;
             float f4 = f + f3;
             float f5 = f2 - f3;
-            final int i = 0;
-            if (this.mMovingPageView.getVisibility() == 8) {
+            int i = 0;
+            if (this.mMovingPageView.getVisibility() == View.GONE) {
                 DocPageView docPageView = this.mMovingPage;
                 Bitmap createBitmap = Bitmap.createBitmap(docPageView.getWidth(), docPageView.getHeight(), Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(createBitmap);
@@ -293,9 +291,10 @@ public class DocListPagesView extends DocView {
                 if (i != 0) {
                     Handler handler = new Handler();
                     super.forceLayout();
+                    int finalI = i;
                     handler.postDelayed(new Runnable() {
                         public void run() {
-                            DocListPagesView.this.scrollBy(0, i);
+                            DocListPagesView.this.scrollBy(0, finalI);
                         }
                     }, 5);
                 } else {
@@ -308,7 +307,7 @@ public class DocListPagesView extends DocView {
 
     public void onLongPressRelease() {
         if (this.mCanManipulatePages) {
-            setLayoutTransition((LayoutTransition) null);
+            setLayoutTransition(null);
             ImageView imageView = this.mMovingPageView;
             if (imageView != null) {
                 imageView.setVisibility(View.GONE);

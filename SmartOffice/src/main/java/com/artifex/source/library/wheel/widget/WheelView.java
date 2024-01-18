@@ -7,17 +7,17 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
-import com.rpdev.document.manager.reader.allfiles.R;
-import com.yandex.metrica.d;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import com.artifex.source.library.wheel.widget.WheelScroller;
+
+import com.artifex.R;
 import com.artifex.source.library.wheel.widget.adapters.WheelViewAdapter;
 
 public class WheelView extends View {
@@ -41,8 +41,8 @@ public class WheelView extends View {
     public boolean isScrollingPerformed;
     public int itemHeight = 0;
     public LinearLayout itemsLayout;
-    public d recycle = new d(this);
-    public WheelScroller scroller = new WheelScroller(getContext(), this.scrollingListener);
+    public WheelRecycle recycle = new WheelRecycle(this);
+    public WheelScroller scroller = new WheelScroller(getContext(), this, this.scrollingListener);
     public WheelScroller.ScrollingListener scrollingListener = new WheelScroller.ScrollingListener() {
         public void onScroll(int i) {
             WheelView.access$100(WheelView.this, i);
@@ -157,23 +157,19 @@ public class WheelView extends View {
 
     public final boolean addViewItem(int i, boolean z) {
         View view;
-        WheelViewAdapter wheelViewAdapter = this.viewAdapter;
-        if (wheelViewAdapter == null || wheelViewAdapter.getItemsCount() == 0) {
+        if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
             view = null;
         } else {
             int itemsCount = this.viewAdapter.getItemsCount();
             if (!isValidItemIndex(i)) {
-                WheelViewAdapter wheelViewAdapter2 = this.viewAdapter;
-                d dVar = this.recycle;
-                view = wheelViewAdapter2.getEmptyItem(dVar.getCachedView((List) dVar.b), this.itemsLayout);
+                view = viewAdapter.getEmptyItem(recycle.getCachedView(recycle.emptyItems), this.itemsLayout);
             } else {
                 while (i < 0) {
                     i += itemsCount;
                 }
                 int i2 = i % itemsCount;
                 WheelViewAdapter wheelViewAdapter3 = this.viewAdapter;
-                d dVar2 = this.recycle;
-                view = wheelViewAdapter3.getItem(i2, dVar2.getCachedView((List) dVar2.f4128a), this.itemsLayout);
+                view = wheelViewAdapter3.getItem(i2, recycle.getCachedView((List) recycle.items), this.itemsLayout);
             }
         }
         if (view == null) {
@@ -199,7 +195,7 @@ public class WheelView extends View {
         }
         setBackgroundResource(R.drawable.sodk_wheel_wheel_bg);
         this.itemsLayout.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-        this.itemsLayout.measure(MeasureSpec.makeMeasureSpec(i, 0), MeasureSpec.makeMeasureSpec(0, 0));
+        this.itemsLayout.measure(MeasureSpec.makeMeasureSpec(i, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
         int measuredWidth = this.itemsLayout.getMeasuredWidth();
         if (i2 != 1073741824) {
             int max = Math.max(measuredWidth + 20, getSuggestedMinimumWidth());
@@ -207,7 +203,7 @@ public class WheelView extends View {
                 i = max;
             }
         }
-        this.itemsLayout.measure(MeasureSpec.makeMeasureSpec(i - 20, 1073741824), MeasureSpec.makeMeasureSpec(0, 0));
+        this.itemsLayout.measure(MeasureSpec.makeMeasureSpec(i - 20, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
         return i;
     }
 
@@ -225,12 +221,11 @@ public class WheelView extends View {
 
     public void invalidateWheel(boolean z) {
         if (z) {
-            d dVar = this.recycle;
-            List list = (List) dVar.f4128a;
+            List list = (List) recycle.items;
             if (list != null) {
                 list.clear();
             }
-            List list2 = (List) dVar.b;
+            List list2 = (List) recycle.emptyItems;
             if (list2 != null) {
                 list2.clear();
             }
@@ -242,16 +237,11 @@ public class WheelView extends View {
         } else {
             LinearLayout linearLayout2 = this.itemsLayout;
             if (linearLayout2 != null) {
-                d dVar2 = this.recycle;
                 int i = this.firstItem;
                 int i2 = 0;
                 while (i2 < linearLayout2.getChildCount()) {
-                    if (!(i >= 0 && i <= -1)) {
-                        dVar2.recycleView(linearLayout2.getChildAt(i2), i);
-                        linearLayout2.removeViewAt(i2);
-                    } else {
-                        i2++;
-                    }
+                    recycle.recycleView(linearLayout2.getChildAt(i2), i);
+                    linearLayout2.removeViewAt(i2);
                     i++;
                 }
             }
@@ -276,15 +266,13 @@ public class WheelView extends View {
                 z = this.firstItem != recycleItems;
                 this.firstItem = recycleItems;
             } else {
-                if (linearLayout == null) {
-                    LinearLayout linearLayout2 = new LinearLayout(getContext());
-                    this.itemsLayout = linearLayout2;
-                    linearLayout2.setOrientation(1);
-                }
+                LinearLayout linearLayout2 = new LinearLayout(getContext());
+                this.itemsLayout = linearLayout2;
+                linearLayout2.setOrientation(LinearLayout.VERTICAL);
                 z = true;
             }
             if (!z) {
-                z = (this.firstItem == itemsRange.first && this.itemsLayout.getChildCount() == itemsRange.count) ? false : true;
+                z = this.firstItem != itemsRange.first || this.itemsLayout.getChildCount() != itemsRange.count;
             }
             int i = this.firstItem;
             int i2 = itemsRange.first;
@@ -309,11 +297,11 @@ public class WheelView extends View {
                 this.itemsLayout.layout(0, 0, getWidth() - 20, getHeight());
             }
             canvas.save();
-            canvas.translate(10.0f, (float) ((-(((getItemHeight() - getHeight()) / 2) + ((this.currentItem - this.firstItem) * getItemHeight()))) + this.scrollingOffset));
+            canvas.translate(10.0f, ((-(((float) (getItemHeight() - getHeight()) / 2) + ((this.currentItem - this.firstItem) * getItemHeight()))) + this.scrollingOffset));
             this.itemsLayout.draw(canvas);
             canvas.restore();
             int height = getHeight() / 2;
-            int itemHeight2 = (int) (((double) (getItemHeight() / 2)) * 1.2d);
+            int itemHeight2 = (int) (((getItemHeight() / 2)) * 1.2d);
             this.centerDrawable.setBounds(0, height - itemHeight2, getWidth(), height + itemHeight2);
             this.centerDrawable.draw(canvas);
         }
@@ -331,22 +319,17 @@ public class WheelView extends View {
         int size2 = MeasureSpec.getSize(i2);
         LinearLayout linearLayout = this.itemsLayout;
         if (linearLayout != null) {
-            d dVar = this.recycle;
             int i3 = this.firstItem;
             int i4 = 0;
             while (i4 < linearLayout.getChildCount()) {
-                if (!(i3 >= 0 && i3 <= -1)) {
-                    dVar.recycleView(linearLayout.getChildAt(i4), i3);
-                    linearLayout.removeViewAt(i4);
-                } else {
-                    i4++;
-                }
+                recycle.recycleView(linearLayout.getChildAt(i4), i3);
+                linearLayout.removeViewAt(i4);
                 i3++;
             }
-        } else if (linearLayout == null) {
+        } else {
             LinearLayout linearLayout2 = new LinearLayout(getContext());
             this.itemsLayout = linearLayout2;
-            linearLayout2.setOrientation(1);
+            linearLayout2.setOrientation(LinearLayout.VERTICAL);
         }
         int i5 = this.visibleItems / 2;
         for (int i6 = this.currentItem + i5; i6 >= this.currentItem - i5; i6--) {
@@ -401,7 +384,7 @@ public class WheelView extends View {
                 wheelScroller.animationHandler.removeMessages(1);
             } else if (action2 == 2 && (y = (int) (motionEvent.getY() - wheelScroller.lastTouchedY)) != 0) {
                 wheelScroller.startScrolling();
-                ((AnonymousClass1) wheelScroller.listener).onScroll(y);
+                // ((AnonymousClass1) wheelScroller.listener).onScroll(y);
                 wheelScroller.lastTouchedY = motionEvent.getY();
             }
             if (!wheelScroller.gestureDetector.onTouchEvent(motionEvent) && motionEvent.getAction() == 1) {
@@ -443,7 +426,7 @@ public class WheelView extends View {
             for (OnWheelChangedListener onChanged : this.changingListeners) {
                 onChanged.onChanged(this, i2, i);
             }
-            playSoundEffect(0);
+            playSoundEffect(SoundEffectConstants.CLICK);
             invalidate();
         }
     }

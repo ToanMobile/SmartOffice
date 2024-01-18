@@ -91,11 +91,7 @@ public class Ruler extends View {
     public void update() {
         if (this.changed) {
             this.changed = false;
-            new Handler().post(new Runnable(this) {
-                public void run() {
-                    this.onUpdate();
-                }
-            });
+            new Handler().post(this::onUpdate);
         }
     }
 

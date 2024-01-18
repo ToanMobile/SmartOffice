@@ -1,7 +1,6 @@
 package com.artifex.sonui.editor;
 
 import android.util.Log;
-import androidx.transition.ViewUtilsBase$$ExternalSyntheticOutline1;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
 import com.google.android.gms.common.Scopes;
 import java.security.PrivateKey;
@@ -43,7 +42,8 @@ public class NUICertificate {
     }
 
     public static HashMap<String, String> defaultDetails() {
-        HashMap<String, String> m = ViewUtilsBase$$ExternalSyntheticOutline1.m("EMAIL", " - ", "CN", " - ");
+        HashMap<String, String> m = new HashMap<>();
+        m.put("CN", " - ");
         m.put("O", " - ");
         m.put("OU", " - ");
         m.put("C", " - ");

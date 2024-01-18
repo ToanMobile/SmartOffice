@@ -1,6 +1,5 @@
 package com.artifex.solib;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.os.Looper;
 import android.util.Log;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -28,8 +27,8 @@ public class Worker {
             try {
                 this.mQueue.put(task);
             } catch (Throwable th) {
-                StringBuilder m = c$$ExternalSyntheticOutline0.m("exception in Worker.add: ");
-                m.append(th.toString());
+                StringBuilder m = new StringBuilder("exception in Worker.add: ");
+                m.append(th);
                 Log.e("Worker", m.toString());
             }
         }

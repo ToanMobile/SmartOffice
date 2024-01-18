@@ -96,7 +96,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
                 this.listener.progress(i);
                 return;
             }
-            AnimationLayerView.access$400(AnimationLayerView.this, this.across, i3, this);
+            access$400(AnimationLayerView.this, this.across, i3, this);
         }
     }
 
@@ -135,7 +135,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
         setY(this.mPosition.y);
     }
 
-    public static void access$400(AnimationLayerView animationLayerView, int i, int i2, SORenderListener sORenderListener) {
+    public void access$400(AnimationLayerView animationLayerView, int i, int i2, SORenderListener sORenderListener) {
         AnimationLayerView animationLayerView2 = animationLayerView;
         final SORenderListener sORenderListener2 = sORenderListener;
         synchronized (animationLayerView) {
@@ -145,7 +145,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
             int i6 = i4 + i3;
             int i7 = i3 + i5;
             SOBitmap sOBitmap = animationLayerView2.mBitmapRender;
-            Rect rect = sOBitmap.rect;
+            Rect rect = sOBitmap.getRect();
             int i8 = rect.right;
             int i9 = i6 > i8 ? i8 : i6;
             int i10 = rect.bottom;
@@ -325,8 +325,8 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
                 canvas.save();
             }
             SOBitmap sOBitmap = this.mBitmapDraw;
-            if (sOBitmap != null && !sOBitmap.bitmap.isRecycled()) {
-                this.mSrcRect.set(sOBitmap.rect);
+            if (sOBitmap != null && !sOBitmap.getBitmap().isRecycled()) {
+                this.mSrcRect.set(sOBitmap.getRect());
                 this.mDstRect.set(this.drawRect);
                 double d = this.drawScale;
                 double d2 = this.mZoomScale;
@@ -341,7 +341,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
                 if (path != null) {
                     canvas.clipPath(path);
                 }
-                canvas.drawBitmap(sOBitmap.bitmap, this.mSrcRect, this.mDstRect, this.mPainter);
+                canvas.drawBitmap(sOBitmap.getBitmap(), this.mSrcRect, this.mDstRect, this.mPainter);
                 if (this.clipPath != null) {
                     canvas.restore();
                 }
@@ -414,7 +414,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
             this.valid = z;
             if (!z) {
                 SOBitmap sOBitmap = this.mBitmapDraw;
-                if (sOBitmap != null && !sOBitmap.bitmap.isRecycled()) {
+                if (sOBitmap != null && !sOBitmap.getBitmap().isRecycled()) {
                     this.lowResScreenSize = Utilities.getScreenSize(getContext());
                     int width = this.mBitmapDraw.getWidth() / 2;
                     int height = this.mBitmapDraw.getHeight() / 2;
@@ -422,7 +422,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
                     this.lowResBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(this.lowResBitmap);
                     SOBitmap sOBitmap2 = this.mBitmapDraw;
-                    canvas.drawBitmap(sOBitmap2.bitmap, sOBitmap2.rect, rect, lowResPainter);
+                    canvas.drawBitmap(sOBitmap2.getBitmap(), sOBitmap2.getRect(), rect, lowResPainter);
                 }
                 this.mBitmapDraw = null;
                 this.mBitmapDrawHold = null;
@@ -439,7 +439,7 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
     }
 
     public void setVisibility(boolean z) {
-        setVisibility(z ? 0 : 4);
+        setVisibility(z ? View.VISIBLE : View.INVISIBLE);
     }
 
     public void setZPosition(int i) {
@@ -495,11 +495,11 @@ public class AnimationLayerView extends View implements AnimatableView, SlideSho
             }
             SOBitmap sOBitmap = this.theBitmap;
             if (sOBitmap != null) {
-                if (this.mSize.x > sOBitmap.bitmap.getWidth()) {
-                    this.mSize.x = this.theBitmap.bitmap.getWidth();
+                if (this.mSize.x > sOBitmap.getBitmap().getWidth()) {
+                    this.mSize.x = this.theBitmap.getBitmap().getWidth();
                 }
-                if (this.mSize.y > this.theBitmap.bitmap.getHeight()) {
-                    this.mSize.y = this.theBitmap.bitmap.getHeight();
+                if (this.mSize.y > this.theBitmap.getBitmap().getHeight()) {
+                    this.mSize.y = this.theBitmap.getBitmap().getHeight();
                 }
                 ViewGroup.LayoutParams layoutParams = getLayoutParams();
                 Point point3 = this.mSize;

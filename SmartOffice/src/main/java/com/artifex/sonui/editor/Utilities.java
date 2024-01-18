@@ -1,7 +1,7 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
-import com.artifex.source.util.a.util_a.a.b.f.a$$ExternalSyntheticOutline0;
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -38,10 +38,7 @@ import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import androidx.activity.result.ActivityResultRegistry$$ExternalSyntheticOutline0;
 import androidx.core.content.ContextCompat;
-import androidx.core.os.LocaleListCompatWrapper$$ExternalSyntheticOutline0;
-import androidx.navigation.NavDeepLink$$ExternalSyntheticOutline0;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkUtils;
 import com.artifex.solib.FileUtils;
@@ -50,11 +47,11 @@ import com.artifex.solib.SODoc;
 import com.artifex.solib.Waiter;
 import com.artifex.sonui.editor.SODocSession;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -244,36 +241,6 @@ public class Utilities {
         return progressDialog;
     }
 
-    public static void didCrashOnPreviousExecution(final Activity activity, final String str, final int i, final Runnable runnable) {
-        Class<FirebaseCrashlytics> cls = FirebaseCrashlytics.class;
-        try {
-            Object invoke = cls.getMethod("didCrashOnPreviousExecution", (Class[]) null).invoke(cls.getMethod("getInstance", (Class[]) null).invoke((Object) null, (Object[]) null), (Object[]) null);
-            Class<?> cls2 = Class.forName(str + ".MainAppRegular");
-            Object invoke2 = cls2.getMethod("ignoringCrashes", (Class[]) null).invoke(activity.getApplication(), (Object[]) null);
-            if (((Boolean) invoke).booleanValue() && !((Boolean) invoke2).booleanValue()) {
-                cls2.getMethod("setIgnoreDidCrash", (Class[]) null).invoke(activity.getApplication(), (Object[]) null);
-                yesNoMessage(activity, activity.getResources().getString(R.string.sodk_editor_crash_report_title), activity.getResources().getString(R.string.sodk_editor_crash_report), activity.getResources().getString(R.string.sodk_editor_report), activity.getResources().getString(R.string.sodk_editor_cancel), new Runnable() {
-                    public void run() {
-                        Utilities.showSupportActivity(activity, str, i);
-                    }
-                }, new Runnable() {
-                    public void run() {
-                        Runnable runnable = runnable;
-                        if (runnable != null) {
-                            runnable.run();
-                        }
-                    }
-                });
-            } else if (runnable != null) {
-                runnable.run();
-            }
-        } catch (Exception unused) {
-            if (runnable != null) {
-                runnable.run();
-            }
-        }
-    }
-
     public static void dismissCurrentAlert() {
         AlertDialog alertDialog = currentMessageDialog;
         if (alertDialog != null) {
@@ -323,10 +290,10 @@ public class Utilities {
 
     public static String formatFloat(float f) {
         if (f % 1.0f == BitmapDescriptorFactory.HUE_RED) {
-            return String.format("%.0f", new Object[]{Float.valueOf(f)});
+            return String.format("%.0f", Float.valueOf(f));
         }
         String d = Double.toString(Math.abs((double) f));
-        return String.format(LocaleListCompatWrapper$$ExternalSyntheticOutline0.m("%.", (d.length() - d.indexOf(46)) - 1, "f"), new Object[]{Float.valueOf(f)});
+        return  (d.length() - d.indexOf(46)) - 1 + "." + Arrays.toString(new Object[]{f});
     }
 
     public static String getApplicationName(Context context) {
@@ -353,7 +320,7 @@ public class Utilities {
     public static String getHtmlColorStringFromResource(int i, Context context) {
         String hexString = Integer.toHexString(context.getResources().getColor(i));
         int length = hexString.length();
-        return length > 6 ? a$$ExternalSyntheticOutline0.m("#", hexString.substring(length - 6)) : "rgba(0, 0, 0, 0);";
+        return length > 6 ? "#" + hexString.substring(length - 6) : "rgba(0, 0, 0, 0);";
     }
 
     public static int getListViewWidth(ListView listView) {
@@ -434,7 +401,7 @@ public class Utilities {
 
     public static Point getScreenSize(Context context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((WindowManager) context.getSystemService(VisionController.WINDOW)).getDefaultDisplay().getMetrics(displayMetrics);
+        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
         return new Point(displayMetrics.widthPixels, displayMetrics.heightPixels);
     }
 
@@ -443,33 +410,33 @@ public class Utilities {
         if (selectionFontName != null) {
             return (selectionFontName.startsWith("-") || selectionFontName.startsWith("+")) ? "" : selectionFontName;
         }
-        return selectionFontName;
+        return null;
     }
 
     public static SODocSession.SODocSessionLoadListenerCustom getSessionLoadListener() {
         return mSessionLoadListener;
     }
 
-    public static NUIPKCS7Signer getSigner(Activity activity) {
-        SigningFactoryListener signingFactoryListener = mSigningFactory;
-        if (signingFactoryListener != null) {
-            return signingFactoryListener.getSigner(activity);
-        }
-        return null;
-    }
+//    public static NUIPKCS7Signer getSigner(Activity activity) {
+//        SigningFactoryListener signingFactoryListener = mSigningFactory;
+//        if (signingFactoryListener != null) {
+//            return signingFactoryListener.getSigner(activity);
+//        }
+//        return null;
+//    }
 
-    public static NUIPKCS7Verifier getVerifier(Activity activity) {
-        SigningFactoryListener signingFactoryListener = mSigningFactory;
-        if (signingFactoryListener != null) {
-            return signingFactoryListener.getVerifier(activity);
-        }
-        return null;
-    }
+//    public static NUIPKCS7Verifier getVerifier(Activity activity) {
+//        SigningFactoryListener signingFactoryListener = mSigningFactory;
+//        if (signingFactoryListener != null) {
+//            return signingFactoryListener.getVerifier(activity);
+//        }
+//        return null;
+//    }
 
     public static void hideKeyboard(Context context) {
-        if (Activity.class.isInstance(context)) {
+        if (context instanceof Activity) {
             Activity activity = (Activity) context;
-            ((InputMethodManager) activity.getSystemService("input_method")).hideSoftInputFromWindow(activity.findViewById(16908290).getRootView().getWindowToken(), 0);
+            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(activity.findViewById(android.R.id.content).getRootView().getWindowToken(), 0);
         }
     }
 
@@ -666,7 +633,7 @@ public class Utilities {
 
     public static boolean isRTL(Context context) {
         String str;
-        InputMethodSubtype currentInputMethodSubtype = ((InputMethodManager) context.getSystemService("input_method")).getCurrentInputMethodSubtype();
+        InputMethodSubtype currentInputMethodSubtype = ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).getCurrentInputMethodSubtype();
         if (currentInputMethodSubtype == null) {
             return false;
         }
@@ -693,7 +660,7 @@ public class Utilities {
 
     public static void launchUrl(Context context, String str) {
         if (!str.startsWith("http://") && !str.startsWith("https://")) {
-            str = a$$ExternalSyntheticOutline0.m("http://", str);
+            str = "http://" + str;
         }
         context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(str)));
     }
@@ -723,7 +690,6 @@ public class Utilities {
                         Utilities.hideKeyboard(activity, sOEditText);
                         dialogInterface.dismiss();
                         Utilities.currentMessageDialog = null;
-                        passwordDialogListener passworddialoglistener = passworddialoglistener;
                         if (passworddialoglistener != null) {
                             passworddialoglistener.onCancel();
                         }
@@ -941,35 +907,6 @@ public class Utilities {
         mDataLeakHandlers = sODataLeakHandlers;
     }
 
-    public static void setFileStateForPrint(String str) {
-        mFileStateForPrint = str;
-    }
-
-    public static void setFilenameText(SOTextView sOTextView, String str) {
-        String str2;
-        Context context = sOTextView.getContext();
-        int lastIndexOf = str.lastIndexOf(".");
-        String htmlColorStringFromResource = getHtmlColorStringFromResource(R.color.sodk_editor_filename_textcolor, context);
-        String htmlColorStringFromResource2 = getHtmlColorStringFromResource(R.color.sodk_editor_extension_textcolor, context);
-        if (lastIndexOf >= 0) {
-            StringBuilder m = ActivityResultRegistry$$ExternalSyntheticOutline0.m("<font color='", htmlColorStringFromResource, "'>");
-            m.append(str.substring(0, lastIndexOf));
-            m.append("</font><font color='");
-            m.append(htmlColorStringFromResource2);
-            m.append("'>");
-            m.append(str.substring(lastIndexOf));
-            m.append("</font>");
-            str2 = m.toString();
-        } else {
-            str2 = NavDeepLink$$ExternalSyntheticOutline0.m("<font color='", htmlColorStringFromResource, "'>", str, "</font>");
-        }
-        if (Build.VERSION.SDK_INT >= 24) {
-            sOTextView.setText(Html.fromHtml(str2, 0), TextView.BufferType.SPANNABLE);
-        } else {
-            sOTextView.setText(Html.fromHtml(str2), TextView.BufferType.SPANNABLE);
-        }
-    }
-
     public static void setMessageHandler(MessageHandler messageHandler) {
         mMessageHandler = messageHandler;
     }
@@ -989,7 +926,7 @@ public class Utilities {
     public static void showKeyboard(final Context context) {
         new Handler().post(new Runnable() {
             public void run() {
-                ((InputMethodManager) context.getSystemService("input_method")).toggleSoftInput(2, 1);
+                ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(2, 1);
             }
         });
     }
@@ -1096,7 +1033,6 @@ public class Utilities {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             Utilities.currentMessageDialog = null;
-                            AnonymousClass3 r2 = AnonymousClass3.this;
                             alertResult2.buttonPressed = 1;
                             waiter2.done();
                         }
@@ -1108,19 +1044,16 @@ public class Utilities {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             Utilities.currentMessageDialog = null;
-                            AnonymousClass3 r2 = AnonymousClass3.this;
                             alertResult2.buttonPressed = 4;
                             waiter2.done();
                         }
                     });
                 }
-                int i4 = i4;
                 if (i4 == 2 || i4 == 3) {
                     builder.setNegativeButton(R.string.sodk_editor_no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             Utilities.currentMessageDialog = null;
-                            AnonymousClass3 r2 = AnonymousClass3.this;
                             alertResult2.buttonPressed = 3;
                             waiter2.done();
                         }
@@ -1132,7 +1065,6 @@ public class Utilities {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             Utilities.currentMessageDialog = null;
-                            AnonymousClass3 r2 = AnonymousClass3.this;
                             alertResult2.buttonPressed = 2;
                             waiter2.done();
                         }
@@ -1169,8 +1101,8 @@ public class Utilities {
         try {
             Class.forName(str + ".DoSupportActivity").getMethod("show", new Class[]{Activity.class, Integer.TYPE}).invoke((Object) null, new Object[]{activity, Integer.valueOf(i)});
         } catch (Exception e) {
-            StringBuilder m = c$$ExternalSyntheticOutline0.m("Failed to show Support activity: ");
-            m.append(e.toString());
+            StringBuilder m = new StringBuilder("Failed to show Support activity: ");
+            m.append(e);
             Log.e("Utilities", m.toString());
         }
     }
@@ -1254,23 +1186,14 @@ public class Utilities {
                         Utilities.mMessageHandler.showMessage(str, str2, str3, (Runnable) null);
                     } catch (Exception unused) {
                         Log.w("sonui", "The message handler registered with Utilities.setMessageHandler encountered a problem. Falling back to the default message handler.");
-                        Activity activity = activity;
-                        String str = str;
-                        String str2 = str2;
-                        String str3 = str3;
-                        String str4 = Utilities.mFileStateForPrint;
-                        activity.runOnUiThread(new Runnable(activity, str, str2, str3) {
-                            public void run() {
-                                Utilities.dismissCurrentAlert();
-                                AlertDialog create = new AlertDialog.Builder(activity, R.style.sodk_editor_alert_dialog_style).setTitle(str).setMessage(str2).setCancelable(false).setPositiveButton(str3, new DialogInterface.OnClickListener(this) {
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                        Utilities.currentMessageDialog = null;
-                                    }
-                                }).create();
-                                Utilities.currentMessageDialog = create;
-                                create.show();
-                            }
+                        activity.runOnUiThread(() -> {
+                            Utilities.dismissCurrentAlert();
+                            AlertDialog create = new AlertDialog.Builder(activity, R.style.sodk_editor_alert_dialog_style).setTitle(str).setMessage(str2).setCancelable(false).setPositiveButton(str3, (dialogInterface, i) -> {
+                                dialogInterface.dismiss();
+                                Utilities.currentMessageDialog = null;
+                            }).create();
+                            Utilities.currentMessageDialog = create;
+                            create.show();
                         });
                     }
                 }
@@ -1279,11 +1202,9 @@ public class Utilities {
             activity.runOnUiThread(new Runnable() {
                 public void run() {
                     Utilities.dismissCurrentAlert();
-                    AlertDialog create = new AlertDialog.Builder(activity, R.style.sodk_editor_alert_dialog_style).setTitle(str).setMessage(str2).setCancelable(false).setPositiveButton(str3, new DialogInterface.OnClickListener(this) {
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            Utilities.currentMessageDialog = null;
-                        }
+                    AlertDialog create = new AlertDialog.Builder(activity, R.style.sodk_editor_alert_dialog_style).setTitle(str).setMessage(str2).setCancelable(false).setPositiveButton(str3, (dialogInterface, i) -> {
+                        dialogInterface.dismiss();
+                        Utilities.currentMessageDialog = null;
                     }).create();
                     Utilities.currentMessageDialog = create;
                     create.show();
@@ -1298,12 +1219,12 @@ public class Utilities {
 
     public static void hideKeyboard(Context context, View view) {
         if (view != null) {
-            ((InputMethodManager) context.getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
+            ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
     public static Point getRealScreenSize(Context context) {
-        Display defaultDisplay = ((WindowManager) context.getSystemService(VisionController.WINDOW)).getDefaultDisplay();
+        Display defaultDisplay = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         defaultDisplay.getRealMetrics(displayMetrics);
         return new Point(displayMetrics.widthPixels, displayMetrics.heightPixels);

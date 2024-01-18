@@ -57,7 +57,7 @@ public class LineWidthDialog {
         }
     }
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         LineWidthDialog lineWidthDialog = new LineWidthDialog();
         float selectionLineWidth = ((SODoc) arDkDoc).getSelectionLineWidth();
         View inflate = View.inflate(context, R.layout.sodk_editor_line_width_dialog, (ViewGroup) null);

@@ -1,6 +1,5 @@
 package com.artifex.solib;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -338,27 +337,17 @@ public class MuPDFPage extends ArDkPage {
     }
 
     public ArDkRender renderLayerAtZoomWithAlpha(int i, double d, double d2, double d3, ArDkBitmap arDkBitmap, ArDkBitmap arDkBitmap2, SORenderListener sORenderListener, boolean z, boolean z2) {
-        final int i2 = (int) d2;
-        final int i3 = (int) d3;
         arDkBitmap.getWidth();
         arDkBitmap.getHeight();
         final ArDkBitmap arDkBitmap3 = arDkBitmap;
         android.graphics.Rect rect = arDkBitmap3.rect;
-        final int i4 = rect.left;
-        final int i5 = rect.top;
-        final int i6 = rect.right;
-        final int i7 = rect.bottom;
         final Matrix Identity = Matrix.Identity();
         Identity.scale((float) d);
         Worker worker = this.mDoc.mWorker;
         MuPDFRender muPDFRender = new MuPDFRender();
-        final Worker worker2 = worker;
-        final MuPDFRender muPDFRender2 = muPDFRender;
-        final boolean z3 = z2;
-        AnonymousClass1 r14 = r0;
         final SORenderListener sORenderListener2 = sORenderListener;
-        AnonymousClass1 r0 = new Worker.Task() {
-            public boolean failed = false;
+        Worker.Task r0 = new Worker.Task() {
+            public final boolean failed = false;
 
             public void run() {
                 if (sORenderListener2 == null) {
@@ -545,9 +534,9 @@ public class MuPDFPage extends ArDkPage {
         };
         if (worker.alive) {
             try {
-                worker.mQueue.addFirst(r14);
+                worker.mQueue.addFirst(r0);
             } catch (Throwable th) {
-                StringBuilder m = c$$ExternalSyntheticOutline0.m("exception in Worker.addFirst: ");
+                StringBuilder m = new StringBuilder("exception in Worker.addFirst: ");
                 m.append(th.toString());
                 Log.e("Worker", m.toString());
             }
@@ -850,7 +839,6 @@ public class MuPDFPage extends ArDkPage {
                         PDFDocument pDFDocument = (PDFDocument) MuPDFPage.this.mDoc.mDocument;
                         pDFDocument.beginOperation("updateSelectedRedaction");
                         if (selectedAnnotation.mQuadPointCount == 0) {
-                            android.graphics.Rect rect = rect;
                             Rect rect2 = new Rect((float) rect.left, (float) rect.top, (float) rect.right, (float) rect.bottom);
                             selectedAnnotation.mDoc.checkForWorkerThread();
                             selectedAnnotation.rect = rect2;
@@ -863,8 +851,7 @@ public class MuPDFPage extends ArDkPage {
                                 selectedAnnotation.mAnnotation.setQuadPoints(rectsToQuads);
                             }
                         } else {
-                            android.graphics.Rect rect3 = rect;
-                            Quad[] quads = MuPDFPage.this.getQuads(new Rect((float) rect3.left, (float) rect3.top, (float) rect3.right, (float) rect3.bottom));
+                            Quad[] quads = MuPDFPage.this.getQuads(new Rect((float) rect.left, (float) rect.top, (float) rect.right, (float) rect.bottom));
                             if (quads != null && quads.length > 0) {
                                 selectedAnnotation.mDoc.checkForWorkerThread();
                                 selectedAnnotation.mQuadPoints = quads;

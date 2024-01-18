@@ -1,9 +1,7 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.content.Context;
 import android.util.Log;
-import androidx.fragment.app.BackStackRecord$$ExternalSyntheticOutline0;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SOPreferences;
 import java.io.File;
@@ -39,7 +37,7 @@ public class SOFileDatabase {
         StringBuilder sb = new StringBuilder();
         sb.append(FileUtils.getTempPathRoot(mContext));
         String str = File.separator;
-        mTempFolderPath = BackStackRecord$$ExternalSyntheticOutline0.m(sb, str, ".tmpint", str);
+        mTempFolderPath = sb.append(str).append(".tmpint").append(str).toString();
         mTempThumbsPath = FileUtils.getTempPathRoot(mContext) + str + ".thumbs" + str;
         if (!FileUtils.fileExists(mTempFolderPath)) {
             FileUtils.createDirectory(mTempFolderPath);
@@ -115,7 +113,7 @@ public class SOFileDatabase {
         String str2;
         SOFileState value = !z2 ? getValue(str) : null;
         if (value == null || value.getUserPath().isEmpty()) {
-            StringBuilder m = c$$ExternalSyntheticOutline0.m(".");
+            StringBuilder m = new StringBuilder(".");
             m.append(FileUtils.getExtension(str));
             String sb = m.toString();
             if (!FileUtils.fileExists(mTempFolderPath)) {

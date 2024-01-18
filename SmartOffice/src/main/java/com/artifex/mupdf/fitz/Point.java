@@ -1,6 +1,5 @@
 package com.artifex.mupdf.fitz;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import java.util.Objects;
 
 public class Point {
@@ -28,7 +27,7 @@ public class Point {
     }
 
     public String toString() {
-        StringBuilder m = c$$ExternalSyntheticOutline0.m("[");
+        StringBuilder m = new StringBuilder("[");
         m.append(this.x);
         m.append(" ");
         m.append(this.y);

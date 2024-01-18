@@ -1,11 +1,12 @@
 package com.artifex.sonui.editor;
 
-import com.artifex.source.util.a.util_a.a.a.c$$ExternalSyntheticOutline0;
 import android.app.Activity;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
 import android.security.KeyChainException;
-import androidx.transition.ViewOverlayApi18;
+
+import com.artifex.CMSSignedHelper;
+import com.artifex.CMSUtils;
 import com.artifex.mupdf.fitz.FitzInputStream;
 import com.artifex.mupdf.fitz.PDFWidget;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
@@ -14,6 +15,7 @@ import com.artifex.solib.FileUtilsExternalSyntheticOutline0;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.security.DigestOutputStream;
 import java.security.GeneralSecurityException;
 import java.security.Principal;
 import java.security.PrivateKey;
@@ -54,8 +56,6 @@ import org.spongycastle.cms.CMSProcessableByteArray;
 import org.spongycastle.cms.CMSSignatureEncryptionAlgorithmFinder;
 import org.spongycastle.cms.CMSSignedData;
 import org.spongycastle.cms.CMSSignedDataGenerator;
-import org.spongycastle.cms.CMSSignedHelper;
-import org.spongycastle.cms.CMSUtils;
 import org.spongycastle.cms.DefaultCMSSignatureEncryptionAlgorithmFinder;
 import org.spongycastle.cms.SignerInfoGenerator;
 import org.spongycastle.cms.SignerInformation;
@@ -129,7 +129,7 @@ public class NUIDefaultSigner extends NUIPKCS7Signer {
             int i = CMSUtils.$r8$clinit;
             ArrayList arrayList2 = new ArrayList();
             try {
-                Iterator it = ((ArrayList) jcaCertStore.getMatches((Selector) null)).iterator();
+                Iterator it = ((ArrayList) jcaCertStore.getMatches((Selector<java.security.cert.Certificate>) null)).iterator();
                 while (it.hasNext()) {
                     arrayList2.add(((X509CertificateHolder) it.next()).x509Certificate);
                 }
@@ -231,7 +231,7 @@ public class NUIDefaultSigner extends NUIPKCS7Signer {
                             throw new CMSException("encoding error.", e3);
                         }
                     }
-                    CMSSignedData cMSSignedData = new CMSSignedData(cMSProcessableByteArray, new ContentInfo(CMSObjectIdentifiers.signedData, new SignedData(new DLSet(viewOverlayApi18, 1), new ContentInfo(aSN1ObjectIdentifier, (ASN1Encodable) null), cMSSignedDataGenerator.certs.size() != 0 ? CMSUtils.createBerSetFromList(cMSSignedDataGenerator.certs) : null, cMSSignedDataGenerator.crls.size() != 0 ? CMSUtils.createBerSetFromList(cMSSignedDataGenerator.crls) : null, new DLSet(viewOverlayApi182, 1))));
+                    CMSSignedData cMSSignedData = new CMSSignedData(cMSProcessableByteArray, new ContentInfo(CMSObjectIdentifiers.signedData, new SignedData(new DLSet(), new ContentInfo(aSN1ObjectIdentifier, (ASN1Encodable) null), cMSSignedDataGenerator.certs.size() != 0 ? CMSUtils.createBerSetFromList(cMSSignedDataGenerator.certs) : null, cMSSignedDataGenerator.crls.size() != 0 ? CMSUtils.createBerSetFromList(cMSSignedDataGenerator.crls) : null, new DLSet(viewOverlayApi182, 1))));
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     new DEROutputStream(byteArrayOutputStream).writeObject(cMSSignedData.contentInfo);
                     return byteArrayOutputStream.toByteArray();
@@ -241,7 +241,7 @@ public class NUIDefaultSigner extends NUIPKCS7Signer {
                 throw new CMSException("error processing certs", e4);
             }
         } catch (GeneralSecurityException e5) {
-            StringBuilder m = c$$ExternalSyntheticOutline0.m("cannot create signer: ");
+            StringBuilder m = new StringBuilder("cannot create signer: ");
             m.append(e5.getMessage());
             throw new OperatorCreationException(m.toString(), e5);
         }

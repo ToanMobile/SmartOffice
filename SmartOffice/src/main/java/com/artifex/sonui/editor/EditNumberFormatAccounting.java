@@ -10,7 +10,6 @@ import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SODoc;
-import com.kochava.base.Tracker;
 import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
 import com.artifex.source.library.wheel.widget.WheelView;
 import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
@@ -30,7 +29,7 @@ public class EditNumberFormatAccounting {
         ((SODoc) arDkDoc).setSelectedCellFormat(str);
     }
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         int identifier;
         EditNumberFormatAccounting editNumberFormatAccounting = new EditNumberFormatAccounting();
         String extractAssetToString = FileUtils.extractAssetToString(context, "currencies.json");

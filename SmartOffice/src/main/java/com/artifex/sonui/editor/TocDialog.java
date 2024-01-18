@@ -24,7 +24,7 @@ public class TocDialog implements PopupWindow.OnDismissListener {
     public final TocDialogListener mListener;
     public NUIPopupWindow popupWindow;
 
-    public class TocData {
+    public static class TocData {
         public int handle;
         public String label;
         public int level;
@@ -33,7 +33,7 @@ public class TocDialog implements PopupWindow.OnDismissListener {
         public float x;
         public float y;
 
-        public TocData(TocDialog tocDialog, int i, int i2, int i3, String str, String str2, float f, float f2, AnonymousClass1 r9) {
+        public TocData(TocDialog tocDialog, int i, int i2, int i3, String str, String str2, float f, float f2) {
             this.handle = i;
             this.parentHandle = i2;
             this.label = str;

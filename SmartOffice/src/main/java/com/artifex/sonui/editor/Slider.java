@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import androidx.appcompat.graphics.drawable.DrawerArrowDrawable$$ExternalSyntheticOutline0;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class Slider extends View implements View.OnTouchListener {
@@ -130,14 +129,6 @@ public class Slider extends View implements View.OnTouchListener {
             return r0
         */
         throw new UnsupportedOperationException("Method not decompiled: com.artifex.sonui.editor.Slider.onTouch(android.view.View, android.view.MotionEvent):boolean");
-    }
-
-    public final float pos2val(float f) {
-        if (!this.logarithmic) {
-            return f;
-        }
-        float f2 = this.minv;
-        return (float) Math.exp((double) DrawerArrowDrawable$$ExternalSyntheticOutline0.m(this.current, this.minp, this.scale, f2));
     }
 
     public void setCurrent(float f) {

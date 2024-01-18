@@ -847,16 +847,12 @@ public class MuPDFDoc extends ArDkDoc {
                 final int i7 = i5 + i4;
                 final int i8 = (int) resolveLinkDestination.x;
                 final int i9 = (int) resolveLinkDestination.y;
-                final MuPDFEnumerateTocListener muPDFEnumerateTocListener2 = muPDFEnumerateTocListener;
                 final int i10 = i;
-                ArDkLib.runOnUiThread(new Runnable(this) {
-                    public void run() {
-                        MuPDFEnumerateTocListener muPDFEnumerateTocListener = muPDFEnumerateTocListener2;
-                        enumeratePdfTocListener.nextTocEntry(i2, i10, i7, str, str2, (float) i8, (float) i9);
-                    }
+                ArDkLib.runOnUiThread(() -> {
+                   //  muPDFEnumerateTocListener.nextTocEntry(i2, i10, i7, str, str2, (float) i8, (float) i9); // TODO
                 });
                 OutlineIterator outlineIterator3 = outlineIterator;
-                processOutline(outlineIterator, true, this.handleCounter, muPDFEnumerateTocListener2);
+                processOutline(outlineIterator, true, this.handleCounter, muPDFEnumerateTocListener);
                 if (outlineIterator.next() != 0) {
                     break;
                 }
@@ -1012,7 +1008,6 @@ public class MuPDFDoc extends ArDkDoc {
                 public int saveResult;
 
                 public void run() {
-                    SODocSaveListener sODocSaveListener = sODocSaveListener;
                     if (sODocSaveListener != null) {
                         int i = this.saveResult;
                         if (i == 0) {
@@ -1043,69 +1038,64 @@ public class MuPDFDoc extends ArDkDoc {
                         }
                         FileUtils.copyFile(str3, str2, true);
                     }
-                    if (MuPDFDoc.this.mIsModified || !str.equals("incremental")) {
-                        SOSecureFS sOSecureFS = ArDkLib.mSecureFS;
-                        if (sOSecureFS == null || !sOSecureFS.isSecurePath(str)) {
-                            try {
-                                pDFDocument.save(str2, str);
-                                this.saveResult = 0;
-                            } catch (Exception unused) {
-                                this.saveResult = 1;
-                            }
-                        } else {
-                            PDFDocument pDFDocument = pDFDocument;
-                            Object fileHandleForWriting = sOSecureFS.getFileHandleForWriting(str2);
-                            try {
-                                pDFDocument.save(new SeekableInputOutputStream(fileHandleForWriting) {
-                                    public long position() throws IOException {
-                                        return sOSecureFS.getFileOffset(r10);
-                                    }
-
-                                    public int read(byte[] bArr) throws IOException {
-                                        int readFromFile = sOSecureFS.readFromFile(r10, bArr);
-                                        if (readFromFile == 0) {
-                                            return -1;
-                                        }
-                                        return readFromFile;
-                                    }
-
-                                    public long seek(long j, int i) throws IOException {
-                                        long fileOffset = sOSecureFS.getFileOffset(r10);
-                                        long fileLength = sOSecureFS.getFileLength(r10);
-                                        if (i != 0) {
-                                            j = i != 1 ? i != 2 ? 0 : j + fileLength : j + fileOffset;
-                                        }
-                                        sOSecureFS.seekToFileOffset(r10, j);
-                                        return j;
-                                    }
-
-                                    public void truncate() throws IOException {
-                                        if (!sOSecureFS.setFileLength(r10, sOSecureFS.getFileOffset(r10))) {
-                                            throw new RuntimeException("MuPDFDoc.saveSecure - error in call to secureFS.setFileLength");
-                                        }
-                                    }
-
-                                    public void write(byte[] bArr, int i, int i2) throws IOException {
-                                        if (i == 0 && i2 == bArr.length) {
-                                            sOSecureFS.writeToFile(r10, bArr);
-                                        } else {
-                                            sOSecureFS.writeToFile(r10, Arrays.copyOfRange(bArr, i, i2 + i));
-                                        }
-                                    }
-                                }, str);
-                                sOSecureFS.closeFile(fileHandleForWriting);
-                                i = 0;
-                            } catch (Exception unused2) {
-                                sOSecureFS.closeFile(fileHandleForWriting);
-                                i = 1;
-                            } catch (Throwable th) {
-                                sOSecureFS.closeFile(fileHandleForWriting);
-                                throw th;
-                            }
-                            this.saveResult = i;
+                    SOSecureFS sOSecureFS = ArDkLib.mSecureFS;
+                    if (sOSecureFS == null || !sOSecureFS.isSecurePath(str)) {
+                        try {
+                            pDFDocument.save(str2, str);
+                            this.saveResult = 0;
+                        } catch (Exception unused) {
+                            this.saveResult = 1;
                         }
                     } else {
-                        this.saveResult = 0;
+                        Object fileHandleForWriting = sOSecureFS.getFileHandleForWriting(str2);
+                        try {
+                            pDFDocument.save(new SeekableInputOutputStream(fileHandleForWriting) {
+                                public long position() throws IOException {
+                                    return sOSecureFS.getFileOffset(r10);
+                                }
+
+                                public int read(byte[] bArr) throws IOException {
+                                    int readFromFile = sOSecureFS.readFromFile(r10, bArr);
+                                    if (readFromFile == 0) {
+                                        return -1;
+                                    }
+                                    return readFromFile;
+                                }
+
+                                public long seek(long j, int i) throws IOException {
+                                    long fileOffset = sOSecureFS.getFileOffset(r10);
+                                    long fileLength = sOSecureFS.getFileLength(r10);
+                                    if (i != 0) {
+                                        j = i != 1 ? i != 2 ? 0 : j + fileLength : j + fileOffset;
+                                    }
+                                    sOSecureFS.seekToFileOffset(r10, j);
+                                    return j;
+                                }
+
+                                public void truncate() throws IOException {
+                                    if (!sOSecureFS.setFileLength(r10, sOSecureFS.getFileOffset(r10))) {
+                                        throw new RuntimeException("MuPDFDoc.saveSecure - error in call to secureFS.setFileLength");
+                                    }
+                                }
+
+                                public void write(byte[] bArr, int i, int i2) throws IOException {
+                                    if (i == 0 && i2 == bArr.length) {
+                                        sOSecureFS.writeToFile(r10, bArr);
+                                    } else {
+                                        sOSecureFS.writeToFile(r10, Arrays.copyOfRange(bArr, i, i2 + i));
+                                    }
+                                }
+                            }, str);
+                            sOSecureFS.closeFile(fileHandleForWriting);
+                            i = 0;
+                        } catch (Exception unused2) {
+                            sOSecureFS.closeFile(fileHandleForWriting);
+                            i = 1;
+                        } catch (Throwable th) {
+                            sOSecureFS.closeFile(fileHandleForWriting);
+                            throw th;
+                        }
+                        this.saveResult = i;
                     }
                     if (this.saveResult == 0) {
                         MuPDFDoc.this.mIsModified = false;
@@ -1135,14 +1125,13 @@ public class MuPDFDoc extends ArDkDoc {
                 if (muPDFDoc.searchCancelled) {
                     SOSearchListener sOSearchListener = muPDFDoc.searchListener;
                     if (sOSearchListener != null) {
-                        NUIDocView.AnonymousClass21 r0 = (NUIDocView.AnonymousClass21) sOSearchListener;
                         NUIDocView.access$2600(NUIDocView.this);
                         NUIDocView.this.mIsSearching = false;
                     }
                 } else if (!muPDFDoc.searchMatchFound) {
                     SOSearchListener sOSearchListener2 = muPDFDoc.searchListener;
                     if (sOSearchListener2 != null) {
-                        ((NUIDocView.AnonymousClass21) sOSearchListener2).notFound();
+                        sOSearchListener2.notFound();
                     }
                 } else {
                     MuPDFPage muPDFPage = muPDFDoc.mPages.get(muPDFDoc.searchPage);
@@ -1168,7 +1157,7 @@ public class MuPDFDoc extends ArDkDoc {
                         MuPDFDoc muPDFDoc4 = MuPDFDoc.this;
                         SOSearchListener sOSearchListener3 = muPDFDoc4.searchListener;
                         if (sOSearchListener3 != null) {
-                            ((NUIDocView.AnonymousClass21) sOSearchListener3).found(muPDFDoc4.searchPage, rectF);
+                            sOSearchListener3.found(muPDFDoc4.searchPage, rectF);
                         }
                     }
                 }
@@ -1509,7 +1498,6 @@ public class MuPDFDoc extends ArDkDoc {
                 if (sODocLoadListener != null) {
                     ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onDocComplete();
                     SODocLoadListener sODocLoadListener2 = MuPDFDoc.this.mListener;
-                    int i = i;
                     ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onSelectionChanged(i, i);
                 }
             }
