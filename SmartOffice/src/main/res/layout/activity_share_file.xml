@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tag="layout/activity_share_file_0" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include android:id="@+id/toolBarLayout" layout="@layout/toolbar_layout"/>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/filePreviewLayout" android:background="@color/F9FAFB" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/toolBarLayout">
+        <ImageView android:id="@+id/fileThumbnail" android:layout_width="@dimen/_70sdp" android:layout_height="@dimen/_90sdp" android:layout_marginTop="@dimen/_40sdp" android:scaleType="fitXY"/>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="@dimen/_7sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_8sdp">
+            <TextView android:id="@+id/fileName" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="File Name" android:layout_weight="600" android:fontFamily="@font/lato_bold"/>
+            <ImageView android:id="@+id/editIcon" android:visibility="gone" android:layout_width="@dimen/_16sdp" android:layout_height="@dimen/_16sdp" android:src="@drawable/ic_edit_pen" android:tint="@color/grey" android:alpha="0.5" android:layout_marginStart="@dimen/_5sdp"/>
+        </LinearLayout>
+        <LinearLayout android:padding="@dimen/_8sdp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textColor="@color/A3A3A3" android:id="@+id/docPageCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pages"/>
+            <TextView android:textColor="@color/A3A3A3" android:id="@+id/docSize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/docSize" android:layout_marginStart="@dimen/_18sdp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@+id/shareFileLayout" android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintBottom_toTopOf="@+id/bannerLayout" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/filePreviewLayout" layout="@layout/share_file_layout"/>
+    <include android:id="@+id/bannerLayout" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" layout="@layout/layout_banner_control"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

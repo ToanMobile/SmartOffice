@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import androidx.core.content.ContextCompat;
 
+import com.artifex.R;
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;

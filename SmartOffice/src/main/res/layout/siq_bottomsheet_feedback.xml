@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_chat_feedback_parent" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_feedback_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:id="@+id/siq_chat_feedback_heading" android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingStart="16dp" android:paddingEnd="16dp" style="@style/SalesIQ.Style.chatwindow_feedback_heading"/>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/siq_rating_parent" android:layout_width="match_parent" android:layout_height="120dp" android:layout_marginLeft="@dimen/siq_55" android:layout_marginTop="@dimen/siq_10" android:layout_marginRight="@dimen/siq_55" android:layout_marginBottom="@dimen/siq_5" android:weightSum="1" android:layout_marginStart="@dimen/siq_55" android:layout_marginEnd="@dimen/siq_55">
+                <RelativeLayout android:gravity="center" android:id="@+id/siq_rating_sad_parent" android:layout_width="@dimen/siq_80" android:layout_height="110dp" android:layout_marginTop="10dp" android:layout_weight="0.35">
+                    <ImageView android:id="@+id/siq_rating_sad" android:layout_width="70dp" android:layout_height="70dp" android:layout_centerHorizontal="true" app:srcCompat="@drawable/salesiq_vector_sad"/>
+                    <TextView android:textColor="?android:attr/textColorPrimary" android:gravity="center" android:id="@+id/siq_rating_sad_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_8" android:text="@string/livechat.widgets.rating.happy.sad" android:layout_below="@+id/siq_rating_sad"/>
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center" android:id="@+id/siq_rating_neutral_parent" android:layout_width="@dimen/siq_80" android:layout_height="110dp" android:layout_marginTop="10dp" android:layout_weight="0.3">
+                    <ImageView android:id="@+id/siq_rating_neutral" android:layout_width="70dp" android:layout_height="70dp" android:layout_centerHorizontal="true" app:srcCompat="@drawable/salesiq_vector_neutral"/>
+                    <TextView android:textColor="?android:attr/textColorPrimary" android:gravity="center" android:id="@+id/siq_rating_neutral_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_8" android:text="@string/livechat.widgets.rating.happy.neutral" android:layout_below="@+id/siq_rating_neutral"/>
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center" android:id="@+id/siq_rating_happy_parent" android:layout_width="@dimen/siq_80" android:layout_height="110dp" android:layout_marginTop="10dp" android:layout_weight="0.35">
+                    <ImageView android:id="@+id/siq_rating_happy" android:layout_width="70dp" android:layout_height="70dp" android:layout_centerHorizontal="true" app:srcCompat="@drawable/salesiq_vector_excited"/>
+                    <TextView android:textColor="?android:attr/textColorPrimary" android:gravity="center" android:id="@+id/siq_rating_happy_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_8" android:text="@string/livechat.widgets.rating.happy.happy" android:layout_below="@+id/siq_rating_happy"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_feedback_input_layout" android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingBottom="@dimen/siq_10" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_12" android:paddingStart="16dp" android:paddingEnd="16dp">
+                <EditText android:id="@+id/siq_chat_feedback_edittext" style="@style/SalesIQ.Style.chatwindow_feedback_edittext"/>
+                <RelativeLayout android:id="@+id/siq_chat_feedback_submit" android:paddingLeft="16dp" android:paddingRight="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_24" android:layout_marginBottom="@dimen/siq_16" android:paddingStart="16dp" android:paddingEnd="16dp">
+                    <TextView android:id="@+id/siq_chat_feedback_submit_text" style="@style/SalesIQ.Style.chatwindow_feedback_submit_text"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/siq_chat_rating_skip_layout" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@+id/siq_chat_rating_skip" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <View android:background="?attr/siq_divider_color" android:layout_width="match_parent" android:layout_height="0.5dp"/>
+                    <TextView android:id="@+id/siq_chat_rating_skip_text" style="@style/SalesIQ.Style.chatwindow_rating_skip_text"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

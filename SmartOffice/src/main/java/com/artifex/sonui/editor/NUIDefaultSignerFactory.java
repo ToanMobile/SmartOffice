@@ -15,11 +15,21 @@ public class NUIDefaultSignerFactory implements Utilities.SigningFactoryListener
         return mInstance;
     }
 
+    @Override
     public NUIPKCS7Signer getSigner(Activity activity) {
-        return new NUIDefaultSigner(activity);
+        return null;
     }
 
+    @Override
     public NUIPKCS7Verifier getVerifier(Activity activity) {
-        return new NUIDefaultVerifier(activity, NUICertificateViewer.class);
+        return null;
     }
+
+//    public NUIPKCS7Signer getSigner(Activity activity) {
+//        return new NUIDefaultSigner(activity);
+//    }
+//
+//    public NUIPKCS7Verifier getVerifier(Activity activity) {
+//        return new NUIDefaultVerifier(activity, NUICertificateViewer.class);
+//    }
 }

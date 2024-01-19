@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/llShareMain" android:paddingBottom="@dimen/_25sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/AppModalStyle">
+        <View android:layout_gravity="center" android:id="@+id/viewChooseFileOption" android:background="@drawable/view_bg" android:layout_width="60dp" android:layout_height="4dp"/>
+        <TextView android:textSize="20sp" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/txtTitle" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/share_file" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+        <com.daimajia.numberprogressbar.NumberProgressBar android:id="@+id/progressFileUploadPer" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="@dimen/_10sdp" android:layout_marginHorizontal="@dimen/_10sdp" app:progress_current="0" app:progress_reached_bar_height="4dp" app:progress_reached_color="@color/colorPrimary" app:progress_text_color="@color/colorPrimary" app:progress_text_size="@dimen/_12sdp" app:progress_unreached_bar_height="2dp" app:progress_unreached_color="@color/colorPrimary"/>
+        <RadioGroup android:gravity="center" android:orientation="horizontal" android:id="@+id/rdgFileType" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:weightSum="1">
+            <RadioButton android:textSize="16sp" android:textColor="@color/black" android:id="@+id/rdbLink" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:checked="true" android:text="@string/link" android:layout_weight="0.3" android:fontFamily="@font/lato_regular" android:buttonTint="@color/radio_tint_color" android:textFontWeight="500"/>
+            <RadioButton android:textSize="16sp" android:textColor="@color/black" android:id="@+id/rdbFile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="@string/file" android:layout_weight="0.3" android:fontFamily="@font/lato_regular" android:buttonTint="@color/radio_tint_color" android:textFontWeight="500"/>
+        </RadioGroup>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/llFileLinkDetails" android:background="@drawable/copy_link_bg" android:padding="10dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+            <TextView android:textSize="12sp" android:textColor="@color/black" android:id="@+id/txtLink" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.7" android:textFontWeight="400"/>
+            <View android:background="@color/border_bg_color" android:layout_width="1dp" android:layout_height="match_parent"/>
+            <TextView android:textSize="14sp" android:textColor="@color/radio_tint_color" android:gravity="center" android:id="@+id/txtCopyLink" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/copy_link" android:layout_weight="0.3" android:textFontWeight="500"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/llSharingOption" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llWhatsApp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_whats_app"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/whats_app" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llEmail" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_email"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e_mail" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llTelegram" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_telegram"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/telegram" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llMore" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_more_share"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/more" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+            </LinearLayout>
+        </LinearLayout>
+        <com.google.android.gms.common.SignInButton android:layout_gravity="center" android:id="@+id/sibGmail" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
+        <TextView android:textSize="22sp" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center" android:id="@+id/txtUFLabel" android:padding="10dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="@font/lato_regular" android:textFontWeight="600"/>
+    </LinearLayout>
+</LinearLayout>

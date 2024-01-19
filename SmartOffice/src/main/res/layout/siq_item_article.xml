@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/siq_article_parent" style="@style/SalesIQ.Layout.articles">
+    <ImageView android:id="@+id/siq_article_icon" style="@style/SalesIQ.Style.article_icon"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_toRightOf="@+id/siq_article_icon" android:layout_toEndOf="@+id/siq_article_icon">
+        <TextView android:id="@+id/siq_article_name" style="@style/SalesIQ.Style.article_name_text"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+            <TextView android:id="@+id/siq_article_views" style="@style/SalesIQ.Style.article_views_text"/>
+            <View android:id="@+id/siq_article_separatorview" style="@style/SalesIQ.View.articles_separator"/>
+            <ImageView android:id="@+id/siq_articles_likes_icon" app:srcCompat="@drawable/salesiq_vector_like_flat" style="@style/SalesIQ.Style.article_like_icon"/>
+            <TextView android:id="@+id/siq_article_likes" style="@style/SalesIQ.Style.article_likes_count_text"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

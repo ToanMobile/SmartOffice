@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
+
 import com.artifex.sonui.editor.SODocSession;
-import java.util.Iterator;
+
 import java.util.Locale;
 import java.util.Random;
 
@@ -50,7 +51,7 @@ public class SOLib extends ArDkLib {
                     this.internal = initLib;
                     if (initLib != 0) {
                         String m = FileUtils.getTempPathRoot(activity) + "/tmp/";
-                        if (FileUtils.fileExists(m) && m != null) {
+                        if (FileUtils.fileExists(m)) {
                             SOSecureFS sOSecureFS2 = FileUtils.mSecureFs;
                             if (sOSecureFS2 == null || !sOSecureFS2.isSecurePath(m)) {
                                 FileUtils.deleteRecursive(m);
@@ -175,16 +176,15 @@ public class SOLib extends ArDkLib {
             setAnimationEnabled(configOptions.mSettingsBundle.getBoolean("AnimationFeatureEnabledKey", false));
             setTrackChangesEnabled(configOptions.isTrackChangesFeatureEnabled());
         }
-        SODocLoadListenerInternal r5 = new SODocLoadListenerInternal() {
-            public ArDkDoc mDoc = null;
-            public int mLastSelectionID = 0;
-            public Random mRandom = new Random();
+        SODocLoadListenerInternal soDocLoadListenerInternal = new SODocLoadListenerInternal() {
+            ArDkDoc mDoc = null;
+            int mLastSelectionID = 0;
+            final Random mRandom = new Random();
 
-            public void access$200(AnonymousClass1 r1, int i, int i2) {
-                r1.mLastSelectionID = r1.mRandom.nextInt();
-                ArDkDoc arDkDoc = r1.mDoc;
-                arDkDoc.mSelectionStartPage = i;
-                arDkDoc.mSelectionEndPage = i2;
+            public void access$200(int i, int i2) {
+                mLastSelectionID = mRandom.nextInt();
+                mDoc.mSelectionStartPage = i;
+                mDoc.mSelectionEndPage = i2;
                 sODocLoadListener.onSelectionChanged(i, i2);
             }
 
@@ -193,60 +193,26 @@ public class SOLib extends ArDkLib {
             }
 
             public void onLayoutCompleted() {
-                ArDkLib.runOnUiThread(new Runnable() {
-                    public void run() {
-                        SODocSession sODocSession = SODocSession.this;
-                        boolean z = sODocSession.mOpen;
-                        if (z && z) {
-                            Iterator<SODocSession.SODocSessionLoadListener> it = sODocSession.mListeners.iterator();
-                            while (it.hasNext()) {
-                                it.next().onLayoutCompleted();
-                            }
-                            SODocSession.SODocSessionLoadListenerCustom sODocSessionLoadListenerCustom = SODocSession.this.mListenerCustom;
-                            if (sODocSessionLoadListenerCustom != null) {
-                                sODocSessionLoadListenerCustom.onLayoutCompleted();
-                            }
-                        }
-                    }
-                });
+                ArDkLib.runOnUiThread(sODocLoadListener::onLayoutCompleted);
             }
 
             public void onSelectionChanged(final int i, final int i2) {
-                ArDkLib.runOnUiThread(new Runnable() {
-                    public void run() {
-                        int i = i;
-                        int i2 = i2;
-                        if (i > i2) {
-                            final int i3 = AnonymousClass1.this.mLastSelectionID;
-                            new Handler().postDelayed(new Runnable() {
-                                public void run() {
-                                    int i = i3;
-                                    AnonymousClass3 r1 = AnonymousClass3.this;
-                                    AnonymousClass1 r2 = AnonymousClass1.this;
-                                    if (i == r2.mLastSelectionID) {
-                                        AnonymousClass1.access$200(r2, i, i2);
-                                    }
-                                }
-                            }, 100);
-                            return;
-                        }
-                        AnonymousClass1.access$200(AnonymousClass1.this, i, i2);
+                ArDkLib.runOnUiThread(() -> {
+                    if (i > i2) {
+                        new Handler().postDelayed(() -> access$200(mLastSelectionID, i2), 100);
                     }
+                    access$200(i, i2);
                 });
             }
 
             public void progress(final int i, final boolean z) {
-                ArDkLib.runOnUiThread(new Runnable() {
-                    public void run() {
-                        AnonymousClass1 r0 = AnonymousClass1.this;
-                        ArDkDoc arDkDoc = r0.mDoc;
-                        if (arDkDoc != null) {
-                            arDkDoc.mNumPages = i;
-                        }
-                        ((SODocSession.AnonymousClass1) sODocLoadListener).onPageLoad(i);
-                        if (z) {
-                            ((SODocSession.AnonymousClass1) sODocLoadListener).onDocComplete();
-                        }
+                ArDkLib.runOnUiThread(() -> {
+                    if (mDoc != null) {
+                        mDoc.mNumPages = i;
+                    }
+                    sODocLoadListener.onPageLoad(i);
+                    if (z) {
+                        sODocLoadListener.onDocComplete();
                     }
                 });
             }
@@ -255,8 +221,8 @@ public class SOLib extends ArDkLib {
                 this.mDoc = arDkDoc;
             }
         };
-        ArDkDoc openDocumentInternal = openDocumentInternal(str, r5);
-        r5.mDoc = openDocumentInternal;
+        ArDkDoc openDocumentInternal = openDocumentInternal(str, soDocLoadListenerInternal);
+        soDocLoadListenerInternal.setDoc(openDocumentInternal);
         return openDocumentInternal;
     }
 

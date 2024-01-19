@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_msg_img_view" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/siq_bg_card_view" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:contentPadding="2dp">
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="10dp" app:cardElevation="0dp">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@+id/siq_imageparent" android:layout_width="match_parent" android:layout_height="168dp">
+                    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/siq_msg_att_img" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop"/>
+                        <View android:id="@+id/siq_msg_att_img_blur" android:background="#45000000" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/siq_msg_att_img_middleview" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+                        <RelativeLayout android:id="@+id/siq_imgactionview" android:background="@drawable/salesiq_attachment_download_bg" android:visibility="visible" android:layout_width="48dp" android:layout_height="48dp" android:layout_centerHorizontal="true">
+                            <ImageView android:id="@+id/siq_imgactionimage" android:layout_width="32dp" android:layout_height="32dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true" app:srcCompat="@drawable/salesiq_download_arrow"/>
+                            <com.zoho.livechat.android.ui.customviews.CircularProgressView android:id="@+id/siq_img_progressbar" android:layout_width="44dp" android:layout_height="44dp" android:max="20" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/siq_attachment_detail_parent" android:background="@drawable/siq_video_detail_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/siq_10" android:layout_marginBottom="@dimen/siq_8" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/siq_10" android:layout_alignParentEnd="true">
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/siq_attachment_detail_layout" android:padding="@dimen/siq_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                            <ImageView android:id="@+id/siq_attachment_icon" android:layout_width="@dimen/siq_15" android:layout_height="@dimen/siq_15" app:srcCompat="@drawable/salesiq_vector_video"/>
+                            <TextView android:textSize="@dimen/siq_text_12" android:id="@+id/siq_attachment_detail_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/siq_6" android:layout_marginStart="@dimen/siq_6"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+                <TextView android:textSize="@dimen/siq_text_16" android:id="@+id/siq_img_comment" android:padding="@dimen/siq_10" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

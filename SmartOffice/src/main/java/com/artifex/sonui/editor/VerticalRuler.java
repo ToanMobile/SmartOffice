@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.artifex.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class VerticalRuler extends Ruler {
@@ -62,13 +64,13 @@ public class VerticalRuler extends Ruler {
 
     public void onUpdate() {
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        LinearLayout linearLayout = (LinearLayout) ((Activity) getContext()).findViewById(R.id.hruler_spacer);
+        LinearLayout linearLayout = ((Activity) getContext()).findViewById(R.id.hruler_spacer);
         if (layoutParams != null && linearLayout != null && linearLayout.getLayoutParams() != null) {
             Point realScreenSize = Utilities.getRealScreenSize(getContext());
             int i = realScreenSize.x;
             int i2 = realScreenSize.y;
             int dimension = (int) (((float) ((int) getResources().getDimension(R.dimen.sodk_editor_vruler_base_size))) * this.mScale);
-            int min = Math.min(dimension, (((int) Math.sqrt((double) ((i2 * i2) + (i * i)))) * 7) / 100);
+            int min = Math.min(dimension, (((int) Math.sqrt((i2 * i2) + (i * i))) * 7) / 100);
             this.effectiveXScale = (this.mScale * ((float) min)) / ((float) dimension);
             layoutParams.width = min;
             requestLayout();

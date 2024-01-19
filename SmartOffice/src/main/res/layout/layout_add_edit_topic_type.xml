@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="@dimen/clickable_item_height" android:layout_height="@dimen/clickable_item_height">
+    <FrameLayout android:layout_gravity="center" android:layout_width="32dp" android:layout_height="32dp">
+        <ImageView android:layout_gravity="center" android:layout_width="@dimen/menu_item_icon_size" android:layout_height="@dimen/menu_item_icon_size" android:tint="?android:attr/textColorPrimaryInverse" app:srcCompat="@drawable/ic_action_draft"/>
+        <FrameLayout android:layout_gravity="top|right|center_vertical|center_horizontal|center|end" android:id="@+id/view_alert_red_circle" android:background="@drawable/bg_drafts_count" android:layout_width="14dp" android:layout_height="14dp">
+            <TextView android:textSize="10sp" android:textColor="@color/desk_light_theme_background" android:layout_gravity="center" android:id="@+id/view_alert_count_textview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textDirection="locale"/>
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

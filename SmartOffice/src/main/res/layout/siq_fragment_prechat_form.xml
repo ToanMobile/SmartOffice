@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:background="?attr/siq_forms_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout android:id="@+id/siq_submit_button" style="@style/SalesIQ.Layout.forms_submit">
+            <TextView android:id="@+id/siq_submit_button_text" android:text="@string/livechat.prechatform.submit" android:fontFamily="sans-serif-medium" style="@style/SalesIQ.Style.forms_submit_text"/>
+        </RelativeLayout>
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_above="@+id/siq_submit_button" android:layout_alignParentTop="true">
+            <LinearLayout android:orientation="vertical" android:id="@+id/siq_form_layout" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

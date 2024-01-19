@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="25dp">
+    <com.artifex.sonui.editor.DottedLineView android:layout_gravity="center_vertical" android:id="@+id/bar" android:background="@color/sodk_editor_dotted_line_bg_color" android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
+</LinearLayout>

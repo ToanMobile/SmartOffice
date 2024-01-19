@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import com.artifex.R;
 import com.artifex.solib.SODoc;
 import com.artifex.sonui.editor.PageMenu;
 

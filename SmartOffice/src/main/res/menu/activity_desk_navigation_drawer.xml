@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <group android:checkableBehavior="single">
+        <item android:icon="@drawable/desk_menu_help_center" android:id="@+id/desk_nav_help_center" android:title="@string/DeskPortal.Dashboard.helpcenter.title"/>
+        <item android:icon="@drawable/desk_menu_community_icon" android:id="@+id/desk_nav_community" android:title="@string/DeskPortal.Dashboard.community.title"/>
+        <item android:icon="@drawable/desk_menu_submit_ticket_icon" android:id="@+id/desk_nav_add_ticket" android:title="@string/DeskPortal.Dashboard.addticket.title"/>
+        <item android:icon="@drawable/desk_menu_my_tickets" android:id="@+id/desk_nav_tickets_history" android:title="@string/DeskPortal.Dashboard.myticket.title"/>
+        <item android:icon="@drawable/desk_menu_live_chat_icon" android:id="@+id/desk_nav_live_chat" android:title="@string/DeskPortal.Dashboard.livechat.title"/>
+    </group>
+</menu>

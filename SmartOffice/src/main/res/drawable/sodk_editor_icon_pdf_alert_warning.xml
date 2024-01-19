@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tint="@color/sodk_editor_icon_pdf_alert_color" android:height="50dp" android:width="50dp" android:viewportWidth="50" android:viewportHeight="50">
+    <path android:fillColor="#00000000" android:pathData="M43.44,37.79l-16,-28c-1.33,-2.32 -3.49,-2.32 -4.82,0l-16,28.05C5.24,40.1 6.32,42 9,42H41C43.68,42 44.76,40.1 43.44,37.79Z" android:strokeColor="#333" android:strokeWidth="2"/>
+    <path android:fillColor="#333" android:pathData="M23.38,36.43a1.69,1.69 0,0 1,1.69 -1.8,1.8 1.8,0 0,1 0,3.59 1.69,1.69 0,0 1,-1.69 -1.79m0.72,-4.14 l-0.4,-13.91h2.75l-0.4,13.91Z"/>
+</vector>

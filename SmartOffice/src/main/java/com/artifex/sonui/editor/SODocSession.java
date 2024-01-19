@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.RectF;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -255,11 +257,6 @@ public class SODocSession {
                         sODocSessionLoadListenerCustom.onPageLoad(i);
                     }
                 }
-            }
-
-            @Override
-            public void error(int i2, int i3) {
-
             }
 
             @Override

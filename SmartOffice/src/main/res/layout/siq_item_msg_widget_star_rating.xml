@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_chat_card_type_rating_star" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="?attr/siq_chat_message_backgroundcolor_operator" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="1">
+            <ImageView android:id="@+id/siq_chat_card_image" style="@style/SalesIQ.Style.chatwindow_widget_image"/>
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="14dp" android:paddingTop="10dp" android:paddingRight="14dp" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@+id/siq_chat_card_text" style="@style/SalesIQ.Style.chatwindow_widget_text"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/siq_chat_card_star_parent" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_marginBottom="16dp">
+                <RelativeLayout android:id="@+id/siq_star_1_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_1" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_2_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_2" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_3_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_3" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_4_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_4" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_5_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_5" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_6_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_6" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_7_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_7" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_8_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_8" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_9_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_9" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_star_10_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_star_10" style="@style/SalesIQ.Style.widget_star"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

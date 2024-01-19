@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:background="@color/toolbar_bg_color" android:padding="@dimen/top_bar_bg_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/llDashboardToolbar" android:background="@drawable/toolbar_bg" android:paddingLeft="@dimen/_10sdp" android:paddingTop="@dimen/_5sdp" android:paddingRight="@dimen/_10sdp" android:paddingBottom="@dimen/_5sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:padding="@dimen/_5sdp" android:visibility="gone" android:layout_width="@dimen/top_bar_menu_icon_size" android:layout_height="@dimen/top_bar_menu_icon_size" android:src="@mipmap/ic_side_menu"/>
+        <ImageView android:padding="2dp" android:layout_width="@dimen/top_bar_icon_size" android:layout_height="@dimen/top_bar_icon_size" android:src="@mipmap/ic_top_bar_app_logo"/>
+        <TextView android:textSize="16sp" android:textColor="@color/search_hint_text_color" android:gravity="center_vertical" android:id="@+id/txtSearch" android:background="@android:color/transparent" android:paddingLeft="@dimen/_5sdp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_5sdp" android:layout_marginRight="@dimen/_5sdp" android:text="@string/search_here" android:layout_weight="1"/>
+        <ImageView android:id="@+id/imvSearch" android:padding="@dimen/_10sdp" android:layout_width="@dimen/top_bar_icon_size" android:layout_height="@dimen/top_bar_icon_size" android:src="@mipmap/ic_search"/>
+        <ImageView android:id="@+id/imvProfile" android:padding="@dimen/_5sdp" android:layout_width="@dimen/top_bar_icon_size" android:layout_height="@dimen/top_bar_icon_size" android:src="@mipmap/ic_default_user"/>
+    </LinearLayout>
+</LinearLayout>

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import java.util.Arrays;
@@ -38,7 +40,7 @@ public class FontListAdapter extends BaseAdapter {
         }
         SOTextView sOTextView = (SOTextView) view.findViewById(R.id.name);
         sOTextView.setText((CharSequence) str);
-        sOTextView.setTypeface(Typeface.create(str.toLowerCase(), 0));
+        sOTextView.setTypeface(Typeface.create(str.toLowerCase(), Typeface.NORMAL));
         return view;
     }
 

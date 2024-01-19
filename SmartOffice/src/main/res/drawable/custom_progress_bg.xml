@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:shape="rectangle">
+    <solid android:color="@color/custom_progress_bg_color"/>
+    <padding android:left="@dimen/margin_5" android:top="@dimen/margin_5" android:right="@dimen/margin_5" android:bottom="@dimen/margin_5"/>
+    <corners android:radius="@dimen/margin_5"/>
+</shape>

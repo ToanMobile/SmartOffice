@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/siq_form_email" android:background="?attr/siq_forms_backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <FrameLayout android:id="@+id/siq_email_input_parent" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="16dp" android:layout_marginTop="16dp" android:layout_marginRight="16dp">
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_email_text_parent" android:background="@drawable/salesiq_bg_form_idle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <EditText android:id="@+id/siq_email_text" android:background="@android:color/transparent" android:scrollbars="vertical" android:maxLines="1" android:inputType="textEmailAddress" style="@style/SalesIQ.Style.forms_edittext"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+            <TextView android:id="@+id/siq_email_label" android:background="?attr/siq_forms_backgroundcolor" android:text="Email" style="@style/SalesIQ.Style.forms_label_text"/>
+            <TextView android:textSize="12sp" android:textStyle="normal" android:textColor="?attr/siq_forms_mandatory_star_icon_color" android:id="@+id/siq_email_label_mandatory" android:background="?attr/siq_forms_backgroundcolor" android:paddingRight="4dp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*" android:paddingEnd="4dp"/>
+        </LinearLayout>
+    </FrameLayout>
+    <TextView android:id="@+id/siq_email_input_error" android:text="error" android:layout_below="@+id/siq_email_input_parent" style="@style/SalesIQ.Style.forms_error_text"/>
+</RelativeLayout>

@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.Space;
 import androidx.core.content.ContextCompat;
 
+import com.artifex.R;
+
 public class SheetTab extends LinearLayout {
     public static boolean mIsEditingEnabled = false;
     public boolean mHighlight = false;

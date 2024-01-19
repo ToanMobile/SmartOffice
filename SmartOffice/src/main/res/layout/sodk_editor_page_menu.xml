@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/sodk_editor_page_menu_style">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/delete_button_wrapper" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@+id/delete_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete" style="@style/sodk_editor_page_menu_item_style"/>
+        <View android:layout_width="1dp" android:layout_height="match_parent" style="@style/sodk_editor_page_menu_divider_style"/>
+    </LinearLayout>
+    <Button android:id="@+id/duplicate_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Duplicate" style="@style/sodk_editor_page_menu_item_style"/>
+</LinearLayout>

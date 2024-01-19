@@ -61,6 +61,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;
@@ -297,18 +299,15 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
             }
             nUIDocView.mProgressHandler.postDelayed(new Runnable() {
                 public void run() {
-                    NUIDocView nUIDocView = NUIDocView.this;
                     nUIDocView.mProgressIsScheduled = false;
                     if (nUIDocView.mIsSearching && i == nUIDocView.mSearchCounter && nUIDocView.getDoc() != null) {
-                        NUIDocView nUIDocView2 = NUIDocView.this;
-                        if (nUIDocView2.mSearchProgressDialog == null) {
-                            nUIDocView2.mSearchProgressDialog = new ProgressDialog(NUIDocView.this.getContext(), R.style.sodk_editor_alert_dialog_style);
+                        if (nUIDocView.mSearchProgressDialog == null) {
+                            nUIDocView.mSearchProgressDialog = new ProgressDialog(NUIDocView.this.getContext(), R.style.sodk_editor_alert_dialog_style);
                         }
                         ProgressDialog progressDialog = NUIDocView.this.mSearchProgressDialog;
                         progressDialog.setMessage(NUIDocView.this.getResources().getString(R.string.sodk_editor_searching) + "...");
                         NUIDocView.this.mSearchProgressDialog.setCancelable(false);
-                        NUIDocView nUIDocView3 = NUIDocView.this;
-                        nUIDocView3.mSearchProgressDialog.setButton(-2, nUIDocView3.getResources().getString(R.string.sodk_editor_cancel), new DialogInterface.OnClickListener() {
+                        nUIDocView.mSearchProgressDialog.setButton(-2, nUIDocView.getResources().getString(R.string.sodk_editor_cancel), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 NUIDocView.this.getDoc().cancelSearch();
                             }

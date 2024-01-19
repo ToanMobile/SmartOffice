@@ -11,6 +11,8 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintDocumentInfo;
 import android.print.PrintManager;
 import android.view.WindowManager;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SODocSaveListener;
@@ -213,7 +215,7 @@ public class PrintHelperPdf {
                 throw new UnsupportedOperationException("Method not decompiled: com.artifex.sonui.editor.PrintHelperPdf.AnonymousClass3.onWrite(android.print.PageRange[], android.os.ParcelFileDescriptor, android.os.CancellationSignal, android.print.PrintDocumentAdapter$WriteResultCallback):void");
             }
         };
-        ((PrintManager) context.getSystemService("print")).print(Utilities.getApplicationName(context) + " Document", r0, (PrintAttributes) null);
+        ((PrintManager) context.getSystemService(Context.PRINT_SERVICE)).print(Utilities.getApplicationName(context) + " Document", r0, (PrintAttributes) null);
     }
 
     public void setPrintName(String str) {

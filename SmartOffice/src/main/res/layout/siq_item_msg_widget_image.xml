@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_chat_card_type_image" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:id="@+id/siq_cardview_background" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:contentPadding="2dp">
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="10dp" app:cardElevation="0dp">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:background="?attr/siq_chat_message_backgroundcolor_operator" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="1">
+                    <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_fileprovider_parent" android:paddingLeft="14dp" android:paddingRight="14dp" android:paddingBottom="10dp" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <RelativeLayout android:id="@+id/siq_chat_fileprovider_title_parent" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_10">
+                            <TextView android:textSize="@dimen/siq_text_16" android:id="@+id/siq_chat_fileprovider_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/livechat.chat.queue.banner.title"/>
+                        </RelativeLayout>
+                        <LinearLayout android:orientation="horizontal" android:id="@+id/siq_chat_fileprovider_text_parent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_10">
+                            <ImageView android:id="@+id/siq_chat_fileprovider_icon" android:visibility="gone" android:layout_width="@dimen/siq_20" android:layout_height="@dimen/siq_20" android:layout_marginRight="@dimen/siq_8" android:layout_marginEnd="@dimen/siq_8"/>
+                            <TextView android:id="@+id/siq_chat_fileprovider_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/livechat.chat.queue.banner.title"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@+id/siq_videocard_separatorview" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_1" android:layout_marginBottom="@dimen/siq_1"/>
+                    <RelativeLayout android:id="@+id/siq_att_imageview" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <RelativeLayout android:id="@+id/siq_chat_card_image_parent" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <ImageView android:id="@+id/siq_chat_card_image" style="@style/SalesIQ.Style.chatwindow_widget_image"/>
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@+id/siq_image_action_parent" android:background="@drawable/salesiq_attachment_download_bg" android:visibility="visible" android:layout_width="48dp" android:layout_height="48dp" android:layout_centerInParent="true">
+                            <ImageView android:id="@+id/siq_image_action" android:layout_width="32dp" android:layout_height="32dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true" app:srcCompat="@drawable/salesiq_vector_play"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                    <LinearLayout android:orientation="horizontal" android:paddingLeft="14dp" android:paddingTop="10dp" android:paddingRight="14dp" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:id="@+id/siq_chat_card_text" style="@style/SalesIQ.Style.chatwindow_widget_text"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@+id/siq_chat_card_links_actionlist_parent" android:background="@drawable/salesiq_links_list_bg" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <LinearLayout android:background="?attr/siq_chat_message_backgroundcolor_operator" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_chat_card_links_actionlist" android:background="@drawable/salesiq_links_list_bg" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

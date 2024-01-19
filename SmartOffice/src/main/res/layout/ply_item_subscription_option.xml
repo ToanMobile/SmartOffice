@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/layoutOptionDetail" android:background="?attr/selectableItemBackground" android:paddingTop="12dp" android:paddingBottom="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16dp" android:paddingEnd="16dp">
+        <ImageView android:id="@+id/optionCheck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ply_ic_check_blue" android:layout_marginEnd="12dp"/>
+        <TextView android:textSize="16sp" android:textColor="@android:color/black" android:id="@+id/optionTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+        <TextView android:textSize="16sp" android:textColor="@android:color/black" android:id="@+id/optionPrice" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@+id/progressBar" android:visibility="invisible" android:layout_width="24dp" android:layout_height="24dp" android:indeterminateTint="@color/ply_darkBlueGrey" style="?android:attr/progressBarStyle"/>
+</FrameLayout>

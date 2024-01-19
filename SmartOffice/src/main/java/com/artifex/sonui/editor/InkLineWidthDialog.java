@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
+
+import com.artifex.R;
 import com.artifex.source.library.wheel.widget.OnWheelScrollListener;
 import com.artifex.source.library.wheel.widget.WheelView;
 import com.artifex.source.library.wheel.widget.adapters.WheelViewAdapter;

@@ -1165,9 +1165,7 @@ public final class SlideShowConductor {
         if (arrayList == null) {
             return false;
         }
-        Iterator<SlideShowConductorLayer> it = arrayList.iterator();
-        while (it.hasNext()) {
-            SlideShowConductorLayer next = it.next();
+        for (SlideShowConductorLayer next : arrayList) {
             if (next.waitingTasks.isEmpty() || next.waitingTasks.get(0).unpauseEvent != i) {
                 z = false;
             } else {
@@ -1184,14 +1182,6 @@ public final class SlideShowConductor {
                         SlideShowConductor.this.consumeAnimationCommands();
                     }
                 });
-                z2 = true;
-                continue;
-            } else {
-                z2 = false;
-                continue;
-            }
-            if (z2) {
-                return true;
             }
         }
         return false;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item>
+        <shape>
+            <stroke android:width="0dp" android:color="@color/sodk_editor_palette_black"/>
+            <solid android:color="@color/sodk_editor_palette_white"/>
+        </shape>
+    </item>
+    <item>
+        <rotate android:fromDegrees="45">
+            <shape android:shape="line">
+                <stroke android:width="4dp" android:color="@color/sodk_editor_palette_red"/>
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

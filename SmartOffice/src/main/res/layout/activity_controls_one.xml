@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@+id/home_branding" android:background="@color/colorPrimaryDark" android:paddingTop="@dimen/_20sdp" android:paddingBottom="@dimen/_20sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="50dp" android:layout_height="50dp" android:src="@drawable/icon"/>
+                <TextView android:textSize="20sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_20sdp" android:text="@string/app_short_name"/>
+                <TextView android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_desc"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@+id/curve_shape" android:background="@drawable/bottom_round_shape" android:layout_width="match_parent" android:layout_height="@dimen/_20sdp"/>
+            <androidx.cardview.widget.CardView android:id="@+id/control_home" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/home_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/home" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="50dp" android:layout_toRightOf="@+id/home_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/home_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/home" android:layout_toRightOf="@+id/home_icon" android:layout_alignParentTop="true"/>
+                        <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home_desc" android:layout_toRightOf="@+id/home_icon" android:layout_below="@+id/home_head" android:lineSpacingMultiplier="0.6"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <include layout="@layout/layout_banner_control"/>
+            <androidx.cardview.widget.CardView android:id="@+id/cv_rating" android:background="@color/light_grey" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp"/>
+            <androidx.cardview.widget.CardView android:id="@+id/control_show_all" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/show_all_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/all" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_toRightOf="@+id/show_all_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/show_all_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/view_all"/>
+                        <TextView android:textSize="15sp" android:id="@+id/show_all_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/show_all_pdf_file_s"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView android:id="@+id/control_create_pdf" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/pdf_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/create_pdf" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="50dp" android:layout_toRightOf="@+id/pdf_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/pdf_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/create_pdf" android:layout_toRightOf="@+id/home_icon" android:layout_alignParentTop="true"/>
+                        <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/convert_images_to_pdf_files" android:layout_toRightOf="@+id/pdf_head" android:layout_below="@+id/pdf_head"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView android:id="@+id/control_tools" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/tools_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/tools" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="50dp" android:layout_toRightOf="@+id/tools_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/tools_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/tools"/>
+                        <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_tools_desc"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <RelativeLayout android:id="@+id/rl_control_promo" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <androidx.cardview.widget.CardView android:id="@+id/control_recents" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/recents_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/history" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="50dp" android:layout_toRightOf="@+id/recents_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/recents_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/recents"/>
+                        <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/show_recently_opened_files"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView android:id="@+id/control_settings" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="90dp" android:layout_margin="@dimen/_10sdp" android:elevation="@dimen/_5sdp" app:cardCornerRadius="@dimen/_10sdp">
+                <RelativeLayout android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <ImageView android:id="@+id/settings_icon" android:background="@drawable/icon_back" android:padding="13dp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginRight="@dimen/_10sdp" android:src="@drawable/settings" android:layout_centerVertical="true" app:tint="@color/colorWhite"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginRight="50dp" android:layout_toRightOf="@+id/settings_icon">
+                        <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/settings_head" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/settings"/>
+                        <TextView android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/control_notifications_themes_etc" android:lineSpacingMultiplier="0.6"/>
+                    </LinearLayout>
+                    <ImageView android:padding="@dimen/_10sdp" android:layout_width="50dp" android:layout_height="wrap_content" android:src="@drawable/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_gravity="bottom|right|center_vertical|center_horizontal|center|end" android:id="@+id/fabOpenEditor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16dp" android:src="@mipmap/ic_add" android:tint="@color/white" app:backgroundTint="@color/colorPrimary"/>
+</FrameLayout>

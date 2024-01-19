@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
+import com.artifex.R;
+
 public class PageMenu implements PopupWindow.OnDismissListener {
     public boolean mAllowDelete;
     public final View mAnchor;

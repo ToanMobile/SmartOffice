@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.artifex.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import kotlin.KotlinVersion;
 

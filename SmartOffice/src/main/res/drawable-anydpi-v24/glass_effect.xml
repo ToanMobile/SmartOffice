@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:height="339dp" android:width="360dp" android:viewportWidth="360" android:viewportHeight="339">
+    <path android:fillColor="@drawable/$glass_effect__0" android:pathData="M360,0l-360,0l-0,119l360,0z"/>
+    <path android:fillColor="@drawable/$glass_effect__1" android:pathData="M360,339l-360,-0l-0,-119l360,-0z"/>
+</vector>

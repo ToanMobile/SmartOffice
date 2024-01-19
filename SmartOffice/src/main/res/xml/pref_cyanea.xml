@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <androidx.preference.PreferenceCategory android:title="@string/pref_category_appearance" android:key="cyanea_preference_category">
+        <androidx.preference.Preference android:title="@string/pref_theme_title" android:key="pref_theme_picker" android:summary="@string/pref_theme_summary"/>
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat android:title="@string/pref_primary_color_title" android:key="pref_color_primary" android:summary="@string/pref_primary_color_summary" android:defaultValue="@color/cyanea_primary_reference" app:cpv_dialogTitle="@string/pref_primary_color_title"/>
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat android:title="@string/pref_accent_color_title" android:key="pref_color_accent" android:summary="@string/pref_accent_color_summary" android:defaultValue="@color/cyanea_accent_reference" app:cpv_dialogTitle="@string/pref_accent_color_title"/>
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat android:title="@string/pref_background_color_title" android:key="pref_color_background" android:summary="@string/pref_background_color_summary" android:defaultValue="@color/cyanea_background_light" app:cpv_colorPresets="@array/cyanea_background_color_presets" app:cpv_dialogTitle="@string/pref_background_color_title" app:cpv_showColorShades="false"/>
+        <androidx.preference.SwitchPreferenceCompat android:title="@string/pref_colored_navigation_bar_title" android:key="pref_color_navigation_bar" android:summary="@string/pref_colored_navigation_bar_summary" android:defaultValue="@bool/should_tint_nav_bar"/>
+    </androidx.preference.PreferenceCategory>
+</androidx.preference.PreferenceScreen>

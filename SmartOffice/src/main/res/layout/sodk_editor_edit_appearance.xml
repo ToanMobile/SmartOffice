@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:id="@+id/preview" android:layout_width="700dp" android:layout_height="300dp"/>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@+id/sign" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign"/>
+        <Button android:id="@+id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel"/>
+        <Button android:id="@+id/draw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Draw"/>
+        <CheckBox android:id="@+id/right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Right"/>
+        <CheckBox android:id="@+id/left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Left"/>
+        <CheckBox android:id="@+id/logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logo"/>
+        <CheckBox android:id="@+id/image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Image"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/redact_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/redact_button_mark" android:background="@drawable/sodk_editor_toolbar_button2" android:text="@string/sodk_editor_redact_mark_upper" android:drawableTop="@drawable/sodk_editor_icon_redact_mark" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/redact_button_mark_area" android:background="@drawable/sodk_editor_toolbar_button2" android:text="@string/sodk_editor_redact_mark_area_upper" android:drawableTop="@drawable/sodk_editor_icon_redact_mark" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/redact_button_remove" android:text="@string/sodk_editor_redact_remove_upper" android:drawableTop="@drawable/sodk_editor_icon_redact_remove" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/redact_button_apply" android:text="@string/sodk_editor_redact_apply_upper" android:drawableTop="@drawable/sodk_editor_icon_redact_apply" style="@style/sodk_editor_toolbar_button"/>
+            <LinearLayout android:orientation="horizontal" android:id="@+id/redact_button_secure_save_wrapper" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <View style="@style/sodk_editor_toolbar_divider"/>
+                <com.artifex.sonui.editor.ToolbarButton android:id="@+id/redact_button_secure_save" android:text="@string/sodk_editor_redact_secure_save" android:drawableTop="@drawable/sodk_editor_icon_redact_save_secure" style="@style/sodk_editor_toolbar_button"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

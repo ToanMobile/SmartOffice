@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/format_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:focusableInTouchMode="true" android:descendantFocusability="beforeDescendants" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <Space android:layout_width="30dp" android:layout_height="match_parent"/>
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <Space android:layout_width="match_parent" android:layout_height="10dp"/>
+                <com.artifex.sonui.editor.SOTextView android:textColor="@color/sodk_editor_button_text" android:layout_gravity="center_horizontal" android:id="@+id/cell_width_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_cell_width_upper"/>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/cell_width_down_button" android:drawableTop="@drawable/sodk_editor_minus" style="@style/sodk_editor_cellinc_button"/>
+                    <com.artifex.sonui.editor.SOEditText android:textSize="16sp" android:textColor="@color/sodk_editor_cell_box_text_color" android:id="@+id/cell_width_box" android:background="@drawable/sodk_editor_cell_size_box" android:padding="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:cursorVisible="false" android:maxLines="1" android:width="50dp" android:selectAllOnFocus="true" android:inputType="numberDecimal" android:imeOptions="actionDone" android:textAlignment="gravity"/>
+                    <com.artifex.sonui.editor.SOTextView android:textSize="14sp" android:textColor="@color/sodk_editor_button_text" android:paddingLeft="3dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_cm"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/cell_width_up_button" android:drawableTop="@drawable/sodk_editor_plus" style="@style/sodk_editor_cellinc_button"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Space android:layout_width="30dp" android:layout_height="match_parent"/>
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <Space android:layout_width="match_parent" android:layout_height="10dp"/>
+                <com.artifex.sonui.editor.SOTextView android:textColor="@color/sodk_editor_button_text" android:layout_gravity="center_horizontal" android:id="@+id/cell_height_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_cell_height_upper"/>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/cell_height_down_button" android:drawableTop="@drawable/sodk_editor_minus" style="@style/sodk_editor_cellinc_button"/>
+                    <com.artifex.sonui.editor.SOEditText android:textSize="16sp" android:textColor="@color/sodk_editor_cell_box_text_color" android:id="@+id/cell_height_box" android:background="@drawable/sodk_editor_cell_size_box" android:padding="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:cursorVisible="false" android:maxLines="1" android:width="50dp" android:selectAllOnFocus="true" android:inputType="numberDecimal" android:imeOptions="actionDone" android:textAlignment="gravity"/>
+                    <com.artifex.sonui.editor.SOTextView android:textSize="14sp" android:textColor="@color/sodk_editor_button_text" android:paddingLeft="3dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_cm"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/cell_height_up_button" android:drawableTop="@drawable/sodk_editor_plus" style="@style/sodk_editor_cellinc_button"/>
+                </LinearLayout>
+            </LinearLayout>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/merge_cells_button" android:text="@string/sodk_editor_merge_cells_upper" android:drawableTop="@drawable/sodk_editor_icon_merge_cells" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/number_format_button" android:text="@string/sodk_editor_number_format_upper" android:drawableTop="@drawable/sodk_editor_icon_number_format" style="@style/sodk_editor_toolbar_button"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

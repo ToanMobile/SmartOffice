@@ -6,6 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import com.artifex.R;
+
 import kotlin.KotlinVersion;
 
 public class DragHandle extends FrameLayout implements View.OnTouchListener {

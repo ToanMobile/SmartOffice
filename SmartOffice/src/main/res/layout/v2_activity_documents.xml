@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:weightSum="1">
+    <include layout="@layout/v2_toolbar_cmn"/>
+    <FrameLayout android:id="@+id/flDocumentContent" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <View android:background="@color/grey" android:layout_width="match_parent" android:layout_height="4dp"/>
+        <include android:id="@+id/bottomAdView" layout="@layout/layout_banner_control"/>
+        <View android:background="@color/grey" android:layout_width="match_parent" android:layout_height="1dp"/>
+    </LinearLayout>
+</LinearLayout>

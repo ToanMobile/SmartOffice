@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:id="@+id/llSubMenuMain" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llFile" android:paddingLeft="@dimen/_10sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_file_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llEdit" android:paddingLeft="@dimen/_10sdp" android:paddingRight="@dimen/_10sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_edit_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llTools" android:paddingLeft="@dimen/_10sdp" android:paddingRight="@dimen/_10sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include android:visibility="gone" layout="@layout/v2_editor_menu_tools_options"/>
+            <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@+id/editorToolsRecyclerView" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llInsert" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_insert_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llFormat" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_format_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llDraw" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_draw_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llAnnotation" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_annotate"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llSelection" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_selection"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llScale" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_scale"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llPages" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_pages_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llOrganize" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_organize_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llFind" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_find_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat android:id="@+id/llFreeze" android:paddingLeft="@dimen/_10sdp" android:paddingRight="@dimen/_10sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="@dimen/dp_40">
+            <include layout="@layout/v2_editor_menu_freeze_options"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <RelativeLayout android:id="@+id/rlDocContainer" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <RelativeLayout android:id="@+id/soDocViewLayout" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <com.example.artifactsdk.utilitiesEditorSdk.Overlay android:id="@+id/overlayDoc" android:background="#11ff0000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </RelativeLayout>
+</LinearLayout>

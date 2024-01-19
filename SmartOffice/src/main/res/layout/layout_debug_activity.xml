@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <Button android:textColor="@color/color_white" android:id="@+id/debug_ads" android:background="@color/blue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:text="Debug Ads"/>
+    <Button android:textColor="@color/color_white" android:id="@+id/debug_analytics" android:background="@color/blue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:text="Debug Analytics"/>
+    <LinearLayout android:orientation="vertical" android:background="@color/light_grey" android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp">
+        <TextView android:textStyle="bold" android:textColor="@color/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="App Version"/>
+        <TextView android:textStyle="bold" android:textColor="@color/grey" android:id="@+id/app_version" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="--" android:lines="2"/>
+        <TextView android:textStyle="bold" android:textColor="@color/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Ads Enabled"/>
+        <TextView android:textColor="@color/grey" android:id="@+id/ads_enabled" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--"/>
+    </LinearLayout>
+</LinearLayout>

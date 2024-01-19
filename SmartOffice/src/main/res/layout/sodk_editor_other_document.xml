@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0px" android:layout_height="0px"/>
+    <LinearLayout android:orientation="vertical" android:id="@+id/header" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageButton android:gravity="center_vertical" android:id="@+id/back_button" android:background="@color/sodk_editor_transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/sodk_editor_icon_back" android:tint="@color/sodk_editor_other_back_button_tint" android:layout_centerVertical="true" android:contentDescription="@string/sodk_editor_nav_back"/>
+            <Space android:id="@+id/back_button_after" android:layout_width="30dp" android:layout_height="1dp"/>
+            <HorizontalScrollView android:id="@+id/other_top" android:background="@color/sodk_editor_toolbar" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@+id/other_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/first_page_button" android:text="@string/sodk_editor_first_page_upper" android:drawableTop="@drawable/sodk_editor_icon_first_page" style="@style/sodk_editor_toolbar_button"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/last_page_button" android:text="@string/sodk_editor_last_page_upper" android:drawableTop="@drawable/sodk_editor_icon_last_page" style="@style/sodk_editor_toolbar_button"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/reflow_button" android:text="@string/sodk_editor_reflow_upper" android:drawableTop="@drawable/sodk_editor_icon_reflow" style="@style/sodk_editor_toolbar_button"/>
+                    <View android:id="@+id/divider_1" style="@style/sodk_editor_toolbar_divider"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/print_button" android:text="@string/sodk_editor_print_upper" android:drawableTop="@drawable/sodk_editor_icon_print" style="@style/sodk_editor_toolbar_button"/>
+                    <View android:id="@+id/divider_2" style="@style/sodk_editor_toolbar_divider"/>
+                    <include layout="@layout/sodk_editor_other_search_toolbar"/>
+                    <com.artifex.sonui.editor.ToolbarButton android:id="@+id/fullscreen_button" android:paddingLeft="20dp" android:text=" " android:drawableTop="@drawable/sodk_editor_icon_fullscreen_other" style="@style/sodk_editor_toolbar_button"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/sodk_editor_content_border" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+        <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="100">
+            <RelativeLayout android:id="@+id/doc_inner_container" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:orientation="vertical" android:id="@+id/doc_cover" android:background="@color/sodk_editor_transparent" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"/>
+                <LinearLayout android:orientation="vertical" android:id="@+id/doc_note_editor" android:background="@color/sodk_editor_pdf_note_color" android:visibility="gone" android:layout_width="@dimen/sodk_editor_note_editor_width" android:layout_height="wrap_content">
+                    <com.artifex.sonui.editor.SOTextView android:textSize="20sp" android:textStyle="bold" android:id="@+id/doc_note_editor_author" android:layout_height="wrap_content" android:text="" style="@style/sodk_editor_note_editor_textview_style"/>
+                    <com.artifex.sonui.editor.SOTextView android:textSize="16sp" android:id="@+id/doc_note_editor_date" android:layout_height="wrap_content" android:text="" style="@style/sodk_editor_note_editor_textview_style"/>
+                    <com.artifex.sonui.editor.SOEditText android:gravity="top" android:id="@+id/doc_note_editor_text" android:layout_height="wrap_content" android:text="" android:minLines="6" android:imeOptions="flagNoFullscreen" style="@style/sodk_editor_note_editor_textview_style"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/footer" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="0">
+        <View android:id="@+id/footer_lead" android:background="@color/sodk_editor_footer" android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="0"/>
+        <com.artifex.sonui.editor.SOTextView android:textColor="@color/sodk_editor_footer_text" android:ellipsize="middle" android:gravity="center_horizontal" android:id="@+id/footer_text" android:background="@color/sodk_editor_footer" android:paddingLeft="5dp" android:paddingRight="5dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1"/>
+        <com.artifex.sonui.editor.SOTextView android:textColor="@color/sodk_editor_footer_page_text" android:id="@+id/footer_page_text" android:background="@color/sodk_editor_footer" android:paddingLeft="5dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="0"/>
+    </LinearLayout>
+</LinearLayout>

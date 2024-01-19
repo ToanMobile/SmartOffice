@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <files-path name="zoho_desk_asap_attachments" path="zoho_desk_asap_attachments/"/>
+    <external-files-path name="zoho_desk_asap_cam_images" path="/"/>
+</paths>

@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import androidx.core.content.ContextCompat;
 
+import com.artifex.R;
 import com.artifex.solib.ArDkBitmap;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkLib;

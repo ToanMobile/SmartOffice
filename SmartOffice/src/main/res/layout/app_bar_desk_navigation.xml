@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                    <TextView android:textSize="18sp" android:textColor="?android:attr/textColorPrimaryInverse" android:ellipsize="end" android:id="@+id/desk_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@+id/tool_bar_progress_bar" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:textDirection="locale" android:layout_toStartOf="@+id/tool_bar_progress_bar" android:layout_alignParentStart="true"/>
+                    <ImageView android:layout_gravity="end" android:id="@+id/tool_bar_progress_bar" android:visibility="gone" android:layout_width="48dp" android:layout_height="wrap_content" android:tint="?attr/colorAccent" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:srcCompat="@drawable/ic_action_refresh"/>
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout android:id="@+id/content_container" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

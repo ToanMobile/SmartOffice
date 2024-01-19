@@ -2,6 +2,8 @@ package com.artifex.sonui.editor;
 
 import android.content.Context;
 import android.view.View;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkLib;
 import com.artifex.solib.ArDkSelectionLimits;
 import com.artifex.solib.ConfigOptions;

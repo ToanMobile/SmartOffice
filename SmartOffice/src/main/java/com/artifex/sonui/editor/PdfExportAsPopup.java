@@ -9,6 +9,8 @@ import android.widget.PopupWindow;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.artifex.R;
+
 public class PdfExportAsPopup implements PopupWindow.OnDismissListener {
     public final View mAnchor;
     public final Context mContext;

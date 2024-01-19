@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/coordinatorLayout" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/parentLayout" android:layout_width="match_parent" android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout android:theme="@style/MultimagerTheme.AppBarOverlay" android:id="@+id/appBarLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <include layout="@layout/toolbar"/>
+        </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout android:id="@+id/cameraLayout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/appBarLayout">
+            <SurfaceView android:orientation="vertical" android:id="@+id/surfaceView" android:layout_width="match_parent" android:layout_height="match_parent"/>
+            <ImageButton android:id="@+id/doneAllButton" android:background="@drawable/action_button_bg" android:padding="@dimen/margin_10" android:layout_width="@dimen/margin_56" android:layout_height="@dimen/margin_56" android:layout_marginRight="@dimen/margin_16" android:layout_marginBottom="@dimen/margin_16" android:src="@drawable/ic_done_all" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:elevation="@dimen/margin_8"/>
+            <ImageButton android:id="@+id/captureButton" android:background="@drawable/action_button_bg" android:padding="@dimen/margin_10" android:layout_width="@dimen/margin_56" android:layout_height="@dimen/margin_56" android:layout_marginBottom="@dimen/margin_16" android:src="@drawable/ic_camera" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:elevation="@dimen/margin_8"/>
+            <ImageButton android:id="@+id/flashButton" android:background="@drawable/action_button_bg" android:padding="@dimen/margin_10" android:layout_width="@dimen/margin_56" android:layout_height="@dimen/margin_56" android:layout_marginLeft="@dimen/margin_16" android:layout_marginBottom="@dimen/margin_16" android:src="@drawable/ic_flash_on" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:elevation="@dimen/margin_8"/>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/previewLayout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/appBarLayout">
+            <ImageView android:id="@+id/previewImageView" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/optionsLayout"/>
+            <RelativeLayout android:id="@+id/optionsLayout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <Button android:id="@+id/doneButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Done" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:textAllCaps="false" style="@style/AppButtonBorderlessColored"/>
+                <Button android:id="@+id/retakeButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Retake" android:layout_centerInParent="true" android:textAllCaps="false" style="@style/AppButtonBorderlessColored"/>
+                <Button android:id="@+id/nextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Next" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:textAllCaps="false" style="@style/AppButtonBorderlessColored"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

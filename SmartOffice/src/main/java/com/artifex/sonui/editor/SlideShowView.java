@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SOLib;
 import com.artifex.solib.SOPage;

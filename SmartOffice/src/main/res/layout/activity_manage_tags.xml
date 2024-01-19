@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout android:id="@+id/app_bar" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="0">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize">
+            <ImageView android:layout_gravity="end" android:id="@+id/iv_manage_tag_help" android:padding="@dimen/margin_5" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/ic_question_black" android:layout_marginEnd="@dimen/margin_20"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/et_create_tag_back" android:paddingLeft="@dimen/margin_15" android:paddingRight="@dimen/margin_15" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/margin_10" android:weightSum="1">
+        <EditText android:textSize="14sp" android:gravity="center_vertical" android:id="@+id/et_manage_tag_name" android:background="@android:color/transparent" android:layout_width="0dp" android:layout_height="@dimen/margin_50" android:hint="@string/enter_the_tag_name" android:singleLine="true" android:layout_weight="0.9" android:inputType="text" android:imeOptions="actionDone"/>
+        <ImageView android:id="@+id/iv_manage_add" android:padding="8dp" android:layout_width="0dp" android:layout_height="@dimen/margin_50" android:src="@drawable/ic_add_green" android:layout_weight="0.1"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:orientation="vertical" android:id="@+id/rv_manage_tags" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin_10" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" app:reverseLayout="false"/>
+</LinearLayout>

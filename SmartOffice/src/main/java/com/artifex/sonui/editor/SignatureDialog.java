@@ -27,6 +27,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.PKCS7Signer;
 import com.artifex.solib.ConfigOptions;
 import com.artifex.solib.FileUtils;
@@ -105,7 +107,7 @@ public class SignatureDialog extends Dialog {
     }
 
     public SignatureDialog(Context context2, ConfigOptions configOptions, MuPDFWidget muPDFWidget, NUIPKCS7Signer nUIPKCS7Signer, SignatureListener signatureListener) {
-        super(context2, 16974407);
+        super(context2, R.style.ThemeOverlay_Material3);
         this.widget = muPDFWidget;
         this.signer = nUIPKCS7Signer;
         this.listener = signatureListener;
@@ -139,7 +141,7 @@ public class SignatureDialog extends Dialog {
     public static void onConfigurationChange() {
         SignatureDialog signatureDialog = currentDialog;
         if (signatureDialog != null) {
-            signatureDialog.signShowing = signatureDialog.sign_panel.getVisibility() == 0;
+            signatureDialog.signShowing = signatureDialog.sign_panel.getVisibility() == View.VISIBLE;
             signatureDialog.savedLocation = signatureDialog.editLocation.getText().toString().trim();
             signatureDialog.savedReason = signatureDialog.editReason.getText().toString().trim();
             signatureDialog.savedSpinnerIndex = signatureDialog.styleSpinner.getSelectedItemPosition();
@@ -149,7 +151,7 @@ public class SignatureDialog extends Dialog {
     }
 
     public final void configureStyleTypeButtons(SignatureStyle.SignatureStyleType signatureStyleType) {
-        int i = AnonymousClass30.$SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType[signatureStyleType.ordinal()];
+        int i = SignatureStyle.SignatureStyleType.valueOf(signatureStyleType.name()).ordinal();
         if (i == 1) {
             this.drawSignatureButton.setVisibility(View.VISIBLE);
             this.chooseImageButton.setVisibility(View.GONE);
@@ -247,7 +249,7 @@ public class SignatureDialog extends Dialog {
                             public void onClick(View view) {
                                 SignatureDialog signatureDialog = SignatureDialog.this;
                                 signatureDialog.styleEditing.styleName = signatureDialog.editStyleName.getText().toString().trim();
-                                int i = AnonymousClass30.$SwitchMap$com$artifex$sonui$editor$SignatureStyle$SignatureStyleType[SignatureDialog.this.styleEditing.type.ordinal()];
+                                int i = SignatureStyle.SignatureStyleType.valueOf(SignatureDialog.this.styleEditing.type.name()).ordinal();
                                 if (i == 1) {
                                     SignatureStyle signatureStyle = SignatureDialog.this.styleEditing;
                                     signatureStyle.leftDrawing = null;
@@ -617,11 +619,11 @@ public class SignatureDialog extends Dialog {
         Rect rect = new Rect(0, 0, imageView.getWidth(), imageView.getHeight());
         MuPDFWidget muPDFWidget = this.widget;
         muPDFWidget.mDoc.mWorker.add(new Worker.Task() {
-            public Bitmap bmp;
-            public final /* synthetic */ SignatureAppearance val$appearance = signatureAppearance;
-            public final /* synthetic */ MuPDFWidget.RenderAppearanceListener val$listener = new MuPDFWidget.RenderAppearanceListener() {};
-            public final /* synthetic */ Rect val$rect = rect;
-            public final /* synthetic */ PKCS7Signer val$signer = signer;
+//            public Bitmap bmp;
+//            public final /* synthetic */ SignatureAppearance val$appearance = signatureAppearance;
+//            public final /* synthetic */ MuPDFWidget.RenderAppearanceListener val$listener = new MuPDFWidget.RenderAppearanceListener() {};
+//            public final /* synthetic */ Rect val$rect = rect;
+//            public final /* synthetic */ PKCS7Signer val$signer = signer;
 
             public void run() {}
 /*

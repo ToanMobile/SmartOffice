@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import java.lang.reflect.Array;

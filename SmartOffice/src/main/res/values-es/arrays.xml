@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="efp__size_units">
+        <item>B</item>
+        <item>kB</item>
+        <item>mB</item>
+        <item>gB</item>
+        <item>tB</item>
+        <item>pB</item>
+    </array>
+    <array name="efp__sorting_types">
+        <item>Por nombre, ascendente</item>
+        <item>Por nombre, descendente</item>
+        <item>Por tamaño, ascendente</item>
+        <item>Por tamaño, descendente</item>
+        <item>Por fecha, ascendente</item>
+        <item>Por fecha, descendente</item>
+    </array>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="efp__size_units">
+        <item>B</item>
+        <item>kB</item>
+        <item>mB</item>
+        <item>gB</item>
+        <item>tB</item>
+        <item>pB</item>
+    </array>
+    <array name="efp__sorting_types">
+        <item>Pēc nosaukuma, augošā</item>
+        <item>Pēc nosaukuma, dilstošā</item>
+        <item>Pēc lieluma, augošā</item>
+        <item>Pēc lieluma, dilstošā</item>
+        <item>Pēc datuma, augošā</item>
+        <item>Pēc datuma, dilstošā</item>
+    </array>
+</resources>

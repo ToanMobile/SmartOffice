@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/siq_conversationlist_parent" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@+id/siq_conversation_image_parent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+            <ImageView android:id="@+id/siq_conversation_imageview" style="@style/SalesIQ.Style.conversation_operatorimage"/>
+            <TextView android:id="@+id/siq_conversation_status" style="@style/SalesIQ.Style.conversationstatus_text"/>
+        </RelativeLayout>
+        <LinearLayout android:gravity="end" android:orientation="vertical" android:id="@+id/siq_conversation_time_parent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+            <TextView android:id="@+id/siq_conversation_time" style="@style/SalesIQ.Style.conversation_timer_text"/>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9dp">
+                <TextView android:id="@+id/siq_conversation_badge" android:visibility="gone" style="@style/SalesIQ.Style.conversation_badge_text"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/conversation_viewholder" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="12dp" android:layout_marginRight="12dp" android:layout_toLeftOf="@+id/siq_conversation_time_parent" android:layout_toRightOf="@+id/siq_conversation_image_parent" android:layout_toStartOf="@+id/siq_conversation_time_parent" android:layout_toEndOf="@+id/siq_conversation_image_parent">
+            <TextView android:id="@+id/siq_conversation_title" style="@style/SalesIQ.Style.conversation_title"/>
+            <LinearLayout android:gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp">
+                <ImageView android:id="@+id/sessionclock" android:visibility="gone" app:srcCompat="@drawable/salesiq_timer_sdk" style="@style/SalesIQ.Style.SessionClock"/>
+                <ProgressBar android:layout_gravity="center" android:id="@+id/siq_conversation_progressbar" android:layout_width="@dimen/siq_14" android:layout_height="@dimen/siq_14" android:layout_marginRight="@dimen/siq_7" android:indeterminate="true" android:layout_marginEnd="@dimen/siq_7"/>
+                <TextView android:id="@+id/siq_conversation_subtext" style="@style/SalesIQ.Style.conversation_subtext"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

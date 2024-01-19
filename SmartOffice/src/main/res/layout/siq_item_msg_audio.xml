@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_msg_audio_view" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="?attr/siq_backgroundcolor" app:cardCornerRadius="9dp" app:cardElevation="0dp">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/siq_audioparent" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="65dp" android:weightSum="1">
+            <RelativeLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+                <RelativeLayout android:id="@+id/siq_audio_download_parent" android:layout_width="38dp" android:layout_height="38dp" android:layout_marginLeft="12dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:layout_marginStart="12dp">
+                    <RelativeLayout android:id="@+id/siq_audio_download_progress_parent" android:visibility="visible" android:layout_width="@dimen/siq_35" android:layout_height="@dimen/siq_35" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+                        <ImageView android:id="@+id/siq_audio_cancel_icon" app:srcCompat="@drawable/salesiq_vector_cancel_light" style="@style/SalesIQ.Style.chatwindow_attachment_cancel_image"/>
+                        <com.zoho.livechat.android.ui.customviews.CircularProgressView android:id="@+id/siq_audio_progressbar" android:visibility="visible" android:layout_width="40dp" android:layout_height="40dp" android:max="20" android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/siq_action_parent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:layout_marginStart="20dp">
+                    <ImageView android:id="@+id/siq_audio_action_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" app:srcCompat="@drawable/salesiq_download_arrow" style="@style/SalesIQ.Style.chatwindow_attachment_download_image"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/siq_audio_seekbar_parent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.6">
+                <SeekBar android:id="@+id/siq_audio_seekbar" android:progress="0" style="@style/SalesIQ.Seekbar.chatwindow_attachment"/>
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/siq_audio_duration_parent" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.19">
+                <TextView android:id="@+id/siq_audio_duration" style="@style/SalesIQ.Style.chatwindow_audio_duration_text"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

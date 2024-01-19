@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 
 public class ColorDialog implements View.OnTouchListener, PopupWindow.OnDismissListener {

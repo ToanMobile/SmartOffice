@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkSelectionLimits;
 

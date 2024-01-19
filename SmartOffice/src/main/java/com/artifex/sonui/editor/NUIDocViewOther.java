@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.FileUtils;
 import com.artifex.sonui.editor.NUIDocView;
 import com.artifex.sonui.editor.NUIView;

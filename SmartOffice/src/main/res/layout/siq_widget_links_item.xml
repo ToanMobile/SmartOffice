@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/siq_chat_card_link_parent" android:background="?android:attr/selectableItemBackground" android:padding="14dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/siq_chat_card_link_image" style="@style/SalesIQ.Style.widget_link_image"/>
+        <TextView android:id="@+id/siq_chat_card_link_text" style="@style/SalesIQ.Style.widget_link_text"/>
+    </LinearLayout>
+    <View android:id="@+id/siq_chat_card_link_divider" style="@style/SalesIQ.View.widget_link_divider"/>
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/llDashboardMain" android:background="@color/folder_row_bg_color" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/v2_dashboard_header_bar"/>
+    <FrameLayout android:id="@+id/flContent" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+    <include layout="@layout/v2_bottom_bar"/>
+</LinearLayout>

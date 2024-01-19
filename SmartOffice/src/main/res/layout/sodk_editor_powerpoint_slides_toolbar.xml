@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/ppt_slides_toolbar" android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/slideshow_button" android:drawableTop="@drawable/sodk_editor_icon_play_slideshow" style="@style/sodk_editor_toolbar_button_no_text"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

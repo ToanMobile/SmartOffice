@@ -151,7 +151,7 @@ public class MuPDFDoc extends ArDkDoc {
         });
     }
 
-    public static void access$2500(MuPDFDoc muPDFDoc, int i) {
+    public void access$2500(MuPDFDoc muPDFDoc, int i) {
         Objects.requireNonNull(muPDFDoc);
         Integer num = i;
         if (!muPDFDoc.pagesWithRedactions.contains(num)) {
@@ -159,7 +159,7 @@ public class MuPDFDoc extends ArDkDoc {
         }
     }
 
-    public static void access$3200(MuPDFDoc muPDFDoc) {
+    public void access$3200(MuPDFDoc muPDFDoc) {
         muPDFDoc.pagesWithRedactions.clear();
         int size = muPDFDoc.mPages.size();
         for (int i = 0; i < size; i++) {
@@ -169,24 +169,24 @@ public class MuPDFDoc extends ArDkDoc {
         }
     }
 
-    public static Document openFile(String str) {
-        Document document = null;
+    public Document openFile(String str) {
+        Document document;
         try {
             final SOSecureFS sOSecureFS = ArDkLib.mSecureFS;
             if (sOSecureFS == null || !sOSecureFS.isSecurePath(str)) {
                 document = Document.openDocument(str);
-                if (document != null && (document instanceof PDFDocument)) {
+                if ((document instanceof PDFDocument)) {
                     ((PDFDocument) document).enableJournal();
                 }
                 return document;
             }
             final Object fileHandleForReading = sOSecureFS.getFileHandleForReading(str);
             document = Document.openDocument(new SeekableInputStream() {
-                public long position() throws IOException {
+                public long position() {
                     return sOSecureFS.getFileOffset(fileHandleForReading);
                 }
 
-                public int read(byte[] bArr) throws IOException {
+                public int read(byte[] bArr) {
                     int readFromFile = sOSecureFS.readFromFile(fileHandleForReading, bArr);
                     if (readFromFile == 0) {
                         return -1;
@@ -194,7 +194,7 @@ public class MuPDFDoc extends ArDkDoc {
                     return readFromFile;
                 }
 
-                public long seek(long j, int i) throws IOException {
+                public long seek(long j, int i) {
                     long fileOffset = sOSecureFS.getFileOffset(fileHandleForReading);
                     long fileLength = sOSecureFS.getFileLength(fileHandleForReading);
                     if (i != 0) {
@@ -223,12 +223,12 @@ public class MuPDFDoc extends ArDkDoc {
                 }
 
                 public void work() {
-                    PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                    PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(mDocument);
                     pDFDocument.beginOperation("highlight");
-                    MuPDFDoc.this.mPages.get(i).addAnnotation(8, MuPDFDoc.this.mAuthor);
+                    mPages.get(i).addAnnotation(8, mAuthor);
                     pDFDocument.endOperation();
-                    MuPDFDoc.this.update(i);
-                    MuPDFDoc.this.clearSelection();
+                    update(i);
+                    clearSelection();
                 }
             });
         }
@@ -334,14 +334,13 @@ public class MuPDFDoc extends ArDkDoc {
             }
 
             public void work() {
-                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(mDocument);
                 pDFDocument.beginOperation("createSignatureAt");
-                MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
-                Context context = MuPDFDoc.this.mContext;
+                MuPDFPage muPDFPage = mPages.get(i);
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
-                    byte[] readFileBytes = FileUtils.readFileBytes(SOPreferences.getStringPreference(SOPreferences.getPreferencesObject(context, "general"), "eSignaturePath", "path"));
+                    byte[] readFileBytes = FileUtils.readFileBytes(SOPreferences.getStringPreference(SOPreferences.getPreferencesObject(mContext, "general"), "eSignaturePath", "path"));
                     if (readFileBytes.length > 0) {
                         Image image = new Image(readFileBytes);
                         PDFAnnotation createAnnotation = pDFPage.createAnnotation(13);
@@ -378,7 +377,7 @@ public class MuPDFDoc extends ArDkDoc {
                     }
                 }
                 pDFDocument.endOperation();
-                MuPDFDoc.this.update(i);
+                update(i);
             }
         });
     }
@@ -393,9 +392,9 @@ public class MuPDFDoc extends ArDkDoc {
             }
 
             public void work() {
-                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(mDocument);
                 pDFDocument.beginOperation("createInkAnnotation");
-                MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i3);
+                MuPDFPage muPDFPage = mPages.get(i3);
                 SOPoint[] sOPointArr = sOPointArr2;
                 float f = f2;
                 int i = i4;
@@ -419,7 +418,7 @@ public class MuPDFDoc extends ArDkDoc {
                     muPDFPage.mDoc.mIsModified = true;
                 }
                 pDFDocument.endOperation();
-                MuPDFDoc.this.update(i3);
+                update(i3);
             }
         });
     }
@@ -430,9 +429,9 @@ public class MuPDFDoc extends ArDkDoc {
             }
 
             public void work() {
-                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(MuPDFDoc.this.mDocument);
+                PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(mDocument);
                 pDFDocument.beginOperation("createSignatureAt");
-                MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
+                MuPDFPage muPDFPage = mPages.get(i);
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
@@ -456,7 +455,7 @@ public class MuPDFDoc extends ArDkDoc {
                     }
                 }
                 pDFDocument.endOperation();
-                MuPDFDoc.this.update(i);
+                update(i);
             }
         });
     }
@@ -471,21 +470,21 @@ public class MuPDFDoc extends ArDkDoc {
                 String str = muPDFDoc.mAuthor;
                 PDFDocument pDFDocument = MuPDFDoc.getPDFDocument(muPDFDoc.mDocument);
                 pDFDocument.beginOperation("createTextAnnotationAt");
-                MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
+                MuPDFPage muPDFPage = mPages.get(i);
                 muPDFPage.mDoc.checkForWorkerThread();
                 PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
                 if (pDFPage != null) {
                     PDFAnnotation createAnnotation = pDFPage.createAnnotation(0);
                     float f = pointF.x;
                     float f2 = pointF.y;
-                    float f3 = (float) 24;
+                    float f3 = 24;
                     createAnnotation.setRect(new Rect(f, f2 - f3, f3 + f, f2));
                     createAnnotation.setAuthor(str);
                     createAnnotation.setModificationDate(new Date());
                     createAnnotation.update();
                     muPDFPage.mDoc.mIsModified = true;
                 }
-                MuPDFDoc.this.update(i);
+                update(i);
                 pDFDocument.endOperation();
             }
         });
@@ -500,12 +499,11 @@ public class MuPDFDoc extends ArDkDoc {
             this.mLoadAborted = true;
             this.mWorker.add(new Worker.Task() {
                 public void run() {
-                    Worker worker = MuPDFDoc.this.mWorker;
-                    if (worker != null) {
-                        worker.alive = false;
-                        worker.mThread.interrupt();
-                        worker.mQueue.clear();
-                        MuPDFDoc.this.mWorker = null;
+                    if (mWorker != null) {
+                        mWorker.alive = false;
+                        mWorker.mThread.interrupt();
+                        mWorker.mQueue.clear();
+                        mWorker = null;
                     }
                 }
 
@@ -518,21 +516,19 @@ public class MuPDFDoc extends ArDkDoc {
                             pDFDocument.setJsEventListener(muPDFDoc.jsNullEventListener);
                             pDFDocument.disableJs();
                         }
-                        MuPDFDoc.this.mDocument.destroy();
-                        MuPDFDoc.this.mDocument = null;
+                        mDocument.destroy();
+                        mDocument = null;
                     }
-                    ArrayList<MuPDFPage> arrayList = MuPDFDoc.this.mPages;
+                    ArrayList<MuPDFPage> arrayList = mPages;
                     if (arrayList != null) {
-                        Iterator<MuPDFPage> it = arrayList.iterator();
-                        while (it.hasNext()) {
-                            it.next().destroyPage();
+                        for (MuPDFPage muPDFPage : arrayList) {
+                            muPDFPage.destroyPage();
                         }
-                        MuPDFDoc.this.mPages.clear();
-                        MuPDFDoc.this.mPages = null;
+                        mPages.clear();
+                        mPages = null;
                     }
-                    MuPDFDoc muPDFDoc2 = MuPDFDoc.this;
-                    muPDFDoc2.mPageCount = 0;
-                    muPDFDoc2.mPageNumber = 0;
+                    mPageCount = 0;
+                    mPageNumber = 0;
                 }
             });
         }
@@ -541,16 +537,16 @@ public class MuPDFDoc extends ArDkDoc {
     public void doRedo(final Runnable runnable) {
         this.mWorker.add(new Worker.Task() {
             public void run() {
-                MuPDFDoc.this.clearSelection();
-                MuPDFDoc.access$3200(MuPDFDoc.this);
+                clearSelection();
+                access$3200(MuPDFDoc.this);
                 if (runnable != null) {
                     runnable.run();
                 }
             }
 
             public void work() {
-                ((PDFDocument) MuPDFDoc.this.mDocument).redo();
-                MuPDFDoc.this.updatePages();
+                ((PDFDocument) mDocument).redo();
+                updatePages();
             }
         });
     }
@@ -558,16 +554,16 @@ public class MuPDFDoc extends ArDkDoc {
     public void doUndo(final Runnable runnable) {
         this.mWorker.add(new Worker.Task() {
             public void run() {
-                MuPDFDoc.this.clearSelection();
-                MuPDFDoc.access$3200(MuPDFDoc.this);
+                clearSelection();
+                access$3200(MuPDFDoc.this);
                 if (runnable != null) {
                     runnable.run();
                 }
             }
 
             public void work() {
-                ((PDFDocument) MuPDFDoc.this.mDocument).undo();
-                MuPDFDoc.this.updatePages();
+                ((PDFDocument) mDocument).undo();
+                updatePages();
             }
         });
     }
@@ -767,35 +763,27 @@ public class MuPDFDoc extends ArDkDoc {
                     if (sODocLoadListener != null) {
                         ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onPageLoad(i);
                     }
-                    MuPDFDoc.this.loadNextPage();
+                    loadNextPage();
                 } else if (this.error) {
-                    SODocLoadListener sODocLoadListener2 = MuPDFDoc.this.mListener;
-                    if (sODocLoadListener2 != null) {
-                        ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onError(6, 0);
+                    if (mListener != null) {
+                        mListener.onError(6, 0);
                     }
                 } else {
-                    SODocLoadListener sODocLoadListener3 = MuPDFDoc.this.mListener;
-                    if (sODocLoadListener3 != null) {
-                        ((SODocSession.SODocSessionLoadListener) sODocLoadListener3).onDocComplete();
+                    if (mListener != null) {
+                        ((SODocSession.SODocSessionLoadListener) mListener).onDocComplete();
                     }
                 }
             }
 
             public void work() {
                 try {
-                    MuPDFDoc muPDFDoc = MuPDFDoc.this;
-                    int i = muPDFDoc.mPageNumber;
-                    if (i < muPDFDoc.mPageCount) {
-                        Page loadPage = muPDFDoc.mDocument.loadPage(i);
-                        MuPDFDoc muPDFDoc2 = MuPDFDoc.this;
-                        Objects.requireNonNull(muPDFDoc2);
-                        muPDFDoc2.mPages.add(new MuPDFPage(muPDFDoc2, loadPage, muPDFDoc2.mNumPages));
-                        muPDFDoc2.mNumPages = muPDFDoc2.mPages.size();
-                        MuPDFDoc muPDFDoc3 = MuPDFDoc.this;
-                        if (muPDFDoc3.mPages.get(muPDFDoc3.mPageNumber).countAnnotations(12) > 0) {
-                            MuPDFDoc muPDFDoc4 = MuPDFDoc.this;
-                            MuPDFDoc.access$2500(muPDFDoc4, muPDFDoc4.mPageNumber);
-                            return;
+                    int i = mPageNumber;
+                    if (i < mPageCount) {
+                        Page loadPage = mDocument.loadPage(i);
+                        mPages.add(new MuPDFPage(MuPDFDoc.this, loadPage, mNumPages));
+                        mNumPages = mPages.size();
+                        if (mPages.get(mPageNumber).countAnnotations(12) > 0) {
+                            access$2500(MuPDFDoc.this, mPageNumber);
                         }
                         return;
                     }
@@ -830,7 +818,6 @@ public class MuPDFDoc extends ArDkDoc {
             OutlineIterator.OutlineItem item = outlineIterator.item();
             while (true) {
                 if (item == null) {
-                    OutlineIterator outlineIterator2 = outlineIterator;
                     break;
                 }
                 final int i2 = this.handleCounter + 1;
@@ -844,14 +831,9 @@ public class MuPDFDoc extends ArDkDoc {
                 for (int i6 = 0; i6 < i3; i6++) {
                     i5 += this.mDocument.countPages(i6);
                 }
-                final int i7 = i5 + i4;
-                final int i8 = (int) resolveLinkDestination.x;
-                final int i9 = (int) resolveLinkDestination.y;
-                final int i10 = i;
                 ArDkLib.runOnUiThread(() -> {
-                   //  muPDFEnumerateTocListener.nextTocEntry(i2, i10, i7, str, str2, (float) i8, (float) i9); // TODO
+                   // muPDFEnumerateTocListener.nextTocEntry(i2, i10, i7, str, str2, (float) i8, (float) i9); // TODO
                 });
-                OutlineIterator outlineIterator3 = outlineIterator;
                 processOutline(outlineIterator, true, this.handleCounter, muPDFEnumerateTocListener);
                 if (outlineIterator.next() != 0) {
                     break;
@@ -893,12 +875,12 @@ public class MuPDFDoc extends ArDkDoc {
         } else if (str.compareToIgnoreCase(this.mOpenedPath) == 0) {
             ArDkLib.runOnUiThread(() -> {
                 sODocSaveListener.onComplete(0, 0);
-                MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
+                mLastSaveTime = System.currentTimeMillis();
             });
         } else if (FileUtils.copyFile(this.mOpenedPath, str, true)) {
             ArDkLib.runOnUiThread(() -> {
                 sODocSaveListener.onComplete(0, 0);
-                MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
+                mLastSaveTime = System.currentTimeMillis();
             });
         } else {
             ArDkLib.runOnUiThread(() -> sODocSaveListener.onComplete(1, 795));
@@ -1005,14 +987,14 @@ public class MuPDFDoc extends ArDkDoc {
             sODocSaveListener.onComplete(1, 0);
         } else {
             this.mWorker.add(new Worker.Task() {
-                public int saveResult;
+                int saveResult;
 
                 public void run() {
                     if (sODocSaveListener != null) {
                         int i = this.saveResult;
                         if (i == 0) {
                             sODocSaveListener.onComplete(0, i);
-                            MuPDFDoc.this.mLastSaveTime = System.currentTimeMillis();
+                            mLastSaveTime = System.currentTimeMillis();
                             return;
                         }
                         sODocSaveListener.onComplete(1, i);
@@ -1022,14 +1004,14 @@ public class MuPDFDoc extends ArDkDoc {
                 public void work() {
                     String str;
                     int i;
-                    MuPDFDoc.this.mLastSaveWasIncremental = false;
+                    mLastSaveWasIncremental = false;
                     if (pDFDocument.canBeSavedIncrementally()) {
-                        MuPDFDoc.this.mLastSaveWasIncremental = true;
+                        mLastSaveWasIncremental = true;
                         str = "incremental";
                     } else {
                         str = "";
                     }
-                    String str2 = FileUtils.getTempPathRoot(MuPDFDoc.this.mContext) + File.separator + UUID.randomUUID() + ".pdf";
+                    String str2 = FileUtils.getTempPathRoot(mContext) + File.separator + UUID.randomUUID() + ".pdf";
                     if (str.equals("incremental")) {
                         MuPDFDoc muPDFDoc = MuPDFDoc.this;
                         String str3 = muPDFDoc.lastSavedPath;
@@ -1049,40 +1031,40 @@ public class MuPDFDoc extends ArDkDoc {
                     } else {
                         Object fileHandleForWriting = sOSecureFS.getFileHandleForWriting(str2);
                         try {
-                            pDFDocument.save(new SeekableInputOutputStream(fileHandleForWriting) {
-                                public long position() throws IOException {
-                                    return sOSecureFS.getFileOffset(r10);
+                            pDFDocument.save(new SeekableInputOutputStream() {
+                                public long position() {
+                                    return sOSecureFS.getFileOffset(fileHandleForWriting); // TODO r10
                                 }
 
-                                public int read(byte[] bArr) throws IOException {
-                                    int readFromFile = sOSecureFS.readFromFile(r10, bArr);
+                                public int read(byte[] bArr) {
+                                    int readFromFile = sOSecureFS.readFromFile(fileHandleForWriting, bArr);
                                     if (readFromFile == 0) {
                                         return -1;
                                     }
                                     return readFromFile;
                                 }
 
-                                public long seek(long j, int i) throws IOException {
-                                    long fileOffset = sOSecureFS.getFileOffset(r10);
-                                    long fileLength = sOSecureFS.getFileLength(r10);
+                                public long seek(long j, int i) {
+                                    long fileOffset = sOSecureFS.getFileOffset(fileHandleForWriting);
+                                    long fileLength = sOSecureFS.getFileLength(fileHandleForWriting);
                                     if (i != 0) {
                                         j = i != 1 ? i != 2 ? 0 : j + fileLength : j + fileOffset;
                                     }
-                                    sOSecureFS.seekToFileOffset(r10, j);
+                                    sOSecureFS.seekToFileOffset(fileHandleForWriting, j);
                                     return j;
                                 }
 
-                                public void truncate() throws IOException {
-                                    if (!sOSecureFS.setFileLength(r10, sOSecureFS.getFileOffset(r10))) {
+                                public void truncate() {
+                                    if (!sOSecureFS.setFileLength(fileHandleForWriting, sOSecureFS.getFileOffset(fileHandleForWriting))) {
                                         throw new RuntimeException("MuPDFDoc.saveSecure - error in call to secureFS.setFileLength");
                                     }
                                 }
 
-                                public void write(byte[] bArr, int i, int i2) throws IOException {
+                                public void write(byte[] bArr, int i, int i2) {
                                     if (i == 0 && i2 == bArr.length) {
-                                        sOSecureFS.writeToFile(r10, bArr);
+                                        sOSecureFS.writeToFile(fileHandleForWriting, bArr);
                                     } else {
-                                        sOSecureFS.writeToFile(r10, Arrays.copyOfRange(bArr, i, i2 + i));
+                                        sOSecureFS.writeToFile(fileHandleForWriting, Arrays.copyOfRange(bArr, i, i2 + i));
                                     }
                                 }
                             }, str);
@@ -1098,10 +1080,10 @@ public class MuPDFDoc extends ArDkDoc {
                         this.saveResult = i;
                     }
                     if (this.saveResult == 0) {
-                        MuPDFDoc.this.mIsModified = false;
+                        mIsModified = false;
                         if (FileUtils.copyFile(str2, str, true)) {
                             FileUtils.deleteFile(str2);
-                            MuPDFDoc.this.lastSavedPath = str;
+                            lastSavedPath = str;
                         }
                     }
                 }
@@ -1121,47 +1103,41 @@ public class MuPDFDoc extends ArDkDoc {
             public void run() {
                 android.graphics.Rect[] rectArr;
                 int i;
-                MuPDFDoc muPDFDoc = MuPDFDoc.this;
-                if (muPDFDoc.searchCancelled) {
-                    SOSearchListener sOSearchListener = muPDFDoc.searchListener;
-                    if (sOSearchListener != null) {
-                        NUIDocView.access$2600(NUIDocView.this);
-                        NUIDocView.this.mIsSearching = false;
+                if (searchCancelled) {
+                    if (searchListener != null) {
+                        // TODO
+//                        NUIDocView.access$2600(NUIDocView.this);
+//                        NUIDocView.this.mIsSearching = false;
                     }
-                } else if (!muPDFDoc.searchMatchFound) {
-                    SOSearchListener sOSearchListener2 = muPDFDoc.searchListener;
-                    if (sOSearchListener2 != null) {
-                        sOSearchListener2.notFound();
+                } else if (!searchMatchFound) {
+                     if (searchListener != null) {
+                         searchListener.notFound();
                     }
                 } else {
-                    MuPDFPage muPDFPage = muPDFDoc.mPages.get(muPDFDoc.searchPage);
-                    muPDFPage.searchIndex = MuPDFDoc.this.searchIndex;
+                    MuPDFPage muPDFPage = mPages.get(searchPage);
+                    muPDFPage.searchIndex = searchIndex;
                     muPDFPage.updatePageRect(muPDFPage.pageBounds);
-                    MuPDFDoc muPDFDoc2 = MuPDFDoc.this;
-                    if (muPDFDoc2.searchListener != null) {
-                        MuPDFPage muPDFPage2 = muPDFDoc2.mPages.get(muPDFDoc2.searchPage);
+                    if (searchListener != null) {
+                        MuPDFPage muPDFPage2 = mPages.get(searchPage);
                         Quad[][] quadArr = muPDFPage2.searchResults;
-                        if (quadArr == null || quadArr.length <= 0 || (i = muPDFPage2.searchIndex) < 0 || i >= quadArr.length) {
+                        if (quadArr == null || quadArr.length == 0 || (i = muPDFPage2.searchIndex) < 0 || i >= quadArr.length) {
                             rectArr = null;
                         } else {
                             ArrayList arrayList = new ArrayList();
                             for (Quad rect : muPDFPage2.searchResults[muPDFPage2.searchIndex]) {
                                 arrayList.add(muPDFPage2.toRect(rect.toRect()));
                             }
-                            rectArr = (android.graphics.Rect[]) arrayList.toArray(new android.graphics.Rect[arrayList.size()]);
+                            rectArr = (android.graphics.Rect[]) arrayList.toArray(new android.graphics.Rect[0]);
                         }
                         android.graphics.Rect rect2 = rectArr[0];
-                        MuPDFDoc muPDFDoc3 = MuPDFDoc.this;
-                        Objects.requireNonNull(muPDFDoc3.mPages.get(muPDFDoc3.searchPage));
+                        Objects.requireNonNull(mPages.get(searchPage));
                         RectF rectF = new RectF((float) rect2.left, (float) rect2.top, (float) rect2.right, (float) rect2.bottom);
-                        MuPDFDoc muPDFDoc4 = MuPDFDoc.this;
-                        SOSearchListener sOSearchListener3 = muPDFDoc4.searchListener;
-                        if (sOSearchListener3 != null) {
-                            sOSearchListener3.found(muPDFDoc4.searchPage, rectF);
+                        if (searchListener != null) {
+                            searchListener.found(searchPage, rectF);
                         }
                     }
                 }
-                MuPDFDoc.this.searchRunning = false;
+                searchRunning = false;
             }
 
             /* JADX WARNING: Removed duplicated region for block: B:15:0x003b  */
@@ -1273,17 +1249,14 @@ public class MuPDFDoc extends ArDkDoc {
         if (this.selectedAnnotPagenum != -1 && this.selectedAnnotIndex != -1) {
             this.mWorker.add(new Worker.Task() {
                 public void run() {
-                    MuPDFDoc.this.clearSelection();
+                    clearSelection();
                 }
 
                 public void work() {
-                    MuPDFDoc muPDFDoc = MuPDFDoc.this;
-                    int countAnnotations = muPDFDoc.mPages.get(muPDFDoc.selectedAnnotPagenum).countAnnotations(12);
-                    MuPDFDoc muPDFDoc2 = MuPDFDoc.this;
-                    MuPDFPage muPDFPage = muPDFDoc2.mPages.get(muPDFDoc2.selectedAnnotPagenum);
-                    MuPDFAnnotation annotation = muPDFPage.getAnnotation(MuPDFDoc.this.selectedAnnotIndex);
-                    boolean z = annotation.type == 12;
-                    PDFDocument pDFDocument = (PDFDocument) MuPDFDoc.this.mDocument;
+                    int countAnnotations = mPages.get(selectedAnnotPagenum).countAnnotations(12);
+                    MuPDFPage muPDFPage = mPages.get(selectedAnnotPagenum);
+                    MuPDFAnnotation annotation = muPDFPage.getAnnotation(selectedAnnotIndex);
+                    PDFDocument pDFDocument = (PDFDocument) mDocument;
                     pDFDocument.beginOperation("selectionDelete");
                     muPDFPage.mDoc.checkForWorkerThread();
                     PDFPage pDFPage = MuPDFPage.getPDFPage(muPDFPage.mPage);
@@ -1292,12 +1265,9 @@ public class MuPDFDoc extends ArDkDoc {
                         muPDFPage.mDoc.mIsModified = true;
                     }
                     pDFDocument.endOperation();
-                    MuPDFDoc muPDFDoc3 = MuPDFDoc.this;
-                    muPDFDoc3.update(muPDFDoc3.selectedAnnotPagenum);
-                    if (countAnnotations <= 1 && z) {
-                        MuPDFDoc muPDFDoc4 = MuPDFDoc.this;
-                        Integer num = Integer.valueOf(muPDFDoc4.selectedAnnotPagenum);
-                        muPDFDoc4.pagesWithRedactions.remove(num);
+                    update(selectedAnnotPagenum);
+                    if (countAnnotations <= 1 && annotation.type == 12) {
+                        pagesWithRedactions.remove(selectedAnnotPagenum);
                     }
                 }
             });
@@ -1381,17 +1351,17 @@ public class MuPDFDoc extends ArDkDoc {
             this.searchBackwards = z;
             return;
         }
-        throw new IllegalArgumentException("Search already in progess");
+        throw new IllegalArgumentException("Search already in progress");
     }
 
     public void setSearchListener(SOSearchListener sOSearchListener) {
         if (sOSearchListener == null) {
             this.searchRunning = false;
-            this.searchListener = sOSearchListener;
+            this.searchListener = null;
         } else if (!this.searchRunning) {
             this.searchListener = sOSearchListener;
         } else {
-            throw new IllegalArgumentException("Search already in progess");
+            throw new IllegalArgumentException("Search already in progress");
         }
     }
 
@@ -1431,19 +1401,15 @@ public class MuPDFDoc extends ArDkDoc {
                     }
 
                     public void work() {
-                        MuPDFAnnotation muPDFAnnotation = selectedAnnotation;
-                        String str = str;
-                        muPDFAnnotation.mDoc.checkForWorkerThread();
-                        muPDFAnnotation.mContents = str;
-                        muPDFAnnotation.mAnnotation.setContents(str);
+                        selectedAnnotation.mDoc.checkForWorkerThread();
+                        selectedAnnotation.mContents = str;
+                        selectedAnnotation.mAnnotation.setContents(str);
                         Date date = new Date();
-                        MuPDFAnnotation muPDFAnnotation2 = selectedAnnotation;
-                        muPDFAnnotation2.mDoc.checkForWorkerThread();
-                        muPDFAnnotation2.mModDate = date;
-                        muPDFAnnotation2.mAnnotation.setModificationDate(date);
+                        selectedAnnotation.mModDate = date;
+                        selectedAnnotation.mAnnotation.setModificationDate(date);
                         MuPDFDoc muPDFDoc = MuPDFDoc.this;
                         muPDFDoc.update(muPDFDoc.selectedAnnotIndex);
-                        MuPDFDoc.this.mIsModified = true;
+                        mIsModified = true;
                     }
                 });
             }
@@ -1458,11 +1424,11 @@ public class MuPDFDoc extends ArDkDoc {
                 }
 
                 public void work() {
-                    PDFDocument pDFDocument = (PDFDocument) MuPDFDoc.this.mDocument;
+                    PDFDocument pDFDocument = (PDFDocument) mDocument;
                     pDFDocument.beginOperation("setSelectionInkColor");
                     PDFAnnotation pDFAnnotation = selectedAnnotation.getPDFAnnotation();
                     pDFAnnotation.setColor(MuPDFPage.colorToArray(i));
-                    pDFAnnotation.setOpacity(((float) Color.alpha(i)) / 255.0f);
+                    pDFAnnotation.setOpacity((Color.alpha(i)) / 255.0f);
                     pDFDocument.endOperation();
                     MuPDFDoc muPDFDoc = MuPDFDoc.this;
                     muPDFDoc.update(muPDFDoc.selectedAnnotPagenum);
@@ -1479,7 +1445,7 @@ public class MuPDFDoc extends ArDkDoc {
                 }
 
                 public void work() {
-                    PDFDocument pDFDocument = (PDFDocument) MuPDFDoc.this.mDocument;
+                    PDFDocument pDFDocument = (PDFDocument) mDocument;
                     pDFDocument.beginOperation("setSelectionInkWidth");
                     selectedAnnotation.getPDFAnnotation().setBorder(f);
                     pDFDocument.endOperation();
@@ -1491,24 +1457,20 @@ public class MuPDFDoc extends ArDkDoc {
     }
 
     public void update(final int i) {
-        final Waiter waiter = new Waiter();
-        this.mWorker.add(new Worker.Task(false) {
+        this.mWorker.add(new Worker.Task() {
             public void run() {
-                SODocLoadListener sODocLoadListener = MuPDFDoc.this.mListener;
+                SODocLoadListener sODocLoadListener = mListener;
                 if (sODocLoadListener != null) {
                     ((SODocSession.SODocSessionLoadListener) sODocLoadListener).onDocComplete();
-                    SODocLoadListener sODocLoadListener2 = MuPDFDoc.this.mListener;
+                    SODocLoadListener sODocLoadListener2 = mListener;
                     ((SODocSession.SODocSessionLoadListener) sODocLoadListener2).onSelectionChanged(i, i);
                 }
             }
 
             public void work() {
-                MuPDFPage muPDFPage = MuPDFDoc.this.mPages.get(i);
+                MuPDFPage muPDFPage = mPages.get(i);
                 if (muPDFPage != null) {
                     muPDFPage.update();
-                    if (false) {
-                        waiter.done();
-                    }
                 }
             }
         });
@@ -1518,9 +1480,8 @@ public class MuPDFDoc extends ArDkDoc {
         ((PDFDocument) this.mDocument).calculate();
         ArrayList<MuPDFPage> arrayList = this.mPages;
         if (arrayList != null) {
-            Iterator<MuPDFPage> it = arrayList.iterator();
-            while (it.hasNext()) {
-                it.next().needsUpdate = true;
+            for (MuPDFPage muPDFPage : arrayList) {
+                muPDFPage.needsUpdate = true;
             }
         }
     }

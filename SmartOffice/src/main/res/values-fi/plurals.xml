@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="fui_error_weak_password">
+        <item quantity="one">Salasana ei ole tarpeeksi vahva. Siinä on oltava vähintään %1$d merkkiä – sekä kirjaimia että numeroita.</item>
+        <item quantity="other">Salasana ei ole tarpeeksi vahva. Siinä on oltava vähintään %1$d merkkiä – sekä kirjaimia että numeroita.</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d uusi ilmoitus</item>
+        <item quantity="other">%d uutta ilmoitusta</item>
+    </plurals>
+</resources>

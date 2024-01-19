@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -52,7 +54,7 @@ public class LineTypeDialog {
         }
     }
 
-    public static void show(Context context, View view, final ArDkDoc arDkDoc) {
+    public void show(Context context, View view, final ArDkDoc arDkDoc) {
         LineTypeDialog lineTypeDialog = new LineTypeDialog();
         int selectionLineType = ((SODoc) arDkDoc).getSelectionLineType();
         View inflate = View.inflate(context, R.layout.sodk_editor_line_width_dialog, (ViewGroup) null);

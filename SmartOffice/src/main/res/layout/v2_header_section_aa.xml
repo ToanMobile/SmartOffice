@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:id="@+id/llHeaderSection" android:background="@color/header_section_bg_color" android:padding="@dimen/_5sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llSource" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+        <ImageView android:id="@+id/imvSource" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_27sdp" android:layout_height="@dimen/_27sdp" android:src="@mipmap/ic_source_header_section"/>
+        <TextView android:textSize="@dimen/_12ssp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtSource" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/source" android:fontFamily="@font/lato_regular"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llPrint" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+        <ImageView android:id="@+id/imvPrint" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_27sdp" android:layout_height="@dimen/_27sdp" android:src="@mipmap/ic_print_header_section"/>
+        <TextView android:textSize="@dimen/_12ssp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtPrint" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/print" android:fontFamily="@font/lato_regular"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llPDFEdit" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+        <ImageView android:id="@+id/imvPDFEdit" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_27sdp" android:layout_height="@dimen/_27sdp" android:src="@mipmap/ic_edit_pdf_header_section"/>
+        <TextView android:textSize="@dimen/_12ssp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtPDFEdit" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pdf_edit" android:fontFamily="@font/lato_regular"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llShare" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+        <ImageView android:id="@+id/imvShare" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_27sdp" android:layout_height="@dimen/_27sdp" android:src="@mipmap/ic_share_header_section"/>
+        <TextView android:textSize="@dimen/_12ssp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtShare" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/share" android:fontFamily="@font/lato_regular"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llPremium" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.2">
+        <ImageView android:id="@+id/imvPremium" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_27sdp" android:layout_height="@dimen/_27sdp" android:src="@mipmap/ic_premium_header_section"/>
+        <TextView android:textSize="@dimen/_12ssp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtPremium" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/premium" android:fontFamily="@font/lato_regular"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tag="layout/share_file_layout_0" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <RadioGroup android:gravity="center" android:orientation="horizontal" android:id="@+id/rdgFileType" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:weightSum="1" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0">
+            <RadioButton android:textSize="16sp" android:textColor="@color/black" android:id="@+id/rdbLink" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:checked="true" android:text="@string/link" android:layout_weight="0.3" android:fontFamily="@font/lato_regular" android:buttonTint="@color/radio_tint_color"/>
+            <RadioButton android:textSize="16sp" android:textColor="@color/black" android:id="@+id/rdbFile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="@string/file" android:layout_weight="0.3" android:fontFamily="@font/lato_regular" android:buttonTint="@color/radio_tint_color"/>
+        </RadioGroup>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/llFileLinkDetails" android:background="@drawable/copy_link_bg" android:padding="10dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="@dimen/_18sdp" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/rdgFileType">
+            <TextView android:textSize="12sp" android:textColor="@color/black" android:ellipsize="end" android:id="@+id/txtLink" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/generating_link" android:maxLines="1" android:layout_weight="0.7"/>
+            <View android:background="@color/border_bg_color" android:layout_width="1dp" android:layout_height="match_parent"/>
+            <TextView android:textSize="14sp" android:textColor="@color/radio_tint_color" android:gravity="center" android:id="@+id/txtCopyLink" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/copy_link" android:layout_weight="0.3"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/llSharingOption" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="@dimen/_18sdp" android:layout_marginTop="@dimen/_20sdp" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/llFileLinkDetails">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llWhatsApp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_whats_app"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/whats_app" android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llEmail" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_email"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e_mail" android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llTelegram" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_telegram"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/telegram" android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/llMore" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_more_share"/>
+                <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/more" android:fontFamily="@font/lato_regular"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View android:id="@+id/shareSeperator" android:background="@color/E2E2E2" android:layout_width="0dp" android:layout_height="@dimen/_1sdp" android:layout_marginTop="@dimen/_8sdp" app:layout_constraintEnd_toEndOf="@+id/llSharingOption" app:layout_constraintStart_toStartOf="@+id/llSharingOption" app:layout_constraintTop_toBottomOf="@+id/llSharingOption"/>
+        <TextView android:textSize="12sp" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/moreOptions" android:padding="5dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_14sdp" android:text="@string/more_options" android:fontFamily="@font/lato_regular" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="@+id/shareSeperator" app:layout_constraintTop_toBottomOf="@+id/shareSeperator"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/moreOptionsRecycler" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_8sdp" app:layout_constraintEnd_toEndOf="@+id/shareSeperator" app:layout_constraintStart_toStartOf="@+id/moreOptions" app:layout_constraintTop_toBottomOf="@+id/moreOptions"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

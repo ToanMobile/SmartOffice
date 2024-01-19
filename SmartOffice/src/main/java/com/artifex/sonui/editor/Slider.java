@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.artifex.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class Slider extends View implements View.OnTouchListener {
@@ -49,13 +51,13 @@ public class Slider extends View implements View.OnTouchListener {
     }
 
     public final void init(AttributeSet attributeSet) {
-        if (attributeSet != null) {
-            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.sodk_editor_Slider, 0, 0);
-            this.trackColor = obtainStyledAttributes.getColor(R.styleable.sodk_editor_Slider_trackColor, 0);
-            this.thumbColor = obtainStyledAttributes.getColor(R.styleable.sodk_editor_Slider_thumbColor, -1);
-            this.trackWidth = (int) obtainStyledAttributes.getDimension(R.styleable.sodk_editor_Slider_trackWidth, 1.0f);
-            this.thumbRadius = (int) obtainStyledAttributes.getDimension(R.styleable.sodk_editor_Slider_thumbRadius, 10.0f);
-            obtainStyledAttributes.recycle();
+        if (attributeSet != null) { // TODO
+//            TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, R.styleable.sodk_editor_Slider, 0, 0);
+//            this.trackColor = obtainStyledAttributes.getColor(R.styleable.sodk_editor_Slider_trackColor, 0);
+//            this.thumbColor = obtainStyledAttributes.getColor(R.styleable.sodk_editor_Slider_thumbColor, -1);
+//            this.trackWidth = (int) obtainStyledAttributes.getDimension(R.styleable.sodk_editor_Slider_trackWidth, 1.0f);
+//            this.thumbRadius = (int) obtainStyledAttributes.getDimension(R.styleable.sodk_editor_Slider_thumbRadius, 10.0f);
+//            obtainStyledAttributes.recycle();
         }
         setupLogScaling();
         setOnTouchListener(this);

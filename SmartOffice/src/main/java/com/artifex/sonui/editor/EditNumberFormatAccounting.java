@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.PopupWindow;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.FileUtils;
@@ -41,7 +43,7 @@ public class EditNumberFormatAccounting {
                 editNumberFormatAccounting.cur_formats = new String[jSONArray.length()];
                 for (int i2 = 0; i2 < jSONArray.length(); i2++) {
                     JSONObject jSONObject = jSONArray.getJSONObject(i2);
-                    String string = jSONObject.getString(Tracker.ConsentPartner.KEY_DESCRIPTION);
+                    String string = ""; // TODO jSONObject.getString(Tracker.ConsentPartner.KEY_DESCRIPTION);
                     String string2 = jSONObject.getString(Document.META_FORMAT);
                     String string3 = jSONObject.getString("token");
                     if (!(string3 == null || string3.isEmpty() || (identifier = context.getResources().getIdentifier(string3, "string", context.getPackageName())) == 0)) {

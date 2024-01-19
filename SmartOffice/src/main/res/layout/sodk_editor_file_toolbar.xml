@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/file_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <include layout="@layout/sodk_editor_custom_save_support"/>
+            <com.artifex.sonui.editor.ToolbarButton android:textColor="@color/sodk_editor_button_text" android:id="@+id/save_button" android:text="@string/sodk_editor_save_upper" android:drawableTop="@drawable/sodk_editor_icon_save" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/save_as_button" android:text="@string/sodk_editor_save_as_upper" android:drawableTop="@drawable/sodk_editor_icon_save_as" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/export_pdf_as_button" android:visibility="gone" android:text="@string/sodk_editor_export_upper" android:drawableTop="@drawable/sodk_editor_icon_export_pdf_as" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/save_pdf_button" android:text="@string/sodk_editor_save_pdf_upper" android:drawableTop="@drawable/sodk_editor_icon_save_pdf" style="@style/sodk_editor_toolbar_button"/>
+            <View android:id="@+id/file_divider" style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/copy_button2" android:text="@string/sodk_editor_copy_upper" android:drawableTop="@drawable/sodk_editor_icon_copy" style="@style/sodk_editor_toolbar_button"/>
+            <View android:id="@+id/copy_divider" style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/print_button" android:text="@string/sodk_editor_print_upper" android:drawableTop="@drawable/sodk_editor_icon_print" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/share_button" android:text="@string/sodk_editor_share_upper" android:drawableTop="@drawable/sodk_editor_icon_share" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/open_in_button" android:text="@string/sodk_editor_open_in_upper" android:drawableTop="@drawable/sodk_editor_icon_open_in" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/open_pdf_in_button" android:text="@string/sodk_editor_open_pdf_in_upper" android:drawableTop="@drawable/sodk_editor_icon_open_pdf_in" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/protect_button" android:text="@string/sodk_editor_protect_upper" android:drawableTop="@drawable/sodk_editor_icon_protect" style="@style/sodk_editor_toolbar_button"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

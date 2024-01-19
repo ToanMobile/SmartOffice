@@ -16,6 +16,8 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkPage;
 import com.artifex.solib.ArDkSelectionLimits;
 import com.artifex.solib.SODoc;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item>
+        <shape>
+            <corners android:radius="5dp"/>
+            <solid android:color="?attr/deskLayoutColor"/>
+        </shape>
+    </item>
+    <item android:left="6dp" android:top="6dp" android:right="6dp" android:bottom="6dp">
+        <shape>
+            <corners android:radius="5dp"/>
+            <stroke android:width="0.5dp" android:color="#d8d9dc" android:dashWidth="4dp" android:dashGap="2dp"/>
+            <padding android:left="10dp"/>
+        </shape>
+    </item>
+</layer-list>

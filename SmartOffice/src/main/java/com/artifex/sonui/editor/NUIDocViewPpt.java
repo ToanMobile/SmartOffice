@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkSelectionLimits;
 import com.artifex.solib.SODoc;
 import com.artifex.sonui.editor.NUIDocView;
@@ -258,7 +260,7 @@ public class NUIDocViewPpt extends NUIDocView {
     }
 
     public void onClickLineType(View view) {
-        LineTypeDialog.show(activity(), view, getDoc());
+        new LineTypeDialog().show(activity(), view, getDoc());
     }
 
     public void onClickLineWidth(View view) {

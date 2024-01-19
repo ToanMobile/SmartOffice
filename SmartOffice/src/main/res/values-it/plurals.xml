@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="fui_error_weak_password">
+        <item quantity="one">La password non è abbastanza efficace. Utilizza almeno %1$d carattere e una combinazione di lettere e numeri.</item>
+        <item quantity="other">La password non è abbastanza efficace. Utilizza almeno %1$d caratteri e una combinazione di lettere e numeri.</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nuova notifica</item>
+        <item quantity="other">%d nuove notifiche</item>
+    </plurals>
+</resources>

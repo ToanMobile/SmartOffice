@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.SODoc;
 import java.util.Objects;
@@ -54,17 +56,13 @@ public class EditNumberFormatCustom {
         final SOEditText sOEditText = (SOEditText) inflate.findViewById(R.id.editTextDialogUserInput);
         sOEditText.setText(str2);
         builder.setView(inflate);
-        builder.setPositiveButton(R.string.sodk_editor_OK, new DialogInterface.OnClickListener(editNumberFormatCustom) {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Utilities.hideKeyboard(context, sOEditText);
-                textListener.setText(sOEditText.getText().toString());
-            }
+        builder.setPositiveButton(R.string.sodk_editor_OK, (dialogInterface, i) -> {
+            Utilities.hideKeyboard(context, sOEditText);
+            textListener.setText(sOEditText.getText().toString());
         });
-        builder.setNegativeButton(R.string.sodk_editor_cancel, new DialogInterface.OnClickListener(editNumberFormatCustom) {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Utilities.hideKeyboard(context, sOEditText);
-                dialogInterface.cancel();
-            }
+        builder.setNegativeButton(R.string.sodk_editor_cancel, (dialogInterface, i) -> {
+            Utilities.hideKeyboard(context, sOEditText);
+            dialogInterface.cancel();
         });
         builder.show();
     }
@@ -99,14 +97,12 @@ public class EditNumberFormatCustom {
         ((LinearLayout) inflate.findViewById(R.id.create_new_wrapper)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 EditNumberFormatCustom editNumberFormatCustom = EditNumberFormatCustom.this;
-                Context context = context;
                 EditNumberFormatCustom.access$1000(editNumberFormatCustom, context, context.getString(R.string.sodk_editor_create_new), "", new TextListener() {
                     public void setText(String str) {
                         if (str != null && !str.isEmpty()) {
                             int access$000 = EditNumberFormatCustom.access$000(EditNumberFormatCustom.this, str);
                             if (access$000 >= 0) {
                                 EditNumberFormatCustom.this.formatWheel.setCurrentItem(access$000);
-                                AnonymousClass1 r5 = AnonymousClass1.this;
                                 EditNumberFormatCustom editNumberFormatCustom = EditNumberFormatCustom.this;
                                 EditNumberFormatCustom.access$200(editNumberFormatCustom, arDkDoc, editNumberFormatCustom.formatWheel);
                                 return;
@@ -117,10 +113,8 @@ public class EditNumberFormatCustom {
                             editNumberFormatCustom2.wheelAdapter.items = EditNumberFormatCustom.descriptions;
                             editNumberFormatCustom2.formatWheel.invalidateWheel(true);
                             EditNumberFormatCustom.this.formatWheel.setCurrentItem(EditNumberFormatCustom.formats.length - 1);
-                            AnonymousClass1 r52 = AnonymousClass1.this;
                             EditNumberFormatCustom editNumberFormatCustom3 = EditNumberFormatCustom.this;
                             editNumberFormatCustom3.enableEditButton(context, true, editNumberFormatCustom3.editButton, editNumberFormatCustom3.editIndicator);
-                            AnonymousClass1 r53 = AnonymousClass1.this;
                             EditNumberFormatCustom editNumberFormatCustom4 = EditNumberFormatCustom.this;
                             EditNumberFormatCustom.access$200(editNumberFormatCustom4, arDkDoc, editNumberFormatCustom4.formatWheel);
                         }
@@ -134,19 +128,17 @@ public class EditNumberFormatCustom {
                 if (currentItem >= EditNumberFormatCustom.fixed_descriptions.length) {
                     String str = EditNumberFormatCustom.descriptions[currentItem];
                     EditNumberFormatCustom editNumberFormatCustom = EditNumberFormatCustom.this;
-                    Context context = context;
                     EditNumberFormatCustom.access$1000(editNumberFormatCustom, context, context.getString(R.string.sodk_editor_edit_function), str, new TextListener() {
                         public void setText(String str) {
                             if (str != null && !str.isEmpty()) {
                                 int access$000 = EditNumberFormatCustom.access$000(EditNumberFormatCustom.this, str);
                                 if (access$000 >= 0) {
                                     EditNumberFormatCustom.this.formatWheel.setCurrentItem(access$000);
-                                    AnonymousClass2 r4 = AnonymousClass2.this;
                                     EditNumberFormatCustom editNumberFormatCustom = EditNumberFormatCustom.this;
                                     EditNumberFormatCustom.access$200(editNumberFormatCustom, arDkDoc, editNumberFormatCustom.formatWheel);
                                     return;
                                 }
-                                T[] tArr = EditNumberFormatCustom.descriptions;
+                                String[] tArr = EditNumberFormatCustom.descriptions;
                                 int i = currentItem;
                                 tArr[i] = str;
                                 EditNumberFormatCustom.formats[i] = str;
@@ -154,7 +146,6 @@ public class EditNumberFormatCustom {
                                 editNumberFormatCustom2.wheelAdapter.items = tArr;
                                 editNumberFormatCustom2.formatWheel.invalidateWheel(true);
                                 EditNumberFormatCustom.this.formatWheel.setCurrentItem(currentItem);
-                                AnonymousClass2 r42 = AnonymousClass2.this;
                                 EditNumberFormatCustom editNumberFormatCustom3 = EditNumberFormatCustom.this;
                                 EditNumberFormatCustom.access$200(editNumberFormatCustom3, arDkDoc, editNumberFormatCustom3.formatWheel);
                             }
@@ -192,7 +183,6 @@ public class EditNumberFormatCustom {
         wheelView2.scrollingListeners.add(new OnWheelScrollListener() {
             public void onScrollingFinished(WheelView wheelView) {
                 EditNumberFormatCustom editNumberFormatCustom = EditNumberFormatCustom.this;
-                Context context = context;
                 boolean z = editNumberFormatCustom.formatWheel.getCurrentItem() >= EditNumberFormatCustom.fixed_descriptions.length;
                 EditNumberFormatCustom editNumberFormatCustom2 = EditNumberFormatCustom.this;
                 editNumberFormatCustom.enableEditButton(context, z, editNumberFormatCustom2.editButton, editNumberFormatCustom2.editIndicator);

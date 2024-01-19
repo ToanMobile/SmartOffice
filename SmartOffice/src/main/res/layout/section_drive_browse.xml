@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="20sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_10sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginRight="@dimen/_10sdp" android:text="@string/cloud_locations"/>
+    <androidx.cardview.widget.CardView android:id="@+id/card_drive_home" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" app:cardCornerRadius="@dimen/_10sdp">
+        <RelativeLayout android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/iv_icon" android:padding="@dimen/_5sdp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:src="@drawable/ic_google_drive" android:layout_marginStart="2dp" android:layout_marginEnd="@dimen/_10sdp"/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/grey" android:id="@+id/storage_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/choose_google_drive_files" android:layout_centerVertical="true" android:layout_toEndOf="@+id/iv_icon"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView android:id="@+id/card_dropbox_home" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" app:cardCornerRadius="@dimen/_10sdp">
+        <RelativeLayout android:padding="@dimen/_10sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/iv_dropbox" android:padding="@dimen/_5sdp" android:layout_width="50dp" android:layout_height="50dp" android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:src="@drawable/ic_dropbox" android:layout_marginStart="2dp" android:layout_marginEnd="@dimen/_10sdp"/>
+            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="@color/grey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/choose_dropbox_files" android:layout_centerVertical="true" android:layout_toEndOf="@+id/iv_dropbox"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

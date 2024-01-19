@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/sodk_editor_tab_single" android:padding="5dp" android:layout_width="wrap_content" android:layout_height="match_parent">
+    <Space android:layout_width="10dp" android:layout_height="match_parent"/>
+    <TextView android:textSize="25dp" android:id="@+id/tabText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_tab_file"/>
+    <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="50dp" android:src="@drawable/sodk_editor_icon_tab_menu" android:scaleType="fitCenter" android:tint="@color/sodk_editor_button_tint"/>
+</LinearLayout>

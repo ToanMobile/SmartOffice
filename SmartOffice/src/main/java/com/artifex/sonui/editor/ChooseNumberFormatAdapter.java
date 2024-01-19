@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 
+import com.artifex.R;
+
 public class ChooseNumberFormatAdapter extends BaseAdapter {
     public static final int NUMBER_FORMATS_ACCOUNTING = 6;
     public static final int NUMBER_FORMATS_CURRENCY = 4;

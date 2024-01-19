@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tlMenus" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" app:tabGravity="0" app:tabIconTint="@color/tab_menu_item_selected" app:tabIndicatorColor="@color/colorPrimary" app:tabIndicatorFullWidth="true" app:tabIndicatorGravity="0" app:tabIndicatorHeight="2dp" app:tabInlineLabel="true" app:tabMode="0" app:tabSelectedTextColor="@color/colorPrimary" app:tabTextAppearance="@style/TextAppearance.AppCompat.Medium" app:tabTextColor="@color/tab_text_color"/>
+    <FrameLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <include layout="@layout/v2_editor_sub_menu_frag"/>
+        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.github.clans.fab.FloatingActionButton android:layout_gravity="bottom|right|center_vertical|center_horizontal|center" android:id="@+id/fabEdit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:src="@drawable/ic_edit_pen" app:fab_colorNormal="@color/colorPrimary" app:fab_colorPressed="@color/colorPrimary" app:fab_size="0"/>
+            <LinearLayout android:layout_gravity="center" android:id="@+id/textSizeLayout" android:background="@color/white" android:padding="10dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatImageView android:id="@+id/imvFontPlusBottom" android:background="@drawable/v2_tab_menu_item_bg" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:src="@drawable/ic_sub_menu_plus" android:tint="@color/black"/>
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/sp_14" android:textColor="@color/tab_text_color" android:id="@+id/bottomViewTextSize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:text="12" android:textFontWeight="400"/>
+                <androidx.appcompat.widget.AppCompatImageView android:id="@+id/imvFontMinusBottom" android:background="@drawable/v2_tab_menu_item_bg" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:layout_marginLeft="@dimen/dp_5" android:src="@drawable/ic_sub_menu_minus" android:tint="@color/grey"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center" android:id="@+id/llTools" android:background="@color/white" android:layout_width="match_parent" android:layout_height="@dimen/dp_55">
+        <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@+id/bottomToolsRecyclerView" android:layout_width="match_parent" android:layout_height="wrap_content" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

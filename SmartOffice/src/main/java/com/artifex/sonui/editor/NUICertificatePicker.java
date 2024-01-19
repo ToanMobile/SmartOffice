@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
 import com.artifex.solib.ArDkLib;
 import com.artifex.solib.ConfigOptions;

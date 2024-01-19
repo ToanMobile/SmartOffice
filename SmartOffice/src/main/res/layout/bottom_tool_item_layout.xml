@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/toolItemLayout" android:background="@drawable/v2_tab_menu_item_bg" android:layout_width="@dimen/_55sdp" android:layout_height="wrap_content" android:elevation="8dp">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0">
+        <ImageView android:layout_gravity="center" android:id="@+id/editorToolIcon" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:src="@drawable/ic_sub_menu_ppt_to_pdf"/>
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/sp_10" android:textColor="@color/black" android:ellipsize="end" android:gravity="center" android:id="@+id/editorToolTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/sub_menu_ppt_to_pdf"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

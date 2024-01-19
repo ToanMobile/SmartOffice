@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="efp__size_units">
+        <item>o</item>
+        <item>Ko</item>
+        <item>Mo</item>
+        <item>Go</item>
+        <item>To</item>
+        <item>Po</item>
+    </array>
+    <array name="efp__sorting_types">
+        <item>Par nom, croissant</item>
+        <item>Par nom, décroissant</item>
+        <item>Par taille, croissant</item>
+        <item>Par taille, décroissant</item>
+        <item>Par date, croissant</item>
+        <item>Par date, décroissant</item>
+    </array>
+</resources>

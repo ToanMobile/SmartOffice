@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/native_ad_view" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout android:background="@color/light_yellow" android:padding="@dimen/_4sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:minHeight="@dimen/dp_50" android:layout_marginEnd="@dimen/_3sdp" app:layout_constraintEnd_toStartOf="@+id/ad_call_to_action" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0">
+            <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/_3sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/ad_app_icon" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:scaleType="centerCrop"/>
+                    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_10sdp">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:textColor="@color/white" android:gravity="center" android:background="#ffcc66" android:padding="@dimen/_2sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ad"/>
+                            <TextView android:textSize="@dimen/sp_16" android:textStyle="bold" android:textColor="#0000ff" android:id="@+id/ad_headline" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Test Ad: Femented Veggies" android:layout_marginStart="@dimen/_3sdp"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <RatingBar android:id="@+id/ad_stars" android:layout_width="wrap_content" android:layout_height="wrap_content" android:numStars="5" android:stepSize="0.5" android:isIndicator="true" style="?android:attr/ratingBarStyleSmall"/>
+                            <TextView android:textSize="@dimen/sp_14" android:textStyle="bold" android:textColor="@color/black" android:gravity="bottom" android:id="@+id/ad_advertiser" android:layout_width="wrap_content" android:layout_height="match_parent"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/sp_12" android:textColor="@color/grey" android:id="@+id/ad_body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp_20" android:layout_marginEnd="@dimen/dp_20"/>
+                    <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:paddingTop="@dimen/_10sdp" android:paddingBottom="@dimen/_10sdp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textSize="@dimen/sp_12" android:id="@+id/ad_price" android:paddingLeft="@dimen/dp_5" android:paddingRight="@dimen/dp_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/dp_5" android:paddingEnd="@dimen/dp_5"/>
+                        <TextView android:textSize="@dimen/sp_12" android:id="@+id/ad_store" android:paddingLeft="@dimen/dp_5" android:paddingRight="@dimen/dp_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/dp_5" android:paddingEnd="@dimen/dp_5"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/_9sdp" android:textColor="@color/white" android:gravity="center" android:id="@+id/ad_call_to_action" android:background="@color/colorPrimary" android:padding="@dimen/_10sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/_60sdp" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintEnd_toEndOf="0" app:layout_constraintTop_toTopOf="0"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.gms.ads.nativead.NativeAdView>

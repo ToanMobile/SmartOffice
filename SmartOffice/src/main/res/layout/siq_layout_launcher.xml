@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/siq_windowmanager_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:id="@+id/siq_parent_layout" style="@style/SalesIQ.Style.launcher">
+        <FrameLayout android:layout_gravity="center" android:id="@+id/siq_launcher_layout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/siq_launcher_image" app:srcCompat="@drawable/salesiq_vector_chat_floating" style="@style/SalesIQ.Style.launcher_imageview"/>
+            <TextView android:id="@+id/siq_launcher_badge" style="@style/SalesIQ.Style.launcher_textview"/>
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

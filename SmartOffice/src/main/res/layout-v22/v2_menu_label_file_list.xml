@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="@dimen/_10sdp" app:cardElevation="@dimen/_5sdp" app:cardUseCompatPadding="true">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:padding="@dimen/_10sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120dp">
+        <TextView android:textSize="16sp" android:textColor="@color/filter_text_color" android:gravity="center_vertical" android:id="@+id/txtRemoveFromLabel" android:paddingLeft="@dimen/_10sdp" android:paddingTop="@dimen/_5sdp" android:paddingBottom="@dimen/_5sdp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/remove_from_label" android:fontFamily="@font/lato_regular" android:textFontWeight="500"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

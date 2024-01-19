@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/ll_file_info_dialog" android:background="@drawable/layout_bg_round" android:padding="@dimen/_20sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="14sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/file_name"/>
+    <TextView android:id="@+id/file_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text=""/>
+    <TextView android:textSize="14sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/file_type"/>
+    <TextView android:id="@+id/file_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/document"/>
+    <TextView android:textSize="14sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/path"/>
+    <TextView android:id="@+id/file_path" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text=""/>
+    <TextView android:textSize="14sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/uri"/>
+    <TextView android:id="@+id/file_uri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text=""/>
+    <Button android:textColor="@color/green" android:layout_gravity="end" android:id="@+id/btn_ok" android:background="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/ok" android:elevation="0dp"/>
+</LinearLayout>

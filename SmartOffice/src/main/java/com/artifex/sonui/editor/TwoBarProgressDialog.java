@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.artifex.R;
+
 public class TwoBarProgressDialog {
     public ProgressBar mBar1;
     public TextView mBar1Label;

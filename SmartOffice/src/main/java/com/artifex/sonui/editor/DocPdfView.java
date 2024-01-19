@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.PDFDocument;
 import com.artifex.mupdf.fitz.PDFWidget;
 import com.artifex.mupdf.fitz.Quad;
@@ -1137,7 +1139,7 @@ Method generation error in method: com.artifex.solib.MuPDFPage.4.work():void, de
                             muPDFDoc.mPages.get(this.val$pageNum).addAnnotation(12, muPDFDoc.mAuthor);
                             pDFDocument.endOperation();
                             muPDFDoc.update(this.val$pageNum);
-                            MuPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
+                            muPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
                         }
                     });
                 }

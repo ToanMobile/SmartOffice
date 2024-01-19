@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.artifex.R;
+
 public class InkColorDialog implements View.OnTouchListener, PopupWindow.OnDismissListener {
     public static final int BG_COLORS = 2;
     public static final int FG_COLORS = 1;

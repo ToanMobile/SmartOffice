@@ -7,6 +7,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.artifex.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 public class HorizontalRuler extends Ruler {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/pdf_pages_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/first_page_button" android:text="@string/sodk_editor_first_page_upper" android:drawableTop="@drawable/sodk_editor_icon_first_page" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/last_page_button" android:text="@string/sodk_editor_last_page_upper" android:drawableTop="@drawable/sodk_editor_icon_last_page" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/previous_link_button" android:text="@string/sodk_editor_previous_link_upper" android:drawableTop="@drawable/sodk_editor_icon_previous_link" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/next_link_button" android:text="@string/sodk_editor_next_link_upper" android:drawableTop="@drawable/sodk_editor_icon_next_link" style="@style/sodk_editor_toolbar_button"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

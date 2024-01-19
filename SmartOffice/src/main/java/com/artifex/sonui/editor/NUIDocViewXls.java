@@ -21,6 +21,8 @@ import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkSelectionLimits;
 import com.artifex.solib.SODoc;
 import com.artifex.solib.SOSelectionTableRange;

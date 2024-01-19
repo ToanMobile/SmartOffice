@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/margin_10" android:paddingRight="@dimen/margin_10" android:layout_width="match_parent" android:layout_height="50dp" android:weightSum="1">
+        <TextView android:textSize="14sp" android:gravity="center_vertical" android:id="@+id/tv_item_tag_name" android:paddingLeft="@dimen/margin_5" android:layout_width="0dp" android:layout_height="match_parent" android:singleLine="true" android:layout_weight="0.7"/>
+        <ImageView android:id="@+id/iv_item_tag_edit" android:padding="15dp" android:layout_width="0dp" android:layout_height="match_parent" android:src="@drawable/ic_edit" android:layout_weight="0.15"/>
+        <ImageView android:id="@+id/iv_item_tag_delete" android:padding="12dp" android:layout_width="0dp" android:layout_height="match_parent" android:src="@drawable/file_delete" android:layout_weight="0.15"/>
+    </LinearLayout>
+    <View android:background="@color/colorGrey" android:layout_width="match_parent" android:layout_height="1dp"/>
+</LinearLayout>

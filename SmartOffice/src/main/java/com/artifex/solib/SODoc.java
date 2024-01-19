@@ -114,57 +114,54 @@ public class SODoc extends ArDkDoc {
 
     private native int saveToPDFInternal(String str, boolean z, SODocSaveListener sODocSaveListener);
 
-    private void searchProgress(int i, int i2, float f, float f2, float f3, float f4) {
-        final int i3 = i;
-        final int i4 = i2;
-        final float f5 = f;
-        final float f6 = f2;
-        final float f7 = f3;
-        final float f8 = f4;
-        ArDkLib.runOnUiThread(new Runnable() {
-            public void run() {
-                int i = i3;
-                if (i != 5) {
-                    SODoc.this.searchRunning = false;
-                }
-                if (i == 0) {
-                    SOSearchListener sOSearchListener = SODoc.this.searchListener;
-                    if (sOSearchListener != null) {
-                        sOSearchListener.found(i4, new RectF(f5, f6, f7, f8));
-                    }
-                } else if (i == 1) {
-                    SOSearchListener sOSearchListener2 = SODoc.this.searchListener;
-                    if (sOSearchListener2 != null) {
-                        sOSearchListener2.notFound();
-                    }
-                } else if (i == 2) {
-                    SOSearchListener sOSearchListener3 = SODoc.this.searchListener;
-                    if (sOSearchListener3 != null) {
-                        NUIDocView.access$2800(NUIDocView.this);
-                    }
-                } else if (i == 3) {
-                    SOSearchListener sOSearchListener4 = SODoc.this.searchListener;
-                    if (sOSearchListener4 != null) {
-                        NUIDocView.access$2800(NUIDocView.this);
-                    }
-                } else if (i == 5) {
-                    SOSearchListener sOSearchListener5 = SODoc.this.searchListener;
-                } else if (i != 6) {
-                    SOSearchListener sOSearchListener6 = SODoc.this.searchListener;
-                    if (sOSearchListener6 != null) {
-                        NUIDocView.access$2600(NUIDocView.this);
-                        NUIDocView.this.mIsSearching = false;
-                    }
-                } else {
-                    SOSearchListener sOSearchListener7 = SODoc.this.searchListener;
-                    if (sOSearchListener7 != null) {
-                        NUIDocView.access$2600(NUIDocView.this);
-                        NUIDocView.this.mIsSearching = false;
-                    }
-                }
-            }
-        });
-    }
+//    private void searchProgress(int i, int i2, float f, float f2, float f3, float f4) {
+//        final int i3 = i;
+//        final int i4 = i2;
+//        final float f5 = f;
+//        final float f6 = f2;
+//        final float f7 = f3;
+//        final float f8 = f4;
+//        ArDkLib.runOnUiThread(new Runnable() {
+//            public void run() {
+//                int i = i3;
+//                if (i != 5) {
+//                    SODoc.this.searchRunning = false;
+//                }
+//                if (i == 0) {
+//                    if (searchListener != null) {
+//                        searchListener.found(i4, new RectF(f5, f6, f7, f8));
+//                    }
+//                } else if (i == 1) {
+//                    if (searchListener != null) {
+//                        searchListener.notFound();
+//                    }
+//                } else if (i == 2) {
+//                    if (searchListener != null) {
+//                        NUIDocView.access$2800(NUIDocView.this);
+//                    }
+//                } else if (i == 3) {
+//                    SOSearchListener sOSearchListener4 = SODoc.this.searchListener;
+//                    if (sOSearchListener4 != null) {
+//                        NUIDocView.access$2800(NUIDocView.this);
+//                    }
+//                } else if (i == 5) {
+//                    SOSearchListener sOSearchListener5 = SODoc.this.searchListener;
+//                } else if (i != 6) {
+//                    SOSearchListener sOSearchListener6 = SODoc.this.searchListener;
+//                    if (sOSearchListener6 != null) {
+//                        NUIDocView.access$2600(NUIDocView.this);
+//                        NUIDocView.this.mIsSearching = false;
+//                    }
+//                } else {
+//                    SOSearchListener sOSearchListener7 = SODoc.this.searchListener;
+//                    if (sOSearchListener7 != null) {
+//                        NUIDocView.access$2600(NUIDocView.this);
+//                        NUIDocView.this.mIsSearching = false;
+//                    }
+//                }
+//            }
+//        });
+//    }
 
     private native void setSelectionListStyle(int i);
 

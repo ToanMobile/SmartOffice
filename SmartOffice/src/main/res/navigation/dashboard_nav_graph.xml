@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/dashboard_nav_graph" app:startDestination="@+id/formatHomeFrag">
+    <fragment android:label="FormatHomeFrag" android:name="com.rpdev.docreadermainV2.fragment.bottombar.FormatHomeFrag" android:id="@+id/formatHomeFrag"/>
+    <fragment android:label="FormatFilesFrag" android:name="com.rpdev.docreadermainV2.fragment.bottombar.FormatFilesFrag" android:id="@+id/formatFilesFrag"/>
+    <fragment android:label="FormatSearchFrag" android:name="com.rpdev.docreadermainV2.fragment.bottombar.FormatSearchFrag" android:id="@+id/formatSearchFrag"/>
+</navigation>

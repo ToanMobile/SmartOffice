@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_chat_card_type_single_product" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="?attr/siq_chat_message_backgroundcolor_operator" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+        <LinearLayout android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@+id/siq_chat_card_text_parent" android:paddingLeft="14dp" android:paddingTop="10dp" android:paddingRight="14dp" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@+id/siq_chat_card_text" style="@style/SalesIQ.Style.chatwindow_widget_text"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_card_images_list_parent" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_4">
+                <FrameLayout android:orientation="vertical" android:id="@+id/siq_chat_card_images_list_layout" android:background="?attr/siq_chat_message_backgroundcolor_operator" android:layout_width="match_parent" android:layout_height="@dimen/siq_170">
+                    <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_chat_card_images_list" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    <LinearLayout android:layout_gravity="bottom|center_vertical|center_horizontal|center" android:id="@+id/scrollingIndicatorParent" android:padding="@dimen/siq_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/siq_6">
+                        <com.zoho.commons.PagerScrollingIndicator android:id="@+id/scrollingIndicator" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_card_description_text_parent" android:paddingLeft="14dp" android:paddingTop="10dp" android:paddingRight="14dp" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:id="@+id/siq_chat_card_title_text" style="@style/SalesIQ.Style.chatwindow_widget_title_text"/>
+                    <TextView android:id="@+id/siq_chat_card_subtitle_text" android:layout_marginTop="@dimen/siq_6" style="@style/SalesIQ.Style.chatwindow_widget_subtitle_text"/>
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_chat_card_actions_list" android:background="@drawable/salesiq_links_list_bg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="1dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

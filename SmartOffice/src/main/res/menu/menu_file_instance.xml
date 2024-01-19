@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <item android:icon="@drawable/file_delete" android:id="@+id/action_share" android:orderInCategory="103" android:title="@string/action_share"/>
+    <item android:icon="@drawable/file_delete" android:id="@+id/action_delete_files" android:orderInCategory="103" android:title="@string/action_delete"/>
+    <item android:icon="@drawable/common_full_open_on_phone" android:id="@+id/action_open_file" android:orderInCategory="103" android:title="@string/action_open_file_text"/>
+    <item android:icon="@drawable/common_full_open_on_phone" android:id="@+id/action_edit_file" android:orderInCategory="103" android:title="@string/action_edit_file"/>
+    <item android:icon="@drawable/common_full_open_on_phone" android:id="@+id/action_select_tag" android:orderInCategory="103" android:title="@string/action_select_tag_text"/>
+    <item android:icon="@drawable/meta_info" android:id="@+id/action_info_file" android:orderInCategory="103" android:title="@string/action_info_file_text"/>
+</menu>

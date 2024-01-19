@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/formulas_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_sum" android:text="@string/sodk_editor_sum_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_autosum" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_datetime" android:text="@string/sodk_editor_datetime_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_date_time" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_engineering" android:text="@string/sodk_editor_engineering_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_engineering" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_financial" android:text="@string/sodk_editor_financial_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_financial" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_information" android:text="@string/sodk_editor_information_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_information" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_logical" android:text="@string/sodk_editor_logical_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_logical" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_lookup" android:text="@string/sodk_editor_lookup_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_lookup" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_maths" android:text="@string/sodk_editor_maths_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_maths" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_statistical" android:text="@string/sodk_editor_statistical_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_statistical" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/formula_text" android:text="@string/sodk_editor_text_upper" android:drawableTop="@drawable/sodk_editor_icon_formula_text" style="@style/sodk_editor_toolbar_button"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

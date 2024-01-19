@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <stroke android:width="2dp" android:color="@color/sodk_editor_pdf_export_as_border_color"/>
+    <solid android:color="@color/sodk_editor_pdf_export_as_bg_color"/>
+    <corners android:radius="15dp"/>
+    <padding android:left="@dimen/sodk_editor_pdf_extract_as_item_padding" android:top="@dimen/sodk_editor_pdf_extract_as_item_padding" android:right="@dimen/sodk_editor_pdf_extract_as_item_padding" android:bottom="@dimen/sodk_editor_pdf_extract_as_item_padding"/>
+</shape>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:id="@+id/llPDFQTMain" android:padding="@dimen/_5sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:weightSum="1">
+    <LinearLayout android:orientation="vertical" android:id="@+id/llPDFEditorQT" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.25">
+        <ImageView android:layout_gravity="center" android:id="@+id/imvPDFEdit" android:padding="@dimen/_5sdp" android:layout_width="@dimen/_30sdp" android:layout_height="@dimen/_30sdp" android:src="@mipmap/ic_quick_tool_pdf_editor"/>
+        <TextView android:textSize="@dimen/_10ssp" android:textColor="@color/colorPrimary" android:gravity="center" android:id="@+id/txtPDFEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pdf_editor" android:fontFamily="@font/lato_black"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.75">
+        <include layout="@layout/v2_quick_tool_common"/>
+    </LinearLayout>
+</LinearLayout>

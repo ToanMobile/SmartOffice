@@ -9,6 +9,8 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.artifex.R;
 import com.artifex.solib.MuPDFDoc;
 import com.artifex.solib.MuPDFWidget;
 import com.artifex.solib.Waiter;

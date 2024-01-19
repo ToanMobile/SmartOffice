@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:gravity="end" android:id="@+id/siq_main_msg_layout" android:background="?attr/siq_backgroundcolor" android:paddingLeft="12dp" android:paddingRight="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:paddingStart="12dp" android:paddingEnd="12dp">
+        <ImageView android:id="@+id/siq_sender_avatar" android:background="@drawable/salesiq_circle_bg" android:visibility="gone" android:layout_width="42dp" android:layout_height="42dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/siq_sender_name_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+            <TextView android:id="@+id/siq_sender_name" style="@style/SalesIQ.Style.chatwindow_sender_name_textcolor_visitor"/>
+        </LinearLayout>
+        <RelativeLayout android:id="@+id/siq_msg_container" android:background="@drawable/salesiq_messagecontainer_background_visitor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@+id/siq_sender_avatar" android:layout_below="@+id/siq_sender_name_container" android:layout_alignParentRight="true" android:layout_toStartOf="@+id/siq_sender_avatar" android:layout_alignParentEnd="true"/>
+        <ImageView android:id="@+id/siq_message_status_failed" android:visibility="gone" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginRight="@dimen/siq_8" android:layout_toLeftOf="@+id/siq_msg_container" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/siq_8" android:layout_toStartOf="@+id/siq_msg_container" app:srcCompat="@drawable/salesiq_failed_icon"/>
+        <RelativeLayout android:gravity="center" android:id="@+id/siq_msg_rating_layout" android:visibility="gone" android:layout_width="50dp" android:layout_height="36dp" android:layout_marginLeft="-20dp" android:layout_marginTop="-18dp" android:layout_toRightOf="@+id/siq_msg_container" android:layout_below="@+id/siq_msg_container" android:layout_marginStart="-20dp" android:layout_toEndOf="@+id/siq_msg_container">
+            <ImageView android:id="@+id/siq_msg_rating_icon" style="@style/SalesIQ.Style.chatwindow_rating_emoji"/>
+            <TextView android:id="@+id/siq_msg_rating_count" android:layout_toRightOf="@+id/siq_msg_rating_icon" android:layout_toEndOf="@+id/siq_msg_rating_icon" style="@style/SalesIQ.Style.chatwindow_feedback_rating_count_text"/>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/siq_sender_time_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_below="@+id/siq_msg_container" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+            <TextView android:id="@+id/siq_timetextview" style="@style/SalesIQ.Style.chatwindow_time_textcolor_visitor"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/siq_msg_state_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_below="@+id/siq_msg_container" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+            <TextView android:id="@+id/siq_msg_state_textview" style="@style/SalesIQ.Style.chatwindow_time_textcolor_visitor"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@+id/siq_suggestions_list" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="6dp"/>
+    <com.zoho.livechat.android.ui.customviews.FlowLayout android:id="@+id/siq_suggestion_flowlayout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10dp"/>
+    <include layout="@layout/siq_item_bot_skip"/>
+</LinearLayout>

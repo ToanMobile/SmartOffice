@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp">
+        <TextView android:textSize="20sp" android:textStyle="bold" android:id="@+id/tv_manage_header" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/format_head"/>
+        <ImageView android:id="@+id/iv_manage_files_help" android:padding="7dp" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="@dimen/margin_10" android:src="@drawable/ic_question_black" android:layout_toRightOf="@+id/tv_manage_header"/>
+        <include android:id="@+id/view_all_formats" android:visibility="gone" layout="@layout/item_view_all"/>
+    </RelativeLayout>
+    <com.rpdev.docreadermain.utils.MyGridView android:id="@+id/categoryGridView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginBottom="@dimen/_10sdp" android:listSelector="#f00" android:horizontalSpacing="@dimen/_10sdp" android:verticalSpacing="@dimen/_10sdp" android:numColumns="4"/>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/swipe_container" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintTop_toBottomOf="@+id/msg">
+    <androidx.core.widget.NestedScrollView android:id="@+id/nestedScrollView" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@+id/folder_pro_img" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:src="@drawable/a1office_docx_ui_procard" android:scaleType="fitXY" android:adjustViewBounds="true" android:cropToPadding="false"/>
+            <TextView android:textSize="18sp" android:textStyle="bold" android:id="@+id/folders_heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:text="@string/folders_head_text"/>
+            <com.rpdev.docreadermain.utils.MyGridView android:gravity="center_horizontal" android:id="@+id/foldersGridView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_5sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginRight="@dimen/_5sdp" android:layout_marginBottom="@dimen/_10sdp" android:listSelector="@null" android:horizontalSpacing="@dimen/_20sdp" android:verticalSpacing="@dimen/_20sdp" android:columnWidth="80dp" android:numColumns="1" android:nestedScrollingEnabled="true" app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

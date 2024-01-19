@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="efp__size_units">
+        <item>B</item>
+        <item>kB</item>
+        <item>mB</item>
+        <item>gB</item>
+        <item>tB</item>
+        <item>pB</item>
+    </array>
+    <array name="efp__sorting_types">
+        <item>بالاسم، تصاعدي</item>
+        <item>بالاسم، تنازلي</item>
+        <item>حسب الحجم، تصاعدي</item>
+        <item>حسب الحجم، تنازلي</item>
+        <item>بواسطة التاريخ، تصاعدي</item>
+        <item>بواسطة التاريخ، تنازلي</item>
+    </array>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="match_parent" android:foreground="?attr/selectableItemBackground">
+    <TextView android:id="@+id/name" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/AttributionName"/>
+    <TextView android:id="@+id/copyrightNotices" android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/AttributionCopyright"/>
+    <com.google.android.flexbox.FlexboxLayout android:id="@+id/licensesLayout" android:layout_width="match_parent" android:layout_height="wrap_content" app:alignContent="5" app:alignItems="4" app:dividerDrawableHorizontal="@drawable/license_divider_horizontal" app:dividerDrawableVertical="@drawable/license_divider_vertical" app:flexWrap="1" app:showDividerHorizontal="2" app:showDividerVertical="2"/>
+</LinearLayout>

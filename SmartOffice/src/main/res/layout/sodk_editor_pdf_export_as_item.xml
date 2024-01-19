@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="@dimen/sodk_editor_pdf_extract_as_item_width" android:layout_height="@dimen/sodk_editor_pdf_extract_as_item_width">
+    <ImageView android:id="@+id/doc_icon" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="-50dp" android:scaleType="centerInside"/>
+    <com.artifex.sonui.editor.SOTextView android:textSize="20sp" android:textColor="@color/sodk_editor_pdf_export_as_text_color" android:gravity="center_horizontal" android:id="@+id/doc_icon_text" android:padding="5dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="-60dp" android:textAlignment="center"/>
+</LinearLayout>

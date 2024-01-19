@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/sodk_editor_palette_grey" android:padding="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:background="@color/sodk_editor_palette_white" android:padding="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:textSize="24sp" android:textColor="@drawable/sodk_editor_ask_text" android:layout_gravity="center_horizontal" android:id="@+id/button1" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"/>
+        <Button android:textSize="24sp" android:textColor="@drawable/sodk_editor_ask_text" android:layout_gravity="center_horizontal" android:id="@+id/button2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"/>
+        <Space android:layout_width="match_parent" android:layout_height="20dp"/>
+        <Button android:textSize="24sp" android:textColor="@drawable/sodk_editor_ask_text" android:layout_gravity="center_horizontal" android:id="@+id/button3" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAllCaps="false"/>
+    </LinearLayout>
+</LinearLayout>

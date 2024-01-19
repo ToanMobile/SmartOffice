@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="30dp" android:paddingRight="30dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Space android:layout_width="1dp" android:layout_height="20dp"/>
+        <ProgressBar android:id="@+id/bar1" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progressTint="@color/sodk_editor_dialog_textcolor" android:progressTintMode="src_atop" style="?android:attr/progressBarStyleHorizontal"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/bar1_label" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Space android:layout_width="1dp" android:layout_height="10dp"/>
+        <ProgressBar android:id="@+id/bar2" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progressTint="@color/sodk_editor_dialog_textcolor" android:progressTintMode="src_atop" style="?android:attr/progressBarStyleHorizontal"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/bar2_label" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Space android:layout_width="1dp" android:layout_height="10dp"/>
+        <Button android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/sodk_editor_alert_button_color" android:layout_gravity="right" android:id="@+id/cancel_button" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_cancel"/>
+    </LinearLayout>
+</LinearLayout>

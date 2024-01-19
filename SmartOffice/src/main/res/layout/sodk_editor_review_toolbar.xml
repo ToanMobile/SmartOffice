@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/review_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/track_changes_button" android:text="@string/sodk_editor_track_changes_upper" android:drawableTop="@drawable/sodk_editor_icon_toggle_off" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/show_changes_button" android:text="@string/sodk_editor_show_changes_upper" android:drawableTop="@drawable/sodk_editor_icon_toggle_off" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/comment_button" android:text="@string/sodk_editor_comment_upper" android:drawableTop="@drawable/sodk_editor_icon_highlight" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/delete_comment_button" android:text="@string/sodk_editor_delete_comment_upper" android:drawableTop="@drawable/sodk_editor_icon_delete_highlight" style="@style/sodk_editor_toolbar_button"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/accept_button" android:text="@string/sodk_editor_accept_upper" android:drawableTop="@drawable/sodk_editor_icon_accept_change" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/reject_button" android:text="@string/sodk_editor_reject_upper" android:drawableTop="@drawable/sodk_editor_icon_reject_change" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/next_button" android:text="@string/sodk_editor_next_upper" android:drawableTop="@drawable/sodk_editor_icon_next_change" style="@style/sodk_editor_toolbar_button"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/previous_button" android:text="@string/sodk_editor_previous_upper" android:drawableTop="@drawable/sodk_editor_icon_previous_change" style="@style/sodk_editor_toolbar_button"/>
+            <View android:id="@+id/author_button_divider" style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/author_button" android:text="@string/sodk_editor_author_upper" android:drawableTop="@drawable/sodk_editor_icon_author" style="@style/sodk_editor_toolbar_button"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

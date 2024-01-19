@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.artifex.R;
+
 public class ShapeDialog implements View.OnTouchListener, PopupWindow.OnDismissListener {
     public final Point down = new Point();
     public final View mAnchor;

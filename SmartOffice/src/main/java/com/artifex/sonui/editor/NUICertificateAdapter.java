@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.artifex.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 

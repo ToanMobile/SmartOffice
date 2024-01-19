@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <item android:id="@+id/desk_ticket_notification" android:visible="false" android:orderInCategory="1" android:title="notification" app:actionLayout="@layout/layout_add_edit_topic_type" app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_action_topic_type_idea" android:id="@+id/desk_sdk_community_idea" android:orderInCategory="2" android:title="@string/DeskPortal.Community.Options.change_type" app:showAsAction="always">
+        <menu/>
+    </item>
+    <item android:icon="@drawable/ic_action_send" android:id="@+id/desk_send_newticket" android:orderInCategory="3" android:title="@string/DeskPortal.Options.send" app:showAsAction="always"/>
+</menu>

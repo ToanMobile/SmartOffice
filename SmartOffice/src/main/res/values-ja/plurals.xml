@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="fui_error_weak_password">
+        <item quantity="one">パスワードが十分に安全ではありません。%1$d 文字以上で、文字と数字を組み合わせたパスワードを使用してください</item>
+        <item quantity="other">パスワードが十分に安全ではありません。%1$d 文字以上で、文字と数字を組み合わせたパスワードを使用してください</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 件の新しい通知</item>
+        <item quantity="other">%d 件の新しい通知</item>
+    </plurals>
+</resources>

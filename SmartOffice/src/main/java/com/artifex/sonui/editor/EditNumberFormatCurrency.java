@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 
+import com.artifex.R;
 import com.artifex.mupdf.fitz.Document;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.FileUtils;
@@ -36,7 +37,7 @@ public class EditNumberFormatCurrency {
     static {
         Double valueOf = Double.valueOf(-1234.1d);
         Double valueOf2 = Double.valueOf(1234.1d);
-        neg_descriptions = new String[]{String.format("%.2f", new Object[]{valueOf}), String.format("%.2f (red)", new Object[]{valueOf2}), String.format("%.2f (red)", new Object[]{valueOf}), String.format("(%.2f)", new Object[]{valueOf2}), String.format("(%.2f) (red)", new Object[]{valueOf2})};
+        neg_descriptions = new String[]{String.format("%.2f", valueOf), String.format("%.2f (red)", valueOf2), String.format("%.2f (red)", valueOf), String.format("(%.2f)", valueOf2), String.format("(%.2f) (red)", valueOf2)};
     }
 
     public static void access$000(EditNumberFormatCurrency editNumberFormatCurrency) {
@@ -58,10 +59,10 @@ public class EditNumberFormatCurrency {
                 editNumberFormatCurrency.cur_formats = new String[jSONArray.length()];
                 for (int i = 0; i < jSONArray.length(); i++) {
                     JSONObject jSONObject = jSONArray.getJSONObject(i);
-                    String string = jSONObject.getString(Tracker.ConsentPartner.KEY_DESCRIPTION);
+                    String string = ""; // TODO jSONObject.getString(Tracker.ConsentPartner.KEY_DESCRIPTION);
                     String string2 = jSONObject.getString(Document.META_FORMAT);
                     String string3 = jSONObject.getString("token");
-                    if (!(string3 == null || string3.isEmpty() || (identifier = context.getResources().getIdentifier(string3, "string", context.getPackageName())) == 0)) {
+                    if (!(string3.isEmpty() || (identifier = context.getResources().getIdentifier(string3, "string", context.getPackageName())) == 0)) {
                         string = context.getString(identifier);
                     }
                     editNumberFormatCurrency.cur_descriptions[i] = string;

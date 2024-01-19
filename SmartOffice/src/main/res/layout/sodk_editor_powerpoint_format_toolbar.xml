@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <com.artifex.sonui.editor.SOHorizontalScrollView android:background="@color/sodk_editor_toolbar" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/ppt_format_toolbar" android:background="@color/sodk_editor_toolbar" android:paddingTop="@dimen/sodk_editor_toolbar_v_padding" android:paddingBottom="@dimen/sodk_editor_toolbar_v_padding" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.artifex.sonui.editor.SOTextView android:textAppearance="?android:attr/textAppearanceSmall" android:textColor="@color/sodk_editor_ppt_format_title_textcolor" android:layout_gravity="center_vertical" android:background="@color/sodk_editor_toolbar" android:paddingTop="10dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/sodk_editor_shape_and_line_upper"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/shape_color" android:drawableTop="@drawable/sodk_editor_icon_shape_color" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/line_color" android:drawableTop="@drawable/sodk_editor_icon_line_color" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/line_width" android:drawableTop="@drawable/sodk_editor_icon_line_thickness" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/line_type" android:drawableTop="@drawable/sodk_editor_icon_line_style" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <View style="@style/sodk_editor_toolbar_divider"/>
+            <com.artifex.sonui.editor.SOTextView android:textAppearance="?android:attr/textAppearanceSmall" android:textColor="@color/sodk_editor_ppt_format_title_textcolor" android:layout_gravity="center_vertical" android:background="@color/sodk_editor_toolbar" android:paddingTop="10dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/sodk_editor_arrange_upper"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/arrange_back" android:drawableTop="@drawable/sodk_editor_icon_arrange_back" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/arrange_backwards" android:drawableTop="@drawable/sodk_editor_icon_arrange_backward" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/arrange_forward" android:drawableTop="@drawable/sodk_editor_icon_arrange_forward" style="@style/sodk_editor_toolbar_button_no_text"/>
+            <com.artifex.sonui.editor.ToolbarButton android:id="@+id/arrange_front" android:drawableTop="@drawable/sodk_editor_icon_arrange_front" style="@style/sodk_editor_toolbar_button_no_text"/>
+        </LinearLayout>
+    </com.artifex.sonui.editor.SOHorizontalScrollView>
+</merge>

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.View;
+
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.artifex.R;
 
 public class SOTextView extends FrameLayout {
     public static Constructor mConstructor;
@@ -47,7 +49,7 @@ public class SOTextView extends FrameLayout {
     }
 
     public final void init() {
-        this.mTextView.setId(R.id.sodk_editor_text_view);
+        // TODO this.mTextView.setId(R.id.sodk_editor_text_view);
         super.addView(this.mTextView);
         setPadding(0, 0, 0, 0);
         OnClickListener onClickListener = this.mClickListener;

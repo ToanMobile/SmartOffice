@@ -39,6 +39,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import com.artifex.solib.ArDkUtils;
 import com.artifex.solib.FileUtils;

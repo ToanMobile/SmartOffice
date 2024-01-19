@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.artifex.R;
 import com.artifex.mupdf.fitz.PDFWidget;
 import com.artifex.solib.ArDkLib;
 import com.artifex.solib.ConfigOptions;

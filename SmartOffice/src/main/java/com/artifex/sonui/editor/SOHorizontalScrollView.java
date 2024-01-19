@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.HorizontalScrollView;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.logging.type.LogSeverity;
 

@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkLib;
 import com.artifex.solib.ConfigOptions;
 import com.artifex.sonui.editor.SODocSession;

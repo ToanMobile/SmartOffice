@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/upload_progress_bar_card" android:layout_width="0dp" android:layout_height="wrap_content" android:indeterminate="false" app:indicatorColor="#0f75bc" app:layout_constraintBottom_toTopOf="@+id/upload_card" app:layout_constraintEnd_toEndOf="@+id/upload_card" app:layout_constraintStart_toStartOf="@+id/upload_card"/>
+    <androidx.cardview.widget.CardView android:id="@+id/upload_card" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:elevation="5dp" app:layout_constraintBottom_toBottomOf="0">
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@+id/doc_icon_upload_card" android:layout_width="50dp" android:layout_height="50dp" android:layout_margin="20dp" android:src="@drawable/file_96"/>
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginEnd="45dp">
+                <TextView android:ellipsize="end" android:layout_gravity="start" android:id="@+id/doc_name_upload_card" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/app_name" android:maxLines="1"/>
+                <TextView android:textSize="12sp" android:layout_gravity="start" android:id="@+id/doc_size_upload_card" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Uploading 1 of 1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/siq_dialog_toolbar" android:layout_width="match_parent" android:layout_height="?android:attr/actionBarSize" app:popupTheme="@style/SalesIQ.PopupMenuStyle" style="?attr/siq_toolbar_style"/>
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <FrameLayout android:id="@+id/siq_map_container" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="174dp"/>
+            <androidx.cardview.widget.CardView android:layout_gravity="top|right|center_vertical|center_horizontal|center|end" android:id="@+id/siq_map_radius_parent" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginTop="12dp" android:layout_marginRight="12dp" android:layout_marginEnd="12dp" app:cardBackgroundColor="?attr/siq_backgroundcolor" app:cardCornerRadius="18dp" app:cardElevation="4dp">
+                <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="12dp" android:paddingRight="12dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@+id/siq_map_radius_icon" android:layout_width="25dp" android:layout_height="match_parent" app:srcCompat="@drawable/salesiq_vector_location_radius"/>
+                    <TextView android:id="@+id/siq_map_radius_text" style="@style/SalesIQ.Style.widget_map_radius_text"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/siq_location_bottomsheet" android:layout_width="match_parent" android:layout_height="match_parent" app:behavior_hideable="false" app:behavior_peekHeight="240dp" app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        <LinearLayout android:orientation="vertical" android:id="@+id/bottomsheetemptyview" android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="?android:attr/actionBarSize"/>
+        <View android:id="@+id/siq_location_bottomsheet_separator" android:background="@drawable/salesiq_drawable_top_shadow" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@+id/siq_location_bottom_header" android:background="?android:attr/selectableItemBackground" android:paddingLeft="16dp" android:paddingRight="16dp" android:layout_width="match_parent" android:layout_height="64dp" android:paddingStart="16dp" android:paddingEnd="16dp">
+                <RelativeLayout android:gravity="center" android:id="@+id/siq_location_bottom_header_imagelayout" android:background="@drawable/salesiq_circle_bg" android:layout_width="40dp" android:layout_height="40dp" android:layout_centerVertical="true">
+                    <ImageView android:id="@+id/siq_location_bottom_header_image" android:layout_width="18dp" android:layout_height="18dp" app:srcCompat="@drawable/salesiq_vector_mylocation"/>
+                </RelativeLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="16dp" android:layout_toRightOf="@+id/siq_location_bottom_header_imagelayout" android:layout_centerVertical="true" android:layout_marginStart="16dp" android:layout_toEndOf="@+id/siq_location_bottom_header_imagelayout">
+                    <TextView android:id="@+id/siq_location_bottom_text" android:text="@string/livechat.widgets.location.send.current" style="@style/SalesIQ.Style.widget_location_send_current_text"/>
+                    <TextView android:id="@+id/siq_location_bottom_subtext" style="@style/SalesIQ.Style.widget_location_meter_text"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <View android:background="#1f252b2e" android:layout_width="match_parent" android:layout_height="1dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_location_suggestions_list" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

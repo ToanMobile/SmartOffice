@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_parent_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="?attr/actionBarSize">
+    <LinearLayout android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:gravity="center" android:id="@+id/siq_noInternet_layout" android:background="?attr/siq_nointernetbanner_backgroundcolor" android:paddingTop="@dimen/siq_9" android:paddingBottom="@dimen/siq_9" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ProgressBar android:layout_gravity="center" android:id="@+id/siq_noInternet_progressBar" android:layout_width="@dimen/siq_12" android:layout_height="@dimen/siq_12" android:layout_marginTop="@dimen/siq_1" android:indeterminate="true"/>
+                <TextView android:textSize="@dimen/siq_text_14" android:textColor="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/siq_10" android:text="@string/livechat.message.waitingforconnection" android:layout_marginStart="@dimen/siq_10"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:id="@+id/siq_offline_message" android:visibility="gone" android:text="@string/livechat.messages.offline" style="@style/SalesIQ.Style.conversation_offline_message_text"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_conversation_view" android:background="?attr/siq_conversation_listitem_backgroundcolor" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/siq_conversation_emptystate" android:background="?attr/siq_emptyview_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:id="@+id/siq_empty_state_icon" style="@style/SalesIQ.Style.conversation_emptyview_image"/>
+        <TextView android:id="@+id/siq_empty_state_text" android:text="@string/livechat.conversation.emptystate" style="@style/SalesIQ.Style.conversation_emptyview_text"/>
+        <RelativeLayout android:id="@+id/siq_empty_state_startchat_layout" style="@style/SalesIQ.Style.conversation_startchat_layout">
+            <ImageView android:id="@+id/siq_empty_state_button_icon" app:srcCompat="@drawable/salesiq_vector_chat" style="@style/SalesIQ.Style.conversation_startchat_image"/>
+            <TextView android:id="@+id/siq_empty_state_startchat" android:text="@string/livechat.conversation.startchat" android:layout_toRightOf="@+id/siq_empty_state_button_icon" android:layout_toEndOf="@+id/siq_empty_state_button_icon" style="@style/SalesIQ.Style.conversation_startchat_text"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <include layout="@layout/siq_item_fab"/>
+</FrameLayout>

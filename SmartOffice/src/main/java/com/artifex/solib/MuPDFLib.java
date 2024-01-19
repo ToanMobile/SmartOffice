@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import com.artifex.mupdf.fitz.Document;
-import com.artifex.sonui.editor.SODocSession;
 import java.util.Objects;
 
 public class MuPDFLib extends ArDkLib {
@@ -27,7 +26,7 @@ public class MuPDFLib extends ArDkLib {
         return new MuPDFBitmap(i, i2);
     }
 
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
     }
 
@@ -35,23 +34,19 @@ public class MuPDFLib extends ArDkLib {
         final MuPDFDoc muPDFDoc = new MuPDFDoc(Looper.myLooper(), sODocLoadListener, context, configOptions);
         Worker worker = muPDFDoc.mWorker;
         Objects.requireNonNull(worker);
-        Thread thread = new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    if (worker.alive) {
-                        try {
-                            Worker.Task take = worker.mQueue.take();
-                            take.work();
-                            new Handler(worker.mLooper).post(take);
-                        } catch (InterruptedException unused) {
-                        } catch (Throwable th) {
-                            StringBuilder m = new StringBuilder("exception in Worker thread: ");
-                            m.append(th.toString());
-                            Log.e("Worker", m.toString());
-                        }
-                    } else {
-                        return;
+        Thread thread = new Thread(() -> {
+            while (true) {
+                if (worker.alive) {
+                    try {
+                        Worker.Task take = worker.mQueue.take();
+                        take.work();
+                        new Handler(worker.mLooper).post(take);
+                    } catch (InterruptedException unused) {
+                    } catch (Throwable th) {
+                        Log.e("Worker", "exception in Worker thread: " + th);
                     }
+                } else {
+                    return;
                 }
             }
         });
@@ -59,8 +54,8 @@ public class MuPDFLib extends ArDkLib {
         thread.start();
         worker.alive = true;
         muPDFDoc.mWorker.add(new Worker.Task() {
-            public boolean docOpened = false;
-            public boolean needsPassword = false;
+            boolean docOpened = false;
+            boolean needsPassword = false;
 
             public void run() {
                 if (!this.docOpened) {
@@ -68,9 +63,8 @@ public class MuPDFLib extends ArDkLib {
                         sODocLoadListener.onError(4, 0);
                     }
                 } else if (this.needsPassword) {
-                    SODocLoadListener sODocLoadListener2 = sODocLoadListener;
-                    if (sODocLoadListener2 != null) {
-                        ((SODocSession.AnonymousClass1) sODocLoadListener2).onError(4096, 0);
+                    if (sODocLoadListener != null) {
+                        sODocLoadListener.onError(4096, 0);
                     }
                 } else {
                     muPDFDoc.loadNextPage();
@@ -78,7 +72,7 @@ public class MuPDFLib extends ArDkLib {
             }
 
             public void work() {
-                Document openFile = MuPDFDoc.openFile(str);
+                Document openFile = muPDFDoc.openFile(str);
                 if (openFile != null) {
                     this.docOpened = true;
                     muPDFDoc.mDocument = openFile;

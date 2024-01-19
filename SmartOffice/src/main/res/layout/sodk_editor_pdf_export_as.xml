@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:background="@drawable/sodk_editor_pdf_export_as_popup" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView android:scrollbarSize="2dp" android:scrollbarThumbHorizontal="@color/sodk_editor_pdf_export_as_scrollbar_color" android:scrollbarStyle="insideOverlay" android:id="@+id/exportTypesView" android:paddingLeft="@dimen/sodk_editor_pdf_extract_as_popup_padding" android:paddingRight="@dimen/sodk_editor_pdf_extract_as_popup_padding" android:scrollbars="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:fadeScrollbars="false"/>
+</LinearLayout>

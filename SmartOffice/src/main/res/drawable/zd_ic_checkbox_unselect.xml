@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:height="30dp" android:width="30dp" android:autoMirrored="true" android:viewportWidth="30" android:viewportHeight="30">
+    <group>
+        <clip-path android:pathData="M0,0h30v30h-30z"/>
+        <clip-path android:pathData="M25.1111,2H4.8889C3.3,2 2,3.3 2,4.8889V25.1111C2,26.7 3.3,28 4.8889,28H25.1111C26.7,28 28,26.7 28,25.1111V4.8889C28,3.3 26.7,2 25.1111,2V2V2Z" android:fillType="1"/>
+        <path android:fillColor="#cecece" android:pathData="M25.1111,0H4.8889V4H25.1111V0ZM4.8889,0C2.1954,0 0,2.1954 0,4.8889H4C4,4.4046 4.4046,4 4.8889,4V0ZM0,4.8889V25.1111H4V4.8889H0ZM0,25.1111C0,27.8046 2.1954,30 4.8889,30V26C4.4046,26 4,25.5954 4,25.1111H0ZM4.8889,30H25.1111V26H4.8889V30ZM25.1111,30C27.8046,30 30,27.8046 30,25.1111H26C26,25.5954 25.5954,26 25.1111,26V30ZM30,25.1111V4.8889H26V25.1111H30ZM30,4.8889C30,2.1954 27.8046,0 25.1111,0V4C25.5954,4 26,4.4046 26,4.8889H30Z"/>
+    </group>
+</vector>

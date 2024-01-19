@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar android:id="@+id/siq_dialog_toolbar" android:layout_width="match_parent" android:layout_height="?android:attr/actionBarSize" android:elevation="@dimen/siq_2" app:popupTheme="@style/SalesIQ.PopupMenuStyle" style="?attr/siq_toolbar_style"/>
+    <LinearLayout android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_calender_from_date_parent" android:background="?android:attr/selectableItemBackground" android:paddingLeft="60dp" android:paddingTop="16dp" android:paddingRight="16dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="60dp" android:paddingEnd="16dp">
+            <TextView android:id="@+id/siq_from_date_title" style="@style/SalesIQ.Style.Calender_date_title"/>
+            <TextView android:id="@+id/siq_from_date" style="@style/SalesIQ.Style.Calender_date_subtitle"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_calender_from_time_parent" android:background="?android:attr/selectableItemBackground" android:paddingLeft="60dp" android:paddingTop="16dp" android:paddingRight="16dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="60dp" android:paddingEnd="16dp">
+            <TextView android:id="@+id/siq_from_time_title" style="@style/SalesIQ.Style.Calender_time_title"/>
+            <TextView android:id="@+id/siq_from_time" style="@style/SalesIQ.Style.Calender_time_subtitle"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_calender_to_date_parent" android:background="?android:attr/selectableItemBackground" android:paddingLeft="60dp" android:paddingTop="16dp" android:paddingRight="16dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="60dp" android:paddingEnd="16dp">
+            <TextView android:id="@+id/siq_to_date_title" style="@style/SalesIQ.Style.Calender_timezone_title"/>
+            <TextView android:id="@+id/siq_to_date" style="@style/SalesIQ.Style.Calender_timezone_subtitle"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/siq_calender_to_time_parent" android:background="?android:attr/selectableItemBackground" android:paddingLeft="60dp" android:paddingTop="16dp" android:paddingRight="16dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="60dp" android:paddingEnd="16dp">
+            <TextView android:id="@+id/siq_to_time_title" style="@style/SalesIQ.Style.Calender_time_title"/>
+            <TextView android:id="@+id/siq_to_time" style="@style/SalesIQ.Style.Calender_time_subtitle"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/siq_calender_tz_parent" android:background="?android:attr/selectableItemBackground" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <View android:background="?attr/siq_recyclerview_backgroundcolor" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="60dp" android:paddingTop="16dp" android:paddingRight="16dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="60dp" android:paddingEnd="16dp">
+            <TextView android:id="@+id/siq_tz_title" style="@style/SalesIQ.Style.Calender_timezone_title"/>
+            <TextView android:id="@+id/siq_tz" style="@style/SalesIQ.Style.Calender_timezone_subtitle"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

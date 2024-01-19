@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 
+import com.artifex.R;
+
 public class ProgressDialogDelayed extends ProgressDialog {
     public int delay = 0;
     public boolean dismissed = false;

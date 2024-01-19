@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@drawable/v2_label_row_bg" android:padding="@dimen/_10sdp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <RelativeLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/imvIcon" android:padding="2dp" android:layout_width="30dp" android:layout_height="30dp" android:src="@mipmap/ic_label" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+        <ImageView android:id="@+id/imvThreeDots" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="30dp" android:src="@mipmap/ic_three_dots" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/sp_12" android:textColor="@color/toolbar_bg_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/txtTitle" android:padding="@dimen/_5sdp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_5sdp" android:text="Personal" android:maxLines="1" android:fontFamily="@font/lato_regular" android:textFontWeight="500"/>
+    <TextView android:textSize="12sp" android:textColor="@color/file_count_color" android:gravity="center_vertical" android:id="@+id/txtFileCount" android:padding="@dimen/_5sdp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="8 Files" android:fontFamily="@font/lato_regular" android:textFontWeight="400"/>
+</LinearLayout>

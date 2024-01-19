@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkDoc;
 import java.util.ArrayList;
 import java.util.HashMap;

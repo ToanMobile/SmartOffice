@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/cvFormatBottomBar" android:layout_width="match_parent" android:layout_height="@dimen/dp_55" android:layout_marginLeft="-5dp" android:layout_marginRight="-5dp" android:layout_marginBottom="-5dp" app:cardCornerRadius="0dp" app:cardElevation="2dp" app:cardUseCompatPadding="true">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llHomeFormat" android:background="@drawable/v2_home_selected_bg" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.5">
+            <ImageView android:id="@+id/imvHomeFormat" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:layout_marginTop="4dp" android:src="@mipmap/ic_home"/>
+            <TextView android:textSize="@dimen/sp_12" android:textColor="@color/colorPrimary" android:gravity="center_vertical" android:id="@+id/txtHomeFormat" android:paddingBottom="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/home" android:fontFamily="@font/lato_bold" android:textFontWeight="500"/>
+        </LinearLayout>
+        <View android:background="@color/border_color_15_opacity" android:layout_width="0.5dp" android:layout_height="match_parent"/>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llFilesFormat" android:background="@drawable/v2_tools_not_selected_bg" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.5">
+            <ImageView android:id="@+id/imvFilesFormat" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:layout_marginTop="4dp" android:src="@mipmap/ic_file"/>
+            <TextView android:textSize="@dimen/sp_12" android:textColor="@color/bottom_bar_start_color_light" android:gravity="center_vertical" android:id="@+id/txtFilesFormat" android:paddingBottom="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/file" android:fontFamily="@font/lato_bold" android:textFontWeight="500"/>
+        </LinearLayout>
+        <View android:background="@color/border_color_15_opacity" android:layout_width="0.5dp" android:layout_height="match_parent"/>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/llSearchFormat" android:background="@drawable/v2_tools_not_selected_bg" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.5">
+            <ImageView android:id="@+id/imvSearchFormat" android:padding="@dimen/dp_5" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:layout_marginTop="4dp" android:src="@mipmap/ic_search"/>
+            <TextView android:textSize="@dimen/sp_12" android:textColor="@color/bottom_bar_start_color_light" android:gravity="center_vertical" android:id="@+id/txtSearchFormat" android:paddingBottom="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/search" android:fontFamily="@font/lato_bold" android:textFontWeight="500"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

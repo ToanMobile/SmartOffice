@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp">
+        <TextView android:textSize="20sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/main_folders_head" android:layout_weight="1"/>
+        <include android:id="@+id/view_all_folders" layout="@layout/item_view_all"/>
+    </LinearLayout>
+    <TextView android:textSize="20sp" android:gravity="center" android:id="@+id/no_folder_tv" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_20sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginRight="@dimen/_20sdp" android:layout_marginBottom="@dimen/_10sdp" android:text="@string/no_folders_found"/>
+    <com.rpdev.docreadermain.utils.MyGridView android:gravity="center_horizontal" android:id="@+id/foldersGridView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/_20sdp" android:layout_marginTop="@dimen/_10sdp" android:layout_marginRight="@dimen/_20sdp" android:layout_marginBottom="@dimen/_10sdp" android:listSelector="#f00" android:horizontalSpacing="@dimen/_20sdp" android:verticalSpacing="@dimen/_20sdp" android:stretchMode="columnWidth" android:columnWidth="80dp" android:numColumns="4"/>
+</LinearLayout>

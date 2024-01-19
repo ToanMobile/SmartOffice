@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/siq_dept_parent" style="@style/SalesIQ.Layout.articles_department">
+    <ImageView android:id="@+id/siq_dept_icon" style="@style/SalesIQ.Style.articles_department_icon"/>
+    <ImageView android:id="@+id/siq_articles_nav_icon" app:srcCompat="@drawable/salesiq_vector_nav_right" style="@style/SalesIQ.Style.articles_navigation_icon"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@+id/siq_articles_nav_icon" android:layout_toRightOf="@+id/siq_dept_icon" android:layout_toStartOf="@+id/siq_articles_nav_icon" android:layout_toEndOf="@+id/siq_dept_icon">
+        <TextView android:id="@+id/siq_dept_name" style="@style/SalesIQ.Style.articles_category_name_text"/>
+        <TextView android:id="@+id/siq_articles_count" style="@style/SalesIQ.Style.articles_category_count_text"/>
+    </LinearLayout>
+</RelativeLayout>

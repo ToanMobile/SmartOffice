@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout android:id="@+id/app_bar" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="0">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize">
+            <ImageView android:layout_gravity="right" android:id="@+id/iv_tagged_help" android:padding="@dimen/margin_5" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginRight="@dimen/margin_20" android:src="@drawable/ic_question_black"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView android:orientation="vertical" android:id="@+id/rv_tagged_files" android:padding="@dimen/margin_5" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/app_bar" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" app:reverseLayout="false"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton android:id="@+id/fab_tagged_new_files" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/margin_20" android:src="@mipmap/ic_add" android:tint="@color/white" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" app:backgroundTint="@color/colorPrimaryDark"/>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/ll_no_tags" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_width="250dp" android:layout_height="250dp" android:src="@drawable/tags_graphic"/>
+        <TextView android:textSize="16sp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40dp" android:layout_marginRight="40dp" android:text="@string/no_tags_message"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:padding="5dp" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textStyle="bold" android:id="@+id/network_name_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Network Name" android:layout_weight="1"/>
+        <TextView android:textStyle="bold" android:id="@+id/network_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Network Status" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/white" android:id="@+id/gdpr_label" android:background="@color/grey" android:padding="5dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="GDPR"/>
+        <TextView android:textColor="@color/white" android:id="@+id/app_id" android:background="@color/grey" android:padding="5dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="app id"/>
+    </LinearLayout>
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/controls_container" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    </HorizontalScrollView>
+    <TextView android:textStyle="bold" android:id="@+id/network_api_key" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="API KEY = "/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Interstitial"/>
+    <include android:id="@+id/inter_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:textColor="@color/grey" android:id="@+id/interInterval" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40dp" android:text="Inter interval"/>
+    <TextView android:textColor="@color/grey" android:id="@+id/inter_timings" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40dp" android:text="Inter timings"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="App Open"/>
+    <include android:id="@+id/app_open_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Native Ad"/>
+    <include android:id="@+id/native_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Native Banner"/>
+    <include android:id="@+id/native_banner_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Banner Ad"/>
+    <include android:id="@+id/banner_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Rewarded Ad"/>
+    <include android:id="@+id/rewarded_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Home Banner"/>
+    <include android:id="@+id/home_banner_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="App open intent"/>
+    <include android:id="@+id/app_open_intent_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Native template Small id"/>
+    <include android:id="@+id/native_template_small_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Native template medium id"/>
+    <include android:id="@+id/native_template_medium_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Native template default id"/>
+    <include android:id="@+id/native_template_default_ad_unit" layout="@layout/ad_network_ad_unit_info"/>
+</LinearLayout>

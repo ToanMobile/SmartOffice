@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ListPopupWindow;
 import android.widget.TabWidget;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.solib.ArDkSelectionLimits;
 import com.artifex.solib.FileUtils;
 import com.artifex.solib.SODoc;

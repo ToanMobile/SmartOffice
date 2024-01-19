@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@drawable/sodk_editor_number_format_popup" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.artifex.sonui.editor.SOTextView android:paddingBottom="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_number_format_accounting" style="@style/sodk_editor_wheel_title_style"/>
+    <kankan.wheel.widget.WheelView android:id="@+id/cur_wheel" android:layout_width="300dp" android:layout_height="wrap_content" android:layout_marginRight="5dp"/>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <com.artifex.sonui.editor.SOTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sodk_editor_two_decimal_places" style="@style/sodk_editor_wheel_checkbox_label_style"/>
+        <Space android:layout_width="1dp" android:layout_height="1dp" android:layout_weight="1"/>
+        <CheckBox android:theme="@style/sodk_editor_wheel_checkbox_style" android:id="@+id/decimal_places_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:scaleX="1.5" android:scaleY="1.5"/>
+    </LinearLayout>
+</LinearLayout>

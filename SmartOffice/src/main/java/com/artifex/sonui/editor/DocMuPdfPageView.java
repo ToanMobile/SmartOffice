@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import androidx.core.content.ContextCompat;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.Image;
 import com.artifex.mupdf.fitz.PDFAnnotation;
 import com.artifex.mupdf.fitz.PDFDocument;
@@ -192,7 +194,7 @@ public class DocMuPdfPageView extends DocPdfPageView {
                     }
                     pDFDocument.endOperation();
                     muPDFDoc.update(this.val$pageNum);
-                    MuPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
+                    muPDFDoc.access$2500(muPDFDoc, this.val$pageNum);
                 }
             });
         }

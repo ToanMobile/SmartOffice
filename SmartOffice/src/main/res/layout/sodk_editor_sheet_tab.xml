@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:background="@drawable/sodk_editor_sheet_tab" android:layout_width="wrap_content" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/sheetTab" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.artifex.sonui.editor.SOTextView android:textSize="20sp" android:textColor="@drawable/sodk_editor_sheet_tab_text" android:id="@+id/button1" android:background="@color/sodk_editor_transparent" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Space android:id="@+id/spacer" android:layout_width="50dp" android:layout_height="match_parent"/>
+        <com.artifex.sonui.editor.SOTextView android:textSize="20sp" android:textColor="@drawable/sodk_editor_sheet_tab_text" android:id="@+id/button2" android:background="@color/sodk_editor_transparent" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X"/>
+    </LinearLayout>
+</merge>

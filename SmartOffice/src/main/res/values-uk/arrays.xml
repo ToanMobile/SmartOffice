@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="efp__size_units">
+        <item>Б</item>
+        <item>кБ</item>
+        <item>мБ</item>
+        <item>гБ</item>
+        <item>тБ</item>
+        <item>пБ</item>
+    </array>
+    <array name="efp__sorting_types">
+        <item>По імені, по зростанню</item>
+        <item>По імені, по убуванню</item>
+        <item>По розміру, по зростанню</item>
+        <item>По розміру, по убуванню</item>
+        <item>За датою, по зростанню</item>
+        <item>За датою, по убуванню</item>
+    </array>
+</resources>

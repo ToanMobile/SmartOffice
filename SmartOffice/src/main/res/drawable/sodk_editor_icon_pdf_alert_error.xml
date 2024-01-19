@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tint="@color/sodk_editor_icon_pdf_alert_color" android:height="50dp" android:width="50dp" android:viewportWidth="50" android:viewportHeight="50">
+    <path android:fillColor="#00000000" android:pathData="M35.06,41.94l-20,0.06l-10.06,-16.94l9.94,-17l20,-0.06l10.06,16.94l-9.94,17z" android:strokeColor="#333" android:strokeWidth="2"/>
+    <group>
+        <clip-path android:pathData="M0,0h50v50h-50z M 0,0"/>
+        <path android:fillColor="#00000000" android:pathData="M17.62,32.93L32.26,18.3" android:strokeColor="#333" android:strokeWidth="2"/>
+        <path android:fillColor="#00000000" android:pathData="M32.26,32.93L17.62,18.3" android:strokeColor="#333" android:strokeWidth="2"/>
+    </group>
+</vector>

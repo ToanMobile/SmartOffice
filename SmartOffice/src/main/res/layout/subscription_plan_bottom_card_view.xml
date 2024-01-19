@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/bottomCardView" android:tag="layout/subscription_plan_bottom_card_view_0" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/white">
+    <LinearLayout android:orientation="vertical" android:padding="@dimen/_15sdp" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@+id/bottomCardsRecyclerView" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <Button android:textColor="@color/white" android:id="@+id/upgradePlanButton" android:background="@drawable/subscription_upgrade_button_bg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_15sdp" android:text="@string/upgrade_plan" android:textAllCaps="false" android:fontFamily="@font/lato_regular" android:textAlignment="center"/>
+        <TextView android:textSize="@dimen/_12sdp" android:textStyle="bold" android:textColor="@color/text_color" android:layout_gravity="center" android:id="@+id/cancelText" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_10sdp" android:text="@string/cancel_anytime"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

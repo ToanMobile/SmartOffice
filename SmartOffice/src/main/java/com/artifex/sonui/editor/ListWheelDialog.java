@@ -8,6 +8,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+
+import com.artifex.R;
 import com.artifex.source.library.wheel.widget.WheelView;
 import com.artifex.source.library.wheel.widget.adapters.ArrayWheelAdapter;
 

@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.artifex.R;
 import com.artifex.mupdf.fitz.PKCS7DistinguishedName;
 import java.text.SimpleDateFormat;
 import java.util.Date;

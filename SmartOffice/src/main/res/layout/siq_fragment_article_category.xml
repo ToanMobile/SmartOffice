@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView android:id="@+id/siq_articles_view" android:background="?attr/siq_recyclerview_backgroundcolor" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_category_view" android:background="?attr/siq_articles_listitem_backgroundcolor" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_recently_viewed" android:background="?attr/siq_backgroundcolor" android:visibility="gone" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/siq_articles_emptystate" android:background="?attr/siq_emptyview_backgroundcolor" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:id="@+id/siq_empty_state_icon" android:src="@drawable/salesiq_articles_empty" style="@style/SalesIQ.Style.articles_emptyview_image"/>
+        <TextView android:id="@+id/siq_empty_state_text" android:text="@string/articles.emptystate" style="@style/SalesIQ.Style.articles_emptystate_text"/>
+        <RelativeLayout android:id="@+id/siq_empty_state_startchat_layout" style="@style/SalesIQ.Layout.articles_startchat">
+            <ImageView android:id="@+id/siq_empty_state_button_icon" app:srcCompat="@drawable/salesiq_vector_chat" style="@style/SalesIQ.Style.articles_startchat_image"/>
+            <TextView android:id="@+id/siq_empty_state_startchat" android:text="@string/livechat.conversation.startchat" android:layout_toRightOf="@+id/siq_empty_state_button_icon" android:layout_toEndOf="@+id/siq_empty_state_button_icon" style="@style/SalesIQ.Style.articles_startchat_text"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <ProgressBar android:id="@+id/siq_articles_progress" style="@style/SalesIQ.ProgressBar.articles"/>
+</RelativeLayout>

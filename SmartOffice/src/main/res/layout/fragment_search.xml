@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:id="@+id/search_frag_back" android:background="@drawable/ic_back" android:visibility="gone" android:layout_width="@dimen/_20sdp" android:layout_height="wrap_content" android:layout_marginStart="@dimen/_20sdp" android:backgroundTint="#43454a"/>
+        <EditText android:id="@+id/search_view_frag" android:background="@null" android:layout_width="match_parent" android:layout_height="@dimen/_50sdp" android:hint="Search Here" android:layout_weight="1" android:paddingStart="@dimen/_10sdp" android:layout_marginStart="@dimen/_10sdp"/>
+        <ImageView android:layout_gravity="center_vertical" android:background="@drawable/ic_baseline_search_24" android:layout_width="@dimen/_20sdp" android:layout_height="@dimen/_20sdp" android:layout_marginStart="@dimen/_20sdp" android:layout_marginEnd="@dimen/_20sdp" android:backgroundTint="#43454a"/>
+    </LinearLayout>
+    <View android:background="#e5e5e5" android:layout_width="match_parent" android:layout_height="@dimen/_3sdp"/>
+    <RelativeLayout android:id="@+id/search_result_container" android:background="?attr/textColorPrimaryInverse" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/list_of_files" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_alignParentTop="true"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/ll_mask" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
+        <ImageView android:layout_gravity="center" android:layout_width="@dimen/_240sdp" android:layout_height="@dimen/_150sdp" android:layout_marginTop="@dimen/_50sdp"/>
+    </LinearLayout>
+</LinearLayout>

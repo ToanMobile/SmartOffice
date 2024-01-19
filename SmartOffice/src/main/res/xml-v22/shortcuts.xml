@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
+    <shortcut android:icon="@drawable/docx_96" android:enabled="true" android:shortcutId="list_docx" android:shortcutShortLabel="@string/list_docx_short" android:shortcutLongLabel="@string/list_docx_long">
+        <intent android:targetPackage="com.rpdev.document.manager.reader.allfiles" android:action="show_files" android:targetClass="com.rpdev.docreadermain.SplashActivity">
+            <extra android:name="type" android:value=".docx"/>
+        </intent>
+        <categories android:name="VIEW_LIST"/>
+    </shortcut>
+    <shortcut android:icon="@drawable/xls_96" android:enabled="true" android:shortcutId="list_xls" android:shortcutShortLabel="@string/list_xls_short" android:shortcutLongLabel="@string/list_xls_long">
+        <intent android:targetPackage="com.rpdev.document.manager.reader.allfiles" android:action="show_files" android:targetClass="com.rpdev.docreadermain.SplashActivity">
+            <extra android:name="type" android:value=".xlsx"/>
+        </intent>
+        <categories android:name="VIEW_LIST"/>
+    </shortcut>
+    <shortcut android:icon="@drawable/pdf_96" android:enabled="true" android:shortcutId="list_pdfs" android:shortcutShortLabel="@string/list_pdf_short" android:shortcutLongLabel="@string/list_pdf_long">
+        <intent android:targetPackage="com.rpdev.document.manager.reader.allfiles" android:action="show_files" android:targetClass="com.rpdev.docreadermain.SplashActivity">
+            <extra android:name="type" android:value=".pdf"/>
+        </intent>
+        <categories android:name="VIEW_LIST"/>
+    </shortcut>
+    <shortcut android:icon="@drawable/all_96" android:enabled="true" android:shortcutId="home" android:shortcutShortLabel="@string/home" android:shortcutLongLabel="@string/home">
+        <intent android:targetPackage="com.rpdev.document.manager.reader.allfiles" android:action="show_home" android:targetClass="com.rpdev.docreadermain.SplashActivity"/>
+        <categories android:name="NAV"/>
+    </shortcut>
+    <shortcut android:icon="@drawable/storage" android:enabled="true" android:shortcutId="recents" android:shortcutShortLabel="@string/recent" android:shortcutLongLabel="@string/recent">
+        <intent android:targetPackage="com.rpdev.document.manager.reader.allfiles" android:action="show_recents" android:targetClass="com.rpdev.docreadermain.SplashActivity"/>
+        <categories android:name="NAV"/>
+    </shortcut>
+</shortcuts>

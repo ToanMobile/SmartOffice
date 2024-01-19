@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/resourceview_parent" android:padding="@dimen/siq_1" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:id="@+id/resourceview_layout" android:padding="@dimen/siq_15" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:id="@+id/resource_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/livechat.common.article"/>
+        <TextView android:id="@+id/resource_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_15"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_15">
+            <ImageView android:layout_gravity="center" android:id="@+id/creator_profile_icon" android:background="@drawable/salesiq_circle_bg" android:layout_width="@dimen/siq_20" android:layout_height="@dimen/siq_20" app:srcCompat="@drawable/salesiq_operator_default_light"/>
+            <TextView android:id="@+id/creator_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/siq_10" android:layout_marginStart="@dimen/siq_10"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
