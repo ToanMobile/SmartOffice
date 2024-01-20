@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:icon="@drawable/folder_icon" android:id="@+id/pickFile" android:orderInCategory="1" android:title="@string/pick_file" app:showAsAction="always"/>
-    <item android:icon="@drawable/meta_info" android:id="@+id/metaFile" android:orderInCategory="4" android:title="@string/meta" app:showAsAction="always"/>
-    <item android:icon="@drawable/share_icon" android:id="@+id/shareFile" android:orderInCategory="2" android:title="@string/share" app:showAsAction="always"/>
-    <item android:icon="@drawable/print_icon" android:id="@+id/printFile" android:orderInCategory="6" android:title="@string/print" app:showAsAction="always"/>
-</menu>

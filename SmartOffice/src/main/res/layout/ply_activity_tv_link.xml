@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_marginStart="40dp" android:layout_marginEnd="40dp"/>
-    <ImageView android:layout_gravity="center_horizontal" android:id="@+id/qrCode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_marginStart="40dp" android:layout_marginEnd="40dp"/>
-    <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="#99000000" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:text="@string/ply_webview_qr_or_url" android:layout_marginStart="40dp" android:layout_marginEnd="40dp"/>
-    <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="@android:color/black" android:gravity="center" android:id="@+id/url" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginStart="40dp" android:layout_marginEnd="40dp"/>
-</LinearLayout>

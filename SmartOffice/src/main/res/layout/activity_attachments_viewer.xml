@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:background="@android:color/black" android:layout_width="match_parent" android:layout_height="match_parent">
-    <androidx.viewpager.widget.ViewPager android:gravity="center" android:id="@+id/desk_attachmnts_pager" android:layout_width="match_parent" android:layout_height="match_parent"/>
-    <androidx.appcompat.widget.Toolbar android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" android:layout_gravity="top" android:id="@+id/desk_attachments_tool_bar" android:background="@color/bg_attachments_pager_toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"/>
-</FrameLayout>

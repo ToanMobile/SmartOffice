@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:gravity="center" android:orientation="horizontal" android:background="@drawable/tt_splash_unlock_btn_bg" android:paddingLeft="38dp" android:paddingTop="20dp" android:paddingRight="38dp" android:paddingBottom="20dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
-    <ImageView android:background="@drawable/tt_splash_shake_hand" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <TextView android:textSize="17sp" android:textColor="#ffffff" android:id="@+id/tt_tv_shake_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:text=""/>
-</LinearLayout>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/siq_chat_card_type_image" android:layout_width="match_parent" android:layout_height="@dimen/siq_170">
-    <androidx.cardview.widget.CardView android:id="@+id/siq_chat_card_type_image_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="-12dp" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="@dimen/siq_12">
-        <LinearLayout android:orientation="vertical" android:id="@+id/siq_chat_card_type_image_parent" android:background="?attr/siq_chat_message_backgroundcolor_operator" android:layout_width="match_parent" android:layout_height="match_parent">
-            <ImageView android:id="@+id/siq_chat_card_image" android:visibility="visible" android:layout_width="match_parent" android:layout_height="@dimen/siq_170" android:scaleType="centerCrop"/>
-            <ProgressBar android:layout_gravity="center" android:id="@+id/siq_chat_card_image_progressBar" android:visibility="gone" android:layout_width="@dimen/siq_22" android:layout_height="@dimen/siq_22" android:foregroundGravity="center"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>

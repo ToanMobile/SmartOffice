@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:icon="@drawable/file_delete" android:id="@+id/sort_files" android:orderInCategory="103" android:title="@string/sort_files_text"/>
-</menu>

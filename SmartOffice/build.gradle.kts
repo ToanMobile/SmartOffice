@@ -56,5 +56,6 @@ dependencies {
     implementation(files("libs/bcpkix-jdk15on-1.58.0.0.jar"))
     implementation(files("libs/core-1.58.0.0.jar"))
     implementation(files("libs/prov-1.58.0.0.jar"))
-    implementation(files("libs/core-1.58.0.0-sources.jar")) // Optional
+    implementation(files("libs/core-1.58.0.0-sources.jar"))
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4") // Optional
 }

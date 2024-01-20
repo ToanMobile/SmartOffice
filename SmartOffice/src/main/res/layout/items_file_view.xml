@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tag="layout/items_file_view_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_5sdp" android:elevation="3dp" app:cardCornerRadius="8dp">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-        <ImageView android:id="@+id/iv_file_icon" android:layout_width="45dp" android:layout_height="45dp" android:layout_margin="@dimen/_10sdp" android:src="@drawable/pdf_96"/>
-        <TextView android:id="@+id/tv_fileName" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/_10sdp" android:layout_toLeftOf="@+id/iv_item_delete" android:layout_toRightOf="@+id/iv_file_icon" android:layout_centerVertical="true"/>
-        <ImageView android:id="@+id/iv_item_delete" android:padding="7dp" android:layout_width="25dp" android:layout_height="25dp" android:layout_marginRight="@dimen/margin_10" android:src="@drawable/delete" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent">
-    <androidx.appcompat.widget.Toolbar android:id="@+id/siq_dialog_toolbar" android:layout_width="match_parent" android:layout_height="?android:attr/actionBarSize" app:popupTheme="@style/SalesIQ.PopupMenuStyle" style="?attr/siq_toolbar_style"/>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_timezone_list" android:layout_width="match_parent" android:layout_height="match_parent"/>
-</LinearLayout>

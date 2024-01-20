@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:background="?attr/siq_forms_backgroundcolor" android:paddingTop="18dp" android:paddingBottom="18dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/siq_10">
-    <ImageView android:id="@+id/siq_dept_status" style="@style/SalesIQ.Style.dialog_department_status_image"/>
-    <TextView android:id="@+id/siq_dept_name" android:clickable="false" style="@style/SalesIQ.Style.dialog_department_status_text"/>
-</LinearLayout>

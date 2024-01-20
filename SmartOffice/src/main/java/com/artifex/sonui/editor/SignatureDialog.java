@@ -107,7 +107,7 @@ public class SignatureDialog extends Dialog {
     }
 
     public SignatureDialog(Context context2, ConfigOptions configOptions, MuPDFWidget muPDFWidget, NUIPKCS7Signer nUIPKCS7Signer, SignatureListener signatureListener) {
-        super(context2, R.style.ThemeOverlay_Material3);
+        super(context2, androidx.appcompat.R.style.Theme_AppCompat_DayNight_Dialog_Alert);
         this.widget = muPDFWidget;
         this.signer = nUIPKCS7Signer;
         this.listener = signatureListener;

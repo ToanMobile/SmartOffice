@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="match_parent">
-    <com.github.barteksc.pdfviewer.PDFView android:id="@+id/pdfView" android:layout_width="match_parent" android:layout_height="match_parent"/>
-    <ProgressBar android:layout_gravity="top" android:id="@+id/progressBar" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="-6dp" android:indeterminate="true" style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-    <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_gravity="bottom" android:id="@+id/bottomNavigation" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/actionBarSize" app:itemBackground="@android:color/black" app:itemIconTint="@android:color/white" app:itemTextColor="@android:color/white" app:labelVisibilityMode="2" app:menu="@menu/fab_menu"/>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>

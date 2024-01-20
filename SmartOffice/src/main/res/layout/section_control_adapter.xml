@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="wrap_content" android:elevation="3dp">
-    <com.commons_lite.ads_module.utils.CustomGridView android:gravity="center_horizontal" android:id="@+id/custom_grid" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/_20sdp" android:layout_marginBottom="@dimen/_20sdp" android:horizontalSpacing="@dimen/_20sdp" android:verticalSpacing="@dimen/_20sdp" android:stretchMode="columnWidth" android:columnWidth="80dp" android:numColumns="@integer/control_screen_column"/>
-</androidx.cardview.widget.CardView>

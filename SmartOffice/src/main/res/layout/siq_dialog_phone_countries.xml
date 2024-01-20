@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <EditText android:textColorHint="?attr/siq_hint_textcolor" android:id="@+id/siq_chat_card_input_phone_countries_search" android:background="?attr/siq_backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="16dp" android:hint="@string/livechat.widgets.input.phone.search.hint"/>
-    <View android:background="?attr/siq_divider_color" android:layout_width="match_parent" android:layout_height="1dp"/>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/siq_chat_card_input_phone_countries" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-</LinearLayout>

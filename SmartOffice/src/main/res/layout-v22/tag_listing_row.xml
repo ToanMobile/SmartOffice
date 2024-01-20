@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@+id/imvTagStatus" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ic_tag_default"/>
-        <CheckBox android:id="@+id/chkTag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:buttonTint="@color/check_box_selection_color"/>
-        <TextView android:textSize="16sp" android:textColor="@color/colorBlack" android:gravity="center_vertical" android:id="@+id/txtTagTitle" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="10dp" android:layout_weight="1" android:fontFamily="@font/lato_regular" android:textFontWeight="500"/>
-    </LinearLayout>
-    <View android:background="@color/tag_divider_color" android:layout_width="match_parent" android:layout_height="1dp"/>
-</LinearLayout>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:gravity="center" android:orientation="horizontal" android:layout_width="54dp" android:layout_height="32dp">
-    <View android:id="@+id/siq_typing_circle1" style="@style/SalesIQ.View.typing_indication"/>
-    <View android:id="@+id/siq_typing_circle2" android:layout_marginLeft="4dp" android:layout_marginStart="4dp" style="@style/SalesIQ.View.typing_indication"/>
-    <View android:id="@+id/siq_typing_circle3" android:layout_marginLeft="4dp" android:layout_marginStart="4dp" style="@style/SalesIQ.View.typing_indication"/>
-</LinearLayout>

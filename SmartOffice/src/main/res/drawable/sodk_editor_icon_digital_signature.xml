@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:tint="@color/sodk_editor_icon_tint" android:height="50dp" android:width="50dp" android:viewportWidth="50" android:viewportHeight="50">
-    <path android:fillColor="#333" android:pathData="M18.09,41.19c2.46,-0.16 4,-1.86 6.84,-1.95a23.39,23.39 0,0 1,2.54 -4.69,11.91 11.91,0 0,0 -2.73,-2.93c-1.47,1.08 -3.31,1.77 -4.89,2.74 0.14,2.63 -2,4.67 -2,6.63 1.47,-1.32 2.92,-4 4.73,-4.29C22.37,38.5 19.92,39.65 18.09,41.19Z" android:fillType="1"/>
-    <path android:fillColor="#333" android:pathData="M44.45,11.91C36.16,17 31.91,23.21 25.84,30.55a7.37,7.37 0,0 0,2.73 2.73C36,27.35 42.23,23.23 47.38,15A6.82,6.82 0,0 0,44.45 11.91Z" android:fillType="1"/>
-    <path android:fillColor="#00000000" android:pathData="M30.17,37.83l17.31,0l0,9.34l-44.65,0l0,-9.34l11.19,0" android:strokeColor="#333" android:strokeWidth="1" android:fillType="1"/>
+    <path android:fillColor="#333" android:pathData="M18.09,41.19c2.46,-0.16 4,-1.86 6.84,-1.95a23.39,23.39 0,0 1,2.54 -4.69,11.91 11.91,0 0,0 -2.73,-2.93c-1.47,1.08 -3.31,1.77 -4.89,2.74 0.14,2.63 -2,4.67 -2,6.63 1.47,-1.32 2.92,-4 4.73,-4.29C22.37,38.5 19.92,39.65 18.09,41.19Z" />
+    <path android:fillColor="#333" android:pathData="M44.45,11.91C36.16,17 31.91,23.21 25.84,30.55a7.37,7.37 0,0 0,2.73 2.73C36,27.35 42.23,23.23 47.38,15A6.82,6.82 0,0 0,44.45 11.91Z"/>
+    <path android:fillColor="#00000000" android:pathData="M30.17,37.83l17.31,0l0,9.34l-44.65,0l0,-9.34l11.19,0" android:strokeColor="#333" android:strokeWidth="1" />
     <path android:fillColor="#333" android:pathData="M17.24,15.58a0.75,0.75 0,0 0,-1.49 0,0.75 0.75,0 0,0 0.39,0.65l-0.32,1.32h1.34l-0.32,-1.3A0.74,0.74 0,0 0,17.24 15.58Z"/>
     <path android:fillColor="#333" android:pathData="M16.55,10.67A1.31,1.31 0,0 0,15.24 12v1.84h2.61V12A1.3,1.3 0,0 0,16.55 10.67Z"/>
     <path android:fillColor="#333" android:pathData="M16.61,7.69a7.16,7.16 0,1 0,7.1 7.2A7.16,7.16 0,0 0,16.61 7.69ZM19.3,18.19a0.4,0.4 0,0 1,-0.4 0.4L14.12,18.59c-0.22,0 -0.4,-0.28 -0.4,-0.5L13.72,14.2a0.4,0.4 0,0 1,0.4 -0.39h0.31L14.43,12a2.12,2.12 0,1 1,4.23 0v1.84h0.24a0.4,0.4 0,0 1,0.4 0.39Z"/>

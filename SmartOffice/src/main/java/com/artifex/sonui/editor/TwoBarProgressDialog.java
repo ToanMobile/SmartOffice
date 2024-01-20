@@ -21,7 +21,7 @@ public class TwoBarProgressDialog {
     public Runnable mOnCancelRunnable;
 
     public TwoBarProgressDialog(Activity activity, String str) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.Theme_AppCompat_DayNight_Dialog_Alert));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(activity, androidx.appcompat.R.style.Theme_AppCompat_DayNight_Dialog_Alert));
         View inflate = LayoutInflater.from(activity).inflate(R.layout.sodk_editor_twobar_progress, (ViewGroup) null);
         builder.setView(inflate);
         builder.setTitle(str);

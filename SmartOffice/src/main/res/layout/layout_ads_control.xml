@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/rootNativeAdView" android:layout_width="match_parent" android:layout_height="wrap_content" android:adjustViewBounds="true">
-    <LinearLayout android:id="@+id/ltAdText" android:tag="ad_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp">
-        <TextView android:textSize="@dimen/text_size_sponsored_label" android:textStyle="bold" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:text="@string/sponsored" android:layout_weight="1"/>
-        <TextView android:textColor="@color/white" android:layout_gravity="center_vertical" android:id="@+id/remove_ads" android:tag="remove_ads" android:background="@color/colorAccent" android:padding="5dp" android:visibility="visible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Remove Ads"/>
-    </LinearLayout>
-    <FrameLayout android:orientation="vertical" android:id="@+id/fl_adplaceholder" android:background="@drawable/bg_card_ads" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:adjustViewBounds="true"/>
-    <include layout="@layout/load_fb_adx"/>
-</LinearLayout>

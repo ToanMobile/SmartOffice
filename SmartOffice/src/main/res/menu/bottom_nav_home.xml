@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:icon="@drawable/folder_96" android:enabled="true" android:id="@+id/view_all" android:title="@string/all_documents" app:showAsAction="ifRoom"/>
-    <item android:icon="@drawable/pdf_96" android:enabled="true" android:id="@+id/view_pdfs" android:title="@string/pdf_documents" app:showAsAction="ifRoom"/>
-    <item android:icon="@drawable/xls_96" android:enabled="true" android:id="@+id/view_xls" android:title="@string/xls_documents" app:showAsAction="ifRoom"/>
-    <item android:icon="@drawable/docx_96" android:enabled="true" android:id="@+id/view_docx" android:title="@string/documents" app:showAsAction="ifRoom"/>
-    <item android:icon="@drawable/txt_96" android:enabled="true" android:id="@+id/view_txt" android:title="@string/text_files" app:showAsAction="ifRoom"/>
-</menu>

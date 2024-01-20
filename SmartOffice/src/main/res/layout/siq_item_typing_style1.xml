@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="horizontal" android:paddingLeft="@dimen/siq_16" android:paddingTop="@dimen/siq_8" android:paddingRight="@dimen/siq_16" android:paddingBottom="@dimen/siq_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/siq_16" android:paddingEnd="@dimen/siq_16">
-    <TextView android:textSize="@dimen/siq_text_16" android:textStyle="italic" android:ellipsize="end" android:id="@+id/siq_typing_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="25"/>
-    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:layout_width="35dp" android:layout_height="@dimen/siq_10">
-        <View android:id="@+id/siq_typing_circle1" style="@style/SalesIQ.View.typing_indication_style1"/>
-        <View android:id="@+id/siq_typing_circle2" android:layout_marginLeft="4dp" android:layout_marginStart="4dp" style="@style/SalesIQ.View.typing_indication_style1"/>
-        <View android:id="@+id/siq_typing_circle3" android:layout_marginLeft="4dp" android:layout_marginStart="4dp" style="@style/SalesIQ.View.typing_indication_style1"/>
-    </LinearLayout>
-</LinearLayout>

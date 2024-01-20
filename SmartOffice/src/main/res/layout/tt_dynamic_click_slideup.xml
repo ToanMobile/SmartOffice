@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:gravity="bottom|center_vertical|center_horizontal|center" android:layout_width="match_parent" android:layout_height="match_parent">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/tt_interact_round_rect_stroke" android:layout_width="46dp" android:layout_height="32dp">
-        <ImageView android:background="@drawable/tt_splash_slide_up_10" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    </LinearLayout>
-</LinearLayout>

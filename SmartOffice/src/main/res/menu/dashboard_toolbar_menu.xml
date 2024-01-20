@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt">
-    <item android:icon="@drawable/crown_a1" android:enabled="true" android:id="@+id/upgradeProPlan" android:title="Pro" app:showAsAction="always"/>
-    <item android:icon="@drawable/ic_support" android:enabled="true" android:id="@+id/support" android:title="Support" app:showAsAction="always"/>
-    <item android:icon="@drawable/profile_icon_home_new" android:enabled="true" android:id="@+id/profileImageCv" android:title="Profile" app:showAsAction="always"/>
-</menu>

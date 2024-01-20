@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:id="@+id/layout_root" android:padding="20dp" android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView android:textSize="@dimen/text_size_small" android:textColor="?android:attr/textColorHint" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/DeskPortal.Options.add_tags" android:textDirection="locale"/>
-    <EditText android:id="@+id/editTextDialogUserInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:textDirection="locale">
-        <requestFocus/>
-    </EditText>
-    <TextView android:textColor="?android:attr/textColorSecondary" android:id="@+id/desk_community_tag_rule" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/DeskPortal.Community.Label.add_tags_hint" android:textDirection="locale"/>
-</LinearLayout>

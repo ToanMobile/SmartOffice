@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
-    <RelativeLayout android:paddingLeft="@dimen/_20sdp" android:paddingTop="@dimen/_10sdp" android:paddingRight="@dimen/_20sdp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/sp_16" android:textColor="@color/toolbar_bg_color" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/categories" android:layout_alignParentLeft="true" android:fontFamily="@font/lato_bold"/>
-        <TextView android:textSize="@dimen/sp_14" android:textColor="@color/selected_text_color" android:id="@+id/txtAddLabel" android:padding="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/add_labels" android:layout_alignParentRight="true" android:fontFamily="@font/lato_bold"/>
-    </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvLabels" android:paddingLeft="15dp" android:paddingTop="@dimen/_10sdp" android:paddingRight="@dimen/_20sdp" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
-    <include layout="@layout/v2_no_records_found"/>
-</LinearLayout>

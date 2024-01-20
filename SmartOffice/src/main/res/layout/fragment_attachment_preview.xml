@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <com.zoho.desk.asap.common.utils.ASAPAttachmentImageView android:gravity="center" android:layout_gravity="center" android:id="@+id/desk_forum_attach_image" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitCenter" android:adjustViewBounds="true"/>
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/desk_forum_attach_container" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@+id/desk_forum_attch_type_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/basic_margin" android:scaleType="fitXY" android:minWidth="@dimen/min_dimen_icon" android:minHeight="@dimen/min_dimen_icon"/>
-        <TextView android:textColor="?attr/colorAccent" android:layout_gravity="center_horizontal" android:id="@+id/desk_forum_attach_download" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/DeskPortal.Options.download" android:textDirection="locale" style="@style/TextAppearance.Medium"/>
-    </LinearLayout>
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@+id/desk_forum_attach_progress_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/progressBarStyle"/>
-</FrameLayout>
