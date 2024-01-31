@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.artifex.sonui.editor.NUIActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:exported="true"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/sodk_editor_mui_theme" />
     </application>
 
 </manifest>
