@@ -1,5 +1,3 @@
-import com.android.build.api.dsl.Packaging
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -7,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.artifex.sonui"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.artifex.sonui"
@@ -32,29 +30,32 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     packagingOptions {
-        exclude("META-INF/DEPENDENCIES")
-        exclude("META-INF/LICENSE")
-        exclude("META-INF/LICENSE.txt")
-        exclude("META-INF/license.txt")
-        exclude("META-INF/NOTICE")
-        exclude("META-INF/NOTICE.txt")
-        exclude("META-INF/notice.txt")
-        exclude("META-INF/ASL2.0")
-        exclude("META-INF/*.kotlin_module")
-        exclude("META-INF/INDEX.LIST")
+        resources {
+            excludes += setOf(
+                "META-INF/DEPENDENCIES",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.txt",
+                "META-INF/license.txt",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.txt",
+                "META-INF/notice.txt",
+                "META-INF/ASL2.0",
+                "META-INF/*.kotlin_module",
+                "META-INF/INDEX.LIST"
+            )
+        }
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.blankj:utilcodex:1.31.1")
     implementation(project(":SmartOffice"))
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
