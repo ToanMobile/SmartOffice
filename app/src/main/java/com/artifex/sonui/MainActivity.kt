@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.artifex.solib.ArDkLib
 import com.artifex.sonui.editor.DocumentView
 import com.artifex.sonui.editor.NUIActivity
+import com.artifex.sonui.editor.SODocumentView
 import com.artifex.sonui.editor.Utilities
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.PathUtils
@@ -15,6 +16,7 @@ import com.blankj.utilcode.util.UriUtils
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
+    private var mDocumentView: SODocumentView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         //Custom UI
         DocumentView.initialize(this)
         val filename = FileUtils.getFileName(pathWelcome)
-        val documentView: DocumentView = DocumentView.create(this, filename)
+        val documentView: DocumentView = DocumentView(this)
+        mDocumentView = documentView.mDocView
         val parent = findViewById<ViewGroup>(R.id.documentViewHolder)
         parent.addView(
             documentView,

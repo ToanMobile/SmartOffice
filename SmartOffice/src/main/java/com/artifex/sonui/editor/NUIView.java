@@ -21,8 +21,8 @@ public class NUIView extends FrameLayout {
     public interface DocStateListener {
 
         /* renamed from: com.artifex.sonui.editor.NUIView$DocStateListener$-CC  reason: invalid class name */
-        public final /* synthetic */ class CC {
-            public static void $default$docLoaded(DocStateListener docStateListener) {
+        final class NUIViewDocStateListener {
+            public static void defaultDocLoaded(DocStateListener docStateListener) {
             }
         }
 
