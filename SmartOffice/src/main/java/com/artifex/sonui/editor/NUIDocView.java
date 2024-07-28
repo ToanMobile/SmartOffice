@@ -52,6 +52,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.activity.ComponentActivity;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -87,6 +88,7 @@ import com.artifex.sonui.editor.PdfExportAsPopup;
 import com.artifex.sonui.editor.SODocSession;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.vungle.warren.model.CacheBustDBAdapter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -94,6 +96,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
+
 import kotlin.jvm.internal.Intrinsics;
 
 public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListener, DocViewHost, View.OnClickListener {
@@ -3956,7 +3959,6 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         scaleToolbar(R.id.pdf_sign_toolbar, 0.65f);
         scaleSearchToolbar(0.65f);
         scaleTabArea(0.65f);
-        ((TextView) this.tabHost.getTabWidget().getChildTabViewAt(this.tabHost.getTabWidget().getTabCount() - 1).findViewById(R.id.tabText)).setTextSize((float) getContext().getResources().getInteger(R.integer.sodk_editor_single_tab_text_size));
         this.mBackButton.setScaleX(0.65f);
         this.mBackButton.setScaleY(0.65f);
         this.mUndoButton.setScaleX(0.65f);
@@ -3965,6 +3967,14 @@ public class NUIDocView extends FrameLayout implements TabHost.OnTabChangeListen
         this.mRedoButton.setScaleY(0.65f);
         this.mSearchButton.setScaleX(0.65f);
         this.mSearchButton.setScaleY(0.65f);
+        try {
+            //TODO Fix
+            if (this.tabHost != null) {
+                ((TextView) this.tabHost.getTabWidget().getChildTabViewAt(this.tabHost.getTabWidget().getTabCount() - 1).findViewById(R.id.tabText)).setTextSize((float) getContext().getResources().getInteger(R.integer.sodk_editor_single_tab_text_size));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void scaleSearchToolbar(float f) {

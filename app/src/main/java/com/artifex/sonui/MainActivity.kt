@@ -1,13 +1,18 @@
 package com.artifex.sonui
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.artifex.solib.ArDkLib
+import com.artifex.solib.ConfigOptions
+import com.artifex.sonui.editor.DocumentListener
 import com.artifex.sonui.editor.DocumentView
 import com.artifex.sonui.editor.NUIActivity
+import com.artifex.sonui.editor.NUIView
 import com.artifex.sonui.editor.SODocumentView
 import com.artifex.sonui.editor.Utilities
 import com.blankj.utilcode.util.FileUtils
@@ -32,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         DocumentView.initialize(this)
         val filename = FileUtils.getFileName(pathWelcome)
         val documentView: DocumentView = DocumentView(this)
-        mDocumentView = documentView.mDocView
+        //mDocumentView = documentView.mDocView
         val parent = findViewById<ViewGroup>(R.id.documentViewHolder)
         parent.addView(
             documentView,
@@ -41,8 +46,37 @@ class MainActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
         )
-        documentView.setDocConfigOptions(ArDkLib.getAppConfigOptions())
-        documentView.setDocDataLeakHandler(Utilities.getDataLeakHandlers())
-        documentView.start(documentUri, 0, false)
+        documentView.let {
+            val configOptions = ConfigOptions()
+            it.setDocConfigOptions(configOptions)
+            it.setDocDataLeakHandler(Utilities.getDataLeakHandlers())
+            it.setDocumentListener(object : DocumentListener {
+                override fun onDocCompleted() {
+                    Log.e("DocumentListener", "onDocCompleted")
+                }
+
+                override fun onPageLoaded(i: Int) {
+                    Log.e("DocumentListener", "onPageLoaded")
+                }
+
+                override fun onPasswordRequired() {
+                    Log.e("DocumentListener", "onPasswordRequired")
+                }
+
+                override fun onViewChanged(f: Float, i: Int, i2: Int, rect: Rect?) {
+                    Log.e("DocumentListener", "onViewChanged")
+                }
+            })
+            it.setDocStateListener(object : NUIView.DocStateListener {
+                override fun docLoaded() {
+                    Log.e("setDocStateListener", "docLoaded")
+                }
+
+                override fun done() {
+                    Log.e("setDocStateListener", "done")
+                }
+            })
+            it.start(documentUri, 0, false)
+        }
     }
 }
