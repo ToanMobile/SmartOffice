@@ -255,12 +255,12 @@ public class FileUtils {
     /* JADX WARNING: Removed duplicated region for block: B:22:0x005c  */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static String exportContentUri(Context r5, Uri r6) {
-        /*
-            java.lang.String r0 = r6.getScheme()
-            java.lang.String r1 = r6.getPath()
-            java.lang.String r2 = r6.toString()
-            java.lang.String r3 = "."
-            if (r0 == 0) goto L_0x0042
+        try {
+            java.lang.String r0 = r6.getScheme();
+            java.lang.String r1 = r6.getPath();
+            java.lang.String r2 = r6.toString();
+            java.lang.String r3 = ".";
+            if (r0 == "0") goto L_0x0042;
             java.lang.String r4 = "content"
             boolean r0 = r0.equalsIgnoreCase(r4)
             if (r0 == 0) goto L_0x0042
@@ -272,36 +272,36 @@ public class FileUtils {
             java.lang.String r1 = "mail"
             boolean r1 = r2.contains(r1)
             if (r1 == 0) goto L_0x002f
-        L_0x002e:
+            L_0x002e:
             r4 = r0
-        L_0x002f:
+            L_0x002f:
             java.lang.String r0 = getFileTypeExtension(r5, r6)
             if (r0 == 0) goto L_0x0040
             int r1 = r0.length()
             if (r1 <= 0) goto L_0x0040
             java.lang.String r0 = androidx.concurrent.futures.AbstractResolvableFuture$$ExternalSyntheticOutline1.m(r4, r3, r0)
             goto L_0x0050
-        L_0x0040:
+            L_0x0040:
             r0 = r4
             goto L_0x0050
-        L_0x0042:
+            L_0x0042:
             if (r1 == 0) goto L_0x004e
             java.io.File r0 = new java.io.File
-            r0.<init>(r1)
-            java.lang.String r0 = r0.getName()
+            r0.<init> (r1)
+                    java.lang.String r0 = r0.getName()
             goto L_0x0050
-        L_0x004e:
+            L_0x004e:
             java.lang.String r0 = "file"
-        L_0x0050:
+            L_0x0050:
             java.lang.String r1 = getExtension(r0)
             java.lang.String r2 = ""
             boolean r1 = r1.equals(r2)
             if (r1 == 0) goto L_0x0064
             java.lang.String r1 = getFileTypeExtension(r5, r6)
             java.lang.String r0 = androidx.concurrent.futures.AbstractResolvableFuture$$ExternalSyntheticOutline1.m(r0, r3, r1)
-        L_0x0064:
+            L_0x0064:
             java.lang.StringBuilder r1 = new java.lang.StringBuilder
-            r1.<init>()
+            r1.<init> ()
             java.lang.String r2 = getTempPathRoot(r5)
             r1.append(r2)
             java.lang.String r2 = "/shared/"
@@ -311,7 +311,7 @@ public class FileUtils {
             java.lang.String r1 = r1.toString()
             createDirectory(r1)
             java.lang.StringBuilder r2 = new java.lang.StringBuilder
-            r2.<init>()
+            r2.<init> ()
             r2.append(r1)
             java.lang.String r1 = "/"
             r2.append(r1)
@@ -319,7 +319,9 @@ public class FileUtils {
             java.lang.String r0 = r2.toString()
             java.lang.String r5 = exportContentUri(r5, r6, r0)
             return r5
-        */
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         throw new UnsupportedOperationException("Method not decompiled: com.artifex.solib.FileUtils.exportContentUri(android.content.Context, android.net.Uri):java.lang.String");
     }
 
