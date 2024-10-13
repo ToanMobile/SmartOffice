@@ -17,7 +17,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -27,6 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        getByName("main").apply {
+            jniLibs.srcDirs("src/main/jniLibs")
+        }
+    }
 }
 
 dependencies {
@@ -34,16 +42,16 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation("com.google.zxing:core:3.5.2")
-    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.activity:activity-ktx:1.9.2")
     implementation("com.vungle:publisher-sdk-android:6.12.1")
     implementation("com.google.cloud:google-cloud-logging:3.15.14")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.constraintlayout:constraintlayout-core:1.0.4")
     // implementation("com.bytedance.applog:RangersAppLog-Lite-cn:6.14.2")
-
+    implementation("com.blankj:utilcodex:1.31.1")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     implementation("com.yandex.android:mobmetricapushlib:1.5.0")
     implementation("androidx.concurrent:concurrent-futures:1.2.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")

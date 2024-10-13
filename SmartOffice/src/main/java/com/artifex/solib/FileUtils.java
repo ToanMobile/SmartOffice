@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import com.artifex.sonui.editor.SignatureDialog;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -256,7 +258,8 @@ public class FileUtils {
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static String exportContentUri(Context r5, Uri r6) {
         try {
-            java.lang.String r0 = r6.getScheme();
+            //TODO TOAN
+            /*java.lang.String r0 = r6.getScheme();
             java.lang.String r1 = r6.getPath();
             java.lang.String r2 = r6.toString();
             java.lang.String r3 = ".";
@@ -318,7 +321,8 @@ public class FileUtils {
             r2.append(r0)
             java.lang.String r0 = r2.toString()
             java.lang.String r5 = exportContentUri(r5, r6, r0)
-            return r5
+            return r5*/
+            return FileUtils.exportContentUri(r5, r6);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -330,24 +334,8 @@ public class FileUtils {
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public static String extensionFromUriFilename(Uri r2) {
-        /*
-            java.lang.String r0 = ""
-            if (r2 != 0) goto L_0x0005
-            return r0
-        L_0x0005:
-            java.io.File r1 = new java.io.File
-            java.lang.String r2 = r2.getPath()
-            r1.<init>(r2)
-            java.lang.String r2 = r1.getName()
-            r1 = 46
-            int r1 = r2.lastIndexOf(r1)
-            if (r1 <= 0) goto L_0x0020
-            int r1 = r1 + 1
-            java.lang.String r0 = r2.substring(r1)
-        L_0x0020:
-            return r0
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.artifex.solib.FileUtils.extensionFromUriFilename(android.net.Uri):java.lang.String");
+        return com.blankj.utilcode.util.FileUtils.getFileExtension(r2.getPath());
+        //throw new UnsupportedOperationException("Method not decompiled: com.artifex.solib.FileUtils.extensionFromUriFilename(android.net.Uri):java.lang.String");
     }
 
     public static String extractAssetToString(Context context, String str) {

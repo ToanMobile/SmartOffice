@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.artifex.solib.ArDkLib
 import com.artifex.solib.ConfigOptions
 import com.artifex.sonui.editor.DocumentListener
 import com.artifex.sonui.editor.DocumentView
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Default UI Demo
-        val pathWelcome = PathUtils.getExternalDownloadsPath() + File.separator + "welcome.pdf"
+        val pathWelcome = PathUtils.getExternalDownloadsPath() + File.separator + "hellloewq.docx"
         val documentUri = UriUtils.file2Uri(FileUtils.getFileByPath(pathWelcome))
         val defaultUI = Intent(this, NUIActivity::class.java).apply {
             this.action = Intent.ACTION_VIEW
